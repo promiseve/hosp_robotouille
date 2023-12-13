@@ -267,29 +267,31 @@ class RobotouilleWrapper(gym.Wrapper):
                         reward += 1
                     elif state["cooking"] and state["cook_time"] > max_cook_time:
                         reward -= 1
-        # Additional reward for placing an uncooked patty on the stove
-        if action_name == "stack" or action_name == "place":
-            item = action.variables[1].name  
-            location = action.variables[0].name 
 
-            # Check if the item is a patty and it's uncooked
-            if "patty" in item and "iscooked(" + item not in self.prev_step[0]:
-                # Check if the location is the stove
-                if "stove" in location:
-                    reward += 10  
-
-        # Additional reward for placing lettuce on the chopping board
-        if action_name == "stack" or action_name == "place":
-            item = action.variables[1].name  
-            location = action.variables[0].name  
-
-            # Check if the item is lettuce
-            if "lettuce" in item:
-                # Check if the location is the chopping board
-                if "board" in location:
-                    reward += 10 # Assign reward for placing lettuce on the chopping board
-
+        info = self.get_latest_info()
+        if not info:
             return reward
+
+        state_truth_map = self.map_state_to_truth(info['expanded_truths'], info['expanded_states'])
+
+        # Check if the action is 'cook' and involves a patty
+        if action_name == "place":
+            for variable in action.variables:
+                if "patty" in variable.name:
+                    # Check if the patty is uncooked and on the stove
+                    if not state_truth_map.get(f"iscooked({variable.name}:item)", False) and state_truth_map.get(f"at({variable.name},stove1:station)", True):
+                        reward += 10  # Reward for cooking uncooked patty on the stove
+
+        # Check if the action is 'cut' and involves lettuce
+        if action_name == "place":
+            for variable in action.variables:
+                if "lettuce" in variable.name:
+                    # Check if the lettuce is uncut and on the chopping board
+                    if not state_truth_map.get(f"iscut({variable.name}:item)", False) and \
+                    state_truth_map.get(f"at({variable.name},board1:station)", True):
+                        reward += 10  # Reward for cutting uncut lettuce on the chopping board
+
+        return reward
 
     def map_state_to_truth(self, expanded_truths, expanded_states):
         if expanded_truths is None or len(expanded_truths) != len(expanded_states):
@@ -376,11 +378,12 @@ class RobotouilleWrapper(gym.Wrapper):
             "toggle_array": toggle_array,
             "state": self.state,
         }
+        print(info)
 
         self.prev_step = (obs, self.prev_step[1], done, info)
 
         reward = self._handle_reward(action, obs)
-        # print("reward: ", reward)
+        print("reward: ", reward)
         reward += self.prev_step[1]
         # print("total reward: ", reward)
 
