@@ -166,7 +166,7 @@ class RobotouilleWrapper(gym.Wrapper):
         # TODO: Probably stop cooking if something is stacked on top of meat
         return self.env.step(action)
 
-    def _handle_stacking_reward(self, action):
+        def _handle_stacking_reward(self, action):
         # Check that no incorrect stacking occured
         items = ["patty1", "lettuce1", "topbun1"]
         correct_order = [
@@ -191,12 +191,19 @@ class RobotouilleWrapper(gym.Wrapper):
         state_truth_map = self.map_state_to_truth(expanded_truths, expanded_states)
 
         for stack, item in zip(correct_order, items):
-            if state_truth_map[stack]:
+            if state_truth_map.get(stack, True):
                 if action.variables[1].name == item:
-                    reward += 5
-            else:
-                break
-
+                    #print(action.variables[1].name)
+                # Check for uncooked patty or uncut lettuce in incorrect stacking
+                    if "patty1" == item and not state_truth_map.get(f"iscooked({item}:item)", False):
+                        #print("uncooked patty")
+                        reward -= 20  # Penalize for stacking uncooked patty
+                    elif "lettuce1" == item and not state_truth_map.get(f"iscut({item}:item)", False):
+                        #print("lettuc e not cut")
+                        reward -= 20  # Penalize for stacking uncut lettuce
+                    else:
+                        #print("so far")
+                        reward += 5
         return reward
 
     def _handle_reward(self, action, obs):
