@@ -3,6 +3,7 @@ import pddlgym
 import utils.robotouille_utils as robotouille_utils
 import utils.pddlgym_utils as pddlgym_utils
 
+
 class RobotouilleWrapper(gym.Wrapper):
     """
     This wrapper wraps around the Robotouille environment from PDDLGym.

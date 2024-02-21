@@ -86,7 +86,6 @@ class DomainTransitionGraph:
             for destination in sorted(destinations):
                 print("  %d => %d" % (source, destination))
 
-
 def build_dtgs(task):
     """Build DTGs for all variables of the SASTask `task`.
     Return a list(DomainTransitionGraph), one for each variable.
