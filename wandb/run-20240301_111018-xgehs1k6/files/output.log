@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "main.py", line 10, in <module>
+    simulator(args.environment_name, args.seed, args.noisy_randomization)
+  File "/Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/robotouille/robotouille_simulator.py", line 63, in simulator
+    pygame_events = pygame.event.get()
+KeyboardInterrupt

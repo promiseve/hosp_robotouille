@@ -1,0 +1,48 @@
+{
+    "os": "macOS-12.2.1-x86_64-i386-64bit",
+    "python": "3.8.9",
+    "heartbeatAt": "2024-03-01T16:10:18.729168",
+    "startedAt": "2024-03-01T16:10:18.216480",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--environment_name",
+        "base_cut"
+    ],
+    "state": "running",
+    "program": "main.py",
+    "codePathLocal": "main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "https://github.com/promiseve/hosp_robotouille.git",
+        "commit": "7c8e8c25596c9797d0ed8b7e5f3950848456d614"
+    },
+    "email": "promisevekpo@gmail.com",
+    "root": "/Users/promiseosaineekpo/Cornell Repos/hosp_robotouille",
+    "host": "COS-C02G86YHMD6M",
+    "username": "promiseosaineekpo",
+    "executable": "/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/bin/python",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2600,
+        "min": 2600,
+        "max": 2600
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2600,
+            "min": 2600,
+            "max": 2600
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 465.62699127197266,
+            "used": 23.583110809326172
+        }
+    },
+    "memory": {
+        "total": 16.0
+    }
+}

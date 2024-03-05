@@ -1,0 +1,182 @@
+2024-03-01 13:58:17,302 INFO    StreamThr :35165 [internal.py:wandb_internal():86] W&B internal server running at pid: 35165, started at: 2024-03-01 13:58:17.301525
+2024-03-01 13:58:17,306 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: status
+2024-03-01 13:58:17,328 INFO    WriterThread:35165 [datastore.py:open_for_write():87] open: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/run-darhowy4.wandb
+2024-03-01 13:58:17,330 DEBUG   SenderThread:35165 [sender.py:send():382] send: header
+2024-03-01 13:58:17,368 DEBUG   SenderThread:35165 [sender.py:send():382] send: run
+2024-03-01 13:58:17,690 INFO    SenderThread:35165 [dir_watcher.py:__init__():211] watching files in: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files
+2024-03-01 13:58:17,690 INFO    SenderThread:35165 [sender.py:_start_run_threads():1136] run started: darhowy4 with start time 1709319497.306462
+2024-03-01 13:58:17,706 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: check_version
+2024-03-01 13:58:17,707 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: check_version
+2024-03-01 13:58:17,845 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: run_start
+2024-03-01 13:58:17,850 DEBUG   HandlerThread:35165 [system_info.py:__init__():27] System info init
+2024-03-01 13:58:17,850 DEBUG   HandlerThread:35165 [system_info.py:__init__():42] System info init done
+2024-03-01 13:58:17,850 INFO    HandlerThread:35165 [system_monitor.py:start():194] Starting system monitor
+2024-03-01 13:58:17,850 INFO    SystemMonitor:35165 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-03-01 13:58:17,852 INFO    HandlerThread:35165 [system_monitor.py:probe():214] Collecting system info
+2024-03-01 13:58:17,852 INFO    SystemMonitor:35165 [interfaces.py:start():190] Started cpu monitoring
+2024-03-01 13:58:17,855 DEBUG   HandlerThread:35165 [system_info.py:probe():151] Probing system
+2024-03-01 13:58:17,855 INFO    SystemMonitor:35165 [interfaces.py:start():190] Started disk monitoring
+2024-03-01 13:58:17,856 INFO    SystemMonitor:35165 [interfaces.py:start():190] Started memory monitoring
+2024-03-01 13:58:17,857 INFO    SystemMonitor:35165 [interfaces.py:start():190] Started network monitoring
+2024-03-01 13:58:17,866 DEBUG   HandlerThread:35165 [system_info.py:_probe_git():136] Probing git
+2024-03-01 13:58:17,912 DEBUG   HandlerThread:35165 [system_info.py:_probe_git():144] Probing git done
+2024-03-01 13:58:17,912 DEBUG   HandlerThread:35165 [system_info.py:probe():199] Probing system done
+2024-03-01 13:58:17,912 DEBUG   HandlerThread:35165 [system_monitor.py:probe():223] {'os': 'macOS-12.2.1-x86_64-i386-64bit', 'python': '3.8.9', 'heartbeatAt': '2024-03-01T18:58:17.855854', 'startedAt': '2024-03-01T18:58:17.291731', 'docker': None, 'cuda': None, 'args': ('--environment_name', 'base_cut'), 'state': 'running', 'program': 'main.py', 'codePathLocal': 'main.py', 'codePath': 'main.py', 'git': {'remote': 'https://github.com/promiseve/hosp_robotouille.git', 'commit': '95942b4f694bf3f7cd0f740b9dd208654afa1bca'}, 'email': 'promisevekpo@gmail.com', 'root': '/Users/promiseosaineekpo/Cornell Repos/hosp_robotouille', 'host': 'COS-C02G86YHMD6M', 'username': 'promiseosaineekpo', 'executable': '/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/bin/python', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 2600, 'min': 2600, 'max': 2600}, 'cpu_freq_per_core': [{'current': 2600, 'min': 2600, 'max': 2600}], 'disk': {'/': {'total': 465.62699127197266, 'used': 23.583110809326172}}, 'memory': {'total': 16.0}}
+2024-03-01 13:58:17,913 INFO    HandlerThread:35165 [system_monitor.py:probe():224] Finished collecting system info
+2024-03-01 13:58:17,913 INFO    HandlerThread:35165 [system_monitor.py:probe():227] Publishing system info
+2024-03-01 13:58:17,914 INFO    HandlerThread:35165 [system_monitor.py:probe():229] Finished publishing system info
+2024-03-01 13:58:17,919 DEBUG   SenderThread:35165 [sender.py:send():382] send: files
+2024-03-01 13:58:17,920 INFO    SenderThread:35165 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-03-01 13:58:17,927 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: python_packages
+2024-03-01 13:58:17,928 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: python_packages
+2024-03-01 13:58:17,929 DEBUG   SenderThread:35165 [sender.py:send():382] send: telemetry
+2024-03-01 13:58:17,934 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-01 13:58:17,935 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: stop_status
+2024-03-01 13:58:17,935 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: stop_status
+2024-03-01 13:58:18,289 INFO    wandb-upload_0:35165 [upload_job.py:push():131] Uploaded file /var/folders/wv/vc6dsnzn3c14yv6dm4_p0cp80000gn/T/tmpjlhs12fwwandb/j12cscm6-wandb-metadata.json
+2024-03-01 13:58:18,696 INFO    Thread-12 :35165 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/requirements.txt
+2024-03-01 13:58:18,697 INFO    Thread-12 :35165 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/output.log
+2024-03-01 13:58:18,697 INFO    Thread-12 :35165 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/wandb-metadata.json
+2024-03-01 13:58:19,475 DEBUG   SenderThread:35165 [sender.py:send():382] send: exit
+2024-03-01 13:58:19,476 INFO    SenderThread:35165 [sender.py:send_exit():589] handling exit code: 1
+2024-03-01 13:58:19,476 INFO    SenderThread:35165 [sender.py:send_exit():591] handling runtime: 1
+2024-03-01 13:58:19,476 INFO    SenderThread:35165 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-03-01 13:58:19,476 INFO    SenderThread:35165 [sender.py:send_exit():597] send defer
+2024-03-01 13:58:19,477 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:19,477 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 0
+2024-03-01 13:58:19,477 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:19,477 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 0
+2024-03-01 13:58:19,477 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 1
+2024-03-01 13:58:19,477 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:19,477 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 1
+2024-03-01 13:58:19,478 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:19,478 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 1
+2024-03-01 13:58:19,478 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 2
+2024-03-01 13:58:19,478 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:19,478 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 2
+2024-03-01 13:58:19,478 INFO    HandlerThread:35165 [system_monitor.py:finish():203] Stopping system monitor
+2024-03-01 13:58:19,479 INFO    HandlerThread:35165 [interfaces.py:finish():202] Joined cpu monitor
+2024-03-01 13:58:19,479 INFO    HandlerThread:35165 [interfaces.py:finish():202] Joined disk monitor
+2024-03-01 13:58:19,479 INFO    HandlerThread:35165 [interfaces.py:finish():202] Joined memory monitor
+2024-03-01 13:58:19,479 INFO    HandlerThread:35165 [interfaces.py:finish():202] Joined network monitor
+2024-03-01 13:58:19,479 DEBUG   SystemMonitor:35165 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-03-01 13:58:19,480 DEBUG   SystemMonitor:35165 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-03-01 13:58:19,480 DEBUG   SystemMonitor:35165 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-03-01 13:58:19,481 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:19,481 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 2
+2024-03-01 13:58:19,481 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 3
+2024-03-01 13:58:19,481 DEBUG   SenderThread:35165 [sender.py:send():382] send: stats
+2024-03-01 13:58:19,481 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:19,481 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 3
+2024-03-01 13:58:19,482 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:19,482 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 3
+2024-03-01 13:58:19,482 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 4
+2024-03-01 13:58:19,482 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:19,482 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 4
+2024-03-01 13:58:19,482 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:19,482 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 4
+2024-03-01 13:58:19,482 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 5
+2024-03-01 13:58:19,483 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:19,483 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 5
+2024-03-01 13:58:19,483 DEBUG   SenderThread:35165 [sender.py:send():382] send: summary
+2024-03-01 13:58:19,483 INFO    SenderThread:35165 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-03-01 13:58:19,484 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:19,484 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 5
+2024-03-01 13:58:19,484 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 6
+2024-03-01 13:58:19,484 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:19,484 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 6
+2024-03-01 13:58:19,484 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:19,484 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 6
+2024-03-01 13:58:19,489 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: status_report
+2024-03-01 13:58:19,591 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 7
+2024-03-01 13:58:19,591 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:19,591 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 7
+2024-03-01 13:58:19,591 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:19,591 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 7
+2024-03-01 13:58:19,699 INFO    Thread-12 :35165 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/config.yaml
+2024-03-01 13:58:19,699 INFO    Thread-12 :35165 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/wandb-summary.json
+2024-03-01 13:58:20,478 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: poll_exit
+2024-03-01 13:58:20,703 INFO    Thread-12 :35165 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/output.log
+2024-03-01 13:58:22,183 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 8
+2024-03-01 13:58:22,184 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: poll_exit
+2024-03-01 13:58:22,184 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:22,184 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 8
+2024-03-01 13:58:22,184 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:22,184 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 8
+2024-03-01 13:58:22,185 INFO    SenderThread:35165 [job_builder.py:build():296] Attempting to build job artifact
+2024-03-01 13:58:22,185 INFO    SenderThread:35165 [job_builder.py:_get_source_type():426] is repo sourced job
+2024-03-01 13:58:22,260 INFO    SenderThread:35165 [job_builder.py:build():402] adding wandb-job metadata file
+2024-03-01 13:58:22,264 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 9
+2024-03-01 13:58:22,265 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:22,265 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 9
+2024-03-01 13:58:22,266 DEBUG   SenderThread:35165 [sender.py:send():382] send: artifact
+2024-03-01 13:58:22,490 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: poll_exit
+2024-03-01 13:58:22,711 INFO    Thread-12 :35165 [dir_watcher.py:_on_file_modified():288] file/dir modified: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/output.log
+2024-03-01 13:58:22,903 INFO    wandb-upload_0:35165 [upload_job.py:push():86] Skipped uploading /Users/promiseosaineekpo/Library/Application Support/wandb/artifacts/staging/tmp_t_t13dq
+2024-03-01 13:58:23,131 INFO    wandb-upload_1:35165 [upload_job.py:push():89] Uploaded file /Users/promiseosaineekpo/Library/Application Support/wandb/artifacts/staging/tmpe383vl4w
+2024-03-01 13:58:23,870 INFO    SenderThread:35165 [sender.py:send_artifact():1494] sent artifact job-https___github.com_promiseve_hosp_robotouille.git_main.py - {'id': 'QXJ0aWZhY3Q6NzM2NTU1ODAy', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjEyMzE3ODU2MQ==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NzM2NDk0MTY4', 'versionIndex': 38}}}
+2024-03-01 13:58:23,870 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:23,871 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 9
+2024-03-01 13:58:23,871 INFO    SenderThread:35165 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-03-01 13:58:24,718 INFO    SenderThread:35165 [dir_watcher.py:finish():388] scan: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files
+2024-03-01 13:58:24,719 INFO    SenderThread:35165 [dir_watcher.py:finish():402] scan save: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/requirements.txt requirements.txt
+2024-03-01 13:58:24,719 INFO    SenderThread:35165 [dir_watcher.py:finish():402] scan save: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/output.log output.log
+2024-03-01 13:58:24,719 INFO    SenderThread:35165 [dir_watcher.py:finish():402] scan save: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/config.yaml config.yaml
+2024-03-01 13:58:24,722 INFO    SenderThread:35165 [dir_watcher.py:finish():402] scan save: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/wandb-summary.json wandb-summary.json
+2024-03-01 13:58:24,726 INFO    SenderThread:35165 [dir_watcher.py:finish():402] scan save: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/wandb-metadata.json wandb-metadata.json
+2024-03-01 13:58:24,729 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 10
+2024-03-01 13:58:24,729 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: poll_exit
+2024-03-01 13:58:24,732 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:24,732 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 10
+2024-03-01 13:58:24,733 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:24,733 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 10
+2024-03-01 13:58:24,733 INFO    SenderThread:35165 [file_pusher.py:finish():172] shutting down file pusher
+2024-03-01 13:58:24,947 INFO    wandb-upload_0:35165 [upload_job.py:push():131] Uploaded file /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/requirements.txt
+2024-03-01 13:58:25,017 INFO    wandb-upload_2:35165 [upload_job.py:push():131] Uploaded file /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/config.yaml
+2024-03-01 13:58:25,088 INFO    wandb-upload_3:35165 [upload_job.py:push():131] Uploaded file /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/wandb-summary.json
+2024-03-01 13:58:25,089 INFO    wandb-upload_1:35165 [upload_job.py:push():131] Uploaded file /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/files/output.log
+2024-03-01 13:58:25,292 INFO    Thread-11 :35165 [sender.py:transition_state():617] send defer: 11
+2024-03-01 13:58:25,292 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:25,293 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 11
+2024-03-01 13:58:25,293 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:25,294 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 11
+2024-03-01 13:58:25,294 INFO    SenderThread:35165 [file_pusher.py:join():178] waiting for file pusher
+2024-03-01 13:58:25,294 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 12
+2024-03-01 13:58:25,295 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:25,295 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 12
+2024-03-01 13:58:25,295 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:25,295 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 12
+2024-03-01 13:58:25,295 INFO    SenderThread:35165 [file_stream.py:finish():595] file stream finish called
+2024-03-01 13:58:25,375 INFO    SenderThread:35165 [file_stream.py:finish():599] file stream finish is done
+2024-03-01 13:58:25,375 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 13
+2024-03-01 13:58:25,375 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:25,375 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 13
+2024-03-01 13:58:25,375 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:25,376 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 13
+2024-03-01 13:58:25,376 INFO    SenderThread:35165 [sender.py:transition_state():617] send defer: 14
+2024-03-01 13:58:25,376 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: defer
+2024-03-01 13:58:25,376 INFO    HandlerThread:35165 [handler.py:handle_request_defer():172] handle defer: 14
+2024-03-01 13:58:25,377 DEBUG   SenderThread:35165 [sender.py:send():382] send: final
+2024-03-01 13:58:25,377 DEBUG   SenderThread:35165 [sender.py:send():382] send: footer
+2024-03-01 13:58:25,377 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: defer
+2024-03-01 13:58:25,377 INFO    SenderThread:35165 [sender.py:send_request_defer():613] handle sender defer: 14
+2024-03-01 13:58:25,378 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: poll_exit
+2024-03-01 13:58:25,378 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: poll_exit
+2024-03-01 13:58:25,378 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: poll_exit
+2024-03-01 13:58:25,379 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: poll_exit
+2024-03-01 13:58:25,379 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: server_info
+2024-03-01 13:58:25,380 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: server_info
+2024-03-01 13:58:25,382 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: get_summary
+2024-03-01 13:58:25,383 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: sampled_history
+2024-03-01 13:58:25,384 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-01 13:58:25,384 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: job_info
+2024-03-01 13:58:25,450 DEBUG   SenderThread:35165 [sender.py:send_request():409] send_request: job_info
+2024-03-01 13:58:25,450 INFO    MainThread:35165 [wandb_run.py:_footer_history_summary_info():3866] rendering history
+2024-03-01 13:58:25,451 INFO    MainThread:35165 [wandb_run.py:_footer_history_summary_info():3898] rendering summary
+2024-03-01 13:58:25,451 INFO    MainThread:35165 [wandb_run.py:_footer_sync_info():3825] logging synced files
+2024-03-01 13:58:25,451 DEBUG   HandlerThread:35165 [handler.py:handle_request():146] handle_request: shutdown
+2024-03-01 13:58:25,452 INFO    HandlerThread:35165 [handler.py:finish():869] shutting down handler
+2024-03-01 13:58:26,389 INFO    WriterThread:35165 [datastore.py:close():296] close: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/wandb/run-20240301_135817-darhowy4/run-darhowy4.wandb
+2024-03-01 13:58:26,452 INFO    SenderThread:35165 [sender.py:finish():1572] shutting down sender
+2024-03-01 13:58:26,453 INFO    SenderThread:35165 [file_pusher.py:finish():172] shutting down file pusher
+2024-03-01 13:58:26,453 INFO    SenderThread:35165 [file_pusher.py:join():178] waiting for file pusher

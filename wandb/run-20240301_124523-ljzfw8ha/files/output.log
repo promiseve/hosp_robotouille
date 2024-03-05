@@ -1,0 +1,14 @@
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/lib/python3.8/site-packages/stable_baselines3/common/vec_env/patch_gym.py:49: UserWarning: You provided an OpenAI Gym environment. We strongly recommend transitioning to Gymnasium environments. Stable-Baselines3 is automatically wrapping your environments in a compatibility layer, which could potentially cause issues.
+  warnings.warn(
+Traceback (most recent call last):
+  File "main.py", line 10, in <module>
+    simulator(args.environment_name, args.seed, args.noisy_randomization)
+  File "/Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/robotouille/robotouille_simulator.py", line 51, in simulator
+    model = PPO.load(file, env=rl_env)
+  File "/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/lib/python3.8/site-packages/stable_baselines3/common/base_class.py", line 714, in load
+    check_for_correct_spaces(env, data["observation_space"], data["action_space"])
+  File "/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/lib/python3.8/site-packages/stable_baselines3/common/utils.py", line 229, in check_for_correct_spaces
+    raise ValueError(f"Observation spaces do not match: {observation_space} != {env.observation_space}")
+ValueError: Observation spaces do not match: MultiBinary(51) != MultiBinary(7)

@@ -1,0 +1,21 @@
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/lib/python3.8/site-packages/stable_baselines3/common/vec_env/patch_gym.py:49: UserWarning: You provided an OpenAI Gym environment. We strongly recommend transitioning to Gymnasium environments. Stable-Baselines3 is automatically wrapping your environments in a compatibility layer, which could potentially cause issues.
+  warnings.warn(
+Traceback (most recent call last):
+  File "main.py", line 10, in <module>
+    simulator(args.environment_name, args.seed, args.noisy_randomization)
+  File "/Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/robotouille/robotouille_simulator.py", line 61, in simulator
+    model.learn(
+  File "/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/lib/python3.8/site-packages/stable_baselines3/ppo/ppo.py", line 315, in learn
+    return super().learn(
+  File "/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/lib/python3.8/site-packages/stable_baselines3/common/on_policy_algorithm.py", line 264, in learn
+    total_timesteps, callback = self._setup_learn(
+  File "/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/lib/python3.8/site-packages/stable_baselines3/common/base_class.py", line 434, in _setup_learn
+    callback = self._init_callback(callback, progress_bar)
+  File "/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/lib/python3.8/site-packages/stable_baselines3/common/base_class.py", line 378, in _init_callback
+    callback = CallbackList([callback, ProgressBarCallback()])
+  File "/Users/promiseosaineekpo/Cornell Repos/robotouille/robotouille/lib/python3.8/site-packages/stable_baselines3/common/callbacks.py", line 690, in __init__
+    raise ImportError(
+ImportError: You must install tqdm and rich in order to use the progress bar callback. It is included if you install stable-baselines with the extra packages: `pip install stable-baselines3[extra]`
