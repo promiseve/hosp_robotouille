@@ -109,7 +109,7 @@ class RobotouilleCanvas:
         clamped_pix_square_size = np.ceil(self.pix_square_size) # Necessary to avoid 1 pixel gaps from decimals
         for row in range(len(self.layout)):
             for col in range(len(self.layout[0])):
-                self._draw_image(surface, "floorkitchen.png", np.array([col, row]) * clamped_pix_square_size, clamped_pix_square_size)
+                self._draw_image(surface, "floorhospital.png", np.array([col, row]) * clamped_pix_square_size, clamped_pix_square_size)
 
     def _draw_stations(self, surface):
         """

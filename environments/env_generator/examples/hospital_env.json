@@ -25,7 +25,7 @@
     ],
     "players": [
         {
-            "name": "robot",
+            "name": "nurse",
             "x": 0,
             "y": 0,
             "direction": [0, 1]
