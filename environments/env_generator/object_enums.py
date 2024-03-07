@@ -22,6 +22,7 @@ class Station(Enum):
     STOVE = "stove"
     TABLE = "table"
     PATIENT = "patient"
+    HOSPITAL_CART = "hospitalcart"
 
 def str_to_typed_enum(s):
     """

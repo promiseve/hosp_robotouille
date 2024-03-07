@@ -32,6 +32,7 @@
         (ispulsechecker ?i - item)
         (ischeese ?i - item)
         (ismedicine ?i - item)
+        (ishospitalcart ?s - station)
         ; State Predicates
         (loc ?p - player ?s - station)
         (at ?i - item ?s - station)
