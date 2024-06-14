@@ -9,7 +9,7 @@ import numpy as np
 
 class RLEnv(gym.Env):
     """
-    This is a custom Environment that follows gym interface. This allows us to use stable-baselines3 by converting pddl-gym environment to gym environment. Instead of using the states and actions from the pddl-gym environment, we simplify the state and action space to make it easier for the RL agent to learn. We also use the RLWrapper class to simplify the environment for the RL agent.
+    This is a converter class that simplifies the environment for the RL agent by converting the state and action space to a format that is easier for the RL agent to learn.
     """
 
     class observation_size(Enum):
@@ -19,7 +19,7 @@ class RLEnv(gym.Env):
 
     def __init__(self, expanded_truths, expanded_states, valid_actions, all_actions):
         """
-        Initializes the RLenv based on expanded_truths, expanded_states, valid_actions, and all_actions.
+        Initializes the converter based on expanded_truths, expanded_states, valid_actions, and all_actions.
 
         Args:
             expanded_truths (list): List of expanded truths of the current state.
@@ -139,6 +139,10 @@ class RLEnv(gym.Env):
             # Add the action name to the shortened action space. If the action is new, add the truth value to the shortened action truths. If the action is already in the shortened action space, update the truth value if the action is valid.
             if action_name == "move":
                 action_name += "_" + action.variables[2].name
+            elif action_name == "place" or action_name == "stack":
+                action_name = "place/stack"
+            elif action_name == "pick-up" or action_name == "unstack":
+                action_name = "pick-up/unstack"
 
             if action_name not in shortened_action_names:
                 shortened_action_names.append(action_name)
@@ -172,7 +176,7 @@ class RLEnv(gym.Env):
             action_name = action.predicate.name
             if action_name == "move":
                 action_name += "_" + action.variables[2].name
-            if action_name == attempted_action and truth == 1.0:
+            if action_name in attempted_action and truth == 1.0:
                 return action
 
         print("ERROR: Action not found")
