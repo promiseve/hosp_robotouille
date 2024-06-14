@@ -21,7 +21,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         self.pddl_env = env
         self.n_agents = n_agents
 
-        self.max_steps = 80
+        self.max_steps = 100
         self.episode_reward = 0
         self.renderer = renderer
         # Configuration dictionary for tracking metrics
@@ -51,7 +51,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
 
     def _wrap_env(self):
         """
-        Wrap the environment to make it compatible with stable-baselines3.
+        Wrap the environment to make it compatible with epymarl.
         """
         expanded_truths, expanded_states = pddlgym_utils.expand_state(
             self.pddl_env.prev_step[0].literals, self.pddl_env.prev_step[0].objects
@@ -65,6 +65,8 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 self.pddl_env.prev_step[0], valid_only=False
             )
         )
+
+        # if the environment is a RobotouilleWrapper, we need to change it to MARLEnv. Otherwise, just step the MARLEnv
         if not isinstance(self.env, MARLEnv):
             self.env = MARLEnv(
                 self.n_agents,
@@ -97,9 +99,11 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 print(action)
             if action == "invalid":
                 obs, reward, done, info = self.pddl_env.prev_step
+                obs, _, _, _ = self.pddl_env._change_selected_player(obs)
                 reward = 0
                 self.pddl_env.prev_step = (obs, reward, done, info)
-                self.pddl_env.timesteps += 1
+                if self.pddl_env._current_selected_player(obs) == "robot1":
+                    self.pddl_env.timesteps += 1
                 reward -= 2
                 rewards.append(reward)
                 info["timesteps"] = self.pddl_env.timesteps
@@ -108,14 +112,14 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 obs, reward, done, info = self.pddl_env.step(action, interactive)
                 self.pddl_env.prev_step = (obs, reward, done, info)
                 rewards.append(reward)
+            self._wrap_env()
 
         # reward -= 1
 
         wandb.log({"reward per step": reward})
-        self._wrap_env()
 
         self.episode_reward += reward
-        if self.pddl_env.timesteps > self.max_steps:
+        if self.pddl_env.timesteps >= self.max_steps:
             wandb.log({"reward per episode": self.episode_reward})
 
         return (
