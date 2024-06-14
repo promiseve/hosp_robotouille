@@ -78,11 +78,17 @@
     "players": [
         {
             "name": "robot",
-            "x": 1,
-            "y": 0,
+            "x": 0,
+            "y": 2,
             "direction": [
                 0,
                 1
+            ],
+            "actions": [
+                "move",
+                "cook",
+                "cut",
+                "moveitem"
             ]
         }
     ],

@@ -1,5 +1,8 @@
 /venv/
+.venv/*
 **/__pycache__/
 *-env
 robotouille.egg-info
 /wandb
+
+.DS_Store
