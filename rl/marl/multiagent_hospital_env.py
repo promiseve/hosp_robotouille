@@ -99,7 +99,7 @@ class MAHospital_robotouille(MultiAgentEnv):
         return self.get_obs(), self.get_global_state()
 
     def render(self):
-        pass
+        self.pddl_env.render(mode="human")
 
     def close(self):
         self.env.close()
