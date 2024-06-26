@@ -1,0 +1,125 @@
+{
+    "width": 6,
+    "height": 6,
+    "config": {
+        "num_vents": 5
+    },
+    "stations": [
+        {
+            "name": "patient",
+            "x": 0,
+            "y": 3
+        },
+        {
+            "name": "table",
+            "x": 4,
+            "y": 3
+        },
+        {
+            "name": "aed_station",
+            "x": 2,
+            "y": 1
+        },
+        {
+            "name": "cpr_station",
+            "x": 2,
+            "y": 3
+        },
+        {
+            "name": "ventilation_station",
+            "x": 2,
+            "y": 5
+        }
+    ],
+    "items": [
+        {
+            "name": "aed",
+            "x": 2,
+            "y": 1,
+            "stack-level": 0,
+            "predicates": [
+                "isusableforaed"
+            ]
+        },
+        {
+            "name": "cpr_kit",
+            "x": 2,
+            "y": 3,
+            "stack-level": 0,
+            "predicates": [
+                "isusableforcpr"
+            ]
+        },
+        {
+            "name": "ventilator",
+            "x": 2,
+            "y": 5,
+            "stack-level": 0,
+            "predicates": [
+                "isusableforventilation"
+            ]
+        }
+    ],
+    "players": [
+        {
+            "name": "robot", 
+            "x": 0,
+            "y": 0,
+            "direction": [
+                0,
+                1
+            ],
+            "actions": [
+                "move",
+                "useaed",
+                "givecpr",
+                "giveventilation"
+            ]
+        },
+        {
+            "name": "robot",
+            "x": 1,
+            "y": 0,
+            "direction": [
+                0,
+                1
+            ],
+            "actions": [
+                "move",
+                "useaed",
+                "givecpr",
+                "giveventilation"
+            ]
+        }
+    ],
+    "goal_description": "Resuscitate the patient by using AED, performing CPR, and providing ventilation.",
+    "goal": [
+        {
+            "predicate": "isdefibrillated",
+            "args": [
+                "patient"
+            ],
+            "ids": [
+                1
+            ]
+        },
+        {
+            "predicate": "isresuscitated",
+            "args": [
+                "patient"
+            ],
+            "ids": [
+                1
+            ]
+        },
+        {
+            "predicate": "isventilated",
+            "args": [
+                "patient"
+            ],
+            "ids": [
+                1
+            ]
+        }
+    ]
+}
