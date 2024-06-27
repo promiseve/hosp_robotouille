@@ -39,19 +39,22 @@ def simulator(
     )
     obs, info = env.reset()
     # env.render(mode="human")
+    env.render("human")
     done = False
     truncated = False
     interactive = False  # Set to True to interact with the environment through terminal REPL (ignores input)
 
-    # Load or train agent
-    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.SINGLE:
-        single_rl_simulator(environment_name, seed, noisy_randomization)
-        return
-    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.MULTI:
-        multi_rl_simulator(environment_name, seed, noisy_randomization)
-        return
-
+    # # Load or train agent
+    # if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.SINGLE:
+    #     single_rl_simulator(environment_name, seed, noisy_randomization)
+    #     return
+    # if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.MULTI:
+    #     multi_rl_simulator(environment_name, seed, noisy_randomization)
+    #     return
     # Simulate the environment
+    
+    # print(type(env))
+    # input("Press Enter to continue...")
     while not done and not truncated:
 
         # Construct action from input
@@ -71,8 +74,8 @@ def simulator(
             continue
         obs, reward, done, info = env.step(action=action, interactive=interactive)
 
-        env.render(mode="human")
-    env.render(close=True)
+        env.render("human")
+    env.render(obs,close=True)
 
 
 def single_rl_simulator(environment_name: str, seed: int, noisy_randomization: bool):
