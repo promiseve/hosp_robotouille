@@ -37,10 +37,6 @@ class ACCritic(nn.Module):
         inputs.append(th.eye(self.n_agents, device=batch.device).unsqueeze(0).unsqueeze(0).expand(bs, max_t, -1, -1))
 
         inputs = th.cat(inputs, dim=-1)
-        print("inputs in AC.py: ", inputs)
-        print("inputs.shape in AC.py: ", inputs.shape)
-        print("bs in AC.py: ", bs)
-        print("max_t in AC.py: ", max_t)
         return inputs, bs, max_t
 
     def _get_input_shape(self, scheme):
@@ -48,5 +44,4 @@ class ACCritic(nn.Module):
         input_shape = scheme["obs"]["vshape"]
         # agent id
         input_shape += self.n_agents
-        print("input_shape in AC.py: ", input_shape)
         return input_shape

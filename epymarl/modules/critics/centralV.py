@@ -54,10 +54,6 @@ class CentralVCritic(nn.Module):
         inputs.append(th.eye(self.n_agents, device=batch.device).unsqueeze(0).unsqueeze(0).expand(bs, max_t, -1, -1))
 
         inputs = th.cat(inputs, dim=-1)
-        print("inputs in CentralV.py: ", inputs)
-        print("inputs.shape: ", inputs.shape)
-        print("bs in CentralV.py: ", bs)
-        print("max_t in CentralV.py: ", max_t)
         return inputs, bs, max_t
 
     def _get_input_shape(self, scheme):
@@ -70,6 +66,4 @@ class CentralVCritic(nn.Module):
         if self.args.obs_last_action:
             input_shape += scheme["actions_onehot"]["vshape"][0] * self.n_agents
         input_shape += self.n_agents
-        print ("scheme in CentralV.py: ", scheme)
-        print("input_shape in CentralV.py: ", input_shape)
         return input_shape

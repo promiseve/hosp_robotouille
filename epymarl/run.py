@@ -38,7 +38,9 @@ def run(_run, _config, _log):
         map_name = _config["env_args"]["map_name"]
     except:
         map_name = _config["env_args"]["key"]
-    unique_token = f"{_config['name']}_seed{_config['seed']}_{map_name}_{datetime.datetime.now()}"
+    unique_token = (
+        f"{_config['name']}_seed{_config['seed']}_{map_name}_{datetime.datetime.now()}"
+    )
 
     args.unique_token = unique_token
     if args.use_tensorboard:
@@ -85,19 +87,12 @@ def run_sequential(args, logger):
 
     # Init runner so we can get env info
     runner = r_REGISTRY[args.runner](args=args, logger=logger)
-    print("args.runner: ", args.runner)
-    print("args: ", args)
-    #breakpoint()
+
     # Set up schemes and groups here
     env_info = runner.get_env_info()
-    
     args.n_agents = env_info["n_agents"]
     args.n_actions = env_info["n_actions"]
     args.state_shape = env_info["state_shape"]
-    
-    print ("n_agents: ", args.n_agents)
-    print ("n_actions: ", args.n_actions)
-    print ("state_shape: ", args.state_shape)
 
     # Default/Base scheme
     scheme = {
@@ -115,13 +110,6 @@ def run_sequential(args, logger):
     groups = {"agents": args.n_agents}
     preprocess = {"actions": ("actions_onehot", [OneHot(out_dim=args.n_actions)])}
 
-    print ("scheme: ", scheme)
-    print ("groups: ", groups)
-    print ("preprocess: ", preprocess)
-    print ("env_info: ", env_info)
-    print ("args: ", args)
-
-
     buffer = ReplayBuffer(
         scheme,
         groups,
@@ -131,22 +119,14 @@ def run_sequential(args, logger):
         device="cpu" if args.buffer_cpu_only else args.device,
     )
 
-    print ("buffer: ", buffer)
-
     # Setup multiagent controller here
     mac = mac_REGISTRY[args.mac](buffer.scheme, groups, args)
-
-    print ("mac: ", mac)
 
     # Give runner the scheme
     runner.setup(scheme=scheme, groups=groups, preprocess=preprocess, mac=mac)
 
-    print ("runner: ", runner)
-
     # Learner
     learner = le_REGISTRY[args.learner](mac, buffer.scheme, logger, args)
-
-    print ("learner: ", learner)
 
     if args.use_cuda:
         learner.cuda()
@@ -185,12 +165,11 @@ def run_sequential(args, logger):
         if args.evaluate or args.save_replay:
             runner.log_train_stats_t = runner.t_env
             evaluate_sequential(args, runner)
-            print("Done evaluating")
             logger.log_stat("episode", runner.t_env, runner.t_env)
             logger.print_recent_stats()
             logger.console_logger.info("Finished Evaluation")
             return
-   
+
     # start training
     episode = 0
     last_test_T = -args.test_interval - 1
@@ -206,13 +185,9 @@ def run_sequential(args, logger):
 
         # Run for a whole episode at a time
         episode_batch = runner.run(test_mode=False)
-        print ("episode_batch: ", episode_batch)
         buffer.insert_episode_batch(episode_batch)
-        print ("buffer: ", buffer)
-
         if buffer.can_sample(args.batch_size):
             episode_sample = buffer.sample(args.batch_size)
-            print ("episode_sample: ", episode_sample)
 
             # Truncate batch to only filled timesteps
             max_ep_t = episode_sample.max_t_filled()
@@ -220,10 +195,7 @@ def run_sequential(args, logger):
 
             if episode_sample.device != args.device:
                 episode_sample.to(args.device)
-
             learner.train(episode_sample, runner.t_env, episode)
-            print ("learner: ", learner)
-        
         # Execute test runs once in a while
         n_test_runs = max(1, args.test_nepisode // runner.batch_size)
         if (runner.t_env - last_test_T) / args.test_interval >= 1.0:
@@ -238,16 +210,14 @@ def run_sequential(args, logger):
                 )
             )
             last_time = time.time()
-
             last_test_T = runner.t_env
             for _ in range(n_test_runs):
                 runner.run(test_mode=True)
-        #breakpoint()
+
         if args.save_model and (
             runner.t_env - model_save_time >= args.save_model_interval
             or model_save_time == 0
         ):
-            #breakpoint()
             model_save_time = runner.t_env
             save_path = os.path.join(
                 args.local_results_path, "models", args.unique_token, str(runner.t_env)
@@ -259,14 +229,12 @@ def run_sequential(args, logger):
             # learner should handle saving/loading -- delegate actor save/load to mac,
             # use appropriate filenames to do critics, optimizer states
             learner.save_models(save_path)
-
         episode += args.batch_size_run
 
         if (runner.t_env - last_log_T) >= args.log_interval:
             logger.log_stat("episode", episode, runner.t_env)
             logger.print_recent_stats()
             last_log_T = runner.t_env
-
     runner.close_env()
     logger.console_logger.info("Finished Training")
 
@@ -287,6 +255,5 @@ def args_sanity_check(config, _log):
         config["test_nepisode"] = (
             config["test_nepisode"] // config["batch_size_run"]
         ) * config["batch_size_run"]
-        
 
     return config

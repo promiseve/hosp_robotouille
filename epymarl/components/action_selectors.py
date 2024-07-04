@@ -44,7 +44,6 @@ class EpsilonGreedyActionSelector():
 
         # Assuming agent_inputs is a batch of Q-Values for each agent bav
         self.epsilon = self.schedule.eval(t_env)
-        print("epsilon", self.epsilon)
 
         if test_mode:
             # Greedy action selection only
@@ -53,18 +52,12 @@ class EpsilonGreedyActionSelector():
         # mask actions that are excluded from selection
         masked_q_values = agent_inputs.clone()
         masked_q_values[avail_actions == 0.0] = -float("inf")  # should never be selected!
-        print ("masked_q_values", masked_q_values)
-        
 
         random_numbers = th.rand_like(agent_inputs[:, :, 0])
-        print ("random_numbers", random_numbers)
         pick_random = (random_numbers < self.epsilon).long()
-        print ("pick_random", pick_random)
         random_actions = Categorical(avail_actions.float()).sample().long()
-        print ("random_actions", random_actions)
 
         picked_actions = pick_random * random_actions + (1 - pick_random) * masked_q_values.max(dim=2)[1]
-        print ("picked_actions", picked_actions)
         return picked_actions
 
 

@@ -30,4 +30,4 @@ epochs: 4
 eps_clip: 0.2
 name: "mappo"
 
-t_max: 5000 #050000
+t_max: 20050000

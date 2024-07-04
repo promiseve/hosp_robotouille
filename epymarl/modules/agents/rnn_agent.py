@@ -8,14 +8,13 @@ class RNNAgent(nn.Module):
     def __init__(self, input_shape, args):
         super(RNNAgent, self).__init__()
         self.args = args
-        #breakpoint()
+
         self.fc1 = nn.Linear(input_shape, args.hidden_dim)
         if self.args.use_rnn:
             self.rnn = nn.GRUCell(args.hidden_dim, args.hidden_dim)
         else:
             self.rnn = nn.Linear(args.hidden_dim, args.hidden_dim)
         self.fc2 = nn.Linear(args.hidden_dim, args.n_actions)
-        #breakpoint()
 
     def init_hidden(self):
         # make hidden states on same device as model

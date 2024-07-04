@@ -61,7 +61,6 @@ class NonSharedMAC:
     def _build_inputs(self, batch, t):
         # Assumes homogenous agents with flat observations.
         # Other MACs might want to e.g. delegate building inputs to each agent
-        #breakpoint()
         bs = batch.batch_size
         inputs = []
         inputs.append(batch["obs"][:, t])  # b1av

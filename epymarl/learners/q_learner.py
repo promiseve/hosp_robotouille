@@ -9,18 +9,12 @@ from components.standarize_stream import RunningMeanStd
 
 class QLearner:
     def __init__(self, mac, scheme, logger, args):
-        #starting q_learner
         self.args = args
-        print("args", args)
         self.mac = mac
-        print("mac", mac)
         self.logger = logger
-        print("logger", logger)
 
         self.params = list(mac.parameters())
-        print("params before mixer", self.params)
         self.last_target_update_episode = 0
-        print("last_target_update_episode", self.last_target_update_episode)
 
         self.mixer = None
         if args.mixer is not None:
@@ -31,9 +25,7 @@ class QLearner:
             else:
                 raise ValueError("Mixer {} not recognised.".format(args.mixer))
             self.params += list(self.mixer.parameters())
-            print("params after mixing", self.params)
             self.target_mixer = copy.deepcopy(self.mixer)
-            print("target_mixer after mixing", self.target_mixer)
 
         self.optimiser = Adam(params=self.params, lr=args.lr)
 
@@ -51,11 +43,6 @@ class QLearner:
             self.rew_ms = RunningMeanStd(shape=(1,), device=device)
 
     def train(self, batch: EpisodeBatch, t_env: int, episode_num: int):
-        #print input of the train model 
-        print ("batch in train q_learner.py", batch)
-        print ("t_env", t_env)
-        print ("episode_num", episode_num)
-
         # Get the relevant quantities
         rewards = batch["reward"][:, :-1]
         actions = batch["actions"][:, :-1]
@@ -63,12 +50,6 @@ class QLearner:
         mask = batch["filled"][:, :-1].float()
         mask[:, 1:] = mask[:, 1:] * (1 - terminated[:, :-1])
         avail_actions = batch["avail_actions"]
-        print ("....... INSIDE QLEANER TRAINING loop")
-        print ("rewards", rewards)
-        print ("actions", actions)
-        print ("terminated", terminated)
-        print ("mask", mask)
-        print ("avail_actions", avail_actions)
 
         if self.args.standardise_rewards:
             self.rew_ms.update(rewards)
@@ -81,10 +62,8 @@ class QLearner:
             agent_outs = self.mac.forward(batch, t=t)
             mac_out.append(agent_outs)
         mac_out = th.stack(mac_out, dim=1)  # Concat over time
-        print ("mac_out", mac_out)
         # Pick the Q-Values for the actions taken by each agent
         chosen_action_qvals = th.gather(mac_out[:, :-1], dim=3, index=actions).squeeze(3)  # Remove the last dim
-        print ("chosen_action_qvals", chosen_action_qvals)
 
         # Calculate the Q-Values necessary for the target
         target_mac_out = []
@@ -95,7 +74,6 @@ class QLearner:
 
         # We don't need the first timesteps Q-Value estimate for calculating targets
         target_mac_out = th.stack(target_mac_out[1:], dim=1)  # Concat across time
-        print ("target_mac_out", target_mac_out)
 
         # Mask out unavailable actions
         target_mac_out[avail_actions[:, 1:] == 0] = -9999999
@@ -113,16 +91,13 @@ class QLearner:
         # Mix
         if self.mixer is not None:
             chosen_action_qvals = self.mixer(chosen_action_qvals, batch["state"][:, :-1])
-            print ("chosen_action_qvals after mixing", chosen_action_qvals)
             target_max_qvals = self.target_mixer(target_max_qvals, batch["state"][:, 1:])
-            print ("target_max_qvals after mixing", target_max_qvals)
 
         if self.args.standardise_returns:
             target_max_qvals = target_max_qvals * th.sqrt(self.ret_ms.var) + self.ret_ms.mean
 
         # Calculate 1-step Q-Learning targets
         targets = rewards + self.args.gamma * (1 - terminated) * target_max_qvals.detach()
-        print ("targets after mixing", targets)
 
         if self.args.standardise_returns:
             self.ret_ms.update(targets)
@@ -130,9 +105,6 @@ class QLearner:
 
         # Td-error
         td_error = (chosen_action_qvals - targets.detach())
-        print ("chosen_action_qvals after mixing", chosen_action_qvals)
-        print ("targets after mixing", targets.detach())
-        print ("td_error after mixing", td_error)
 
         mask = mask.expand_as(td_error)
 
@@ -141,7 +113,6 @@ class QLearner:
 
         # Normal L2 loss, take mean over actual data
         loss = (masked_td_error ** 2).sum() / mask.sum()
-        print ("loss after mixing", loss)
 
         # Optimise
         self.optimiser.zero_grad()
@@ -169,8 +140,6 @@ class QLearner:
         self.target_mac.load_state(self.mac)
         if self.mixer is not None:
             self.target_mixer.load_state_dict(self.mixer.state_dict())
-            print ("self.mixer.state_dict() after mixing ", self.mixer.state_dict())
-            print ("self.target_mixer.state_dict() after mixing", self.target_mixer.state_dict())
 
     def _update_targets_soft(self, tau):
         for target_param, param in zip(self.target_mac.parameters(), self.mac.parameters()):
@@ -178,10 +147,6 @@ class QLearner:
         if self.mixer is not None:
             for target_param, param in zip(self.target_mixer.parameters(), self.mixer.parameters()):
                 target_param.data.copy_(target_param.data * (1.0 - tau) + param.data * tau)
-                print ("target_param.data after mixing ", target_param.data)
-                print ("param.data after mixing ", param.data)
-                print ( "self.target_mixer.parameters()", self.target_mixer.parameters())
-                print ("self.mixer.parameters()", self.mixer.parameters()) 
 
     def cuda(self):
         self.mac.cuda()
