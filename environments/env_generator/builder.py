@@ -3,7 +3,7 @@ import json
 import os
 import copy
 import itertools
-from .object_enums import Item, Player, Station, str_to_typed_enum
+from .hosp_object_enums import Item, Player, Station, str_to_typed_enum
 from .procedural_generator import randomize_environment
 
 EXAMPLES_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "examples")

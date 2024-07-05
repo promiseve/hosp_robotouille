@@ -1,7 +1,7 @@
 import random
 import itertools
 
-from .object_enums import Item, Station
+from .hosp_object_enums import Item, Station
 from copy import deepcopy
 
 FORCE_ADD_TAG_NAME = "force_add"

@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--environment_name",
     help="The name of the environment to create.",
-    default="multiagent",
+    default="h_multiagent",
 )
 parser.add_argument("--seed", help="The seed to use for the environment.", default=None)
 parser.add_argument(

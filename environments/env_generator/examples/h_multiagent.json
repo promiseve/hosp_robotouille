@@ -96,30 +96,34 @@
     "goal": [
         {
             "predicate": "isdefibrillated",
-            "args": [
-                "patient"
-            ],
-            "ids": [
-                1
-            ]
+            "args": ["patient"],
+            "ids": [1]
         },
         {
             "predicate": "isresuscitated",
-            "args": [
-                "patient"
-            ],
-            "ids": [
-                1
-            ]
+            "args": ["patient"],
+            "ids": [1]
         },
         {
             "predicate": "isventilated",
-            "args": [
-                "patient"
-            ],
-            "ids": [
-                1
-            ]
+            "args": ["patient"],
+            "ids": [1]
+        },
+        {
+            "predicate": "on",
+            "args": ["aed", "patient"],
+            "ids": [6, 1]
+        },
+        {
+            "predicate": "on",
+            "args": ["cpr_kit", "patient"],
+            "ids": [7, 1]
+        },
+        {
+            "predicate": "on",
+            "args": ["ventilator", "patient"],
+            "ids": [8, 1]
         }
     ]
+    
 }

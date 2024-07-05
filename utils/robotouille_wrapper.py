@@ -2,7 +2,7 @@ import gym
 import pddlgym
 import utils.robotouille_utils as robotouille_utils
 import utils.pddlgym_utils as pddlgym_utils
-from environments.env_generator.object_enums import Item
+from environments.env_generator.hosp_object_enums import Item
 
 
 class RobotouilleWrapper(gym.Wrapper):
