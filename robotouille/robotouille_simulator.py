@@ -30,7 +30,7 @@ def simulator(
     environment_name: str,
     seed: int = 42,
     noisy_randomization: bool = False,
-    mode=mode.TRAIN,
+    mode=mode.PLAY,
     type=type.MULTI,
 ):
     # Your code for robotouille goes here
@@ -38,7 +38,7 @@ def simulator(
         environment_name, seed, noisy_randomization
     )
     obs, info = env.reset()
-    # env.render(mode="human")
+    env.render(mode="human")
     done = False
     truncated = False
     interactive = False  # Set to True to interact with the environment through terminal REPL (ignores input)
@@ -129,9 +129,9 @@ def multi_rl_simulator(environment_name: str, seed: int, noisy_randomization: bo
         "--env-config=gymma",
         "with",
         "env_args.time_limit=50",
-        "checkpoint_path=\"results/models/qmix_seed677336568_None_2024-06-11 01:58:41.601187\"",
-        "evaluate=True"
-        "render=True"
+        # "checkpoint_path=\"results/models/qmix_seed677336568_None_2024-06-11 01:58:41.601187\"",
+        # "evaluate=True"
+        # "render=True"
     ]
 
     config = {
