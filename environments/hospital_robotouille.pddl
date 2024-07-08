@@ -11,6 +11,9 @@
         (isstove ?s - station)
         (isboard ?s - station)
         (ispatient ?s - station)
+        (isaed_station ?s - station)  ; Added predicate
+        (iscpr_station ?s - station)  ; Added predicate
+        (isventilation_station ?s - station)  ; Added predicate
         (istreatable ?i - station)
         (istreated ?i - station)
         (isdefibrillated ?i - station)
@@ -24,6 +27,10 @@
         (isusableforaed ?i - item)
         (ismedicine ?i - item)
         (isingestable ?i - item)
+        (isaed ?i - item)
+        (iscpr_kit ?i - item)
+        
+        
         
         ; State Predicates
         (loc ?p - player ?s - station)
@@ -46,7 +53,7 @@
 
     ; ACTIONS
 
-     ; Make the nurse player place a medicine item on top the patient station
+    ; Make the nurse player place a medicine item on top the patient station
     (:action givemedicine
         :parameters (?p - player ?i - item ?s - station)
         :precondition (and
@@ -175,6 +182,4 @@
             (selected ?p2)
         )
     )
-
-    
 )

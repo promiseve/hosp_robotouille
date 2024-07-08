@@ -11,4 +11,5 @@ config = {
 env, json, renderer = create_robotouille_env("h_multiagent", None, False)
 obs, info = env.reset()
 
-ENVIRONMENT = MAHospital_robotouille(env, config, renderer)
+#ENVIRONMENT = MAHospital_robotouille(env, config, renderer)
+ 
