@@ -6,9 +6,11 @@
     table2 - station
     table3 - station
     table4 - station
+    table5 - station
     aed1 - item
     cpr_kit1 - item
     ventilator1 - item
+    medicine1 - item
     robot1 - player
     robot2 - player
 )
@@ -18,43 +20,52 @@
     (istable table2)
     (istable table3)
     (istable table4)
+    (istable table5)
     (isaed aed1)
     (isusableforaed aed1)
     (iscpr_kit cpr_kit1)
     (isusableforcpr cpr_kit1)
     (isventilator ventilator1)
     (isusableforventilation ventilator1)
+    (ismedicine medicine1)
     (isrobot robot1)
     (isrobot robot2)
-    (empty patient1)
-    (vacant patient1)
-    (at aed1 table1)
-    (vacant table1)
+    (at aed1 patient1)
+    (loc robot1 patient1)
+    (empty table1)
+    (loc robot2 table1)
     (at cpr_kit1 table2)
     (vacant table2)
     (at ventilator1 table3)
     (vacant table3)
     (empty table4)
     (vacant table4)
+    (at medicine1 table5)
+    (vacant table5)
     (nothing robot1)
     (nothing robot2)
     (selected robot1)
-    (on aed1 table1)
+    (on aed1 patient1)
     (clear aed1)
     (on cpr_kit1 table2)
     (clear cpr_kit1)
     (on ventilator1 table3)
     (clear ventilator1)
-    (canmove robot1)    (canmove robot2))
+    (on medicine1 table5)
+    (clear medicine1)
+    (canmoveitem robot1)    (canmove robot1)    (canmoveitem robot2)    (canmove robot2))
 (:goal
    (or
        (and
            (isaeddefibrillated patient1)
            (iscprresuscitated patient1)
            (isventilated patient1)
-           (on aed1 patient1)
-           (on cpr_kit1 patient1)
-           (on ventilator1 patient1)
+           (atop aed1 patient1)
+           (atop cpr_kit1 patient1)
+           (atop ventilator1 patient1)
+           (isusedforcpr cpr_kit1)
+           (isusedforventilation ventilator1)
+           (isusedforaed aed1)
        )
    )
 )
