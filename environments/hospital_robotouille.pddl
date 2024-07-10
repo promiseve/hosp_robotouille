@@ -16,15 +16,17 @@
         (isventilation_station ?s - station)  ; Added predicate
         (istreatable ?i - station)
         (istreated ?i - station)
-        (isdefibrillated ?i - station)
-        (isresuscitated ?i - station) 
+        (isaeddefibrillated ?i - station) ;predicate for aefd
+        (iscprresuscitated ?i - station) 
         (isventilated ?i - station)   
         (isrobot ?p - player)
         (isnurse ?p - player)
         (isusableforcpr ?i - item)
-        (isventilator ?i - item)
+        (isusedforcpr ?i - item)
         (isusableforventilation ?i - item)
+        (isusedforventilation ?i - item)
         (isusableforaed ?i - item)
+        (isusedforaed ?i - item)
         (ismedicine ?i - item)
         (isingestable ?i - item)
         (isaed ?i - item)
@@ -78,7 +80,7 @@
             (clear ?i)
         )
         :effect (and
-            (isresuscitated ?s)
+            (iscprresuscitated ?s)
         )
     ) 
 
@@ -93,7 +95,7 @@
             (clear ?i)
         )
         :effect (and
-            (isdefibrillated ?s)
+            (isaeddefibrillated ?s)
         )
     )   
 

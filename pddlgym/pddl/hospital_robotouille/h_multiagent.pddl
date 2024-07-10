@@ -49,8 +49,8 @@
 (:goal
    (or
        (and
-           (isdefibrillated patient1)
-           (isresuscitated patient1)
+           (isaeddefibrillated patient1)
+           (iscprresuscitated patient1)
            (isventilated patient1)
            (on aed1 patient1)
            (on cpr_kit1 patient1)

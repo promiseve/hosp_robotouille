@@ -13,8 +13,8 @@
         (ispatient ?s - station)
         (istreatable ?i - station)
         (istreated ?i - station)
-        (isdefibrillated ?i - station)
-        (isresuscitated ?i - station) 
+        (isaeddefibrillated ?i - station)
+        (iscprresuscitated ?i - station) 
         (isventilated ?i - station)   
         (isrobot ?p - player)
         (isnurse ?p - player)
@@ -93,7 +93,7 @@
             (clear ?i)
         )
         :effect (and
-            (isresuscitated ?s)
+            (iscprresuscitated ?s)
         )
     ) 
 
@@ -108,7 +108,7 @@
             (clear ?i)
         )
         :effect (and
-            (isdefibrillated ?s) ;
+            (isaeddefibrillated ?s) ;
         )
     )   
 

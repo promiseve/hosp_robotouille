@@ -93,7 +93,7 @@ class HospRobotouilleWrapper(gym.Wrapper):
 
         This function is called after every step in the environment. It can either update
         the custom state (e.g. incrementing the action time of a treatment) or directly
-        modify the PDDL state (e.g. adding the isdefibrillated predicate to a patient that has been
+        modify the PDDL state (e.g. adding the isaeddefibrillated predicate to a patient that has been
         fully treated).
 
         Returns:
@@ -106,10 +106,10 @@ class HospRobotouilleWrapper(gym.Wrapper):
                     literal = pddlgym_utils.str_to_literal(f"istreated({patient}:station)")
                     state_updates.append(literal)
                 elif status == "resuscitated" and state:
-                    literal = pddlgym_utils.str_to_literal(f"isresuscitated({patient}:station)")
+                    literal = pddlgym_utils.str_to_literal(f"iscprresuscitated({patient}:station)")
                     state_updates.append(literal)
                 elif status == "defibrillated" and state:
-                    literal = pddlgym_utils.str_to_literal(f"isdefibrillated({patient}:station)")
+                    literal = pddlgym_utils.str_to_literal(f"isaeddefibrillated({patient}:station)")
                     state_updates.append(literal)
                 elif status == "ventilated" and state:
                     literal = pddlgym_utils.str_to_literal(f"isventilated({patient}:station)")
@@ -194,9 +194,9 @@ class HospRobotouilleWrapper(gym.Wrapper):
                     if goal == literal:
                         if goal.predicate == "istreated":
                             treated = True
-                        if goal.predicate == "isresuscitated":
+                        if goal.predicate == "iscprresuscitated":
                             resuscitated = True
-                        if goal.predicate == "isdefibrillated":
+                        if goal.predicate == "isaeddefibrillated":
                             defibrillated = True
                         if goal.predicate == "isventilated":
                             ventilated = True
