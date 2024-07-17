@@ -162,6 +162,8 @@ def run_sequential(args, logger):
         learner.load_models(model_path)
         runner.t_env = timestep_to_load
 
+        args.t_max += timestep_to_load
+
         if args.evaluate or args.save_replay:
             runner.log_train_stats_t = runner.t_env
             evaluate_sequential(args, runner)
@@ -214,6 +216,9 @@ def run_sequential(args, logger):
             for _ in range(n_test_runs):
                 runner.run(test_mode=True)
 
+        print("runner.t_env: ", runner.t_env)
+        print("model_save_time: ", model_save_time)
+        print("args.save_model_interval: ", args.save_model_interval)
         if args.save_model and (
             runner.t_env - model_save_time >= args.save_model_interval
             or model_save_time == 0
@@ -229,6 +234,8 @@ def run_sequential(args, logger):
             # learner should handle saving/loading -- delegate actor save/load to mac,
             # use appropriate filenames to do critics, optimizer states
             learner.save_models(save_path)
+        else:
+            learner.update_best(runner.episode_returns)
         episode += args.batch_size_run
 
         if (runner.t_env - last_log_T) >= args.log_interval:

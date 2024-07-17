@@ -100,6 +100,7 @@ class EpisodeRunner:
             "avail_actions": [self.env.get_avail_actions()],
             "obs": [self.env.get_obs()],
         }
+        self.episode_return = episode_return
         if test_mode and self.args.render:
             print(f"Episode return: {episode_return}")
         self.batch.update(last_data, ts=self.t)
