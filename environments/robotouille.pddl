@@ -11,7 +11,12 @@
         (isstove ?s - station)
         (isboard ?s - station)
         (isfryer ?s - station)
+        (ispatient ?s - station)
+        (isaed_station ?s - station)
+        (iscpr_station ?s - station)
+        (isventilation_station ?s - station)
         (isrobot ?p - player)
+        (isnurse ?p - player)
         (istopbun ?i - item)
         (isbottombun ?i - item)
         (isbread ?i - item)
@@ -29,6 +34,21 @@
         (isfryableifcut ?i - item)
         (isfried ?i - item)
         (ispotato ?i - item)
+        (isusableforcpr ?i - item)
+        (isventilator ?i - item)
+        (isusableforventilation ?i - item)
+        (isusableforaed ?i - item)
+        (ismedicine ?i - item)
+        (isingestable ?i - item)
+        (isaed ?i - item)
+        (iscpr_kit ?i - item)
+        (istreatable ?i - station)
+        (istreated ?i - station)
+        (isdefibrillated ?i - station)
+        (isresuscitated ?i - station)
+        (isventilated ?i - station)
+        (isaeddefibrillated ?i - station)
+        (iscprresuscitated ?i - station)
         ; State Predicates
         (loc ?p - player ?s - station)
         (at ?i - item ?s - station)
@@ -46,10 +66,60 @@
         (canmove ?p - player)
         (canfry ?p - player)
         (canfrycut ?p - player)
+        (cangivemedicine ?p - player)
+        (cangiveAED ?p - player)
+        (cangiveCPR ?p - player)
+        (cangivevent ?p - player)
     )
 
     ; ACTIONS
-    
+
+    ; Make the nurse player place a medicine item on top the patient station
+    (:action givemedicine
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (ispatient ?s)
+            (isingestable ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+        )
+        :effect (and
+            (istreated ?s)
+        )
+    )
+
+    ; Make the nurse player give AED to the patient
+    (:action giveAED
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (ispatient ?s)
+            (isusableforaed ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+        )
+        :effect (and
+            (isaeddefibrillated ?s)
+        )
+    )
+
+    ; Make the nurse player give ventilation to the patient
+    (:action giveVentilation
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (ispatient ?s)
+            (isventilator ?i)
+            (isusableforventilation ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+        )
+        :effect (and
+            (isventilated ?s)
+        )
+    )
+
     ; Move the player from station 1 to station 2
     (:action move
         :parameters (?p - player ?s1 - station ?s2 - station)
@@ -69,7 +139,7 @@
     ; Make the player pick up an item from a station
     (:action pick-up
         :parameters (?p - player ?i - item ?s - station)
-        :precondition (and 
+        :precondition (and
             (nothing ?p)
             (on ?i ?s)
             (loc ?p ?s)
@@ -77,7 +147,7 @@
             (selected ?p)
             (canmoveitem ?p)
         )
-        :effect (and 
+        :effect (and
             (has ?p ?i)
             (empty ?s)
             (not (nothing ?p))
@@ -90,20 +160,37 @@
     ; Make the player place an item on a station
     (:action place
         :parameters (?p - player ?i - item ?s - station)
-        :precondition (and 
+        :precondition (and
             (has ?p ?i)
             (loc ?p ?s)
             (empty ?s)
             (selected ?p)
             (canmoveitem ?p)
         )
-        :effect (and 
+        :effect (and
             (nothing ?p)
             (at ?i ?s)
             (clear ?i)
             (on ?i ?s)
             (not (has ?p ?i))
             (not (empty ?s))
+        )
+    )
+
+    ; Make the nurse player place a CPR to the patient
+    (:action giveCPR
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (ispatient ?s)
+            (isusableforcpr ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (cangiveCPR ?p)
+        )
+        :effect (and
+            (iscprresuscitated ?s)
         )
     )
 
@@ -119,7 +206,7 @@
             (selected ?p)
             (cancook ?p)
         )
-        :effect (and 
+        :effect (and
             (iscooked ?i)
         )
     )
@@ -136,7 +223,7 @@
             (selected ?p)
             (canfry ?p)
         )
-        :effect (and 
+        :effect (and
             (isfried ?i)
         )
     )
@@ -154,7 +241,7 @@
             (selected ?p)
             (canfrycut ?p)
         )
-        :effect (and 
+        :effect (and
             (isfried ?i)
         )
     )
@@ -192,7 +279,7 @@
             (selected ?p)
             (cancut ?p)
         )
-        :effect (and 
+        :effect (and
             (iscut ?i)
         )
     )
@@ -200,7 +287,7 @@
     ; Make the player unstack an item from another item at a station
     (:action unstack
         :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
-        :precondition (and 
+        :precondition (and
             (nothing ?p)
             (clear ?i1)
             (atop ?i1 ?i2)
@@ -210,7 +297,7 @@
             (selected ?p)
             (canmoveitem ?p)
         )
-        :effect (and 
+        :effect (and
             (has ?p ?i1)
             (clear ?i2)
             (not (nothing ?p))
@@ -223,15 +310,13 @@
     ; Change player selection
     (:action select
         :parameters (?p1 - player ?p2 - player)
-        :precondition (and 
+        :precondition (and
             (selected ?p1)
             (not  (selected ?p2))
         )
-        :effect (and 
+        :effect (and
             (not (selected ?p1))
             (selected ?p2)
         )
     )
-
-    
 )

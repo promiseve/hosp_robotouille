@@ -12,6 +12,9 @@ class Item(Enum):
     CHICKEN = "chicken"
     MEDICINE = "medicine"
     PULSE_CHECKER = "pulse_checker-equipment"
+    AED = "aed"
+    CPR_KIT = "cpr_kit"
+    VENTILATOR = "ventilator"
 
 class Player(Enum):
     ROBOT = "robot"
@@ -26,7 +29,6 @@ class Station(Enum):
 def str_to_typed_enum(s):
     """
     Attempts to convert a string into any of the typed enums.
-
     Args:
         s (str): String to convert.
     

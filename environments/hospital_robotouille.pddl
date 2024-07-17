@@ -11,27 +11,27 @@
         (isstove ?s - station)
         (isboard ?s - station)
         (ispatient ?s - station)
+        (isaed_station ?s - station)  ; Added predicate
+        (iscpr_station ?s - station)  ; Added predicate
+        (isventilation_station ?s - station)  ; Added predicate
         (istreatable ?i - station)
-        (istreated ?i - station)    
+        (istreated ?i - station)
+        (isdefibrillated ?i - station)
+        (isresuscitated ?i - station) 
+        (isventilated ?i - station)   
         (isrobot ?p - player)
         (isnurse ?p - player)
-        (istopbun ?i - item)
-        (isbottombun ?i - item)
-        (isbread ?i - item)
-        (islettuce ?i - item)
-        (isonion ?i - item)
-        (istomato ?i - item)
-        (iscuttable ?i - item)
-        (iscut ?i - item)
-        (ispatty ?i - item)
-        (ischicken ?i - item)
-        (iscookable ?i - item)
-        (isingestable ?i - item)
-        (isingested ?i - item)
-        (iscooked ?i - item)
-        (ispulsechecker ?i - item)
-        (ischeese ?i - item)
+        (isusableforcpr ?i - item)
+        (isventilator ?i - item)
+        (isusableforventilation ?i - item)
+        (isusableforaed ?i - item)
         (ismedicine ?i - item)
+        (isingestable ?i - item)
+        (isaed ?i - item)
+        (iscpr_kit ?i - item)
+        
+        
+        
         ; State Predicates
         (loc ?p - player ?s - station)
         (at ?i - item ?s - station)
@@ -43,17 +43,17 @@
         (atop ?i1 - item ?i2 - item)
         (has ?p - player ?i - item)
         (selected ?p - player)
-        (cancook ?p - player)
-        (cancut ?p - player)
         (canmoveitem ?p - player)
         (canmove ?p - player)
-        (canfry ?p - player)
-        (canfrycut ?p - player)
+        (cangivemedicine ?p - player)
+        (cangiveAED ?p - player)
+        (cangiveCPR ?p - player)
+        (cangivevent ?p - player)
     )
 
     ; ACTIONS
 
-     ; Make the nurse player place a medicine item on top the patient station
+    ; Make the nurse player place a medicine item on top the patient station
     (:action givemedicine
         :parameters (?p - player ?i - item ?s - station)
         :precondition (and
@@ -67,6 +67,52 @@
             (istreated ?s)
         )
     ) 
+     ; Make the nurse player place a CPR to the patient
+    (:action giveCPR
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (ispatient ?s)
+            (isusableforcpr ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+        )
+        :effect (and
+            (isresuscitated ?s)
+        )
+    ) 
+
+    ; Make the nurse player give AED to the patient
+    (:action giveAED
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (ispatient ?s)
+            (isusableforaed ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+        )
+        :effect (and
+            (isdefibrillated ?s)
+        )
+    )   
+
+    ; Make the nurse player give ventilation to the patient
+    (:action giveVentilation
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (ispatient ?s)
+            (isventilator ?i)
+            (isusableforventilation ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+        )
+        :effect (and
+            (isventilated ?s)
+        )
+    )  
+
     ; Move the player from station 1 to station 2
     (:action move
         :parameters (?p - player ?s1 - station ?s2 - station)
@@ -124,119 +170,6 @@
         )
     )
 
-    ; Make the player cook a cookable item on a stove
-    (:action cook
-        :parameters (?p - player ?i - item ?s - station)
-        :precondition (and
-            (isstove ?s)
-            (iscookable ?i)
-            (on ?i ?s)
-            (loc ?p ?s)
-            (clear ?i)
-            (selected ?p)
-            (cancook ?p)
-        )
-        :effect (and 
-            (iscooked ?i)
-        )
-    )
-
-    ; Make the player fry a fryable item in a fryer
-    (:action fry
-        :parameters (?p - player ?i - item ?s - station)
-        :precondition (and
-            (isfryer ?s)
-            (isfryable ?i)
-            (on ?i ?s)
-            (loc ?p ?s)
-            (clear ?i)
-            (selected ?p)
-            (canfry ?p)
-        )
-        :effect (and 
-            (isfried ?i)
-        )
-    )
-
-    ; Make the player fry an item that is only fryable if cut, in a fryer
-    (:action fry_cut_item
-        :parameters (?p - player ?i - item ?s - station)
-        :precondition (and
-            (isfryer ?s)
-            (isfryableifcut ?i)
-            (iscut ?i)
-            (on ?i ?s)
-            (loc ?p ?s)
-            (clear ?i)
-            (selected ?p)
-            (canfrycut ?p)
-        )
-        :effect (and 
-            (isfried ?i)
-        )
-    )
-
-    ; Make the player stack an item on top of another item at a station
-    (:action stack
-        :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
-        :precondition (and
-            (has ?p ?i1)
-            (clear ?i2)
-            (loc ?p ?s)
-            (at ?i2 ?s)
-            (selected ?p)
-            (canmoveitem ?p)
-        )
-        :effect (and
-            (nothing ?p)
-            (at ?i1 ?s)
-            (atop ?i1 ?i2)
-            (clear ?i1)
-            (not (clear ?i2))
-            (not (has ?p ?i1))
-        )
-    )    
-
-    ; Make the player cut a cuttable item on a cutting board
-    (:action cut
-        :parameters (?p - player ?i - item ?s - station)
-        :precondition (and
-            (isboard ?s)
-            (iscuttable ?i)
-            (on ?i ?s)
-            (loc ?p ?s)
-            (clear ?i)
-            (selected ?p)
-            (cancut ?p)
-        )
-        :effect (and 
-            (iscut ?i)
-        )
-    )
-
-    ; Make the player unstack an item from another item at a station
-    (:action unstack
-        :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
-        :precondition (and 
-            (nothing ?p)
-            (clear ?i1)
-            (atop ?i1 ?i2)
-            (loc ?p ?s)
-            (at ?i1 ?s)
-            (at ?i2 ?s)
-            (selected ?p)
-            (canmoveitem ?p)
-        )
-        :effect (and 
-            (has ?p ?i1)
-            (clear ?i2)
-            (not (nothing ?p))
-            (not (clear ?i1))
-            (not (atop ?i1 ?i2))
-            (not (at ?i1 ?s))
-        )
-    )
-
     ; Change player selection
     (:action select
         :parameters (?p1 - player ?p2 - player)
@@ -249,6 +182,4 @@
             (selected ?p2)
         )
     )
-
-    
 )
