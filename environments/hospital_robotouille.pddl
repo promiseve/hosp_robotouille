@@ -10,7 +10,6 @@
         (istable ?s - station)
         (isstove ?s - station)
         (isboard ?s - station)
-        (ispatient ?s - station)
         (isaed_station ?s - station)  ; Added predicate
         (iscpr_station ?s - station)  ; Added predicate
         (isventilation_station ?s - station)  ; Added predicate
@@ -57,7 +56,6 @@
     (:action givemedicine
         :parameters (?p - player ?i - item ?s - station)
         :precondition (and
-            (ispatient ?s)
             (isingestable ?i)
             (on ?i ?s)
             (loc ?p ?s)
@@ -71,7 +69,6 @@
     (:action giveCPR
         :parameters (?p - player ?i - item ?s - station)
         :precondition (and
-            (ispatient ?s)
             (isusableforcpr ?i)
             (on ?i ?s)
             (loc ?p ?s)
@@ -86,7 +83,6 @@
     (:action giveAED
         :parameters (?p - player ?i - item ?s - station)
         :precondition (and
-            (ispatient ?s)
             (isusableforaed ?i)
             (on ?i ?s)
             (loc ?p ?s)
@@ -101,7 +97,6 @@
     (:action giveVentilation
         :parameters (?p - player ?i - item ?s - station)
         :precondition (and
-            (ispatient ?s)
             (isventilator ?i)
             (isusableforventilation ?i)
             (on ?i ?s)

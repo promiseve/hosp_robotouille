@@ -24,7 +24,6 @@ class Station(Enum):
     BOARD = "board"
     STOVE = "stove"
     TABLE = "table"
-    PATIENT = "patient"
 
 def str_to_typed_enum(s):
     """

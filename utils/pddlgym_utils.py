@@ -10,7 +10,6 @@ PREDICATE_STRINGS = [
     # Identity Predicates
     "istable(?:station)",
     "isstove(?:station)",
-    "ispatient(?:station)",
     "isboard(?:station)",
     "isbun(?:item)",
     "islettuce(?:item)",
