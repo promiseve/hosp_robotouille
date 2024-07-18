@@ -154,7 +154,7 @@ def run_sequential(args, logger):
             timestep_to_load = max(timesteps)
         else:
             # choose the timestep closest to load_step
-            timestep_to_load = min(timesteps, key=lambda x: abs(x - args.load_step))
+            timestep_to_load = min(timesteps, key=lambda x: abs(x - int(args.load_step)))
 
         model_path = os.path.join(args.checkpoint_path, str(timestep_to_load))
 

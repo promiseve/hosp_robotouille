@@ -1,0 +1,109 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/home/byl8/hosp_robotouille/epymarl",
+    "dependencies": [
+      "numpy==1.24.2",
+      "PyYAML==6.0.1",
+      "sacred==0.8.5",
+      "torch==2.1.1"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [
+      {
+        "commit": "5b74add59605719b97d7c66c4bfca92dde146ec6",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "5b74add59605719b97d7c66c4bfca92dde146ec6",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "5b74add59605719b97d7c66c4bfca92dde146ec6",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      }
+    ],
+    "sources": [
+      [
+        "main.py",
+        "_sources/main_74c9740e03fd18eb008121f336b3404b.py"
+      ],
+      [
+        "run.py",
+        "_sources/run_e659d341984066ade24986cc4f31b5f4.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_7799699b534f806632c1d618a6ef7e02.py"
+      ]
+    ]
+  },
+  "heartbeat": "2024-07-17T18:57:56.429676",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+    "gpus": {
+      "driver_version": "525.116.04",
+      "gpus": [
+        {
+          "model": "NVIDIA GeForce GTX TITAN X",
+          "persistence_mode": true,
+          "total_memory": 12288
+        }
+      ]
+    },
+    "hostname": "nikola-compute-03.cs.cornell.edu",
+    "os": [
+      "Linux",
+      "Linux-5.4.0-182-generic-x86_64-with-glibc2.10"
+    ],
+    "python_version": "3.8.8"
+  },
+  "meta": {
+    "command": "my_main",
+    "config_updates": {
+      "env_args": {
+        "time_limit": 100
+      }
+    },
+    "named_configs": [],
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--id": null,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "env_args.time_limit=100"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2024-07-17T05:47:42.546787",
+  "status": "COMPLETED",
+  "stop_time": "2024-07-17T18:57:56.314723"
+}

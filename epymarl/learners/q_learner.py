@@ -15,7 +15,6 @@ class QLearner:
 
         self.params = list(mac.parameters())
         self.last_target_update_episode = 0
-        self.best_episode_return = -9999999
 
         self.mixer = None
         if args.mixer is not None:
@@ -32,6 +31,11 @@ class QLearner:
 
         # a little wasteful to deepcopy (e.g. duplicates action selector), but should work for any MAC
         self.target_mac = copy.deepcopy(mac)
+
+        self.best_episode_return = -9999999
+        self.best_mac = copy.deepcopy(self.mac)
+        self.best_mixer = copy.deepcopy(self.mixer)
+        self.best_optimiser = copy.deepcopy(self.optimiser)
 
         self.training_steps = 0
         self.last_target_update_step = 0
@@ -189,12 +193,12 @@ class QLearner:
             self.target_mixer.cuda()
 
     def save_models(self, path):
+        print("Most recent episode return", self.best_episode_return)
         self.best_mac.save_models(path)
         if self.mixer is not None:
             th.save(self.best_mixer.state_dict(), "{}/mixer.th".format(path))
         th.save(self.best_optimiser.state_dict(), "{}/opt.th".format(path))
         # Reset best models
-        self.best_episode_return = -9999999
 
     def load_models(self, path):
         self.mac.load_models(path)
@@ -212,8 +216,9 @@ class QLearner:
         )
 
     def update_best(self, episode_return):
-        if episode_return > self.best_episode_return:
-            self.best_episode_return = episode_return
-            self.best_mac = copy.deepcopy(self.mac)
-            self.best_mixer = copy.deepcopy(self.mixer)
-            self.best_optimiser = copy.deepcopy(self.optimiser)
+        self.best_episode_return = episode_return
+        # if episode_return > self.best_episode_return:
+        #     self.best_episode_return = episode_return
+        #     self.best_mac = copy.deepcopy(self.mac)
+        #     self.best_mixer = copy.deepcopy(self.mixer)
+        #     self.best_optimiser = copy.deepcopy(self.optimiser)

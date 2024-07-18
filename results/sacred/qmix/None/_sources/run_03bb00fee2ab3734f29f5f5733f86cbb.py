@@ -148,7 +148,7 @@ def run_sequential(args, logger):
             # Check if they are dirs the names of which are numbers
             if os.path.isdir(full_name) and name.isdigit():
                 timesteps.append(int(name))
-
+        args.load_step = 1600965
         if args.load_step == 0:
             # choose the max timestep
             timestep_to_load = max(timesteps)
