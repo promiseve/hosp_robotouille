@@ -302,7 +302,7 @@ class RobotouilleCanvas:
             return "robot_right" + selected_string + ".png"
         elif direction == (-1, 0):
             return "robot_left" + selected_string + ".png"
-
+        print(f"Invalid direction: {direction}")
         assert False, "Invalid player direction"
 
     def test_new_positions(self, obs):

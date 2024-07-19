@@ -33,6 +33,11 @@
             "y": 3
         },
         {
+            "name": "patient",
+            "x": 2, 
+            "y": 2  
+        },
+        {
             "name": "board",
             "x": 4,
             "y": 4
@@ -75,53 +80,56 @@
             "stack-level": 0
         }
     ],
-    "players": [
-        {
-            "name": "robot",
-            "x": 0,
-            "y": 2,
-            "direction": [
-                0,
-                1
-            ],
-            "actions": [
-                "move",
-                "cut",
-                "cook",
-                "moveitem"
-            ]
-        },
-        {
-            "name": "robot",
-            "x": 1,
-            "y": 0,
-            "direction": [
-                0,
-                1
-            ],
-            "actions": [
-                "move",
-                "cut",
-                "cook",
-                "moveitem"
-            ]
-        },
-        {
-            "name": "robot",
-            "x": 5,
-            "y": 3,
-            "direction": [
-                0,
-                -1
-            ],
-            "actions": [
-                "move",
-                "cut",
-                "cook",
-                "moveitem"
-            ]
-        }
-    ],
+"players": [
+    {
+        "name": "robot",
+        "x": 0,
+        "y": 2,
+        "direction": [0, 1],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
+        "x": 1,
+        "y": 0,
+        "direction": [0, 1],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
+        "x": 5,
+        "y": 3,
+        "direction": [0, -1],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
+        "x": 5,
+        "y": 1,
+        "direction": [0, -1],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    }
+],
     "goal_description": "Make a lettuce burger with lettuce on top of the patty.",
     "goal": [
         {
