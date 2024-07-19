@@ -2,9 +2,9 @@
 (:domain robotouille)
 (:objects
     table1 - station
-    patient1 - station
     stove1 - station
     table2 - station
+    patient1 - station
     table3 - station
     board1 - station
     table4 - station
@@ -20,8 +20,8 @@
 (:init
     (istable table1)
     (isstove stove1)
-    (ispatient patient1)
     (istable table2)
+    (ispatient patient1)
     (istable table3)
     (isboard board1)
     (istable table4)
@@ -34,22 +34,21 @@
     (isrobot robot1)
     (isrobot robot2)
     (isrobot robot3)
-    (isrobot robot4)    
+    (isrobot robot4)
     (at patty1 table1)
     (loc robot1 table1)
-    (empty patient1)
     (empty stove1)
-    (loc robot4 patient1)
     (loc robot2 stove1)
     (at lettuce1 table2)
     (vacant table2)
+    (empty patient1)
+    (vacant patient1)
     (at bottombun1 table3)
     (vacant table3)
     (empty board1)
     (vacant board1)
     (at topbun1 table4)
-    (loc robot3 table4)
-    (loc robot4 patient1)
+    (loc robot4 table4)
     (nothing robot1)
     (nothing robot2)
     (nothing robot3)
@@ -63,7 +62,7 @@
     (clear bottombun1)
     (on topbun1 table4)
     (clear topbun1)
-    (cancook robot1)    (cancut robot1)    (canmoveitem robot1)    (canmove robot1)    (cancook robot2)    (cancut robot2)    (canmoveitem robot2)    (canmove robot2)    (cancook robot3)    (cancut robot3)    (canmoveitem robot3)    (canmove robot4)    (cancook robot4)    (cancut robot4)    (canmoveitem robot4)    (canmove robot3)) )
+    (cancook robot1)    (cancut robot1)    (canmoveitem robot1)    (canmove robot1)    (cancook robot2)    (cancut robot2)    (canmoveitem robot2)    (canmove robot2)    (cancook robot3)    (cancut robot3)    (canmoveitem robot3)    (canmove robot3)    (cancook robot4)    (cancut robot4)    (canmoveitem robot4)    (canmove robot4))
 (:goal
    (or
        (and
