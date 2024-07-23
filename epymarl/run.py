@@ -216,9 +216,6 @@ def run_sequential(args, logger):
             for _ in range(n_test_runs):
                 runner.run(test_mode=True)
 
-        print("runner.t_env: ", runner.t_env)
-        print("model_save_time: ", model_save_time)
-        print("args.save_model_interval: ", args.save_model_interval)
         if args.save_model and (
             runner.t_env - model_save_time >= args.save_model_interval
             or model_save_time == 0
@@ -234,8 +231,14 @@ def run_sequential(args, logger):
             # learner should handle saving/loading -- delegate actor save/load to mac,
             # use appropriate filenames to do critics, optimizer states
             learner.save_models(save_path)
+            runner.save_best_actions(save_path)
         else:
-            learner.update_best(runner.episode_return)
+            save_path = os.path.join(
+                args.local_results_path, "models", args.unique_token, str(runner.t_env)
+            )
+            os.makedirs(save_path, exist_ok=True)
+            runner.update_best_actions(save_path)
+
         episode += args.batch_size_run
 
         if (runner.t_env - last_log_T) >= args.log_interval:

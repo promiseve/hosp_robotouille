@@ -38,7 +38,7 @@ class RobotouilleWrapper(gym.Wrapper):
         # This is used to specify things such as cooking times and cutting amounts
         self.config = config
         self.num_players = None
-        self.planning_algorithm = []
+        self.taken_actions = []
         self.renderer = renderer
 
     def _interactive_starter_prints(self, expanded_truths):
@@ -483,6 +483,7 @@ class RobotouilleWrapper(gym.Wrapper):
         expanded_truths = self.prev_step[3]["expanded_truths"]
         expanded_states = self.prev_step[3]["expanded_states"]
 
+        self.taken_actions.append(action)
         if interactive:
             self._interactive_starter_prints(expanded_truths)
             action = robotouille_utils.create_action_repl(
@@ -532,6 +533,14 @@ class RobotouilleWrapper(gym.Wrapper):
 
         return obs, reward, done, info
 
+    def save_episode(self, filename):
+        with open(filename, "w") as f:
+            for action in self.taken_actions:
+                f.write(action + "\n")
+
+    def get_episode_actions(self):
+        return self.taken_actions
+
     def reset(self):
         """
         This function resets the environment.
@@ -554,6 +563,7 @@ class RobotouilleWrapper(gym.Wrapper):
         self.prev_step = (obs, 0, False, info)
         self.timesteps = 0
         self.state = {}
+        self.taken_actions = []
         self.num_players = self._count_players(obs)
         self.planning = self.generate_plan(obs)
         return obs, info

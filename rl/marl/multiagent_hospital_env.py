@@ -101,6 +101,9 @@ class MAHospital_robotouille(MultiAgentEnv):
     def render(self):
         self.pddl_env.render(mode="human")
 
+    def save_episode(self, filename):
+        self.pddl_env.save_episode(filename)
+
     def close(self):
         self.env.close()
 

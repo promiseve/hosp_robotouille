@@ -1,5 +1,6 @@
 from enum import Enum
 import subprocess
+import time
 import numpy as np
 import pygame
 from stable_baselines3 import PPO
@@ -33,23 +34,27 @@ def simulator(
     mode=mode.TRAIN,
     type=type.MULTI,
 ):
+    # Load or train agent
+    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.SINGLE:
+        single_rl_simulator(environment_name, seed, noisy_randomization)
+        return
+
+    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.MULTI:
+        if mode == mode.TRAIN:
+            multi_rl_simulator(environment_name, seed, noisy_randomization)
+        elif mode == mode.LOAD:
+            load_multi_simulator(environment_name, seed, noisy_randomization)
+        return
+
     # Your code for robotouille goes here
     env, json, renderer = create_robotouille_env(
         environment_name, seed, noisy_randomization
     )
     obs, info = env.reset()
-    # env.render(mode="human")
+    env.render(mode="human")
     done = False
     truncated = False
     interactive = False  # Set to True to interact with the environment through terminal REPL (ignores input)
-
-    # Load or train agent
-    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.SINGLE:
-        single_rl_simulator(environment_name, seed, noisy_randomization)
-        return
-    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.MULTI:
-        multi_rl_simulator(environment_name, seed, noisy_randomization)
-        return
 
     # Simulate the environment
     while not done and not truncated:
@@ -129,8 +134,8 @@ def multi_rl_simulator(environment_name: str, seed: int, noisy_randomization: bo
         "--env-config=gymma",
         "with",
         "env_args.time_limit=100",
-        'checkpoint_path="results/models/qmix_seed833013653_None_2024-07-17 01:47:14.939144"',
-        "evaluate=True",
+        # 'checkpoint_path="results/models/qmix_seed833013653_None_2024-07-17 01:47:14.939144"',
+        # "evaluate=True",
         # "render=True"
     ]
 
@@ -153,3 +158,26 @@ def multi_rl_simulator(environment_name: str, seed: int, noisy_randomization: bo
     # obs, info = rl_env.reset()
 
     epymarl = subprocess.run(arguments)
+
+
+def load_multi_simulator(environment_name, seed, noisy_randomization):
+    env, json, renderer = create_robotouille_env(
+        environment_name, seed, noisy_randomization
+    )
+    obs, info = env.reset()
+    env.render(mode="human")
+    done = False
+    truncated = False
+    interactive = False
+
+    with open("temp.txt", "r") as f:
+        for line in f:
+            action = line.strip()
+
+            if not interactive and action is None:
+                # Retry for keyboard input
+                continue
+            obs, reward, done, info = env.step(action=action, interactive=interactive)
+            time.sleep(0.5)
+            env.render(mode="human")
+    env.render(close=True)
