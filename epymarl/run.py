@@ -233,11 +233,7 @@ def run_sequential(args, logger):
             learner.save_models(save_path)
             runner.save_best_actions(save_path)
         else:
-            save_path = os.path.join(
-                args.local_results_path, "models", args.unique_token, str(runner.t_env)
-            )
-            os.makedirs(save_path, exist_ok=True)
-            runner.update_best_actions(save_path)
+            runner.update_best_actions()
 
         episode += args.batch_size_run
 

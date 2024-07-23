@@ -170,7 +170,10 @@ def load_multi_simulator(environment_name, seed, noisy_randomization):
     truncated = False
     interactive = False
 
-    with open("temp.txt", "r") as f:
+    with open(
+        "results/models/qmix_seed115275558_None_2024-07-22 17:47:36.990086/100100/best_actions.txt",
+        "r",
+    ) as f:
         for line in f:
             action = line.strip()
 
