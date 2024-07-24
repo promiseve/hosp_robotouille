@@ -5,10 +5,6 @@
         "num_cuts": {
             "lettuce": 3,
             "default": 3
-        },
-        "cook_time": {
-            "patty": 3,
-            "default": 3
         }
     },
     "stations": [
@@ -50,21 +46,21 @@
     ],
     "items": [
         {
-            "name": "patty",
+            "name": "cpr_kit",
             "x": 0,
             "y": 3,
             "stack-level": 0,
             "predicates": [
-                "iscookable"
+                "isusableforcpr"
             ]
         },
         {
-            "name": "lettuce",
+            "name": "aed",
             "x": 1,
             "y": 4,
             "stack-level": 0,
             "predicates": [
-                "iscuttable"
+                "isusableforaed"
             ]
         },
         {
@@ -130,12 +126,12 @@
         ]
     }
 ],
-    "goal_description": "Make a lettuce burger with lettuce on top of the patty.",
+    "goal_description": "Resuscitate the patient by using AED, performing CPR, and providing ventilation.",
     "goal": [
         {
-            "predicate": "iscut",
+            "predicate": "isusedforaed",
             "args": [
-                "lettuce"
+                "aed"
             ],
             "ids": [
                 1
@@ -145,7 +141,7 @@
             "predicate": "atop",
             "args": [
                 "topbun",
-                "lettuce"
+                "aed"
             ],
             "ids": [
                 2,
@@ -153,9 +149,9 @@
             ]
         },
         {
-            "predicate": "iscooked",
+            "predicate": "isusedforcpr",
             "args": [
-                "patty"
+                "cpr_kit"
             ],
             "ids": [
                 3
@@ -164,8 +160,8 @@
         {
             "predicate": "atop",
             "args": [
-                "lettuce",
-                "patty"
+                "aed",
+                "cpr_kit"
             ],
             "ids": [
                 1,
@@ -175,7 +171,7 @@
         {
             "predicate": "atop",
             "args": [
-                "patty",
+                "cpr_kit",
                 "bottombun"
             ],
             "ids": [

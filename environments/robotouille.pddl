@@ -35,6 +35,8 @@
         (isfried ?i - item)
         (ispotato ?i - item)
         (isusableforcpr ?i - item)
+        (isusedforcpr ?i - item)
+        (isusedforaed ?i - item)
         (isventilator ?i - item)
         (isusableforventilation ?i - item)
         (isusableforaed ?i - item)
@@ -183,6 +185,7 @@
         :precondition (and
             (ispatient ?s)
             (isusableforcpr ?i)
+            (isusedforcpr ?i)
             (on ?i ?s)
             (loc ?p ?s)
             (clear ?i)

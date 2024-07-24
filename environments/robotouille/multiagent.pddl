@@ -8,8 +8,8 @@
     table3 - station
     board1 - station
     table4 - station
-    patty1 - item
-    lettuce1 - item
+    cpr_kit1 - item
+    aed1 - item
     bottombun1 - item
     topbun1 - item
     robot1 - player
@@ -25,21 +25,21 @@
     (istable table3)
     (isboard board1)
     (istable table4)
-    (ispatty patty1)
-    (iscookable patty1)
-    (islettuce lettuce1)
-    (iscuttable lettuce1)
+    (iscpr_kit cpr_kit1)
+    (isusableforcpr cpr_kit1)
+    (isaed aed1)
+    (isusableforaed aed1)
     (isbottombun bottombun1)
     (istopbun topbun1)
     (isrobot robot1)
     (isrobot robot2)
     (isrobot robot3)
     (isrobot robot4)
-    (at patty1 table1)
+    (at cpr_kit1 table1)
     (loc robot1 table1)
     (empty stove1)
     (loc robot2 stove1)
-    (at lettuce1 table2)
+    (at aed1 table2)
     (vacant table2)
     (empty patient1)
     (vacant patient1)
@@ -54,10 +54,10 @@
     (nothing robot3)
     (nothing robot4)
     (selected robot1)
-    (on patty1 table1)
-    (clear patty1)
-    (on lettuce1 table2)
-    (clear lettuce1)
+    (on cpr_kit1 table1)
+    (clear cpr_kit1)
+    (on aed1 table2)
+    (clear aed1)
     (on bottombun1 table3)
     (clear bottombun1)
     (on topbun1 table4)
@@ -66,11 +66,11 @@
 (:goal
    (or
        (and
-           (iscut lettuce1)
-           (atop topbun1 lettuce1)
-           (iscooked patty1)
-           (atop lettuce1 patty1)
-           (atop patty1 bottombun1)
+           (isusedforaed aed1)
+           (atop topbun1 aed1)
+           (isusedforcpr cpr_kit1)
+           (atop aed1 cpr_kit1)
+           (atop cpr_kit1 bottombun1)
        )
    )
 )

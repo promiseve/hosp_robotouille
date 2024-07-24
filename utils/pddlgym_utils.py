@@ -19,6 +19,12 @@ PREDICATE_STRINGS = [
     "ispatty(?:item)",
     "iscookable(?:item)",
     "iscooked(?:item)",
+    "iscpr_kit(?:item)",
+    "isusedforcpr(?:item)",
+    "isusableforcpr(?:item)",
+    "isaed(?:item)",
+    "isusedforaed(?:item)",
+    "isusableforaed(?:item)",
     # State Predicates
     "loc(?:player,?:station)",
     "at(?:item,?:station)",
