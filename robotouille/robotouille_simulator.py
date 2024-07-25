@@ -31,7 +31,7 @@ def simulator(
     environment_name: str,
     seed: int = 42,
     noisy_randomization: bool = False,
-    mode=mode.TRAIN,
+    mode=mode.LOAD,
     type=type.MULTI,
 ):
     # Load or train agent
@@ -51,7 +51,7 @@ def simulator(
         environment_name, seed, noisy_randomization
     )
     obs, info = env.reset()
-    env.render(mode="human")
+    # env.render(mode="human")
     done = False
     truncated = False
     interactive = False  # Set to True to interact with the environment through terminal REPL (ignores input)
@@ -130,7 +130,7 @@ def multi_rl_simulator(environment_name: str, seed: int, noisy_randomization: bo
     arguments = [
         "python",
         "epymarl/main.py",
-        "--config=qmix",
+        "--config=vdn",
         "--env-config=gymma",
         "with",
         "env_args.time_limit=100",
@@ -171,7 +171,7 @@ def load_multi_simulator(environment_name, seed, noisy_randomization):
     interactive = False
 
     with open(
-        "results/models/qmix_seed115275558_None_2024-07-22 17:47:36.990086/100100/best_actions.txt",
+        "results/models/qmix_seed731731378_None_2024-07-23 10:52:53.475030/800100/best_actions.txt",
         "r",
     ) as f:
         for line in f:
