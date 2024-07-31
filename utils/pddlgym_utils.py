@@ -4,7 +4,6 @@ import itertools
 import re
 import numpy as np
 
-
 # TODO: Extract these from the domain file to make it more general
 PREDICATE_STRINGS = [
     # Identity Predicates

@@ -15,6 +15,7 @@ class Item(Enum):
     AED = "aed"
     CPR_KIT = "cpr_kit"
     VENTILATOR = "ventilator"
+    CPR_BOARD = "cpr_board"
 
 class Player(Enum):
     ROBOT = "robot"

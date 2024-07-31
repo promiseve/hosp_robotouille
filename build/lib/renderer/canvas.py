@@ -63,7 +63,7 @@ class RobotouilleCanvas:
             for j, col in enumerate(row):
                 if col == station_name:
                     return np.array([j, i], dtype=float)
-    breakpoint()
+    #breakpoint()
     def _draw_image(self, surface, image_name, position, scale):
         """
         Draws an image on the canvas.

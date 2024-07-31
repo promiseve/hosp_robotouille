@@ -7,7 +7,7 @@
             "default": 3
         }
     },
-    "stations": [
+    "statio mns": [
         {
             "name": "table",
             "x": 0,
@@ -48,6 +48,15 @@
         {
             "name": "cpr_kit",
             "x": 0,
+            "y": 3,
+            "stack-level": 0,
+            "predicates": [
+                "isusableforcpr"
+            ]
+        },
+        {
+            "name": "cpr_board",
+            "x": ,
             "y": 3,
             "stack-level": 0,
             "predicates": [
