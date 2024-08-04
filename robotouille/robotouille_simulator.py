@@ -130,7 +130,7 @@ def multi_rl_simulator(environment_name: str, seed: int, noisy_randomization: bo
     arguments = [
         "python",
         "epymarl/main.py",
-        "--config=vdn",
+        "--config=qmix",
         "--env-config=gymma",
         "with",
         "env_args.time_limit=100",
@@ -171,7 +171,7 @@ def load_multi_simulator(environment_name, seed, noisy_randomization):
     interactive = False
 
     with open(
-        "results/models/qmix_seed731731378_None_2024-07-23 10:52:53.475030/800100/best_actions.txt",
+        "results/models/iql_seed328992167_None_2024-08-01 18:36:11.969950/1350627/best_actions.txt",
         "r",
     ) as f:
         for line in f:
