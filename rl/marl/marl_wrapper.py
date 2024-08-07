@@ -114,7 +114,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 rewards.append(reward)
             self._wrap_env()
 
-        # reward -= 1
+        reward -= 1
 
         wandb.log({"reward per step": reward})
 

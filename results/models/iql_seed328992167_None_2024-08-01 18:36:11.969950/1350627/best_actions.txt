@@ -45,6 +45,7 @@ move(robot2:player,table1:station,table4:station)
 move(robot3:player,table1:station,table4:station)
 pick-up(robot1:player,lettuce1:item,board1:station)
 pick-up(robot2:player,topbun1:item,table4:station)
+noop
 move(robot1:player,board1:station,table3:station)
 move(robot2:player,table4:station,table3:station)
 move(robot3:player,table4:station,table3:station)
