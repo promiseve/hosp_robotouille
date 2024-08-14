@@ -31,7 +31,7 @@ def simulator(
     environment_name: str,
     seed: int = 42,
     noisy_randomization: bool = False,
-    mode=mode.LOAD,
+    mode=mode.TRAIN,
     type=type.MULTI,
 ):
     # Load or train agent
@@ -51,7 +51,7 @@ def simulator(
         environment_name, seed, noisy_randomization
     )
     obs, info = env.reset()
-    # env.render(mode="human")
+    env.render(mode="human")
     done = False
     truncated = False
     interactive = False  # Set to True to interact with the environment through terminal REPL (ignores input)

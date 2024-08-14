@@ -8,7 +8,7 @@ import utils.pddlgym_utils as pddlgym_utils
 import utils.robotouille_wrapper as robotouille_wrapper
 import wandb
 
-# wandb.login()
+wandb.login()
 
 
 class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
@@ -100,23 +100,26 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
             if action == "invalid":
                 obs, reward, done, info = self.pddl_env.prev_step
                 obs, _, _, _ = self.pddl_env._change_selected_player(obs)
+                self.pddl_env.taken_actions.append("noop")
                 reward = 0
                 self.pddl_env.prev_step = (obs, reward, done, info)
+                reward -= 0.05
+                reward = (reward + 15) / 50
+                rewards.append(reward)
                 if self.pddl_env._current_selected_player(obs) == "robot1":
                     self.pddl_env.timesteps += 1
-                reward -= 2
-                rewards.append(reward)
                 info["timesteps"] = self.pddl_env.timesteps
             else:
                 action = str(action)
                 obs, reward, done, info = self.pddl_env.step(action, interactive)
+                reward = (reward + 15) / 50
+
                 self.pddl_env.prev_step = (obs, reward, done, info)
+
                 rewards.append(reward)
             self._wrap_env()
 
-        reward -= 1
-
-        wandb.log({"reward per step": reward})
+            wandb.log({"reward per step": reward})
 
         self.episode_reward += reward
         if self.pddl_env.timesteps >= self.max_steps:

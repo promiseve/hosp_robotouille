@@ -522,6 +522,7 @@ class RobotouilleWrapper(gym.Wrapper):
         }
 
         reward = self._heuristic_function(obs) - prev_heuristic
+        reward /= self.timesteps + 1
 
         self.prev_step = (obs, reward, done, info)
 
@@ -530,7 +531,6 @@ class RobotouilleWrapper(gym.Wrapper):
         # print("prev_heuristic: ", prev_heuristic)
         # print("current_heuristic: ", self._heuristic_function(obs))
         # print("reward: ", reward)
-
         return obs, reward, done, info
 
     def save_episode(self, filename):
