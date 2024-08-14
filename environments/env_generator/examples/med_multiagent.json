@@ -70,18 +70,24 @@
         },
 
         {
-            "name": "cpr_stool",
+            "name": "aed",
             "x": 1,
             "y": 4,
             "stack-level": 0,
             "predicates": [
-                "iscpr_stoolusuable"
+                "isusableforaed"
             ]
         },
         {
-            "name": "cpr_vent",
+            "name": "bottombun",
             "x": 3,
             "y": 3,
+            "stack-level": 0
+        },
+        {
+            "name": "topbun",
+            "x": 5,
+            "y": 2,
             "stack-level": 0
         }
     ],
@@ -135,35 +141,26 @@
         ]
     }
 ],
-    "goal_description": "Perform CPR on the patient by placing patient head on board, then player should climb the stool, chest compress and providing ventilation by giving air.",
+    "goal_description": "Resuscitate the patient by using AED, performing CPR, and providing ventilation.",
     "goal": [
         {
-            "predicate": "iscpr_stoolused",
+            "predicate": "isusedforaed",
             "args": [
-                "cpr_stool"
+                "aed"
             ],
             "ids": [
-                8
-            ]
-        },
-        {
-            "predicate": "iscpr_boardused",
-            "args": [
-                "cpr_board"
-            ],
-            "ids": [
-                7
+                1
             ]
         },
         {
             "predicate": "atop",
             "args": [
-                "patient",
-                "cpr_board"
+                "topbun",
+                "aed"
             ],
             "ids": [
-                5,
-                7
+                2,
+                1
             ]
         },
         {
@@ -176,12 +173,25 @@
             ]
         },
         {
-            "predicate": "iscpr_ventused",
+            "predicate": "atop",
             "args": [
-                "cpr_vent"
+                "aed",
+                "cpr_kit"
             ],
             "ids": [
-                9
+                1,
+                3
+            ]
+        },
+        {
+            "predicate": "atop",
+            "args": [
+                "cpr_kit",
+                "bottombun"
+            ],
+            "ids": [
+                3,
+                4
             ]
         }
     ]
