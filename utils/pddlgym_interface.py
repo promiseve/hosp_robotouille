@@ -41,7 +41,7 @@ def add_problem_files(env_name):
     # if os.path.exists(pddl_problem_dir_path):
     #     shutil.rmtree(pddl_problem_dir_path)
     try:
-        shutil.copytree(problem_dir_path, pddl_problem_dir_path)
+        shutil.copytree(problem_dir_path, pddl_problem_dir_path, dirs_exist_ok=True)
     except:
         pass
     new_problem_dir_path = os.path.join(PDDL_DIR_PATH, env_name)

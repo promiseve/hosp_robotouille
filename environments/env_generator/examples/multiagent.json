@@ -29,7 +29,12 @@
             "y": 3
         },
         {
-            "name": "patient",
+            "name": "patient_legs",
+            "x": 2, 
+            "y": 1  
+        },
+        {
+            "name": "patient_bed_station",
             "x": 2, 
             "y": 2  
         },
@@ -45,6 +50,24 @@
         }
     ],
     "items": [
+        {
+            "name": "patient",
+            "x": 2, 
+            "y": 2,
+            "stack-level": 0,
+            "predicates": [
+                "istreatable"
+            ]
+        },
+        {
+            "name": "cpr_board",
+            "x": 3,
+            "y": 2,
+            "stack-level": 0,
+            "predicates": [
+                "iscpr_boardusuable"
+            ]
+        },
         {
             "name": "cpr_kit",
             "x": 0,

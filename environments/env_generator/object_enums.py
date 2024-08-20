@@ -14,7 +14,9 @@ class Item(Enum):
     PULSE_CHECKER = "pulse_checker-equipment"
     AED = "aed"
     CPR_KIT = "cpr_kit"
+    CPR_BOARD = "cpr_board"
     VENTILATOR = "ventilator"
+    
 
 class Player(Enum):
     ROBOT = "robot"
@@ -25,6 +27,8 @@ class Station(Enum):
     STOVE = "stove"
     TABLE = "table"
     PATIENT = "patient"
+    PATIENT_LEGS = "patient_legs"
+    PATIENT_BED_STATION = "patient_bed_station"
 
 def str_to_typed_enum(s):
     """

@@ -4,14 +4,15 @@
     table1 - station
     stove1 - station
     table2 - station
-    patient1 - station
+    patient_legs1 - station
+    patient_bed_station1 - station
     table3 - station
     board1 - station
     table4 - station
-    patty1 - item
     cpr_kit1 - item
-    lettuce1 - item
     aed1 - item
+    patient1 - item
+    cpr_board1 - item
     bottombun1 - item
     topbun1 - item
     robot1 - player
@@ -23,20 +24,19 @@
     (istable table1)
     (isstove stove1)
     (istable table2)
-    (ispatient patient1)
+    (ispatient_legs patient_legs1)
+    (ispatient_bed_station patient_bed_station1)
     (istable table3)
     (isboard board1)
     (istable table4)
-    (ispatty patty1)
-    (iscookable patty1)
-    (isusableforcpr cpr_kit1)
-    (isusedforcpr cpr_kit1)
     (iscpr_kit cpr_kit1)
+    (isusableforcpr cpr_kit1)
     (isaed aed1)
     (isusableforaed aed1)
-    (isusedforaed aed1)
-    (islettuce lettuce1)
-    (iscuttable lettuce1)
+    (ispatient patient1)
+    (istreatable patient1)
+    (iscpr_board cpr_board1)
+    (iscpr_boardusuable cpr_board1)
     (isbottombun bottombun1)
     (istopbun topbun1)
     (isrobot robot1)
@@ -44,14 +44,15 @@
     (isrobot robot3)
     (isrobot robot4)
     (at cpr_kit1 table1)
-    (at aed1 table2)
     (loc robot1 table1)
     (empty stove1)
     (loc robot2 stove1)
     (at aed1 table2)
     (vacant table2)
-    (empty patient1)
-    (vacant patient1)
+    (empty patient_legs1)
+    (vacant patient_legs1)
+    (at patient1 patient_bed_station1)
+    (vacant patient_bed_station1)
     (at bottombun1 table3)
     (vacant table3)
     (empty board1)
@@ -67,6 +68,8 @@
     (clear cpr_kit1)
     (on aed1 table2)
     (clear aed1)
+    (on patient1 patient_bed_station1)
+    (clear patient1)
     (on bottombun1 table3)
     (clear bottombun1)
     (on topbun1 table4)
