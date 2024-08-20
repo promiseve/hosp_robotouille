@@ -1,0 +1,998 @@
+Initializing RobotouilleCanvas...
+layout: [[None, None, None, None, None, None], [None, 'table2', None, None, 'board1', None], ['table1', None, None, 'table3', None, None], [None, None, 'patient_bed_station1', None, None, 'table4'], [None, 'stove1', None, None, None, None], [None, None, None, None, None, None]]
+players_pos: [(0, 3), (1, 5), (5, 4), (5, 2)]
+players_pose: [{'name': 'robot', 'position': (0, 3), 'direction': (0, 1)}, {'name': 'robot', 'position': (1, 5), 'direction': (0, 1)}, {'name': 'robot', 'position': (5, 4), 'direction': (0, -1)}, {'name': 'robot', 'position': (5, 2), 'direction': (0, -1)}]
+grid_dimensions: [6 6]
+pix_square_size: [85.33333333 85.33333333]
+asset_directory: {}
+problem_dir_path: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/pddlgym/pddl/robotouille
+PDDLDomain:  {'self': <pddlgym.parser.PDDLDomainParser object at 0x14102e370>, 'domain_name': None, 'types': None, 'type_hierarchy': None, 'predicates': None, 'operators': None, 'actions': None, 'constants': None, 'operators_as_actions': True, 'is_probabilistic': False}
+String = (and
+            (ispatient ?s)
+            (isingestable ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (ispatient ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['ispatient', '?s']
+ispatient ['?s']
+String = (isingestable ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isingestable', '?i']
+isingestable ['?i']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (and
+            (istreated ?s)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (istreated ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['istreated', '?s']
+istreated ['?s']
+String = (and
+            (ispatient ?s)
+            (isusableforaed ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (ispatient ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['ispatient', '?s']
+ispatient ['?s']
+String = (isusableforaed ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isusableforaed', '?i']
+isusableforaed ['?i']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (and
+            (isaeddefibrillated ?s)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (isaeddefibrillated ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['isaeddefibrillated', '?s']
+isaeddefibrillated ['?s']
+String = (and
+            (ispatient ?s)
+            (isventilator ?i)
+            (isusableforventilation ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (ispatient ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['ispatient', '?s']
+ispatient ['?s']
+String = (isventilator ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isventilator', '?i']
+isventilator ['?i']
+String = (isusableforventilation ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isusableforventilation', '?i']
+isusableforventilation ['?i']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (and
+            (isventilated ?s)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (isventilated ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['isventilated', '?s']
+isventilated ['?s']
+String = (and
+            (loc ?p ?s1)
+            (selected ?p)
+            (canmove ?p)
+        )
+Params = [?p:player, ?s1:station, ?s2:station]
+Found and
+String = (loc ?p ?s1)
+Params = [?p:player, ?s1:station, ?s2:station]
+['loc', '?p', '?s1']
+loc ['?p', '?s1']
+String = (selected ?p)
+Params = [?p:player, ?s1:station, ?s2:station]
+['selected', '?p']
+selected ['?p']
+String = (canmove ?p)
+Params = [?p:player, ?s1:station, ?s2:station]
+['canmove', '?p']
+canmove ['?p']
+String = (and
+            (loc ?p ?s2)
+            (vacant ?s1)
+            (not (loc ?p ?s1))
+            (not (vacant ?s2))
+        )
+Params = [?p:player, ?s1:station, ?s2:station]
+Found and
+String = (loc ?p ?s2)
+Params = [?p:player, ?s1:station, ?s2:station]
+['loc', '?p', '?s2']
+loc ['?p', '?s2']
+String = (vacant ?s1)
+Params = [?p:player, ?s1:station, ?s2:station]
+['vacant', '?s1']
+vacant ['?s1']
+String = (not (loc ?p ?s1))
+Params = [?p:player, ?s1:station, ?s2:station]
+Found not
+String = (loc ?p ?s1)
+Params = [?p:player, ?s1:station, ?s2:station]
+['loc', '?p', '?s1']
+loc ['?p', '?s1']
+String = (not (vacant ?s2))
+Params = [?p:player, ?s1:station, ?s2:station]
+Found not
+String = (vacant ?s2)
+Params = [?p:player, ?s1:station, ?s2:station]
+['vacant', '?s2']
+vacant ['?s2']
+String = (and
+            (nothing ?p)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (canmoveitem ?p)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (nothing ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['nothing', '?p']
+nothing ['?p']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (selected ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['selected', '?p']
+selected ['?p']
+String = (canmoveitem ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['canmoveitem', '?p']
+canmoveitem ['?p']
+String = (and
+            (has ?p ?i)
+            (empty ?s)
+            (not (nothing ?p))
+            (not (at ?i ?s))
+            (not (clear ?i))
+            (not (on ?i ?s))
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (has ?p ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['has', '?p', '?i']
+has ['?p', '?i']
+String = (empty ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['empty', '?s']
+empty ['?s']
+String = (not (nothing ?p))
+Params = [?p:player, ?i:item, ?s:station]
+Found not
+String = (nothing ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['nothing', '?p']
+nothing ['?p']
+String = (not (at ?i ?s))
+Params = [?p:player, ?i:item, ?s:station]
+Found not
+String = (at ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['at', '?i', '?s']
+at ['?i', '?s']
+String = (not (clear ?i))
+Params = [?p:player, ?i:item, ?s:station]
+Found not
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (not (on ?i ?s))
+Params = [?p:player, ?i:item, ?s:station]
+Found not
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (and
+            (has ?p ?i)
+            (loc ?p ?s)
+            (empty ?s)
+            (selected ?p)
+            (canmoveitem ?p)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (has ?p ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['has', '?p', '?i']
+has ['?p', '?i']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (empty ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['empty', '?s']
+empty ['?s']
+String = (selected ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['selected', '?p']
+selected ['?p']
+String = (canmoveitem ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['canmoveitem', '?p']
+canmoveitem ['?p']
+String = (and
+            (nothing ?p)
+            (at ?i ?s)
+            (clear ?i)
+            (on ?i ?s)
+            (not (has ?p ?i))
+            (not (empty ?s))
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (nothing ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['nothing', '?p']
+nothing ['?p']
+String = (at ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['at', '?i', '?s']
+at ['?i', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (not (has ?p ?i))
+Params = [?p:player, ?i:item, ?s:station]
+Found not
+String = (has ?p ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['has', '?p', '?i']
+has ['?p', '?i']
+String = (not (empty ?s))
+Params = [?p:player, ?i:item, ?s:station]
+Found not
+String = (empty ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['empty', '?s']
+empty ['?s']
+String = (and
+            (ispatient ?s)
+            (isusableforcpr ?i)
+            (isusedforcpr ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (cangivecpr ?p)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (ispatient ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['ispatient', '?s']
+ispatient ['?s']
+String = (isusableforcpr ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isusableforcpr', '?i']
+isusableforcpr ['?i']
+String = (isusedforcpr ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isusedforcpr', '?i']
+isusedforcpr ['?i']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (selected ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['selected', '?p']
+selected ['?p']
+String = (cangivecpr ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['cangivecpr', '?p']
+cangivecpr ['?p']
+String = (and
+            (iscprresuscitated ?s)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (iscprresuscitated ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['iscprresuscitated', '?s']
+iscprresuscitated ['?s']
+String = (and
+            (isstove ?s)
+            (iscookable ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (cancook ?p)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (isstove ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['isstove', '?s']
+isstove ['?s']
+String = (iscookable ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['iscookable', '?i']
+iscookable ['?i']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (selected ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['selected', '?p']
+selected ['?p']
+String = (cancook ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['cancook', '?p']
+cancook ['?p']
+String = (and
+            (iscooked ?i)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (iscooked ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['iscooked', '?i']
+iscooked ['?i']
+String = (and
+            (isfryer ?s)
+            (isfryable ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (canfry ?p)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (isfryer ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['isfryer', '?s']
+isfryer ['?s']
+String = (isfryable ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isfryable', '?i']
+isfryable ['?i']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (selected ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['selected', '?p']
+selected ['?p']
+String = (canfry ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['canfry', '?p']
+canfry ['?p']
+String = (and
+            (isfried ?i)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (isfried ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isfried', '?i']
+isfried ['?i']
+String = (and
+            (isfryer ?s)
+            (isfryableifcut ?i)
+            (iscut ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (canfrycut ?p)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (isfryer ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['isfryer', '?s']
+isfryer ['?s']
+String = (isfryableifcut ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isfryableifcut', '?i']
+isfryableifcut ['?i']
+String = (iscut ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['iscut', '?i']
+iscut ['?i']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (selected ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['selected', '?p']
+selected ['?p']
+String = (canfrycut ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['canfrycut', '?p']
+canfrycut ['?p']
+String = (and
+            (isfried ?i)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (isfried ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['isfried', '?i']
+isfried ['?i']
+String = (and
+            (has ?p ?i1)
+            (clear ?i2)
+            (loc ?p ?s)
+            (at ?i2 ?s)
+            (selected ?p)
+            (canmoveitem ?p)
+        )
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found and
+String = (has ?p ?i1)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['has', '?p', '?i1']
+has ['?p', '?i1']
+String = (clear ?i2)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['clear', '?i2']
+clear ['?i2']
+String = (loc ?p ?s)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (at ?i2 ?s)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['at', '?i2', '?s']
+at ['?i2', '?s']
+String = (selected ?p)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['selected', '?p']
+selected ['?p']
+String = (canmoveitem ?p)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['canmoveitem', '?p']
+canmoveitem ['?p']
+String = (and
+            (nothing ?p)
+            (at ?i1 ?s)
+            (atop ?i1 ?i2)
+            (clear ?i1)
+            (not (clear ?i2))
+            (not (has ?p ?i1))
+        )
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found and
+String = (nothing ?p)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['nothing', '?p']
+nothing ['?p']
+String = (at ?i1 ?s)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['at', '?i1', '?s']
+at ['?i1', '?s']
+String = (atop ?i1 ?i2)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['atop', '?i1', '?i2']
+atop ['?i1', '?i2']
+String = (clear ?i1)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['clear', '?i1']
+clear ['?i1']
+String = (not (clear ?i2))
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found not
+String = (clear ?i2)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['clear', '?i2']
+clear ['?i2']
+String = (not (has ?p ?i1))
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found not
+String = (has ?p ?i1)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['has', '?p', '?i1']
+has ['?p', '?i1']
+String = (and
+            (isboard ?s)
+            (iscuttable ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (cancut ?p)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (isboard ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['isboard', '?s']
+isboard ['?s']
+String = (iscuttable ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['iscuttable', '?i']
+iscuttable ['?i']
+String = (on ?i ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['on', '?i', '?s']
+on ['?i', '?s']
+String = (loc ?p ?s)
+Params = [?p:player, ?i:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (clear ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['clear', '?i']
+clear ['?i']
+String = (selected ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['selected', '?p']
+selected ['?p']
+String = (cancut ?p)
+Params = [?p:player, ?i:item, ?s:station]
+['cancut', '?p']
+cancut ['?p']
+String = (and
+            (iscut ?i)
+        )
+Params = [?p:player, ?i:item, ?s:station]
+Found and
+String = (iscut ?i)
+Params = [?p:player, ?i:item, ?s:station]
+['iscut', '?i']
+iscut ['?i']
+String = (and
+            (nothing ?p)
+            (clear ?i1)
+            (atop ?i1 ?i2)
+            (loc ?p ?s)
+            (at ?i1 ?s)
+            (at ?i2 ?s)
+            (selected ?p)
+            (canmoveitem ?p)
+        )
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found and
+String = (nothing ?p)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['nothing', '?p']
+nothing ['?p']
+String = (clear ?i1)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['clear', '?i1']
+clear ['?i1']
+String = (atop ?i1 ?i2)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['atop', '?i1', '?i2']
+atop ['?i1', '?i2']
+String = (loc ?p ?s)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['loc', '?p', '?s']
+loc ['?p', '?s']
+String = (at ?i1 ?s)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['at', '?i1', '?s']
+at ['?i1', '?s']
+String = (at ?i2 ?s)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['at', '?i2', '?s']
+at ['?i2', '?s']
+String = (selected ?p)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['selected', '?p']
+selected ['?p']
+String = (canmoveitem ?p)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['canmoveitem', '?p']
+canmoveitem ['?p']
+String = (and
+            (has ?p ?i1)
+            (clear ?i2)
+            (not (nothing ?p))
+            (not (clear ?i1))
+            (not (atop ?i1 ?i2))
+            (not (at ?i1 ?s))
+        )
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found and
+String = (has ?p ?i1)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['has', '?p', '?i1']
+has ['?p', '?i1']
+String = (clear ?i2)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['clear', '?i2']
+clear ['?i2']
+String = (not (nothing ?p))
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found not
+String = (nothing ?p)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['nothing', '?p']
+nothing ['?p']
+String = (not (clear ?i1))
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found not
+String = (clear ?i1)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['clear', '?i1']
+clear ['?i1']
+String = (not (atop ?i1 ?i2))
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found not
+String = (atop ?i1 ?i2)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['atop', '?i1', '?i2']
+atop ['?i1', '?i2']
+String = (not (at ?i1 ?s))
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+Found not
+String = (at ?i1 ?s)
+Params = [?p:player, ?i1:item, ?i2:item, ?s:station]
+['at', '?i1', '?s']
+at ['?i1', '?s']
+String = (and
+            (selected ?p1)
+            (not  (selected ?p2))
+        )
+Params = [?p1:player, ?p2:player]
+Found and
+String = (selected ?p1)
+Params = [?p1:player, ?p2:player]
+['selected', '?p1']
+selected ['?p1']
+String = (not  (selected ?p2))
+Params = [?p1:player, ?p2:player]
+Found not
+String = (selected ?p2)
+Params = [?p1:player, ?p2:player]
+['selected', '?p2']
+selected ['?p2']
+String = (and
+            (not (selected ?p1))
+            (selected ?p2)
+        )
+Params = [?p1:player, ?p2:player]
+Found and
+String = (not (selected ?p1))
+Params = [?p1:player, ?p2:player]
+Found not
+String = (selected ?p1)
+Params = [?p1:player, ?p2:player]
+['selected', '?p1']
+selected ['?p1']
+String = (selected ?p2)
+Params = [?p1:player, ?p2:player]
+['selected', '?p2']
+selected ['?p2']
+String = (ispatient patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['ispatient', 'patient1']
+ispatient ['patient1']
+String = (istable table1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['istable', 'table1']
+istable ['table1']
+String = (istable table2)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['istable', 'table2']
+istable ['table2']
+String = (istable table3)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['istable', 'table3']
+istable ['table3']
+String = (istable table4)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['istable', 'table4']
+istable ['table4']
+String = (isaed aed1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isaed', 'aed1']
+isaed ['aed1']
+String = (isusableforaed aed1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isusableforaed', 'aed1']
+isusableforaed ['aed1']
+String = (iscpr_kit cpr_kit1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['iscpr_kit', 'cpr_kit1']
+iscpr_kit ['cpr_kit1']
+String = (isusableforcpr cpr_kit1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isusableforcpr', 'cpr_kit1']
+isusableforcpr ['cpr_kit1']
+String = (isventilator ventilator1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isventilator', 'ventilator1']
+isventilator ['ventilator1']
+String = (isusableforventilation ventilator1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isusableforventilation', 'ventilator1']
+isusableforventilation ['ventilator1']
+String = (ismedicine medicine1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['ismedicine', 'medicine1']
+ismedicine ['medicine1']
+String = (isrobot robot1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isrobot', 'robot1']
+isrobot ['robot1']
+String = (isrobot robot2)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isrobot', 'robot2']
+isrobot ['robot2']
+String = (isrobot robot3)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isrobot', 'robot3']
+isrobot ['robot3']
+String = (at aed1 patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['at', 'aed1', 'patient1']
+at ['aed1', 'patient1']
+String = (loc robot1 patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['loc', 'robot1', 'patient1']
+loc ['robot1', 'patient1']
+String = (empty table1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['empty', 'table1']
+empty ['table1']
+String = (loc robot2 table1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['loc', 'robot2', 'table1']
+loc ['robot2', 'table1']
+String = (at cpr_kit1 table2)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['at', 'cpr_kit1', 'table2']
+at ['cpr_kit1', 'table2']
+String = (vacant table2)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['vacant', 'table2']
+vacant ['table2']
+String = (empty table3)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['empty', 'table3']
+empty ['table3']
+String = (vacant table3)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['vacant', 'table3']
+vacant ['table3']
+String = (at medicine1 table4)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['at', 'medicine1', 'table4']
+at ['medicine1', 'table4']
+String = (loc robot3 table4)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['loc', 'robot3', 'table4']
+loc ['robot3', 'table4']
+String = (nothing robot1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['nothing', 'robot1']
+nothing ['robot1']
+String = (nothing robot2)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['nothing', 'robot2']
+nothing ['robot2']
+String = (nothing robot3)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['nothing', 'robot3']
+nothing ['robot3']
+String = (selected robot1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['selected', 'robot1']
+selected ['robot1']
+String = (on aed1 patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['on', 'aed1', 'patient1']
+on ['aed1', 'patient1']
+String = (clear aed1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['clear', 'aed1']
+clear ['aed1']
+String = (on cpr_kit1 table2)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['on', 'cpr_kit1', 'table2']
+on ['cpr_kit1', 'table2']
+String = (clear cpr_kit1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['clear', 'cpr_kit1']
+clear ['cpr_kit1']
+String = (on medicine1 table4)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['on', 'medicine1', 'table4']
+on ['medicine1', 'table4']
+String = (clear medicine1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['clear', 'medicine1']
+clear ['medicine1']
+String = (canmoveitem robot1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['canmoveitem', 'robot1']
+canmoveitem ['robot1']
+String = (canmove robot1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['canmove', 'robot1']
+canmove ['robot1']
+String = (canmoveitem robot2)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['canmoveitem', 'robot2']
+canmoveitem ['robot2']
+String = (canmove robot2)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['canmove', 'robot2']
+canmove ['robot2']
+String = (canmoveitem robot3)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['canmoveitem', 'robot3']
+canmoveitem ['robot3']
+String = (canmove robot3)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['canmove', 'robot3']
+canmove ['robot3']
+String = (or
+       (and
+           (isaeddefibrillated patient1)
+           (iscprresuscitated patient1)
+           (isventilated patient1)
+           (atop aed1 patient1)
+           (atop cpr_kit1 patient1)
+           (atop ventilator1 patient1)
+           (isusedforcpr cpr_kit1)
+           (isusedforventilation ventilator1)
+           (isusedforaed aed1)
+       )
+   )
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+Found or
+String = (and
+           (isaeddefibrillated patient1)
+           (iscprresuscitated patient1)
+           (isventilated patient1)
+           (atop aed1 patient1)
+           (atop cpr_kit1 patient1)
+           (atop ventilator1 patient1)
+           (isusedforcpr cpr_kit1)
+           (isusedforventilation ventilator1)
+           (isusedforaed aed1)
+       )
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+Found and
+String = (isaeddefibrillated patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isaeddefibrillated', 'patient1']
+isaeddefibrillated ['patient1']
+String = (iscprresuscitated patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['iscprresuscitated', 'patient1']
+iscprresuscitated ['patient1']
+String = (isventilated patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isventilated', 'patient1']
+isventilated ['patient1']
+String = (atop aed1 patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['atop', 'aed1', 'patient1']
+atop ['aed1', 'patient1']
+String = (atop cpr_kit1 patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['atop', 'cpr_kit1', 'patient1']
+atop ['cpr_kit1', 'patient1']
+String = (atop ventilator1 patient1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['atop', 'ventilator1', 'patient1']
+atop ['ventilator1', 'patient1']
+String = (isusedforcpr cpr_kit1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isusedforcpr', 'cpr_kit1']
+isusedforcpr ['cpr_kit1']
+String = (isusedforventilation ventilator1)
+Params = {'aed1': 'item', 'cpr_kit1': 'item', 'medicine1': 'item', 'patient1': 'station', 'robot1': 'player', 'robot2': 'player', 'robot3': 'player', 'table1': 'station', 'table2': 'station', 'table3': 'station', 'table4': 'station', 'ventilator1': 'item'}
+['isusedforventilation', 'ventilator1']
+isusedforventilation ['ventilator1']
