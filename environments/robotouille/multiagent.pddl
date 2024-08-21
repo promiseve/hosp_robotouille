@@ -5,13 +5,12 @@
     stove1 - station
     table2 - station
     patient_legs1 - station
-    patient_bed_station1 - station
+    patient1 - station
     table3 - station
     board1 - station
     table4 - station
     cpr_kit1 - item
     aed1 - item
-    patient1 - item
     cpr_board1 - item
     bottombun1 - item
     topbun1 - item
@@ -25,7 +24,7 @@
     (isstove stove1)
     (istable table2)
     (ispatient_legs patient_legs1)
-    (ispatient_bed_station patient_bed_station1)
+    (ispatient patient1)
     (istable table3)
     (isboard board1)
     (istable table4)
@@ -33,8 +32,6 @@
     (isusableforcpr cpr_kit1)
     (isaed aed1)
     (isusableforaed aed1)
-    (ispatient patient1)
-    (istreatable patient1)
     (iscpr_board cpr_board1)
     (iscpr_boardusuable cpr_board1)
     (isbottombun bottombun1)
@@ -51,13 +48,14 @@
     (vacant table2)
     (empty patient_legs1)
     (vacant patient_legs1)
-    (at patient1 patient_bed_station1)
-    (vacant patient_bed_station1)
+    (empty patient1)
+    (vacant patient1)
     (at bottombun1 table3)
     (vacant table3)
     (empty board1)
     (vacant board1)
     (at topbun1 table4)
+    (loc robot3 table4)
     (loc robot4 table4)
     (nothing robot1)
     (nothing robot2)
@@ -68,8 +66,6 @@
     (clear cpr_kit1)
     (on aed1 table2)
     (clear aed1)
-    (on patient1 patient_bed_station1)
-    (clear patient1)
     (on bottombun1 table3)
     (clear bottombun1)
     (on topbun1 table4)

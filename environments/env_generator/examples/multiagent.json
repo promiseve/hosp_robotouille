@@ -34,9 +34,9 @@
             "y": 1  
         },
         {
-            "name": "patient_bed_station",
+            "name": "patient",
             "x": 2, 
-            "y": 2  
+            "y": 2
         },
         {
             "name": "board",
@@ -50,15 +50,7 @@
         }
     ],
     "items": [
-        {
-            "name": "patient",
-            "x": 2, 
-            "y": 2,
-            "stack-level": 0,
-            "predicates": [
-                "istreatable"
-            ]
-        },
+
         {
             "name": "cpr_board",
             "x": 3,
@@ -114,6 +106,18 @@
     },
     {
         "name": "robot",
+        "x": 5,
+        "y": 3,
+        "direction": [0, -1],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
         "x": 1,
         "y": 0,
         "direction": [0, 1],
@@ -127,20 +131,8 @@
     {
         "name": "robot",
         "x": 5,
-        "y": 3,
-        "direction": [0, -1],
-        "actions": [
-            "move",
-            "cut",
-            "cook",
-            "moveitem"
-        ]
-    },
-    {
-        "name": "robot",
-        "x": 5,
         "y": 1,
-        "direction": [0, -1],
+        "direction": [0, 1],
         "actions": [
             "move",
             "cut",
