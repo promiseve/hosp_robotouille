@@ -16,11 +16,13 @@ class Item(Enum):
     CPR_KIT = "cpr_kit"
     CPR_BOARD = "cpr_board"
     VENTILATOR = "ventilator"
+    CPR_STOOL = "cpr_stool"
     
 
 class Player(Enum):
     ROBOT = "robot"
     NURSE = "nurse"
+    R3_FRONT = "r3_front"
 
 class Station(Enum):
     BOARD = "board"

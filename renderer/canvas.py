@@ -319,7 +319,7 @@ class RobotouilleCanvas:
 
     def _draw_player(self, surface, obs):
         """
-        Draws the player on the canvas. This implementation assumes one player.
+        Draws the player on the canvas. This implementation assumes multiple players.
 
         Args:
             surface (pygame.Surface): Surface to draw on
@@ -336,15 +336,30 @@ class RobotouilleCanvas:
                 player_pos, player_direction = self._move_player_to_station(
                     player_index, player_pos, tuple(station_pos), self.layout
                 )
+                
+                print(f"Debug: Player {player_index} at station {player_station}, position {player_pos}")
+                
+                # Check if the player is on a table or CPR stool
+                if player_station.startswith("table") or player_station == "cpr_stool":
+                    # Adjust the vertical position upwards
+                    player_pos = (player_pos[0], player_pos[1] - 0.3)  # Increased offset
+                    print(f"Debug: Adjusting player {player_index} position to {player_pos}")
+                
                 self.players_pose[player_index]["position"] = player_pos
                 self.players_pose[player_index]["direction"] = player_direction
                 selected = self._check_selected(obs, player_index)
                 robot_image_name = self._get_player_image_name(player_direction, selected)
-                print(f"Drawing player {player_index}: {robot_image_name} at {player_pos}")
+                
+                # Calculate the drawing position in pixels
+                draw_pos = (player_pos[0] * self.pix_square_size[0], 
+                            player_pos[1] * self.pix_square_size[1])
+                
+                print(f"Debug: Drawing player {player_index}: {robot_image_name} at {draw_pos}")
+                
                 self._draw_image(
                     surface,
                     robot_image_name,
-                    player_pos * self.pix_square_size,
+                    draw_pos,
                     self.pix_square_size,
                 )
             if literal.predicate == "has":
