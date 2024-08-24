@@ -319,31 +319,34 @@ class RobotouilleCanvas:
 
     def _draw_player(self, surface, obs):
         """
-        Draws the player on the canvas. This implementation assumes multiple players.
-
-        Args:
-            surface (pygame.Surface): Surface to draw on
-            obs (List[Literal]): Game state predicates
+        Draws the player on the canvas with detailed debugging.
         """
-        player_pos = None
-        holding_foods = ["" for i in range(len(self.players_pose))]
+        print("\n--- Start of _draw_player ---")
         for literal in obs:
             if literal.predicate.name == "loc":
                 player_station = literal.variables[1].name
                 station_pos = self._get_station_position(player_station)
                 player_index = self._get_player_index(literal)
-                player_pos = self.players_pose[player_index]["position"]
+                initial_pos = self.players_pose[player_index]["position"]
+                
+                print(f"Player {player_index}:")
+                print(f"  Initial position: {initial_pos}")
+                print(f"  Station: {player_station}")
+                print(f"  Station position: {station_pos}")
+                
                 player_pos, player_direction = self._move_player_to_station(
-                    player_index, player_pos, tuple(station_pos), self.layout
+                    player_index, initial_pos, tuple(station_pos), self.layout
                 )
                 
-                print(f"Debug: Player {player_index} at station {player_station}, position {player_pos}")
+                print(f"  After move_player_to_station: {player_pos}")
                 
-                # Check if the player is on a table or CPR stool
-                if player_station.startswith("table") or player_station == "cpr_stool":
+                # Check if the player is on a CPR stool
+                if player_station == "cpr_stool":
+                    # The value 0.2 represents 20% of a grid cell's height
+                    # This moves the player up by 20% of a cell, making them appear on top of the obje
                     # Adjust the vertical position upwards
-                    player_pos = (player_pos[0], player_pos[1] - 0.3)  # Increased offset
-                    print(f"Debug: Adjusting player {player_index} position to {player_pos}")
+                    player_pos = (player_pos[0], player_pos[1] - 0.2)  # Increased offset
+                    print(f"  On CPR stool, adjusted position: {player_pos}")
                 
                 self.players_pose[player_index]["position"] = player_pos
                 self.players_pose[player_index]["direction"] = player_direction
@@ -351,10 +354,15 @@ class RobotouilleCanvas:
                 robot_image_name = self._get_player_image_name(player_direction, selected)
                 
                 # Calculate the drawing position in pixels
+                # player_pos[0] * self.pix_square_size[0]: Convert x-coordinate from grid to pixels
+                # (player_pos[1] - 0.2) * self.pix_square_size[1]: Convert y-coordinate from grid to pixels,
+                # subtracting 0.2 (20% of a cell) to move the player up slightly
+                # This ensures the player is drawn above the object they're standing on
                 draw_pos = (player_pos[0] * self.pix_square_size[0], 
-                            player_pos[1] * self.pix_square_size[1])
+                            (player_pos[1]- 0.2) * self.pix_square_size[1])
                 
-                print(f"Debug: Drawing player {player_index}: {robot_image_name} at {draw_pos}")
+                print(f"  Final draw position (pixels): {draw_pos}")
+                print(f"  Image: {robot_image_name}")
                 
                 self._draw_image(
                     surface,
@@ -362,21 +370,8 @@ class RobotouilleCanvas:
                     draw_pos,
                     self.pix_square_size,
                 )
-            if literal.predicate == "has":
-                holding_player_index = int(literal.variables[0].name[5:]) - 1
-                holding_foods[holding_player_index] = literal.variables[1].name
-
-        for i in range(len(holding_foods)):
-            if holding_foods[i] == "":
-                continue
-            print(f"Player {i} holding: {holding_foods[i]}")
-            self._draw_food_image(
-                surface,
-                holding_foods[i],
-                obs,
-                self.players_pose[i]["position"] * self.pix_square_size,
-            )
-
+        
+        print("--- End of _draw_player ---\n")
     def _draw_food(self, surface, obs):
         """
         This helper draws food on the canvas.
@@ -437,6 +432,23 @@ class RobotouilleCanvas:
                 else:
                     i += 1
 
+    def _debug_print_layout(self):
+        print("\n--- Layout Debug ---")
+        for y in range(len(self.layout)):
+            row = []
+            for x in range(len(self.layout[0])):
+                cell = self.layout[y][x]
+                if cell is None:
+                    row.append(".")
+                else:
+                    row.append(cell[:2])  # First two characters of station name
+            print(" ".join(row))
+        
+        print("\nPlayer Positions:")
+        for i, player in enumerate(self.players_pose):
+            print(f"Player {i}: {player['position']}")
+        print("--- End Layout Debug ---\n")
+
     def draw_to_surface(self, surface, obs):
         """
         Draws the game state to the surface.
@@ -446,6 +458,7 @@ class RobotouilleCanvas:
             obs (List[Literal]): Game state predicates
         """
         print("Drawing to surface...")
+        self._debug_print_layout()
         self._draw_floor(surface)
         self._draw_stations(surface)
         self._draw_player(surface, obs)

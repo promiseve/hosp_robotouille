@@ -53,6 +53,10 @@
         (iscpr_board ?i - item)
         (iscpr_boardused ?i - item)
         (iscpr_boardusuable ?i - item)
+        (ischestcompressable ?i - item)
+        (ischestcompressed ?i - item)
+        (iseligibletoreceiverescuebreaths ?i - item)
+        (isrescuebreathed ?i - item)
         (istreatable ?i - item)
         (istreated ?i - item)
         (isdefibrillated ?i - station)
@@ -60,6 +64,7 @@
         (isventilated ?i - station)
         (isaeddefibrillated ?i - station)
         (iscprresuscitated ?i - station)
+
         ; State Predicates
         (loc ?p - player ?s - station)
         (at ?i - item ?s - station)
@@ -81,6 +86,8 @@
         (cangiveAED ?p - player)
         (cangiveCPR ?p - player)
         (cangivevent ?p - player)
+        (cangivechestcompression ?p - player)
+        (cangiverescuebreaths ?p - player)
     )
 
     ; ACTIONS
@@ -220,6 +227,43 @@
         )
         :effect (and
             (iscooked ?i)
+        )
+    )
+
+    ;Make the player compress patient's chest
+    (:action compress_chest
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (ispatient_bed_station ?s)
+            (ispatient ?i) 
+            (ischestcompressable ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (cangivechestcompression ?p)
+        )
+        :effect (and
+            (ischestcompressed ?i)
+            (iseligibletoreceiverescuebreaths ?i)
+        )
+    )
+
+    ;Make the player give patient rescue breaths
+    (:action give_rescue_breaths
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (ispatient_bed_station ?s)
+            (ispatient ?i) 
+            (ischestcompressed ?i)  ; Typically, rescue breaths follow chest compressions
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (cangiverescuebreaths ?p)
+        )
+        :effect (and
+            (isrescuebreathed ?i)
         )
     )
 

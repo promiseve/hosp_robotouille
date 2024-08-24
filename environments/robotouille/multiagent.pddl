@@ -12,7 +12,6 @@
     cpr_kit1 - item
     aed1 - item
     cpr_board1 - item
-    topbun1 - item
     robot1 - player
     robot2 - player
     robot3 - player
@@ -33,7 +32,6 @@
     (isusableforaed aed1)
     (iscpr_board cpr_board1)
     (iscpr_boardusuable cpr_board1)
-    (istopbun topbun1)
     (isrobot robot1)
     (isrobot robot2)
     (isrobot robot3)
@@ -52,7 +50,7 @@
     (vacant cpr_stool1)
     (empty board1)
     (vacant board1)
-    (at topbun1 table3)
+    (at cpr_board1 table3)
     (loc robot4 table3)
     (nothing robot1)
     (nothing robot2)
@@ -63,14 +61,14 @@
     (clear cpr_kit1)
     (on aed1 table2)
     (clear aed1)
-    (on topbun1 table3)
-    (clear topbun1)
+    (on cpr_board1 table3)
+    (clear cpr_board1)
     (cancook robot1)    (cancut robot1)    (canmoveitem robot1)    (canmove robot1)    (cancook robot2)    (cancut robot2)    (canmoveitem robot2)    (canmove robot2)    (cancook robot3)    (cancut robot3)    (canmoveitem robot3)    (canmove robot3)    (cancook robot4)    (cancut robot4)    (canmoveitem robot4)    (canmove robot4))
 (:goal
    (or
        (and
            (isusedforaed aed1)
-           (atop topbun1 aed1)
+           (atop cpr_board1 aed1)
            (isusedforcpr cpr_kit1)
            (atop aed1 cpr_kit1)
        )
