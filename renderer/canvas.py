@@ -92,7 +92,6 @@ class RobotouilleCanvas:
         image = self.asset_directory[image_name]
         image = pygame.transform.smoothscale(image, scale)
         surface.blit(image, position)
-
     def _draw_food_image(self, surface, food_name, obs, position):
         """
         Helper to draw a food image on the canvas.
@@ -126,12 +125,21 @@ class RobotouilleCanvas:
             food_image_name = food_image_name[:-1]
         print(f"Final food image name: {food_image_name}")
 
-        self._draw_image(
-            surface,
-            f"{food_image_name}.png",
-            position + self.pix_square_size * 0.125,
-            self.pix_square_size * 0.75,
-        )
+        # Special case for patient
+        if food_image_name == "patient":
+            self._draw_image(
+                surface,
+                f"{food_image_name}.png",
+                position,
+                self.pix_square_size
+            )
+        else:
+            self._draw_image(
+                surface,
+                f"{food_image_name}.png",
+                position + self.pix_square_size * 0.125,
+                self.pix_square_size * 0.75,
+            )
 
     def _draw_floor(self, surface):
         """
@@ -392,7 +400,8 @@ class RobotouilleCanvas:
                 stack_number[food] = 1
                 food_station = literal.variables[1].name
                 pos = self._get_station_position(food_station)
-                pos[1] -= RobotouilleCanvas.STATION_FOOD_OFFSET  # place the food slightly above the station
+                if "patient" not in food:
+                    pos[1] -= RobotouilleCanvas.STATION_FOOD_OFFSET  # place the food slightly above the station
                 print(f"Drawing food: {food} at {pos}")
                 self._draw_food_image(surface, food, obs, pos * self.pix_square_size)
             if literal.predicate == "atop":

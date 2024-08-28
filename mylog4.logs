@@ -1,0 +1,147 @@
+Initializing RobotouilleCanvas...
+layout: [[None, None, None, None, None, None], [None, 'table1', None, None, None, None], [None, None, None, None, None, None], [None, None, 'patient_bed_station1', None, None, 'table2'], [None, None, 'patient_legs1', None, None, None], [None, None, None, None, None, None]]
+players_pos: [(0, 3), (1, 5), (3, 2), (5, 4)]
+players_pose: [{'name': 'robot', 'position': (0, 3), 'direction': (0, 1)}, {'name': 'robot', 'position': (1, 5), 'direction': (0, 1)}, {'name': 'robot', 'position': (3, 2), 'direction': (-1, 0)}, {'name': 'robot', 'position': (5, 4), 'direction': (0, 1)}]
+grid_dimensions: [6 6]
+pix_square_size: [85.33333333 85.33333333]
+asset_directory: {}
+problem_dir_path: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/pddlgym/pddl/robotouille
+Initializing RobotouilleCanvas...
+layout: [[None, None, None, None, None, None], [None, 'table1', None, None, None, None], [None, None, None, None, None, None], [None, None, 'patient_bed_station1', None, None, 'table2'], [None, None, 'patient_legs1', None, None, None], [None, None, None, None, None, None]]
+players_pos: [(0, 3), (1, 5), (3, 2), (5, 4)]
+players_pose: [{'name': 'robot', 'position': (0, 3), 'direction': (0, 1)}, {'name': 'robot', 'position': (1, 5), 'direction': (0, 1)}, {'name': 'robot', 'position': (3, 2), 'direction': (-1, 0)}, {'name': 'robot', 'position': (5, 4), 'direction': (0, 1)}]
+grid_dimensions: [6 6]
+pix_square_size: [85.33333333 85.33333333]
+asset_directory: {}
+problem_dir_path: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/pddlgym/pddl/robotouille
+Drawing to surface...
+
+--- Layout Debug ---
+. . . . . .
+. ta . . . .
+. . . . . .
+. . pa . . ta
+. . pa . . .
+. . . . . .
+
+Player Positions:
+Player 0: (0, 3)
+Player 1: (1, 5)
+Player 2: (3, 2)
+Player 3: (5, 4)
+--- End Layout Debug ---
+
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: table.png at position: [85.33333333 85.33333333] with scale: [85.33333333 85.33333333]
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: table2
+Found position: [5. 3.]
+Player index: 3
+Player 3:
+  Initial position: (5, 4)
+  Station: table2
+  Station position: [5. 3.]
+Moving player 3 from (5, 4) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(1, 1), (2, 3), (5, 3), (2, 4)]
+Player positions excluding player 3: [(0, 3), (1, 5), (3, 2)]
+New position: ((5, 4), (0, 1))
+  After move_player_to_station: (5, 4)
+Player index: 0
+Player 3 selected: False
+  Final draw position (pixels): (426.66666666666663, 324.26666666666665)
+  Image: robot_back.png
+Drawing image: robot_back.png at position: (426.66666666666663, 324.26666666666665) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: patient1 at [2.   2.75]
+Drawing food image: patient1 at position: [170.66666667 234.66666667]
+Final food image name: patient
+Drawing image: patient.png at position: [181.33333333 245.33333333] with scale: [64. 64.]
+Getting position for station: table2
+Found position: [5. 3.]
+Drawing food: cpr_board1 at [5.   2.75]
+Drawing food image: cpr_board1 at position: [426.66666667 234.66666667]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [437.33333333 245.33333333] with scale: [64. 64.]
+Getting position for station: table1
+Found position: [1. 1.]
+Drawing food: aed1 at [1.   0.75]
+Drawing food image: aed1 at position: [85.33333333 64.        ]
+Final food image name: aed
+Drawing image: aed.png at position: [96.         74.66666667] with scale: [64. 64.]
+Drawing to surface...
+
+--- Layout Debug ---
+. . . . . .
+. ta . . . .
+. . . . . .
+. . pa . . ta
+. . pa . . .
+. . . . . .
+
+Player Positions:
+Player 0: (0, 3)
+Player 1: (1, 5)
+Player 2: (3, 2)
+Player 3: (5, 4)
+--- End Layout Debug ---
+
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
