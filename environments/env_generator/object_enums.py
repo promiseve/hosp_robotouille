@@ -17,6 +17,7 @@ class Item(Enum):
     CPR_BOARD = "cpr_board"
     VENTILATOR = "ventilator"
     CPR_STOOL = "cpr_stool"
+    SYRINGE = "syringe"
     
 
 class Player(Enum):

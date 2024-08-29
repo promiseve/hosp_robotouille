@@ -9,6 +9,7 @@
     aed1 - item
     patient1 - item
     cpr_board1 - item
+    syringe1 - item
     robot1 - player
     robot2 - player
     robot3 - player
@@ -27,6 +28,8 @@
     (ispatient patient1)
     (iscpr_board cpr_board1)
     (iscpr_boardusuable cpr_board1)
+    (issyringe syringe1)
+    (issyringe syringe1)
     (isrobot robot1)
     (isrobot robot2)
     (isrobot robot3)
@@ -38,6 +41,7 @@
     (at patient1 patient_bed_station1)
     (vacant patient_bed_station1)
     (at cpr_board1 table2)
+    (at syringe1 table2)
     (loc robot4 table2)
     (nothing robot1)
     (nothing robot2)
@@ -49,7 +53,8 @@
     (on patient1 patient_bed_station1)
     (clear patient1)
     (on cpr_board1 table2)
-    (clear cpr_board1)
+    (atop syringe1 cpr_board1)
+    (clear syringe1)
     (cancook robot1)    (cancut robot1)    (canmoveitem robot1)    (canmove robot1)    (cancook robot2)    (cancut robot2)    (canmoveitem robot2)    (canmove robot2)    (cancook robot3)    (cancut robot3)    (canmoveitem robot3)    (canmove robot3)    (cancook robot4)    (cancut robot4)    (canmoveitem robot4)    (canmove robot4))
 (:goal
    (or

@@ -64,6 +64,7 @@
         (isventilated ?i - station)
         (isaeddefibrillated ?i - station)
         (iscprresuscitated ?i - station)
+        (issyringe ?i - item)
 
         ; State Predicates
         (loc ?p - player ?s - station)

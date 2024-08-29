@@ -65,6 +65,15 @@
             "predicates": [
                 "isusableforaed"
             ]
+        },
+        {
+            "name": "syringe",
+            "x": 5, 
+            "y": 2,
+            "stack-level": 0,
+            "predicates": [
+                "issyringe"
+            ]
         }
     ],
 "players": [
