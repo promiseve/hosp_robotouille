@@ -57,6 +57,8 @@ def create_action_from_control(env, obs, action, renderer):
                 or "cut(" in str_valid_actions[index]
                 or "fry(" in str_valid_actions[index]
                 or "fry_cut_item(" in str_valid_actions[index]
+                or "compresschest(" in str_valid_actions[index]
+                or "giverescuebreaths(" in str_valid_actions[index]
             ):
                 # We look for fry( instead which should be guaranteed to only match the fry action, and not the fryer
                 try:
@@ -80,6 +82,12 @@ def create_action_from_control(env, obs, action, renderer):
                 return str_valid_actions[index]
             elif "fry_cut_item" in literal_names:
                 index = literal_names.index("fry_cut_item")
+                return str_valid_actions[index]
+            elif "compresschest" in literal_names:
+                index = literal_names.index("compresschest")
+                return str_valid_actions[index]
+            elif "giverescuebreaths" in literal_names:
+                index = literal_names.index("giverescuebreaths")
                 return str_valid_actions[index]
         elif action.key == pygame.K_SPACE:
             return "noop"

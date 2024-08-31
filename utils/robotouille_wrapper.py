@@ -83,6 +83,43 @@ class RobotouilleWrapper(gym.Wrapper):
                 if item_status["cut"] == 3:
                     item_status["picked-up"] = False
             return self.prev_step
+        #add a similar logic for action compresschest
+        elif action_name == "compresschest":
+            item = next(
+                filter(
+                    lambda typed_entity: typed_entity.var_type == "item",
+                    action.variables,
+                )
+            )
+            item_status = self.state.get(item.name)
+            if item_status is None:
+                self.state[item.name] = {"compresschest": 1}
+            elif item_status.get("compresschest") is None:
+                item_status["compresschest"] = 1
+            else:
+                item_status["compresschest"] += 1
+                if item_status["compresschest"] == 3:
+                    item_status["picked-up"] = False
+            return self.prev_step
+        #add a similar logic for action giverescuebreaths
+        elif action_name == "giverescuebreaths":
+            item = next(
+                filter(
+                    lambda typed_entity: typed_entity.var_type == "item",
+                    action.variables,
+                )
+            )
+            item_status = self.state.get(item.name)
+            if item_status is None:
+                self.state[item.name] = {"giverescuebreaths": 1}
+            elif item_status.get("giverescuebreaths") is None:
+                item_status["giverescuebreaths"] = 1
+            else:
+                item_status["giverescuebreaths"] += 1
+                if item_status["giverescuebreaths"] == 2:
+                    item_status["picked-up"] = False
+            return self.prev_step
+        #add a similar logic for action gatherfood
         elif action_name == "cook":
             item = next(
                 filter(
@@ -185,6 +222,25 @@ class RobotouilleWrapper(gym.Wrapper):
                     if state["fry_time"] >= max_fry_time:
                         literal = pddlgym_utils.str_to_literal(f"isfried({item}:item)")
                         state_updates.append(literal)
+                #add similar logic for compresschest and giverescuebreaths
+                elif status == "compresschest":
+                    item_name, _ = robotouille_utils.trim_item_ID(item)
+                    num_compressions = self.config["num_compressions"]
+                    max_num_compressions = num_compressions.get(item_name, num_compressions["default"])
+                    if state >= max_num_compressions:
+                        literal = pddlgym_utils.str_to_literal(f"ischestcompressed({item}:item)")
+                        state_updates.append(literal)
+                elif status == "giverescuebreaths":
+                    item_name, _ = robotouille_utils.trim_item_ID(item)
+                    num_breaths = self.config["num_breaths"]
+                    max_num_breaths = num_breaths.get(item_name, num_breaths["default"])
+                    if state >= max_num_breaths:
+                        literal = pddlgym_utils.str_to_literal(f"isbreathgiven({item}:item)")
+                        state_updates.append(literal)
+                    if item_name == "patient":
+                        literal = pddlgym_utils.str_to_literal(f"ischestcompressable({item}:item)")
+                        state_updates.append(literal)
+
         env_state = self.env.get_state()
         new_literals = env_state.literals.union(state_updates)
         new_env_state = pddlgym.structs.State(

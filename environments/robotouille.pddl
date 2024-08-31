@@ -86,11 +86,12 @@
         (cangiveAED ?p - player)
         (cangiveCPR ?p - player)
         (cangivevent ?p - player)
-        (cangivechestcompression ?p - player)
+        (cancompresschest ?p - player)
         (cangiverescuebreaths ?p - player)
     )
 
     ; ACTIONS
+
 
     ; Make the nurse player place a medicine item on top the patient station
     (:action givemedicine
@@ -231,7 +232,7 @@
     )
 
     ;Make the player compress patient's chest
-    (:action compress_chest
+    (:action compresschest
         :parameters (?p - player ?i - item ?s - station)
         :precondition (and
             (ispatient_bed_station ?s)
@@ -241,7 +242,7 @@
             (loc ?p ?s)
             (clear ?i)
             (selected ?p)
-            (cangivechestcompression ?p)
+            (cancompresschest ?p)
         )
         :effect (and
             (ischestcompressed ?i)
@@ -250,7 +251,7 @@
     )
 
     ;Make the player give patient rescue breaths
-    (:action give_rescue_breaths
+    (:action giverescuebreaths
         :parameters (?p - player ?i - item ?s - station)
         :precondition (and
             (ispatient_bed_station ?s)
@@ -322,7 +323,26 @@
             (not (has ?p ?i1))
         )
     )
-
+    ; Make the player stack an item under another item at a station
+    (:action stack_under
+        :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
+        :precondition (and
+            (has ?p ?i1)
+            (loc ?p ?s)
+            (on ?i2 ?s)
+            (selected ?p)
+            (canmoveitem ?p)
+        )
+        :effect (and
+            (nothing ?p)
+            (at ?i1 ?s)
+            (on ?i1 ?s)
+            (atop ?i2 ?i1)
+            (not (on ?i2 ?s))
+            (not (has ?p ?i1))
+        )
+    )
+    
     ; Make the player cut a cuttable item on a cutting board
     (:action cut
         :parameters (?p - player ?i - item ?s - station)

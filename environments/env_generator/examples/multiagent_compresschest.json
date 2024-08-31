@@ -40,7 +40,7 @@
             "y": 2,
             "stack-level": 0,
             "predicates": [
-                "ispatient"
+                "ispatient", "ischestcompressable"
             ]
         },
         {
@@ -79,9 +79,7 @@
         "direction": [0, 1],
         "actions": [
             "move",
-            "cut",
-            "cook",
-            "moveitem"
+            "compresschest"
         ]
     },
     {
@@ -91,9 +89,7 @@
         "direction": [-1, 0],
         "actions": [
             "move",
-            "cut",
-            "cook",
-            "moveitem"
+            "compresschest"
         ]
     },
     {
@@ -103,9 +99,7 @@
         "direction": [0, 1],
         "actions": [
             "move",
-            "cut",
-            "cook",
-            "moveitem"
+            "compresschest"
         ]
     },
     {
@@ -115,52 +109,19 @@
         "direction": [0, 1],
         "actions": [
             "move",
-            "cut",
-            "cook",
-            "moveitem"
+            "compresschest"
         ]
     }
 ],
-    "goal_description": "Resuscitate the patient by using AED, performing CPR, and providing ventilation.",
+    "goal_description": "Compress patients chest.",
     "goal": [
         {
-            "predicate": "isusedforaed",
+            "predicate": "ischestcompressed",
             "args": [
-                "aed"
+                "patient"
             ],
             "ids": [
                 1
-            ]
-        },
-        {
-            "predicate": "atop",
-            "args": [
-                "cpr_board",
-                "aed"
-            ],
-            "ids": [
-                2,
-                1
-            ]
-        },
-        {
-            "predicate": "isusedforcpr",
-            "args": [
-                "cpr_kit"
-            ],
-            "ids": [
-                3
-            ]
-        },
-        {
-            "predicate": "atop",
-            "args": [
-                "aed",
-                "cpr_kit"
-            ],
-            "ids": [
-                1,
-                3
             ]
         }
     ]
