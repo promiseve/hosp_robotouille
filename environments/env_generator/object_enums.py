@@ -17,7 +17,14 @@ class Item(Enum):
     CPR_BOARD = "cpr_board"
     VENTILATOR = "ventilator"
     CPR_STOOL = "cpr_stool"
+    # syringe in different states
     SYRINGE = "syringe"
+    # SYRINGE_TOPRIGHT = "syringe_topright"
+    # aeds have very different images, so need different enums
+    # AED_ON_TABLE = "aed_on_table"
+    # AED_ON_HCW = "aed_on_hcw"
+    # # AED_ON_PATIENT = ""
+    PUMP = "pump"
     
 
 class Player(Enum):
@@ -32,6 +39,8 @@ class Station(Enum):
     PATIENT = "patient"
     PATIENT_LEGS = "patient_legs"
     PATIENT_BED_STATION = "patient_bed_station"
+    HOSP_CART_LEFT = "hospital_cart_left"
+    HOSP_CART_RIGHT = "hospital_cart_right"
 
 def str_to_typed_enum(s):
     """

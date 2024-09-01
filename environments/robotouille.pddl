@@ -64,7 +64,10 @@
         (isventilated ?i - station)
         (isaeddefibrillated ?i - station)
         (iscprresuscitated ?i - station)
+        (ishospital_cart_left ?i - station)
+        (ishospital_cart_right ?i - station)
         (issyringe ?i - item)
+        (ispump ?i - item)
 
         ; State Predicates
         (loc ?p - player ?s - station)
