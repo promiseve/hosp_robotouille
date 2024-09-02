@@ -136,7 +136,7 @@ class RobotouilleCanvas:
         print(f"Final food image name: {food_image_name}")
 
         # Special case for patient
-        if food_image_name == "patient":
+        if food_image_name == "patient" or food_image_name == "rescuebreathedpatient":
             self._draw_image(
                 surface,
                 f"{food_image_name}.png",

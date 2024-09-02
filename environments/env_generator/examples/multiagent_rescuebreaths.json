@@ -35,7 +35,7 @@
             "y": 2,
             "stack-level": 0,
             "predicates": [
-                "ispatient", "ischestcompressable"
+                "ispatient", "ischestcompressed"
             ]
         }
     ],
@@ -47,14 +47,14 @@
         "direction": [0, 1],
         "actions": [
             "move",
-            "compresschest"
+            "giverescuebreaths"
         ]
     }
 ],
     "goal_description": "Compress patients chest.",
     "goal": [
         {
-            "predicate": "ischestcompressed",
+            "predicate": "isrescuebreathed",
             "args": [
                 "patient"
             ],
