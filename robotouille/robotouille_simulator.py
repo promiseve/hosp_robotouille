@@ -31,7 +31,7 @@ def simulator(
     seed: int = 42,
     noisy_randomization: bool = False,
     mode=mode.PLAY,
-    type=type.MULTI,
+    type=type.SINGLE,
 ):
     # Your code for robotouille goes here
     env, json, renderer = create_robotouille_env(

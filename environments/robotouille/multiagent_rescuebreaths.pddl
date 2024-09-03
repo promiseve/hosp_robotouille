@@ -29,10 +29,7 @@
 (:goal
    (or
        (and
-           (isrescuebreathed patient_legs1)
-       )
-       (and
-           (isrescuebreathed patient_bed_station1)
+           (isrescuebreathed patient1)
        )
    )
 )
