@@ -119,12 +119,14 @@ class RobotouilleCanvas:
                 elif literal.variables[0] == food_image_name[3:]:
                     food_image_name = "fried" + food_image_name[3:]
             if literal.predicate == "ischestcompressed":
+                print(f"Found chestcompressed: {literal.variables[0]}")
                 if literal.variables[0] == food_image_name:
                     food_image_name = "chestcompressed" + food_image_name
                 elif literal.variables[0] == food_image_name[3:]:
                     food_image_name = "chestcompressed" + food_image_name[3:]
             if literal.predicate == "isrescuebreathed":
                 if literal.variables[0] == food_image_name:
+                    print(f"Found rescuebreathed: {literal.variables[0]}")
                     food_image_name = "rescuebreathed" + food_image_name
                 elif literal.variables[0] == food_image_name[3:]:
                     food_image_name = "rescuebreathed" + food_image_name[3:]

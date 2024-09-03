@@ -10,9 +10,6 @@
     patient1 - item
     cpr_board1 - item
     robot1 - player
-    robot2 - player
-    robot3 - player
-    robot4 - player
 )
 (:init
     (istable table1)
@@ -29,9 +26,6 @@
     (iscpr_board cpr_board1)
     (iscpr_boardusuable cpr_board1)
     (isrobot robot1)
-    (isrobot robot2)
-    (isrobot robot3)
-    (isrobot robot4)
     (at aed1 table1)
     (vacant table1)
     (empty patient_legs1)
@@ -39,11 +33,8 @@
     (at patient1 patient_bed_station1)
     (vacant patient_bed_station1)
     (at cpr_board1 table2)
-    (loc robot4 table2)
+    (loc robot1 table2)
     (nothing robot1)
-    (nothing robot2)
-    (nothing robot3)
-    (nothing robot4)
     (selected robot1)
     (on aed1 table1)
     (clear aed1)
@@ -51,7 +42,7 @@
     (clear patient1)
     (on cpr_board1 table2)
     (clear cpr_board1)
-    (canmove robot1)    (cancompresschest robot1)    (canmove robot2)    (cancompresschest robot2)    (canmove robot3)    (cancompresschest robot3)    (canmove robot4)    (cancompresschest robot4))
+    (canmove robot1)    (cancompresschest robot1))
 (:goal
    (or
        (and

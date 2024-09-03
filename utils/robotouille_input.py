@@ -86,8 +86,9 @@ def create_action_from_control(env, obs, action, renderer):
             elif "compresschest" in literal_names:
                 index = literal_names.index("compresschest")
                 return str_valid_actions[index]
-            elif "giverescuebreaths" in literal_names:
-                index = literal_names.index("giverescuebreaths")
-                return str_valid_actions[index]
-        elif action.key == pygame.K_SPACE:
+    elif action.key == pygame.K_g:
+        if "giverescuebreaths" in literal_names:
+            index = literal_names.index("giverescuebreaths")
+            return str_valid_actions[index]
+    elif action.key == pygame.K_SPACE:
             return "noop"

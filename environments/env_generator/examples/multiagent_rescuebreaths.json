@@ -13,11 +13,6 @@
     },
     "stations": [
         {
-            "name": "table",
-            "x": 1,
-            "y": 4
-        },
-        {
             "name": "patient_legs",
             "x": 2, 
             "y": 1  
@@ -40,34 +35,7 @@
             "y": 2,
             "stack-level": 0,
             "predicates": [
-                "ispatient", "ischestcompressable"
-            ]
-        },
-        {
-            "name": "cpr_board",
-            "x": 5,
-            "y": 2,
-            "stack-level": 0,
-            "predicates": [
-                "iscpr_boardusuable"
-            ]
-        },
-        {
-            "name": "cpr_kit",
-            "x": 0,
-            "y": 3,
-            "stack-level": 0,
-            "predicates": [
-                "isusableforcpr"
-            ]
-        },
-        {
-            "name": "aed",
-            "x": 1,
-            "y": 4,
-            "stack-level": 0,
-            "predicates": [
-                "isusableforaed"
+                "ispatient", "ischestcompressable", "iseligibletoreceiverescuebreaths"
             ]
         }
     ],
@@ -79,14 +47,14 @@
         "direction": [0, 1],
         "actions": [
             "move",
-            "compresschest"
+            "giverescuebreaths"
         ]
     }
 ],
-    "goal_description": "Compress patients chest.",
+    "goal_description": "Give patient rescue breaths",
     "goal": [
         {
-            "predicate": "ischestcompressed",
+            "predicate": "isrescuebreathed",
             "args": [
                 "patient"
             ],
