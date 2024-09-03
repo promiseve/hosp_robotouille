@@ -216,6 +216,7 @@ def run_sequential(args, logger):
             for _ in range(n_test_runs):
                 runner.run(test_mode=True)
 
+        runner.update_best_actions()
         if args.save_model and (
             runner.t_env - model_save_time >= args.save_model_interval
             or model_save_time == 0
@@ -232,8 +233,6 @@ def run_sequential(args, logger):
             # use appropriate filenames to do critics, optimizer states
             learner.save_models(save_path)
             runner.save_best_actions(save_path)
-        else:
-            runner.update_best_actions()
 
         episode += args.batch_size_run
 

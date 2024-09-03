@@ -37,7 +37,10 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         self._wrap_env()
 
         # Initialize WandB with the metrics config
-        wandb.init(project="6756-rl-experiments", config=self.metrics_config)
+        wandb.init(
+            project="6756-rl-experiments",
+            config=self.metrics_config,
+        )
 
     def log_metrics(self, update_dict):
         """
@@ -103,8 +106,6 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 self.pddl_env.taken_actions.append("noop")
                 reward = 0
                 self.pddl_env.prev_step = (obs, reward, done, info)
-                reward -= 0.05
-                reward = (reward + 15) / 50
                 rewards.append(reward)
                 if self.pddl_env._current_selected_player(obs) == "robot1":
                     self.pddl_env.timesteps += 1
@@ -112,7 +113,9 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
             else:
                 action = str(action)
                 obs, reward, done, info = self.pddl_env.step(action, interactive)
-                reward = (reward + 15) / 50
+                # Reward .05 for correct action. .05 * 3 agents * 100 timesteps + max 35 reward = 50
+                # Scale between 0 to 1
+                reward = (reward + 0.05) / 50
 
                 self.pddl_env.prev_step = (obs, reward, done, info)
 

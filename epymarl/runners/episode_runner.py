@@ -24,7 +24,7 @@ class EpisodeRunner:
 
         self.t_env = 0
 
-        self.best_episode_reward = -9999
+        self.best_episode_reward = 0
         self.best_actions = []
 
         self.train_returns = []
