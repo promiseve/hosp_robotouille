@@ -13,12 +13,8 @@
     (istable table1)
     (ispatient patient1)
     (ispatient patient1)
-<<<<<<< HEAD
-    (ischestcompressed patient1)
-=======
     (ischestcompressable patient1)
     (iseligibletoreceiverescuebreaths patient1)
->>>>>>> b09d059ba24caf8e0bedaa1d16e1c1de90ee93b0
     (isrobot robot1)
     (empty patient_legs1)
     (vacant patient_legs1)
@@ -34,14 +30,7 @@
 (:goal
    (or
        (and
-<<<<<<< HEAD
            (isrescuebreathed patient1)
-=======
-           (isrescuebreathed patient_legs1)
-       )
-       (and
-           (isrescuebreathed patient_bed_station1)
->>>>>>> b09d059ba24caf8e0bedaa1d16e1c1de90ee93b0
        )
    )
 )

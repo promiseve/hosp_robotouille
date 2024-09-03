@@ -257,7 +257,6 @@
             (ispatient_bed_station ?s)
             (ispatient ?i) 
             (ischestcompressed ?i)  ; Typically, rescue breaths follow chest compressions
-            (iseligibletoreceiverescuebreaths ?i)
             (on ?i ?s)
             (loc ?p ?s)
             (clear ?i)
