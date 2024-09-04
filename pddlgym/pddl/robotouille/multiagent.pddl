@@ -9,9 +9,9 @@
     table2 - station
     cpr_kit1 - item
     pump1 - item
-    aed1 - item
     patient1 - item
     syringe1 - item
+    aed1 - item
     cpr_board1 - item
     robot1 - player
     robot2 - player
@@ -28,11 +28,11 @@
     (iscpr_kit cpr_kit1)
     (isusableforcpr cpr_kit1)
     (ispump pump1)
-    (isaed aed1)
-    (isusableforaed aed1)
     (ispatient patient1)
     (ispatient patient1)
     (issyringe syringe1)
+    (isaed aed1)
+    (isusableforaed aed1)
     (iscpr_board cpr_board1)
     (iscpr_boardusuable cpr_board1)
     (isrobot robot1)
@@ -41,7 +41,7 @@
     (isrobot robot4)
     (at pump1 hospital_cart_left1)
     (vacant hospital_cart_left1)
-    (at aed1 table1)
+    (empty table1)
     (vacant table1)
     (empty patient_legs1)
     (vacant patient_legs1)
@@ -53,13 +53,11 @@
     (loc robot4 table2)
     (nothing robot1)
     (nothing robot2)
-    (nothing robot3)
+    (has robot3 aed1)
     (nothing robot4)
     (selected robot1)
     (on pump1 hospital_cart_left1)
     (clear pump1)
-    (on aed1 table1)
-    (clear aed1)
     (on patient1 patient_bed_station1)
     (clear patient1)
     (on syringe1 hospital_cart_right1)

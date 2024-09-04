@@ -104,6 +104,7 @@ class RobotouilleCanvas:
         """
         print(f"Drawing food image: {food_name} at position: {position}")
         food_image_name = food_name
+
         # Check if cut or cooked or fried
         for literal in obs:
             if literal.predicate == "iscut" and literal.variables[0] == food_image_name:
@@ -118,11 +119,21 @@ class RobotouilleCanvas:
                     food_image_name = "fried" + food_image_name
                 elif literal.variables[0] == food_image_name[3:]:
                     food_image_name = "fried" + food_image_name[3:]
+
         # Remove and store ID
+        # NOTE: Remove and store ID used to be done right before calling draw image, 
+        # there might be unforeseen side effects of this change still
         food_id = ""
         while food_image_name[-1].isdigit():
             food_id += food_image_name[-1]
             food_image_name = food_image_name[:-1]
+
+        for literal in obs:
+            # aed visualization code
+            if literal.predicate == "has" and "aed" in literal.variables[1]:
+                # case when aed is held by player
+                food_image_name = "aed_on_hcw"
+
         print(f"Final food image name: {food_image_name}")
 
         # Special case for patient
@@ -400,7 +411,7 @@ class RobotouilleCanvas:
                 stack_number[food] = 1
                 food_station = literal.variables[1].name
                 pos = self._get_station_position(food_station)
-                if "patient" not in food:
+                if "patient" not in food and "cart" not in food_station:
                     pos[1] -= RobotouilleCanvas.STATION_FOOD_OFFSET  # place the food slightly above the station
                 print(f"Drawing food: {food} at {pos}")
                 self._draw_food_image(surface, food, obs, pos * self.pix_square_size)
