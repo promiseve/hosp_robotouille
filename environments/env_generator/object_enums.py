@@ -25,6 +25,7 @@ class Item(Enum):
     # AED_ON_HCW = "aed_on_hcw"
     # # AED_ON_PATIENT = ""
     PUMP = "pump"
+    PATIENT = "patient"
     
 
 class Player(Enum):
