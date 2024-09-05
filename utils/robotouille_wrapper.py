@@ -229,17 +229,20 @@ class RobotouilleWrapper(gym.Wrapper):
                     max_num_compressions = num_compressions.get(item_name, num_compressions["default"])
                     if state >= max_num_compressions:
                         literal = pddlgym_utils.str_to_literal(f"ischestcompressed({item}:item)")
+                        #print literal
+                        print("literal:",literal)
                         state_updates.append(literal)
+                        print("state_updates:",state_updates)
                 elif status == "giverescuebreaths":
                     item_name, _ = robotouille_utils.trim_item_ID(item)
                     num_breaths = self.config["num_breaths"]
                     max_num_breaths = num_breaths.get(item_name, num_breaths["default"])
                     if state >= max_num_breaths:
-                        literal = pddlgym_utils.str_to_literal(f"isbreathgiven({item}:item)")
+                        literal = pddlgym_utils.str_to_literal(f"isrescuebreathed({item}:item)")
                         state_updates.append(literal)
-                    if item_name == "patient":
-                        literal = pddlgym_utils.str_to_literal(f"ischestcompressable({item}:item)")
-                        state_updates.append(literal)
+                    # if item_name == "patient":
+                    #     literal = pddlgym_utils.str_to_literal(f"ischestcompressable({item}:item)")
+                    #     state_updates.append(literal)
 
         env_state = self.env.get_state()
         new_literals = env_state.literals.union(state_updates)
@@ -536,6 +539,7 @@ class RobotouilleWrapper(gym.Wrapper):
             done (bool): Whether or not the episode is done.
             info (dict): A dictionary of metadata about the step.
         """
+        print("action: ", action)
         expanded_truths = self.prev_step[3]["expanded_truths"]
         expanded_states = self.prev_step[3]["expanded_states"]
 

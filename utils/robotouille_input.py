@@ -27,6 +27,7 @@ def create_action_from_control(env, obs, action, renderer):
         return
 
     valid_actions = get_valid_moves(env, obs, renderer)
+    print("obs", obs)
     str_valid_actions = list(map(str, valid_actions))
     action = action[0]
     if action.type == pygame.MOUSEBUTTONDOWN:
@@ -86,9 +87,15 @@ def create_action_from_control(env, obs, action, renderer):
             elif "compresschest" in literal_names:
                 index = literal_names.index("compresschest")
                 return str_valid_actions[index]
-    elif action.key == pygame.K_g:
-        if "giverescuebreaths" in literal_names:
-            index = literal_names.index("giverescuebreaths")
-            return str_valid_actions[index]
-    elif action.key == pygame.K_SPACE:
-            return "noop"
+            elif "giverescuebreaths" in literal_names:
+                index = literal_names.index("giverescuebreaths")
+                return str_valid_actions[index]
+        # elif action.key == pygame.K_g:
+        #     literal_names = [
+        #         str_valid_action.split("(")[0] for str_valid_action in str_valid_actions
+        #     ]
+        #     if "giverescuebreaths" in literal_names:
+        #         index = literal_names.index("giverescuebreaths")
+        #         return str_valid_actions[index]
+        elif action.key == pygame.K_SPACE:
+                return "noop"

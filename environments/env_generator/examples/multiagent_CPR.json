@@ -37,6 +37,15 @@
             "predicates": [
                 "ispatient","ischestcompressable"
             ]
+        },
+        {
+            "name": "cpr_board",
+            "x": 5,
+            "y": 2,
+            "stack-level": 0,
+            "predicates": [
+                "iscpr_boardusuable"
+            ]
         }
     ],
 "players": [
@@ -47,7 +56,7 @@
         "direction": [0, 1],
         "actions": [
             "move",
-            "compresschest",
+            "chestcompress",
             "giverescuebreaths"
         ]
     }

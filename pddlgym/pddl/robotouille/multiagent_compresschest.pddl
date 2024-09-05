@@ -46,10 +46,7 @@
 (:goal
    (or
        (and
-           (ischestcompressed patient_legs1)
-       )
-       (and
-           (ischestcompressed patient_bed_station1)
+           (ischestcompressed patient1)
        )
    )
 )

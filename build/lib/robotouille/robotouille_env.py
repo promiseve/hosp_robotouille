@@ -72,7 +72,7 @@ def create_robotouille_env(problem_filename, seed=None, noisy_randomization=Fals
         environment_json (dict): The environment json.
         renderer (RobotouilleRenderer): The Robotouille renderer.
     """
-    env_name = "hospital_robotouille"
+    env_name = "robotouille"
     is_test_env = False
     json_filename = f"{problem_filename}.json"
     environment_json = builder.load_environment(json_filename)
