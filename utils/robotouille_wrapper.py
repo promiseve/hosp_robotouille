@@ -252,7 +252,8 @@ class RobotouilleWrapper(gym.Wrapper):
             new_literals, env_state.objects, env_state.goal
         )
         self.env.set_state(new_env_state)
-        return new_env_state
+        goal_reached = pddlgym.inference.check_goal(new_env_state, env_state.goal)
+        return new_env_state, goal_reached
 
     def _count_players(self, obs):
         """
@@ -559,7 +560,7 @@ class RobotouilleWrapper(gym.Wrapper):
 
         obs, reward, done, info = self._handle_action(action)
         obs, reward, _, info = self._change_selected_player(obs)
-        obs = self._state_update()
+        obs, done = self._state_update()
         toggle_array = pddlgym_utils.create_toggle_array(
             expanded_truths, expanded_states, obs.literals
         )

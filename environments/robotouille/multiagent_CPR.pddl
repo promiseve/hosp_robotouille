@@ -30,10 +30,11 @@
     (clear patient1)
     (on cpr_board1 table1)
     (clear cpr_board1)
-    (canmove robot1)    (cangiverescuebreaths robot1))
+    (canmoveitem robot1)    (canmove robot1)    (cancompresschest robot1)    (cangiverescuebreaths robot1))
 (:goal
    (or
        (and
+           (atop patient1 cpr_board1)
            (isrescuebreathed patient1)
        )
    )

@@ -56,13 +56,24 @@
         "direction": [0, 1],
         "actions": [
             "move",
-            "chestcompress",
+            "moveitem",
+            "compresschest",
             "giverescuebreaths"
         ]
     }
 ],
     "goal_description": "Give patient rescue breaths",
     "goal": [
+        {
+            "predicate": "atop",
+            "args": [
+                "patient",
+                "cpr_board"
+            ],
+            "ids": [
+                1,2
+            ]
+        },
         {
             "predicate": "isrescuebreathed",
             "args": [
