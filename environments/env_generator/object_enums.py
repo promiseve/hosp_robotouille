@@ -18,8 +18,10 @@ class Item(Enum):
     CPR_BOARD = "cpr_board"
     VENTILATOR = "ventilator"
     CPR_STOOL = "cpr_stool"
+    PATIENT_LEGS = "patient_legs"       
     PATIENT = "patient"
-
+    
+    
 
 class Player(Enum):
     ROBOT = "robot"
@@ -35,7 +37,7 @@ class Station(Enum):
 
 
 def str_to_typed_enum(s):
-    """
+    """`
     Attempts to convert a string into any of the typed enums.
     Args:
         s (str): String to convert.

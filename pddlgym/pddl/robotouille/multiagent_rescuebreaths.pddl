@@ -14,7 +14,6 @@
     (ispatient patient1)
     (ispatient patient1)
     (ischestcompressable patient1)
-    (iseligibletoreceiverescuebreaths patient1)
     (isrobot robot1)
     (empty patient_legs1)
     (vacant patient_legs1)
@@ -26,7 +25,7 @@
     (selected robot1)
     (on patient1 patient_bed_station1)
     (clear patient1)
-    (canmove robot1)    (cangiverescuebreaths robot1))
+    (canmove robot1)    (cancompresschest robot1)    (cangiverescuebreaths robot1))
 (:goal
    (or
        (and
