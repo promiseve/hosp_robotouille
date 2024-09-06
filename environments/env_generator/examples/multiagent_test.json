@@ -2,13 +2,9 @@
     "width": 6,
     "height": 6,
     "config": {
-        "num_compressions": {
-            "patient": 3,
+        "num_cuts": {
+            "lettuce": 3,
             "default": 3
-        },
-        "num_breaths": {
-            "patient": 2,
-            "default": 2
         }
     },
     "stations": [
@@ -73,8 +69,8 @@
         },
         {
             "name": "aed",
-            "x": 2,
-            "y": 2,
+            "x": 1,
+            "y": 4,
             "stack-level": 0,
             "predicates": [
                 "isusableforaed"
@@ -86,7 +82,6 @@
             "y": 3,
             "stack-level": 0,
             "predicates": [
-                "issyringeusable"
             ]
         },
         {
@@ -95,7 +90,6 @@
             "y": 3,
             "stack-level": 0,
             "predicates": [
-                "ispumpusable"
             ]
         }
     ],
@@ -103,8 +97,8 @@
     {
         "name": "robot",
         "x": 0,
-        "y": 3,
-        "direction": [1, 0],
+        "y": 2,
+        "direction": [0, 1],
         "actions": [
             "move",
             "cut",
@@ -113,7 +107,7 @@
         ]
     },
     {
-        "name": "robot",
+        "name": "nurse",
         "x": 3,
         "y": 3,
         "direction": [-1, 0],
@@ -125,8 +119,8 @@
         ]
     },
     {
-        "name": "robot",
-        "x": 2,
+        "name": "nurse",
+        "x": 1,
         "y": 0,
         "direction": [0, 1],
         "actions": [
@@ -137,7 +131,7 @@
         ]
     },
     {
-        "name": "robot",
+        "name": "nurse",
         "x": 5,
         "y": 1,
         "direction": [0, 1],

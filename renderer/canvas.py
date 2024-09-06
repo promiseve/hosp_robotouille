@@ -1,6 +1,7 @@
 import os
 import pygame
 import numpy as np
+import utils.robotouille_utils as robotouille_utils
 
 
 class RobotouilleCanvas:
@@ -107,6 +108,7 @@ class RobotouilleCanvas:
         """
         print(f"Drawing food image: {food_name} at position: {position}")
         food_image_name = food_name
+
         # Check if cut or cooked or fried
         for literal in obs:
             if literal.predicate == "iscut" and literal.variables[0] == food_image_name:
@@ -121,6 +123,7 @@ class RobotouilleCanvas:
                     food_image_name = "fried" + food_image_name
                 elif literal.variables[0] == food_image_name[3:]:
                     food_image_name = "fried" + food_image_name[3:]
+                    
             if literal.predicate == "ischestcompressed":
                 print(f"Found chestcompressed: {literal.variables[0]}")
                 if literal.variables[0] == food_image_name:
@@ -133,11 +136,44 @@ class RobotouilleCanvas:
                     food_image_name = "rescuebreathed" + food_image_name
                 elif literal.variables[0] == food_image_name[3:]:
                     food_image_name = "rescuebreathed" + food_image_name[3:]
+
+                    
         # Remove and store ID
-        food_id = ""
-        while food_image_name[-1].isdigit():
-            food_id += food_image_name[-1]
-            food_image_name = food_image_name[:-1]
+        # NOTE: Remove and store ID used to be done right before calling draw image, 
+        # there might be unforeseen side effects of this change still
+        food_image_name, food_id = robotouille_utils.trim_item_ID(food_image_name)
+
+
+        for literal in obs:
+            if "aed" in food_image_name:
+                # aed visualization code
+                if literal.predicate == "has" and "aed" in literal.variables[1]:
+                    # case when aed is held by player
+                    food_image_name = "aed_on_hcw"
+                if literal.predicate == "at":
+                    print("at variables: ", literal.variables)
+                if literal.predicate == "at" and "aed" in literal.variables[0] and "patient" in literal.variables[1]:
+                    # case when aed is on patient
+                    print("AED ON PATIENT")
+                    food_image_name = "aed_white"
+            if "pump" in food_image_name:
+                # pump visualization code
+                if literal.predicate == "has" and "pump" in literal.variables[1]:
+                    # case when pump is held by player
+                    food_image_name = "pump_on_hcw"
+                if literal.predicate == "at" and "pump" in literal.variables[0] and "patient" in literal.variables[1]:
+                    # case when pump is on patient
+                    food_image_name = "pump_on_patient"
+            if "syringe" in food_image_name:
+                # syringe visualization code
+                if literal.predicate == "has" and "syringe" in literal.variables[1]:
+                    # case when syringe is held by player
+                    food_image_name = "syringe_on_hcw"
+                if literal.predicate == "at" and "syringe" in literal.variables[0] and "patient" in literal.variables[1]:
+                    # case when syringe is on patient
+                    food_image_name = "syringe_on_patient"
+
+
         print(f"Final food image name: {food_image_name}")
 
         # Special case for patient
@@ -203,6 +239,9 @@ class RobotouilleCanvas:
         player_index = int(literal.variables[0].name[5:]) - 1
         print(f"Player index: {player_index}")
         return player_index
+    
+    def _get_player_name_and_index(self, literal):
+        return robotouille_utils.trim_item_ID(literal.variables[0].name)
 
     def _get_station_locations(self, layout):
         """
@@ -315,7 +354,7 @@ class RobotouilleCanvas:
                 return selected_player_index == player_index
         return False
 
-    def _get_player_image_name(self, direction, selected):
+    def _get_player_image_name(self, player_name, player_id, direction, selected):
         """
         Returns the image name of the player given their direction.
 
@@ -330,17 +369,31 @@ class RobotouilleCanvas:
         """
 
         selected_string = "_selected" if selected else ""
+        nurse_str = "nurse"
+        nurse_id_number = int(player_id) - 1
 
         if direction == (0, 1):
-            return "robot_back" + selected_string + ".png"
+            if player_name == "robot" and player_id == "1":
+                return "robot_back" + selected_string + ".png"
+            else:
+                return f"{nurse_str}_{nurse_id_number}_back" + selected_string + ".png"
         elif direction == (0, -1):
-            return "robot_front" + selected_string + ".png"
+            if player_name == "robot" and player_id == "1":
+                return "robot_front" + selected_string + ".png"
+            else:
+                return f"{nurse_str}_{nurse_id_number}_front" + selected_string + ".png"
         elif direction == (1, 0):
-            return "robot_right" + selected_string + ".png"
+            if player_name == "robot" and player_id == "1":
+                return "robot_right" + selected_string + ".png"
+            else:
+                return f"{nurse_str}_{nurse_id_number}_right" + selected_string + ".png"
         elif direction == (-1, 0):
-            return "robot_left" + selected_string + ".png"
+            if player_name == "robot" and player_id == "1":
+                return "robot_left" + selected_string + ".png"
+            else:
+                return f"{nurse_str}_{nurse_id_number}_left" + selected_string + ".png"
         print(f"Invalid direction: {direction}")
-        assert False, "Invalid player direction"
+        assert False, "Invalid player name or direction"
 
     def test_new_positions(self, obs):
         for literal in obs.literals:
@@ -393,9 +446,9 @@ class RobotouilleCanvas:
                 self.players_pose[player_index]["position"] = player_pos
                 self.players_pose[player_index]["direction"] = player_direction
                 selected = self._check_selected(obs, player_index)
-                robot_image_name = self._get_player_image_name(
-                    player_direction, selected
-                )
+                player_name, player_id = self._get_player_name_and_index(literal)
+                player_image_name = self._get_player_image_name(player_name, player_id, player_direction, selected)
+                
 
                 # Calculate the drawing position in pixels
                 # player_pos[0] * self.pix_square_size[0]: Convert x-coordinate from grid to pixels
@@ -408,11 +461,11 @@ class RobotouilleCanvas:
                 )
 
                 print(f"  Final draw position (pixels): {draw_pos}")
-                print(f"  Image: {robot_image_name}")
+                print(f"  Image: {player_image_name}")
 
                 self._draw_image(
                     surface,
-                    robot_image_name,
+                    player_image_name,
                     draw_pos,
                     self.pix_square_size,
                 )
@@ -439,17 +492,22 @@ class RobotouilleCanvas:
                 stack_number[food] = 1
                 food_station = literal.variables[1].name
                 pos = self._get_station_position(food_station)
-                if "patient" not in food:
-                    pos[
-                        1
-                    ] -= (
-                        RobotouilleCanvas.STATION_FOOD_OFFSET
-                    )  # place the food slightly above the station
+                if "patient" not in food and "cart" not in food_station:
+                    pos[1] -= RobotouilleCanvas.STATION_FOOD_OFFSET  # place the food slightly above the station
+
                 print(f"Drawing food: {food} at {pos}")
                 self._draw_food_image(surface, food, obs, pos * self.pix_square_size)
             if literal.predicate == "atop":
                 stack = (literal.variables[0].name, literal.variables[1].name)
                 stack_list.append(stack)
+
+            # adding items onto players
+            if literal.predicate == "has":
+                # player_name = literal.variables[0].name
+                item = literal.variables[1].name
+                player_index = self._get_player_index(literal)
+                pos = self.players_pose[player_index]["position"]
+                self._draw_food_image(surface, item, obs, pos * self.pix_square_size)
 
         # Add stacked items
         while len(stack_list) > 0:
