@@ -325,7 +325,7 @@
         )
     )
     ; Make the player stack an item under another item at a station
-    (:action stack_under
+    (:action stackunder
         :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
         :precondition (and
             (has ?p ?i1)

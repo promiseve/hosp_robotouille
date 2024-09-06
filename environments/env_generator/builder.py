@@ -273,7 +273,7 @@ def build_action_predicates(environment_dict):
         "fry",
         "frycut",
         "compresschest",
-        "giverescuebreaths",
+        "giverescuebreaths"
     ]
     for player in environment_dict["players"]:
         for action in actions:
