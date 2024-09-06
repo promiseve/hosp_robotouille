@@ -31,7 +31,7 @@ def simulator(
     seed: int = 42,
     noisy_randomization: bool = False,
     mode=mode.PLAY,
-    type=type.MULTI,
+    type=type.SINGLE,
 ):
     # Your code for robotouille goes here
     env, json, renderer = create_robotouille_env(
@@ -79,6 +79,8 @@ def single_rl_simulator(environment_name: str, seed: int, noisy_randomization: b
     config = {
         "num_cuts": {"lettuce": 3, "default": 3},
         "cook_time": {"patty": 3, "default": 3},
+        "num_compressions": {"patient": 3, "default": 3},
+        "num_breaths": {"patient": 3, "default": 3},
     }
 
     env, json, renderer = create_robotouille_env(

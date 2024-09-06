@@ -265,7 +265,16 @@ def build_stacking_predicates(environment_dict):
 
 def build_action_predicates(environment_dict):
     predicates_str = ""
-    actions = ["cook", "cut", "moveitem", "move", "fry", "frycut"]
+    actions = [
+        "cook",
+        "cut",
+        "moveitem",
+        "move",
+        "fry",
+        "frycut",
+        "compresschest",
+        "giverescuebreaths"
+    ]
     for player in environment_dict["players"]:
         for action in actions:
             if action in player["actions"]:

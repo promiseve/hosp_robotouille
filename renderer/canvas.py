@@ -85,7 +85,9 @@ class RobotouilleCanvas:
             position (np.array): (x, y) position of the image
             scale (np.array): (width, height) to scale the image by
         """
-        print(f"Drawing image: {image_name} at position: {position} with scale: {scale}")
+        print(
+            f"Drawing image: {image_name} at position: {position} with scale: {scale}"
+        )
         if image_name not in self.asset_directory:
             self.asset_directory[image_name] = pygame.image.load(
                 os.path.join(RobotouilleCanvas.ASSETS_DIRECTORY, image_name)
@@ -121,7 +123,21 @@ class RobotouilleCanvas:
                     food_image_name = "fried" + food_image_name
                 elif literal.variables[0] == food_image_name[3:]:
                     food_image_name = "fried" + food_image_name[3:]
+                    
+            if literal.predicate == "ischestcompressed":
+                print(f"Found chestcompressed: {literal.variables[0]}")
+                if literal.variables[0] == food_image_name:
+                    food_image_name = "chestcompressed" + food_image_name
+                elif literal.variables[0] == food_image_name[3:]:
+                    food_image_name = "chestcompressed" + food_image_name[3:]
+            if literal.predicate == "isrescuebreathed":
+                if literal.variables[0] == food_image_name:
+                    print(f"Found rescuebreathed: {literal.variables[0]}")
+                    food_image_name = "rescuebreathed" + food_image_name
+                elif literal.variables[0] == food_image_name[3:]:
+                    food_image_name = "rescuebreathed" + food_image_name[3:]
 
+                    
         # Remove and store ID
         # NOTE: Remove and store ID used to be done right before calling draw image, 
         # there might be unforeseen side effects of this change still
@@ -156,19 +172,14 @@ class RobotouilleCanvas:
                 if literal.predicate == "at" and "syringe" in literal.variables[0] and "patient" in literal.variables[1]:
                     # case when syringe is on patient
                     food_image_name = "syringe_on_patient"
-            
 
-        
 
         print(f"Final food image name: {food_image_name}")
 
         # Special case for patient
-        if food_image_name == "patient":
+        if food_image_name == "patient" or food_image_name == "chestcompressedpatient" or food_image_name == "rescuebreathedpatient":
             self._draw_image(
-                surface,
-                f"{food_image_name}.png",
-                position,
-                self.pix_square_size
+                surface, f"{food_image_name}.png", position, self.pix_square_size
             )
         else:
             self._draw_image(
@@ -189,7 +200,9 @@ class RobotouilleCanvas:
             surface (pygame.Surface): Surface to draw on
         """
         print("Drawing floor...")
-        clamped_pix_square_size = np.ceil(self.pix_square_size)  # Necessary to avoid 1 pixel gaps from decimals
+        clamped_pix_square_size = np.ceil(
+            self.pix_square_size
+        )  # Necessary to avoid 1 pixel gaps from decimals
         for row in range(len(self.layout)):
             for col in range(len(self.layout[0])):
                 self._draw_image(
@@ -277,12 +290,17 @@ class RobotouilleCanvas:
         Raises:
             ValueError: If the player cannot reach the station
         """
-        print(f"Moving player {player_index} from {player_position} to {station_position}")
+        print(
+            f"Moving player {player_index} from {player_position} to {station_position}"
+        )
         width, height = len(layout[0]), len(layout)
         print(f"Layout dimensions: width={width}, height={height}")
         obstacle_locations = self._get_station_locations(layout)
         player_positions = self._get_player_positions(player_index)
-        curr_prev = (player_position, player_position)  # current position, previous position
+        curr_prev = (
+            player_position,
+            player_position,
+        )  # current position, previous position
         queue = [curr_prev]
         visited = set()
 
@@ -292,7 +310,10 @@ class RobotouilleCanvas:
             prev_position = curr_prev[1]
             if curr_position == station_position:
                 # Reached target station
-                new_position = prev_position, (curr_position[0] - prev_position[0], prev_position[1] - curr_position[1])
+                new_position = prev_position, (
+                    curr_position[0] - prev_position[0],
+                    prev_position[1] - curr_position[1],
+                )
                 print(f"New position: {new_position}")
                 return new_position
             if (
@@ -304,7 +325,9 @@ class RobotouilleCanvas:
                 # Out of bounds
                 continue
 
-            if (curr_position in obstacle_locations) or (curr_position in player_positions):
+            if (curr_position in obstacle_locations) or (
+                curr_position in player_positions
+            ):
                 # Cannot move through station
                 continue
             if curr_position in visited:
@@ -312,7 +335,10 @@ class RobotouilleCanvas:
                 continue
             visited.add(curr_position)
             for direction in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
-                next_position = (curr_position[0] + direction[0], curr_position[1] + direction[1])
+                next_position = (
+                    curr_position[0] + direction[0],
+                    curr_position[1] + direction[1],
+                )
                 if next_position != prev_position:
                     queue.append((next_position, curr_position))
 
@@ -322,7 +348,9 @@ class RobotouilleCanvas:
         for literal in obs:
             if literal.predicate == "selected":
                 selected_player_index = self._get_player_index(literal)
-                print(f"Player {player_index} selected: {selected_player_index == player_index}")
+                print(
+                    f"Player {player_index} selected: {selected_player_index == player_index}"
+                )
                 return selected_player_index == player_index
         return False
 
@@ -377,7 +405,9 @@ class RobotouilleCanvas:
                 player_pos, player_direction = self._move_player_to_station(
                     player_index, player_pos, tuple(station_pos), self.layout, test=True
                 )
-                print(f"Tested new position for player {player_index}: {player_pos}, direction: {player_direction}")
+                print(
+                    f"Tested new position for player {player_index}: {player_pos}, direction: {player_direction}"
+                )
 
     def _draw_player(self, surface, obs):
         """
@@ -390,50 +420,56 @@ class RobotouilleCanvas:
                 station_pos = self._get_station_position(player_station)
                 player_index = self._get_player_index(literal)
                 initial_pos = self.players_pose[player_index]["position"]
-                
+
                 print(f"Player {player_index}:")
                 print(f"  Initial position: {initial_pos}")
                 print(f"  Station: {player_station}")
                 print(f"  Station position: {station_pos}")
-                
+
                 player_pos, player_direction = self._move_player_to_station(
                     player_index, initial_pos, tuple(station_pos), self.layout
                 )
-                
+
                 print(f"  After move_player_to_station: {player_pos}")
-                
+
                 # Check if the player is on a CPR stool
                 if player_station == "cpr_stool":
                     # The value 0.2 represents 20% of a grid cell's height
                     # This moves the player up by 20% of a cell, making them appear on top of the obje
                     # Adjust the vertical position upwards
-                    player_pos = (player_pos[0], player_pos[1] - 0.2)  # Increased offset
+                    player_pos = (
+                        player_pos[0],
+                        player_pos[1] - 0.2,
+                    )  # Increased offset
                     print(f"  On CPR stool, adjusted position: {player_pos}")
-                
+
                 self.players_pose[player_index]["position"] = player_pos
                 self.players_pose[player_index]["direction"] = player_direction
                 selected = self._check_selected(obs, player_index)
                 player_name, player_id = self._get_player_name_and_index(literal)
                 player_image_name = self._get_player_image_name(player_name, player_id, player_direction, selected)
                 
+
                 # Calculate the drawing position in pixels
                 # player_pos[0] * self.pix_square_size[0]: Convert x-coordinate from grid to pixels
                 # (player_pos[1] - 0.2) * self.pix_square_size[1]: Convert y-coordinate from grid to pixels,
                 # subtracting 0.2 (20% of a cell) to move the player up slightly
                 # This ensures the player is drawn above the object they're standing on
-                draw_pos = (player_pos[0] * self.pix_square_size[0], 
-                            (player_pos[1]- 0.2) * self.pix_square_size[1])
-                
+                draw_pos = (
+                    player_pos[0] * self.pix_square_size[0],
+                    (player_pos[1] - 0.2) * self.pix_square_size[1],
+                )
+
                 print(f"  Final draw position (pixels): {draw_pos}")
                 print(f"  Image: {player_image_name}")
-                
+
                 self._draw_image(
                     surface,
                     player_image_name,
                     draw_pos,
                     self.pix_square_size,
                 )
-        
+
         print("--- End of _draw_player ---\n")
 
     def _draw_food(self, surface, obs):
@@ -458,6 +494,7 @@ class RobotouilleCanvas:
                 pos = self._get_station_position(food_station)
                 if "patient" not in food and "cart" not in food_station:
                     pos[1] -= RobotouilleCanvas.STATION_FOOD_OFFSET  # place the food slightly above the station
+
                 print(f"Drawing food: {food} at {pos}")
                 self._draw_food_image(surface, food, obs, pos * self.pix_square_size)
             if literal.predicate == "atop":
@@ -516,7 +553,7 @@ class RobotouilleCanvas:
                 else:
                     row.append(cell[:2])  # First two characters of station name
             print(" ".join(row))
-        
+
         print("\nPlayer Positions:")
         for i, player in enumerate(self.players_pose):
             print(f"Player {i}: {player['position']}")
@@ -531,13 +568,11 @@ class RobotouilleCanvas:
             obs (List[Literal]): Game state predicates
         """
         print("Drawing to surface...")
-        self._debug_print_layout()
+        # self._debug_print_layout()
         self._draw_floor(surface)
         self._draw_stations(surface)
         self._draw_player(surface, obs)
         self._draw_food(surface, obs)
-
-
 
     # def _draw_medical_equipment(self, surface, obs):
     #     """
@@ -556,7 +591,7 @@ class RobotouilleCanvas:
     #             item_name = literal.variables[0].name
     #             station_name = literal.variables[1].name
     #             station_pos = self._get_station_position(station_name)
-                
+
     #             if item_name == "aed":
     #                 self._draw_image(
     #                     surface,

@@ -6,6 +6,8 @@ from robotouille.robotouille_simulator import simulator
 config = {
     "num_cuts": {"lettuce": 3, "default": 3},
     "cook_time": {"patty": 3, "default": 3},
+    "num_compressions": {"patient": 3, "default": 3},
+    "num_breaths": {"patient": 3, "default": 3},
 }
 
 env, json, renderer = create_robotouille_env("multiagent", None, False)

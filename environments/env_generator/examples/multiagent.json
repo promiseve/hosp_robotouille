@@ -2,9 +2,13 @@
     "width": 6,
     "height": 6,
     "config": {
-        "num_cuts": {
-            "lettuce": 3,
+        "num_compressions": {
+            "patient": 3,
             "default": 3
+        },
+        "num_breaths": {
+            "patient": 2,
+            "default": 2
         }
     },
     "stations": [
