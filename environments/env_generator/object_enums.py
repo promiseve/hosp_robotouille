@@ -15,11 +15,11 @@ class Item(Enum):
     AED = "aed"
     CPR_KIT = "cpr_kit"
     CPR_BOARD = "cpr_board"
-    VENTILATOR = "ventilator"
+    # VENTILATOR = "ventilator"
     CPR_STOOL = "cpr_stool"
     PATIENT = "patient"
     SYRINGE = "syringe"
-    PUMP = "pump"
+    CPR_PUMP = "pump"
     
 
 class Player(Enum):

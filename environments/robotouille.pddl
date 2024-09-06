@@ -67,7 +67,11 @@
         (ishospital_cart_left ?i - station)
         (ishospital_cart_right ?i - station)
         (issyringe ?i - item)
+        (issyringeusable ?i - item)
+        (issyringeused ?i - item)
         (ispump ?i - item)
+        (ispumpusable ?i - item)
+        (ispumpused ?i - item)
 
         ; State Predicates
         (loc ?p - player ?s - station)

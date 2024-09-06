@@ -1,6 +1,7 @@
 import os
 import pygame
 import numpy as np
+import utils.robotouille_utils as robotouille_utils
 
 
 class RobotouilleCanvas:
@@ -92,6 +93,7 @@ class RobotouilleCanvas:
         image = self.asset_directory[image_name]
         image = pygame.transform.smoothscale(image, scale)
         surface.blit(image, position)
+
     def _draw_food_image(self, surface, food_name, obs, position):
         """
         Helper to draw a food image on the canvas.
@@ -123,16 +125,34 @@ class RobotouilleCanvas:
         # Remove and store ID
         # NOTE: Remove and store ID used to be done right before calling draw image, 
         # there might be unforeseen side effects of this change still
-        food_id = ""
-        while food_image_name[-1].isdigit():
-            food_id += food_image_name[-1]
-            food_image_name = food_image_name[:-1]
+        food_image_name, food_id = robotouille_utils.trim_item_ID(food_image_name)
+
 
         for literal in obs:
-            # aed visualization code
-            if literal.predicate == "has" and "aed" in literal.variables[1]:
-                # case when aed is held by player
-                food_image_name = "aed_on_hcw"
+            if "aed" in food_image_name:
+                # aed visualization code
+                if literal.predicate == "has" and "aed" in literal.variables[1]:
+                    # case when aed is held by player
+                    food_image_name = "aed_on_hcw"
+                if literal.predicate == "on":
+                    print("on variables: ", literal.variables)
+                # TODO: fix "on" logic below for patient bed
+                if literal.predicate == "on" and "aed" in literal.variables[0] and "patient" in literal.variables[1]:
+                    # case when aed is on patient
+                    print("AED ON PATIENT")
+                    food_image_name = "aed_white"
+            if "pump" in food_image_name:
+                # pump visualization code
+                if literal.predicate == "has" and "pump" in literal.variables[1]:
+                    # case when aed is held by player
+                    food_image_name = "pump_on_hcw"
+                # TODO: fix "on" logic below for patient bed
+                if literal.predicate == "on" and "pump" in literal.variables[0] and "patient" in literal.variables[1]:
+                    # case when aed is on patient
+                    print("PUMP ON PATIENT")
+                    food_image_name = "pump_on_patient"
+
+        
 
         print(f"Final food image name: {food_image_name}")
 
@@ -310,6 +330,7 @@ class RobotouilleCanvas:
         Raises:
             AssertionError: If the direction is invalid
         """
+        # TODO: add logic for correct nurse image color for each nurse
 
         selected_string = "_selected" if selected else ""
 
@@ -391,6 +412,7 @@ class RobotouilleCanvas:
                 )
         
         print("--- End of _draw_player ---\n")
+
     def _draw_food(self, surface, obs):
         """
         This helper draws food on the canvas.
@@ -418,6 +440,22 @@ class RobotouilleCanvas:
             if literal.predicate == "atop":
                 stack = (literal.variables[0].name, literal.variables[1].name)
                 stack_list.append(stack)
+
+            # adding items onto players # TODO
+            if literal.predicate == "has":
+                # player_name = literal.variables[0].name
+                item = literal.variables[1].name
+                # TODO: get player position
+                player_index = self._get_player_index(literal)
+                pos = self.players_pose[player_index]["position"]
+                self._draw_food_image(surface, item, obs, pos * self.pix_square_size)
+                
+
+            # if is_true and literal.name == "has_item" and literal.params[0].name == player.name:
+            #         player_pos = self.player_pose[player.name]["position"]
+            #         held_item_name = literal.params[1].name
+            # if held_item_name:
+            #     self._draw_item_image(surface, held_item_name, obs, player_pos * self.pix_square_size)
 
         # Add stacked items
         while len(stack_list) > 0:
