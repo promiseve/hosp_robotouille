@@ -1,0 +1,1574 @@
+Initializing RobotouilleCanvas...
+layout: [[None, None, None, None, None, None], [None, 'table1', None, None, None, None], [None, 'hospital_cart_left1', 'hospital_cart_right1', None, None, None], [None, None, 'patient_bed_station1', None, None, 'table2'], [None, None, 'patient_legs1', None, None, None], [None, None, None, None, None, None]]
+players_pos: [(0, 2), (2, 5), (3, 2), (5, 4)]
+players_pose: [{'name': 'robot', 'position': (0, 2), 'direction': (1, 0)}, {'name': 'robot', 'position': (2, 5), 'direction': (0, 1)}, {'name': 'robot', 'position': (3, 2), 'direction': (-1, 0)}, {'name': 'robot', 'position': (5, 4), 'direction': (0, 1)}]
+grid_dimensions: [6 6]
+pix_square_size: [85.33333333 85.33333333]
+asset_directory: {}
+problem_dir_path: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/pddlgym/pddl/robotouille
+Initializing RobotouilleCanvas...
+layout: [[None, None, None, None, None, None], [None, None, None, None, None, None], [None, None, None, None, None, None], [None, None, 'patient_bed_station1', None, None, 'table1'], [None, None, 'patient_legs1', None, None, None], [None, None, None, None, None, None]]
+players_pos: [(5, 4)]
+players_pose: [{'name': 'robot', 'position': (5, 4), 'direction': (0, 1)}]
+grid_dimensions: [6 6]
+pix_square_size: [85.33333333 85.33333333]
+asset_directory: {}
+problem_dir_path: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/pddlgym/pddl/robotouille
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] withs scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Player 0:
+  Initial position: (5, 4)
+  Station: table1
+  Station position: [5. 3.]
+Moving player 0 from (5, 4) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((5, 4), (0, 1))
+  After move_player_to_station: (5, 4)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (426.66666666666663, 324.26666666666665)
+  Image: robot_back_selected.png
+Drawing image: robot_back_selected.png at position: (426.66666666666663, 324.26666666666665) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: patient1 at [2. 3.]
+Drawing food image: patient1 at position: [170.66666667 256.        ]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Getting position for station: table1
+Found position: [5. 3.]
+Drawing food: cpr_board1 at [5.   2.75]
+Drawing food image: cpr_board1 at position: [426.66666667 234.66666667]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [437.33333333 245.33333333] with scale: [64. 64.]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({at(cpr_board1:item,table1:station), loc(robot1:player,table1:station), ispatient(patient1:item), on(patient1:item,patient_bed_station1:station), iscpr_boardusuable(cpr_board1:item), nothing(robot1:player), on(cpr_board1:item,table1:station), iscpr_board(cpr_board1:item), ispatient_legs(patient_legs1:station), istable(table1:station), cancompresschest(robot1:player), selected(robot1:player), clear(patient1:item), at(patient1:item,patient_bed_station1:station), vacant(patient_bed_station1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), clear(cpr_board1:item), isrobot(robot1:player), canmove(robot1:player), ispatient_bed_station(patient_bed_station1:station), empty(patient_legs1:station), ischestcompressable(patient1:item), cangiverescuebreaths(robot1:player)}), objects=frozenset({patient_bed_station1:station, robot1:player, patient1:item, cpr_board1:item, patient_legs1:station, table1:station}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  pick-up(robot1:player,cpr_board1:item,table1:station)
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Error in changing player
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Player 0:
+  Initial position: (5, 4)
+  Station: table1
+  Station position: [5. 3.]
+Moving player 0 from (5, 4) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((5, 4), (0, 1))
+  After move_player_to_station: (5, 4)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (426.66666666666663, 324.26666666666665)
+  Image: robot_back_selected.png
+Drawing image: robot_back_selected.png at position: (426.66666666666663, 324.26666666666665) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: patient1 at [2. 3.]
+Drawing food image: patient1 at position: [170.66666667 256.        ]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Player index: 0
+Drawing food image: cpr_board1 at position: [426.66666667 341.33333333]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [437.33333333 352.        ] with scale: [64. 64.]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({loc(robot1:player,table1:station), ispatient(patient1:item), on(patient1:item,patient_bed_station1:station), iscpr_boardusuable(cpr_board1:item), ispatient_legs(patient_legs1:station), iscpr_board(cpr_board1:item), cangiverescuebreaths(robot1:player), istable(table1:station), cancompresschest(robot1:player), selected(robot1:player), clear(patient1:item), at(patient1:item,patient_bed_station1:station), empty(table1:station), vacant(patient_bed_station1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), isrobot(robot1:player), canmove(robot1:player), ispatient_bed_station(patient_bed_station1:station), empty(patient_legs1:station), ischestcompressable(patient1:item), has(robot1:player,cpr_board1:item)}), objects=frozenset({patient_bed_station1:station, robot1:player, patient1:item, cpr_board1:item, patient_legs1:station, table1:station}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  move(robot1:player,table1:station,patient_bed_station1:station)
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((5, 4), (0, 1))
+Tested new position for player 0: (5, 4), direction: (0, 1)
+Error in changing player
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Player 0:
+  Initial position: (5, 4)
+  Station: patient_bed_station1
+  Station position: [2. 3.]
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+  After move_player_to_station: (3, 3)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (256.0, 238.9333333333333)
+  Image: robot_left_selected.png
+Drawing image: robot_left_selected.png at position: (256.0, 238.9333333333333) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: patient1 at [2. 3.]
+Drawing food image: patient1 at position: [170.66666667 256.        ]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Player index: 0
+Drawing food image: cpr_board1 at position: [256. 256.]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [266.66666667 266.66666667] with scale: [64. 64.]
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+obs State(literals=frozenset({ispatient(patient1:item), on(patient1:item,patient_bed_station1:station), iscpr_boardusuable(cpr_board1:item), vacant(table1:station), ispatient_legs(patient_legs1:station), iscpr_board(cpr_board1:item), has(robot1:player,cpr_board1:item), istable(table1:station), cancompresschest(robot1:player), selected(robot1:player), clear(patient1:item), at(patient1:item,patient_bed_station1:station), empty(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), loc(robot1:player,patient_bed_station1:station), isrobot(robot1:player), canmove(robot1:player), ispatient_bed_station(patient_bed_station1:station), empty(patient_legs1:station), ischestcompressable(patient1:item), cangiverescuebreaths(robot1:player)}), objects=frozenset({patient_bed_station1:station, robot1:player, patient1:item, cpr_board1:item, patient_legs1:station, table1:station}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  stack(robot1:player,cpr_board1:item,patient1:item,patient_bed_station1:station)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Error in changing player
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Player 0:
+  Initial position: (3, 3)
+  Station: patient_bed_station1
+  Station position: [2. 3.]
+Moving player 0 from (3, 3) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+  After move_player_to_station: (3, 3)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (256.0, 238.9333333333333)
+  Image: robot_left_selected.png
+Drawing image: robot_left_selected.png at position: (256.0, 238.9333333333333) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: patient1 at [2. 3.]
+Drawing food image: patient1 at position: [170.66666667 256.        ]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing stacked food: cpr_board1 at [2.   2.65]
+Drawing food image: cpr_board1 at position: [170.66666667 226.13333333]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [181.33333333 236.8       ] with scale: [64. 64.]
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+obs State(literals=frozenset({ispatient(patient1:item), on(patient1:item,patient_bed_station1:station), at(cpr_board1:item,patient_bed_station1:station), iscpr_boardusuable(cpr_board1:item), vacant(table1:station), nothing(robot1:player), ispatient_legs(patient_legs1:station), iscpr_board(cpr_board1:item), istable(table1:station), cancompresschest(robot1:player), atop(cpr_board1:item,patient1:item), selected(robot1:player), at(patient1:item,patient_bed_station1:station), empty(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), loc(robot1:player,patient_bed_station1:station), clear(cpr_board1:item), isrobot(robot1:player), canmove(robot1:player), ispatient_bed_station(patient_bed_station1:station), empty(patient_legs1:station), ischestcompressable(patient1:item), cangiverescuebreaths(robot1:player)}), objects=frozenset({patient_bed_station1:station, robot1:player, patient1:item, cpr_board1:item, patient_legs1:station, table1:station}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+obs State(literals=frozenset({ispatient(patient1:item), on(patient1:item,patient_bed_station1:station), at(cpr_board1:item,patient_bed_station1:station), iscpr_boardusuable(cpr_board1:item), vacant(table1:station), nothing(robot1:player), ispatient_legs(patient_legs1:station), iscpr_board(cpr_board1:item), istable(table1:station), cancompresschest(robot1:player), atop(cpr_board1:item,patient1:item), selected(robot1:player), at(patient1:item,patient_bed_station1:station), empty(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), loc(robot1:player,patient_bed_station1:station), clear(cpr_board1:item), isrobot(robot1:player), canmove(robot1:player), ispatient_bed_station(patient_bed_station1:station), empty(patient_legs1:station), ischestcompressable(patient1:item), cangiverescuebreaths(robot1:player)}), objects=frozenset({patient_bed_station1:station, robot1:player, patient1:item, cpr_board1:item, patient_legs1:station, table1:station}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  move(robot1:player,patient_bed_station1:station,table1:station)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []Initializing RobotouilleCanvas...
+layout: [[None, None, None, None, None, None], [None, 'table1', None, None, None, None], [None, 'hospital_cart_left1', 'hospital_cart_right1', None, None, None], [None, None, 'patient_bed_station1', None, None, 'table2'], [None, None, 'patient_legs1', None, None, None], [None, None, None, None, None, None]]
+players_pos: [(0, 2), (2, 5), (3, 2), (5, 4)]
+players_pose: [{'name': 'robot', 'position': (0, 2), 'direction': (1, 0)}, {'name': 'robot', 'position': (2, 5), 'direction': (0, 1)}, {'name': 'robot', 'position': (3, 2), 'direction': (-1, 0)}, {'name': 'robot', 'position': (5, 4), 'direction': (0, 1)}]
+grid_dimensions: [6 6]
+pix_square_size: [85.33333333 85.33333333]
+asset_directory: {}
+problem_dir_path: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/pddlgym/pddl/robotouille
+Initializing RobotouilleCanvas...
+layout: [[None, None, None, None, None, None], [None, None, None, None, None, None], [None, None, None, None, None, None], [None, None, 'patient_bed_station1', None, None, 'table1'], [None, None, 'patient_legs1', None, None, None], [None, None, None, None, None, None]]
+players_pos: [(5, 4)]
+players_pose: [{'name': 'robot', 'position': (5, 4), 'direction': (0, 1)}]
+grid_dimensions: [6 6]
+pix_square_size: [85.33333333 85.33333333]
+asset_directory: {}
+problem_dir_path: /Users/promiseosaineekpo/Cornell Repos/hosp_robotouille/pddlgym/pddl/robotouille
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Player 0:
+  Initial position: (5, 4)
+  Station: table1
+  Station position: [5. 3.]
+Moving player 0 from (5, 4) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((5, 4), (0, 1))
+  After move_player_to_station: (5, 4)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (426.66666666666663, 324.26666666666665)
+  Image: robot_back_selected.png
+Drawing image: robot_back_selected.png at position: (426.66666666666663, 324.26666666666665) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: table1
+Found position: [5. 3.]
+Drawing food: cpr_board1 at [5.   2.75]
+Drawing food image: cpr_board1 at position: [426.66666667 234.66666667]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [437.33333333 245.33333333] with scale: [64. 64.]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: patient1 at [2. 3.]
+Drawing food image: patient1 at position: [170.66666667 256.        ]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), at(cpr_board1:item,table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), vacant(patient_bed_station1:station), canmove(robot1:player), loc(robot1:player,table1:station), ispatient_legs(patient_legs1:station), clear(patient1:item), nothing(robot1:player), iscpr_boardusuable(cpr_board1:item), at(patient1:item,patient_bed_station1:station), clear(cpr_board1:item), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), on(cpr_board1:item,table1:station), selected(robot1:player), on(patient1:item,patient_bed_station1:station)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), at(cpr_board1:item,table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), vacant(patient_bed_station1:station), canmove(robot1:player), loc(robot1:player,table1:station), ispatient_legs(patient_legs1:station), clear(patient1:item), nothing(robot1:player), iscpr_boardusuable(cpr_board1:item), at(patient1:item,patient_bed_station1:station), clear(cpr_board1:item), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), on(cpr_board1:item,table1:station), selected(robot1:player), on(patient1:item,patient_bed_station1:station)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  pick-up(robot1:player,cpr_board1:item,table1:station)
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Error in changing player
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Player 0:
+  Initial position: (5, 4)
+  Station: table1
+  Station position: [5. 3.]
+Moving player 0 from (5, 4) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((5, 4), (0, 1))
+  After move_player_to_station: (5, 4)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (426.66666666666663, 324.26666666666665)
+  Image: robot_back_selected.png
+Drawing image: robot_back_selected.png at position: (426.66666666666663, 324.26666666666665) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: patient1 at [2. 3.]
+Drawing food image: patient1 at position: [170.66666667 256.        ]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Player index: 0
+Drawing food image: cpr_board1 at position: [426.66666667 341.33333333]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [437.33333333 352.        ] with scale: [64. 64.]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), vacant(patient_bed_station1:station), ispatient_legs(patient_legs1:station), clear(patient1:item), empty(table1:station), on(patient1:item,patient_bed_station1:station), at(patient1:item,patient_bed_station1:station), has(robot1:player,cpr_board1:item), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), loc(robot1:player,table1:station), selected(robot1:player), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  move(robot1:player,table1:station,patient_bed_station1:station)
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+Tested new position for player 0: (3, 3), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (5, 4) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((5, 4), (0, 1))
+Tested new position for player 0: (5, 4), direction: (0, 1)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (5, 4) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Error in changing player
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Player 0:
+  Initial position: (5, 4)
+  Station: patient_bed_station1
+  Station position: [2. 3.]
+Moving player 0 from (5, 4) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+  After move_player_to_station: (3, 3)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (256.0, 238.9333333333333)
+  Image: robot_left_selected.png
+Drawing image: robot_left_selected.png at position: (256.0, 238.9333333333333) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Player index: 0
+Drawing food image: cpr_board1 at position: [256. 256.]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [266.66666667 266.66666667] with scale: [64. 64.]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: patient1 at [2. 3.]
+Drawing food image: patient1 at position: [170.66666667 256.        ]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), iscpr_boardusuable(cpr_board1:item), at(patient1:item,patient_bed_station1:station), has(robot1:player,cpr_board1:item), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), on(patient1:item,patient_bed_station1:station)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  stackunder(robot1:player,cpr_board1:item,patient1:item,patient_bed_station1:station)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Error in changing player
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Player 0:
+  Initial position: (3, 3)
+  Station: patient_bed_station1
+  Station position: [2. 3.]
+Moving player 0 from (3, 3) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+  After move_player_to_station: (3, 3)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (256.0, 238.9333333333333)
+  Image: robot_left_selected.png
+Drawing image: robot_left_selected.png at position: (256.0, 238.9333333333333) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: cpr_board1 at [2.   2.75]
+Drawing food image: cpr_board1 at position: [170.66666667 234.66666667]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [181.33333333 245.33333333] with scale: [64. 64.]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing stacked food: patient1 at [2.   2.65]
+Drawing food image: patient1 at position: [170.66666667 226.13333333]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 226.13333333] with scale: [85.33333333 85.33333333]
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  compresschest(robot1:player,patient1:item,cpr_board1:item,patient_bed_station1:station)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Error in changing player
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Player 0:
+  Initial position: (3, 3)
+  Station: patient_bed_station1
+  Station position: [2. 3.]
+Moving player 0 from (3, 3) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+  After move_player_to_station: (3, 3)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (256.0, 238.9333333333333)
+  Image: robot_left_selected.png
+Drawing image: robot_left_selected.png at position: (256.0, 238.9333333333333) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: cpr_board1 at [2.   2.75]
+Drawing food image: cpr_board1 at position: [170.66666667 234.66666667]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [181.33333333 245.33333333] with scale: [64. 64.]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing stacked food: patient1 at [2.   2.65]
+Drawing food image: patient1 at position: [170.66666667 226.13333333]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 226.13333333] with scale: [85.33333333 85.33333333]
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  compresschest(robot1:player,patient1:item,cpr_board1:item,patient_bed_station1:station)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Error in changing player
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Player 0:
+  Initial position: (3, 3)
+  Station: patient_bed_station1
+  Station position: [2. 3.]
+Moving player 0 from (3, 3) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+  After move_player_to_station: (3, 3)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (256.0, 238.9333333333333)
+  Image: robot_left_selected.png
+Drawing image: robot_left_selected.png at position: (256.0, 238.9333333333333) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: cpr_board1 at [2.   2.75]
+Drawing food image: cpr_board1 at position: [170.66666667 234.66666667]
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [181.33333333 245.33333333] with scale: [64. 64.]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing stacked food: patient1 at [2.   2.65]
+Drawing food image: patient1 at position: [170.66666667 226.13333333]
+Final food image name: patient
+Drawing image: patient.png at position: [170.66666667 226.13333333] with scale: [85.33333333 85.33333333]
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+action:  compresschest(robot1:player,patient1:item,cpr_board1:item,patient_bed_station1:station)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Error in changing player
+literal: ischestcompressed(patient1:item)
+state_updates: [ischestcompressed(patient1:item)]
+Drawing to surface...
+Drawing floor...
+Drawing image: floorhospital.png at position: [0. 0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86.  0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.   0.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 0. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [86. 86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430.  86.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 172.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 258.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 344.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [  0. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [ 86. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [172. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [258. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [344. 430.] with scale: [86. 86.]
+Drawing image: floorhospital.png at position: [430. 430.] with scale: [86. 86.]
+Drawing stations...
+Drawing image: patient_bed_station.png at position: [170.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: table.png at position: [426.66666667 256.        ] with scale: [85.33333333 85.33333333]
+Drawing image: patient_legs.png at position: [170.66666667 341.33333333] with scale: [85.33333333 85.33333333]
+
+--- Start of _draw_player ---
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Player index: 0
+Player 0:
+  Initial position: (3, 3)
+  Station: patient_bed_station1
+  Station position: [2. 3.]
+Moving player 0 from (3, 3) to (2.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 3), (-1, 0))
+  After move_player_to_station: (3, 3)
+Player index: 0
+Player 0 selected: True
+  Final draw position (pixels): (256.0, 238.9333333333333)
+  Image: robot_left_selected.png
+Drawing image: robot_left_selected.png at position: (256.0, 238.9333333333333) with scale: [85.33333333 85.33333333]
+--- End of _draw_player ---
+
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing food: cpr_board1 at [2.   2.75]
+Drawing food image: cpr_board1 at position: [170.66666667 234.66666667]
+Found chestcompressed: patient1:item
+Final food image name: cpr_board
+Drawing image: cpr_board.png at position: [181.33333333 245.33333333] with scale: [64. 64.]
+Getting position for station: patient_bed_station1
+Found position: [2. 3.]
+Drawing stacked food: patient1 at [2.   2.65]
+Drawing food image: patient1 at position: [170.66666667 226.13333333]
+Found chestcompressed: patient1:item
+Final food image name: chestcompressedpatient
+Drawing image: chestcompressedpatient.png at position: [170.66666667 226.13333333] with scale: [85.33333333 85.33333333]
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), ischestcompressed(patient1:item), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), ischestcompressed(patient1:item), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), ischestcompressed(patient1:item), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), ischestcompressed(patient1:item), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), ischestcompressed(patient1:item), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), ischestcompressed(patient1:item), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])
+Getting position for station: table1
+Found position: [5. 3.]
+Player index: 0
+Moving player 0 from (3, 3) to (5.0, 3.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((4, 3), (1, 0))
+Tested new position for player 0: (4, 3), direction: (1, 0)
+Getting position for station: patient_legs1
+Found position: [2. 4.]
+Player index: 0
+Moving player 0 from (3, 3) to (2.0, 4.0)
+Layout dimensions: width=6, height=6
+Station locations: [(2, 3), (5, 3), (2, 4)]
+Player positions excluding player 0: []
+New position: ((3, 4), (-1, 0))
+Tested new position for player 0: (3, 4), direction: (-1, 0)
+obs State(literals=frozenset({vacant(table1:station), empty(patient_legs1:station), isrobot(robot1:player), iscpr_board(cpr_board1:item), ispatient(patient1:item), ischestcompressable(patient1:item), ispatient_bed_station(patient_bed_station1:station), istable(table1:station), vacant(patient_legs1:station), canmoveitem(robot1:player), canmove(robot1:player), at(cpr_board1:item,patient_bed_station1:station), ispatient_legs(patient_legs1:station), loc(robot1:player,patient_bed_station1:station), clear(patient1:item), empty(table1:station), nothing(robot1:player), on(cpr_board1:item,patient_bed_station1:station), cprboard-properly-placed(cpr_board1:item,patient_bed_station1:station), ischestcompressed(patient1:item), at(patient1:item,patient_bed_station1:station), cancompresschest(robot1:player), cangiverescuebreaths(robot1:player), selected(robot1:player), atop(patient1:item,cpr_board1:item), iscpr_boardusuable(cpr_board1:item)}), objects=frozenset({table1:station, cpr_board1:item, patient_bed_station1:station, robot1:player, patient_legs1:station, patient1:item}), goal=OR[AND[atop(patient1:item,cpr_board1:item), isrescuebreathed(patient1:item)]])

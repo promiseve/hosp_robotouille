@@ -79,6 +79,7 @@
         (atop ?i1 - item ?i2 - item)
         (has ?p - player ?i - item)
         (selected ?p - player)
+        (cprboard-properly-placed ?i - item ?s - station)
         (cancook ?p - player)
         (cancut ?p - player)
         (canmoveitem ?p - player)
@@ -217,35 +218,43 @@
 
     ;Make the player compress patient's chest
     (:action compresschest
-        :parameters (?p - player ?i - item ?s - station)
+        :parameters (?p - player ?i - item ?i2 - item ?s - station)
         :precondition (and
             (ispatient_bed_station ?s)
             (ispatient ?i) 
             (ischestcompressable ?i)
-            (on ?i ?s)
+            (iscpr_board ?i2)
+            (on ?i2 ?s)
+            (atop ?i ?i2) ; Ensure item ?i2 is atop patient ?i
+            (iscpr_board ?i2) ; Ensure ?i2 is the cpr_board
             (loc ?p ?s)
             (clear ?i)
             (selected ?p)
             (cancompresschest ?p)
             (not (ischestcompressed ?i))
+            (cprboard-properly-placed ?i2 ?s)
         )
         :effect (and
             (ischestcompressed ?i)
+            (isrbifchestcompressed ?i)
         )
     )
 
     ;Make the player give patient rescue breaths
     (:action giverescuebreaths
-        :parameters (?p - player ?i - item ?s - station)
+        :parameters (?p - player ?i - item ?i2 - item ?s - station)
         :precondition (and
             (ispatient_bed_station ?s)
             (ispatient ?i) 
+            (iscpr_board ?i2) ; Ensure ?i2 is the cpr_board - New line    
             (ischestcompressed ?i)  ; Typically, rescue breaths follow chest compressions
-            (on ?i ?s)
+            (isrbifchestcompressed ?i)
+            (on ?i2 ?s)
+            (atop ?i2 ?i) ; Ensure item ?i2 is atop patient ?i - Modified line        
             (loc ?p ?s)
-            (clear ?i)
             (selected ?p)
             (cangiverescuebreaths ?p)
+            (cprboard-properly-placed ?i2 ?s)
         )
         :effect (and
             (isrescuebreathed ?i)
@@ -324,6 +333,8 @@
             (atop ?i2 ?i1)
             (not (on ?i2 ?s))
             (not (has ?p ?i1))
+            (cprboard-properly-placed ?i1 ?s)
+            )
         )
     )
     
@@ -356,6 +367,7 @@
             (at ?i2 ?s)
             (selected ?p)
             (canmoveitem ?p)
+            (not (cprboard-properly-placed ?i2 ?s))  ; Prevent unstacking properly placed items
         )
         :effect (and
             (has ?p ?i1)
