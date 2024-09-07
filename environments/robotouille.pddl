@@ -16,6 +16,8 @@
         (iscpr_station ?s - station)
         (isventilation_station ?s - station)
         (ispatient_bed_station ?s - station)
+        (ishospital_cart_left ?s - station)
+        (ishospital_cart_right ?s - station)
         (ispatient_legs ?s - station)      
         (isrobot ?p - player)
         (isnurse ?p - player)
@@ -44,7 +46,6 @@
         (isusedforventilation ?i - item)
         (isusableforaed ?i - item)
         (ismedicine ?i - item)
-        (isingestable ?i - item)
         (isaed ?i - item)
         (iscpr_kit ?i - item)
         (iscpr_stool ?i - item)
@@ -58,21 +59,14 @@
         (isrbifchestcompressed ?i - item) 
         (iseligibletoreceiverescuebreaths ?i - item)
         (isrescuebreathed ?i - item)
-        (istreatable ?i - item)
         (istreated ?i - item)
-        (isdefibrillated ?i - station)
-        (isresuscitated ?i - station)
-        (isventilated ?i - station)
-        (isaeddefibrillated ?i - station)
-        (iscprresuscitated ?i - station)
-        (ishospital_cart_left ?i - station)
-        (ishospital_cart_right ?i - station)
         (issyringe ?i - item)
         (issyringeusable ?i - item)
         (issyringeused ?i - item)
         (ispump ?i - item)
         (ispumpusable ?i - item)
         (ispumpused ?i - item)
+        (isshocked ?i - item)
 
         ; State Predicates
         (loc ?p - player ?s - station)
@@ -92,59 +86,57 @@
         (canfry ?p - player)
         (canfrycut ?p - player)
         (cangivemedicine ?p - player)
-        (cangiveAED ?p - player)
-        (cangiveCPR ?p - player)
-        (cangivevent ?p - player)
         (cancompresschest ?p - player)
         (cangiverescuebreaths ?p - player)
+        (cangiveshock ?p - player)
     )
 
     ; ACTIONS
+    ; Deliver shock
+    (:action giveshock
+        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?s - station)
+        :precondition (and
+            (ispatient_bed_station ?s)
+            (ispatient ?i1)
+            (isaed ?i2)
+            (ispump ?i3)
+            (iscpr_board ?i4)
+            (isrescuebreathed ?i1)
+            (on ?i4 ?s)
+            (at ?i4 ?s)
+            (atop ?i3 ?i1)
+            (atop ?i2 ?i3)            
+            (loc ?p ?s)
+            (selected ?p)
+            (cangiveshock ?p)
+        )
+        :effect (and
+            (isshocked ?i1)
+        )
+    )
 
-
-    ; Make the nurse player place a medicine item on top the patient station
+    ; Insert Syringe into the patient,; Make the nurse player place a medicine item on top the patient station
     (:action givemedicine
-        :parameters (?p - player ?i - item ?s - station)
+        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?i5 - item ?s - station)
         :precondition (and
-            (ispatient ?s)
-            (isingestable ?i)
-            (on ?i ?s)
+            (ispatient_bed_station ?s)
+            (ispatient ?i1)
+            (isaed ?i2)
+            (ispump ?i3)
+            (iscpr_board ?i4)
+            (ismedicine ?i5)
+            (isshocked ?i1)
+            (on ?i4 ?s)
+            (at ?i4 ?s)
+            (atop ?i3 ?i1)
+            (atop ?i2 ?i3)
+            (atop ?i5 ?i2) ;medicine is on the AED
             (loc ?p ?s)
-            (clear ?i)
+            (selected ?p)
+            (cangivemedicine ?p)
         )
         :effect (and
-            (istreated ?s)
-        )
-    )
-
-    ; Make the nurse player give AED to the patient
-    (:action giveAED
-        :parameters (?p - player ?i - item ?s - station)
-        :precondition (and
-            (ispatient ?s)
-            (isusableforaed ?i)
-            (on ?i ?s)
-            (loc ?p ?s)
-            (clear ?i)
-        )
-        :effect (and
-            (isaeddefibrillated ?s)
-        )
-    )
-
-    ; Make the nurse player give ventilation to the patient
-    (:action giveVentilation
-        :parameters (?p - player ?i - item ?s - station)
-        :precondition (and
-            (ispatient ?s)
-            (isventilator ?i)
-            (isusableforventilation ?i)
-            (on ?i ?s)
-            (loc ?p ?s)
-            (clear ?i)
-        )
-        :effect (and
-            (isventilated ?s)
+            (istreated ?i1)
         )
     )
 
@@ -205,23 +197,6 @@
         )
     )
 
-    ; Make the nurse player place a CPR to the patient
-    (:action giveCPR
-        :parameters (?p - player ?i - item ?s - station)
-        :precondition (and
-            (ispatient ?s)
-            (isusableforcpr ?i)
-            (isusedforcpr ?i)
-            (on ?i ?s)
-            (loc ?p ?s)
-            (clear ?i)
-            (selected ?p)
-            (cangiveCPR ?p)
-        )
-        :effect (and
-            (iscprresuscitated ?s)
-        )
-    )
 
     ; Make the player cook a cookable item on a stove
     (:action cook

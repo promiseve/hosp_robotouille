@@ -119,6 +119,45 @@ class RobotouilleWrapper(gym.Wrapper):
                 if item_status["giverescuebreaths"] == 2:
                     item_status["picked-up"] = False
             return self.prev_step
+        
+        # add a similar logic for action giveshock
+        elif action_name == "giveshock":
+            item = next(
+                filter(
+                    lambda typed_entity: typed_entity.var_type == "item",
+                    action.variables,
+                )
+            )
+            item_status = self.state.get(item.name)
+            if item_status is None:
+                self.state[item.name] = {"giveshock": 1}
+            elif item_status.get("giveshock") is None:
+                item_status["giveshock"] = 1
+            else:
+                item_status["giveshock"] += 1
+                if item_status["giveshock"] == 2:
+                    item_status["picked-up"] = False
+            return self.prev_step
+        
+        # add a similar logic for action givemedicine
+        elif action_name == "givemedicine":
+            item = next(
+                filter(
+                    lambda typed_entity: typed_entity.var_type == "item",
+                    action.variables,
+                )
+            )
+            item_status = self.state.get(item.name)
+            if item_status is None:
+                self.state[item.name] = {"givemedicine": 1}
+            elif item_status.get("givemedicine") is None:
+                item_status["givemedicine"] = 1
+            else:
+                item_status["givemedicine"] += 1
+                if item_status["givemedicine"] == 2:
+                    item_status["picked-up"] = False
+            return self.prev_step
+        
         # add a similar logic for action gatherfood
         elif action_name == "cook":
             item = next(
@@ -245,6 +284,21 @@ class RobotouilleWrapper(gym.Wrapper):
                     # if item_name == "patient":
                     #     literal = pddlgym_utils.str_to_literal(f"ischestcompressable({item}:item)")
                     #     state_updates.append(literal)
+                #write similar logic for giveshock
+                elif status == "giveshock":
+                    item_name, _ = robotouille_utils.trim_item_ID(item)
+                    num_shocks = self.config["num_shocks"]
+                    max_num_shocks = num_shocks.get(item_name, num_shocks["default"])
+                    if state >= max_num_shocks:
+                        literal = pddlgym_utils.str_to_literal(f"isshocked({item}:item)")
+                        state_updates.append(literal)
+                elif status == "givemedicine":
+                    item_name, _ = robotouille_utils.trim_item_ID(item)
+                    num_medicine_doses = self.config["num_medicine_doses"]
+                    max_num_medicine_doses = num_medicine_doses.get(item_name, num_medicine_doses["default"])
+                    if state >= max_num_medicine_doses:
+                        literal = pddlgym_utils.str_to_literal(f"istreated({item}:item)")
+                        state_updates.append(literal)
 
         env_state = self.env.get_state()
         new_literals = env_state.literals.union(state_updates)
@@ -421,7 +475,7 @@ class RobotouilleWrapper(gym.Wrapper):
 
         Returns: The measure of "goodness" of the state.
         """
-
+        return 0
         # Example goal: [AND[iscut(lettuce1:item), atop(topbun1:item,lettuce1:item), iscooked(patty1:item), atop(lettuce1:item,patty1:item), atop(patty1:item,bottombun1:item)]]
         correct_order = ["topbun", "lettuce", "patty", "bottombun"]
         correct_stacking = [False] * 3
@@ -484,6 +538,7 @@ class RobotouilleWrapper(gym.Wrapper):
             score += 10 * item_status["cut"] if item_status["cut"] < 3 else 0
 
         return score
+        
 
     def get_latest_info(self):
         """

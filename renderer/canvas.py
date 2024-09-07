@@ -136,6 +136,18 @@ class RobotouilleCanvas:
                     food_image_name = "rescuebreathed" + food_image_name
                 elif literal.variables[0] == food_image_name[3:]:
                     food_image_name = "rescuebreathed" + food_image_name[3:]
+            #add similar logic to the "isshocked" predicate
+            if literal.predicate == "isshocked":
+                if literal.variables[0] == food_image_name:
+                    food_image_name = "shocked" + food_image_name
+                elif literal.variables[0] == food_image_name[3:]:
+                    food_image_name = "shocked" + food_image_name[3:]
+            #add similar logic to the "istreated" predicate
+            if literal.predicate == "istreated":
+                if literal.variables[0] == food_image_name:
+                    food_image_name = "treated" + food_image_name
+                elif literal.variables[0] == food_image_name[3:]:
+                    food_image_name = "treated" + food_image_name[3:]
 
                     
         # Remove and store ID

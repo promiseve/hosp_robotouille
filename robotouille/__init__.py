@@ -8,6 +8,8 @@ config = {
     "cook_time": {"patty": 3, "default": 3},
     "num_compressions": {"patient": 3, "default": 3},
     "num_breaths": {"patient": 3, "default": 3},
+    "num_shocks": {"patient": 1, "default": 1},
+    "num_medicine_doses": {"patient": 1, "default": 1},
 }
 
 env, json, renderer = create_robotouille_env("multiagent", None, False)
