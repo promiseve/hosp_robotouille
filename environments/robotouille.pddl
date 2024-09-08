@@ -12,9 +12,6 @@
         (isboard ?s - station)
         (isfryer ?s - station)
         (ispatient ?s - item)
-        (isaed_station ?s - station)
-        (iscpr_station ?s - station)
-        (isventilation_station ?s - station)
         (ispatient_bed_station ?s - station)
         (ishospital_cart_left ?s - station)
         (ishospital_cart_right ?s - station)
@@ -40,13 +37,13 @@
         (ispotato ?i - item)
         (isusableforcpr ?i - item)
         (isusedforcpr ?i - item)
-        (isusedforaed ?i - item)
         (isventilator ?i - item)
         (isusableforventilation ?i - item)
         (isusedforventilation ?i - item)
-        (isusableforaed ?i - item)
         (ismedicine ?i - item)
         (isaed ?i - item)
+        (isusableforaed ?i - item)
+        (isusedforaed ?i - item)
         (iscpr_kit ?i - item)
         (iscpr_stool ?i - item)
         (iscpr_stoolusuable ?i - item)
@@ -80,6 +77,8 @@
         (has ?p - player ?i - item)
         (selected ?p - player)
         (cprboard-properly-placed ?i - item ?s - station)
+        (pumpproperlyplaced ?p - item ?i - item)     ; The Pump is properly placed on the patient
+        (aedproperlyplaced ?a - item ?p - item)      ; The AED is properly placed on the Pump
         (cancook ?p - player)
         (cancut ?p - player)
         (canmoveitem ?p - player)
@@ -93,53 +92,6 @@
     )
 
     ; ACTIONS
-    ; Deliver shock
-    (:action giveshock
-        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?s - station)
-        :precondition (and
-            (ispatient_bed_station ?s)
-            (ispatient ?i1)
-            (isaed ?i2)
-            (ispump ?i3)
-            (iscpr_board ?i4)
-            (isrescuebreathed ?i1)
-            (on ?i4 ?s)
-            (at ?i4 ?s)
-            (atop ?i3 ?i1)
-            (atop ?i2 ?i3)            
-            (loc ?p ?s)
-            (selected ?p)
-            (cangiveshock ?p)
-        )
-        :effect (and
-            (isshocked ?i1)
-        )
-    )
-
-    ; Insert Syringe into the patient,; Make the nurse player place a medicine item on top the patient station
-    (:action givemedicine
-        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?i5 - item ?s - station)
-        :precondition (and
-            (ispatient_bed_station ?s)
-            (ispatient ?i1)
-            (isaed ?i2)
-            (ispump ?i3)
-            (iscpr_board ?i4)
-            (ismedicine ?i5)
-            (isshocked ?i1)
-            (on ?i4 ?s)
-            (at ?i4 ?s)
-            (atop ?i3 ?i1)
-            (atop ?i2 ?i3)
-            (atop ?i5 ?i2) ;medicine is on the AED
-            (loc ?p ?s)
-            (selected ?p)
-            (cangivemedicine ?p)
-        )
-        :effect (and
-            (istreated ?i1)
-        )
-    )
 
     ; Move the player from station 1 to station 2
     (:action move
@@ -258,6 +210,64 @@
         )
     )
 
+    ; Deliver shock
+    (:action giveshock
+        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?s - station)
+        :precondition (and
+            (ispatient_bed_station ?s)
+            (ispatient ?i1)
+            (isaed ?i2)
+            (ispump ?i3)
+            (iscpr_board ?i4)
+            (isrescuebreathed ?i1)
+            (on ?i4 ?s) :cpr_board on station
+            (at ?i4 ?s)
+            (atop ?i1 ?i4) ; Patient on top of CPR board
+            (atop ?i2 ?i3)            
+            (loc ?p ?s)
+            (selected ?p)
+            (cangiveshock ?p)
+            (isusableforaed ?i2)
+            (ispumpusable ?i3)
+            (pumpproperlyplaced ?i3 ?i1)  ; Pump must be properly placed on the patient
+            (aedproperlyplaced ?i2 ?i3)   ; AED must be properly placed on the Pump 
+        )
+        :effect (and
+            (isshocked ?i1)
+            (isusedforaed ?i2)
+            (ispumpused ?i3)
+            (not (isusableforaed ?i2))
+            (not (ispumpusable ?i3))
+            (not (pumpproperlyplaced ?i3 ?i1))
+            (not (aedproperlyplaced ?i2 ?i3))
+        )
+    )
+
+    ; Insert Syringe into the patient,; Make the nurse player place a medicine item on top the patient station
+    (:action givemedicine
+        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?i5 - item ?s - station)
+        :precondition (and
+            (ispatient_bed_station ?s)
+            (ispatient ?i1)
+            (isaed ?i2)
+            (ispump ?i3)
+            (iscpr_board ?i4)
+            (ismedicine ?i5)
+            (isshocked ?i1)
+            (on ?i4 ?s)
+            (at ?i4 ?s)
+            (atop ?i3 ?i1)
+            (atop ?i2 ?i3)
+            (atop ?i5 ?i2) ;medicine is on the AED
+            (loc ?p ?s)
+            (selected ?p)
+            (cangivemedicine ?p)
+        )
+        :effect (and
+            (istreated ?i1)
+        )
+    )
+
     ; Make the player fry a fryable item in a fryer
     (:action fry
         :parameters (?p - player ?i - item ?s - station)
@@ -303,6 +313,10 @@
             (at ?i2 ?s)
             (selected ?p)
             (canmoveitem ?p)
+            (or 
+            (and (ispump ?i1) (ispatient ?i2))   ; Stacking Pump on Patient
+            (and (isaed ?i1) (ispump ?i2))       ; Stacking AED on Pump
+            )
         )
         :effect (and
             (nothing ?p)
@@ -311,6 +325,11 @@
             (clear ?i1)
             (not (clear ?i2))
             (not (has ?p ?i1))
+            ; Add explicit effects for proper placements
+            (or 
+                (and (ispump ?i1) (ispatient ?i2) (pumpproperlyplaced ?i1 ?i2))  ; Pump properly placed on Patient
+                (and (isaed ?i1) (ispump ?i2) (aedproperlyplaced ?i1 ?i2))       ; AED properly placed on Pump
+            )
         )
     )
     ; Make the player stack an item under another item at a station

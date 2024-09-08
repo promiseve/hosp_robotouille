@@ -9,6 +9,10 @@
         "num_breaths": {
             "patient": 2,
             "default": 2
+        }, 
+        "num_shocks": {
+            "patient": 1,
+            "default": 1
         }
     },
     "stations": [
@@ -26,6 +30,16 @@
             "name": "table",
             "x": 5,
             "y": 2
+        },
+        {
+            "name": "hospital_cart_left",
+            "x": 1,
+            "y": 3
+        },
+        {
+            "name": "hospital_cart_right",
+            "x": 2,
+            "y": 3
         }
     ],
     "items": [
@@ -37,6 +51,33 @@
             "predicates": [
                 "ispatient","ischestcompressable"
             ]
+        },
+        {
+            "name": "cpr_board",
+            "x": 5,
+            "y": 2,
+            "stack-level": 0,
+            "predicates": [
+                "iscpr_board"
+            ]
+        },
+        {
+            "name": "aed",
+            "x": 1,
+            "y": 3,
+            "stack-level": 0,
+            "predicates": [
+                "isusableforaed"
+            ]
+        },
+        {
+            "name": "pump",
+            "x": 2,
+            "y": 3,
+            "stack-level": 0,
+            "predicates": [
+                "ispumpusable"
+            ]
         }
     ],
 "players": [
@@ -47,15 +88,34 @@
         "direction": [0, 1],
         "actions": [
             "move",
+            "moveitem",
             "compresschest",
-            "giverescuebreaths"
+            "giverescuebreaths",
+            "giveshock"
         ]
     }
 ],
     "goal_description": "Give patient rescue breaths",
     "goal": [
         {
-            "predicate": "isrescuebreathed",
+            "predicate": "isusedforaed",
+            "args": [
+                "aed"
+            ],
+            "ids": [
+                2
+            ]
+        },
+        {
+            "predicate": "ispumpused",
+            "args": [
+                "pump"
+            ],
+            "ids": [
+                3
+            ]},
+        {
+            "predicate": "isshocked",
             "args": [
                 "patient"
             ],
