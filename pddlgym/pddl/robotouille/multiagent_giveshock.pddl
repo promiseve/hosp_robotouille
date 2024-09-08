@@ -52,8 +52,6 @@
 (:goal
    (or
        (and
-           (isusedforaed aed1)
-           (ispumpused pump1)
            (isshocked patient1)
        )
    )

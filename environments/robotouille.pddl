@@ -103,8 +103,11 @@
             (ispump ?i3)
             (iscpr_board ?i4)
             (isrescuebreathed ?i1)
+            (isusableforaed ?i2)
+            (ispumpusable ?i3)
             (on ?i4 ?s)
             (at ?i4 ?s)
+            (at ?i3 ?s)
             (atop ?i3 ?i1)
             (atop ?i2 ?i3)            
             (loc ?p ?s)
@@ -112,7 +115,7 @@
             (cangiveshock ?p)
         )
         :effect (and
-            (isshocked ?i1)
+            (isshocked ?i1)    
         )
     )
 
@@ -251,6 +254,7 @@
             (loc ?p ?s)
             (selected ?p)
             (cangiverescuebreaths ?p)
+            (not (isrescuebreathed ?i))
             (cprboard-properly-placed ?i2 ?s)
         )
         :effect (and

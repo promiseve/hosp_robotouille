@@ -98,23 +98,6 @@
     "goal_description": "Give patient rescue breaths",
     "goal": [
         {
-            "predicate": "isusedforaed",
-            "args": [
-                "aed"
-            ],
-            "ids": [
-                2
-            ]
-        },
-        {
-            "predicate": "ispumpused",
-            "args": [
-                "pump"
-            ],
-            "ids": [
-                3
-            ]},
-        {
             "predicate": "isshocked",
             "args": [
                 "patient"

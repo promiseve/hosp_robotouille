@@ -44,7 +44,7 @@ def parse_args():
         "--skip-variable-reordering",
         dest="reorder_variables", action="store_false",
         help="do not reorder variables based on the causal graph. Do not use "
-        "this option with the causal graph heuristic!")
+        "this option with the causal graph !")
     argparser.add_argument(
         "--keep-unimportant-variables",
         dest="filter_unimportant_vars", action="store_false",
