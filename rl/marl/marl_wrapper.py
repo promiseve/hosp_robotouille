@@ -8,8 +8,6 @@ import utils.pddlgym_utils as pddlgym_utils
 import utils.robotouille_wrapper as robotouille_wrapper
 import wandb
 
-wandb.login()
-
 
 class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
     """
@@ -18,6 +16,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
 
     def __init__(self, env, config, renderer, n_agents):
         super().__init__(env, config, renderer)
+        wandb.login()
         self.pddl_env = env
         self.n_agents = n_agents
 
