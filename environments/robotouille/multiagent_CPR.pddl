@@ -16,7 +16,7 @@
     (ispatient patient1)
     (ischestcompressable patient1)
     (iscpr_board cpr_board1)
-    (iscpr_boardusuable cpr_board1)
+    (iscpr_board cpr_board1)
     (isrobot robot1)
     (empty patient_legs1)
     (vacant patient_legs1)

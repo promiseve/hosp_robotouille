@@ -226,7 +226,6 @@
             (iscpr_board ?i2)
             (on ?i2 ?s)
             (atop ?i ?i2) ; Ensure item ?i2 is atop patient ?i
-            (iscpr_board ?i2) ; Ensure ?i2 is the cpr_board
             (loc ?p ?s)
             (clear ?i)
             (selected ?p)
@@ -236,7 +235,6 @@
         )
         :effect (and
             (ischestcompressed ?i)
-            (isrbifchestcompressed ?i)
         )
     )
 
@@ -248,9 +246,8 @@
             (ispatient ?i) 
             (iscpr_board ?i2) ; Ensure ?i2 is the cpr_board - New line    
             (ischestcompressed ?i)  ; Typically, rescue breaths follow chest compressions
-            (isrbifchestcompressed ?i)
             (on ?i2 ?s)
-            (atop ?i2 ?i) ; Ensure item ?i2 is atop patient ?i - Modified line        
+            (atop ?i ?i2) ; Ensure item ?i2 is atop patient ?i - Modified line        
             (loc ?p ?s)
             (selected ?p)
             (cangiverescuebreaths ?p)
@@ -325,6 +322,8 @@
             (on ?i2 ?s)
             (selected ?p)
             (canmoveitem ?p)
+            (iscpr_board ?i1)  ; Ensure i1 is a CPR board
+            (ispatient ?i2)    ; Ensure i2 is a patient
         )
         :effect (and
             (nothing ?p)

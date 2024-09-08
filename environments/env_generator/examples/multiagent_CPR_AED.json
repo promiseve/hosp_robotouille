@@ -9,14 +9,6 @@
         "num_breaths": {
             "patient": 2,
             "default": 2
-        },
-        "num_shocks": {
-            "patient": 1,
-            "default": 1
-        },
-        "num_medicine_doses": {
-            "patient": 1,
-            "default": 1
         }
     },
     "stations": [
@@ -52,7 +44,7 @@
             "y": 2,
             "stack-level": 0,
             "predicates": [
-                "iscpr_boardusuable"
+                "iscpr_board"
             ]
         }
     ],
