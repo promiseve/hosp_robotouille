@@ -112,6 +112,7 @@
             (atop ?i2 ?i3)            
             (loc ?p ?s)
             (selected ?p)
+            (not (isshocked ?i1))
             (cangiveshock ?p)
         )
         :effect (and
@@ -128,15 +129,21 @@
             (isaed ?i2)
             (ispump ?i3)
             (iscpr_board ?i4)
-            (ismedicine ?i5)
+            (issyringe ?i5)
             (isshocked ?i1)
+            (isusableforaed ?i2)
+            (ispumpusable ?i3)
+            (issyringeusable ?i5)
             (on ?i4 ?s)
             (at ?i4 ?s)
-            (atop ?i3 ?i1)
-            (atop ?i2 ?i3)
-            (atop ?i5 ?i2) ;medicine is on the AED
+            (at ?i3 ?s)
+            (at ?i5 ?s)
+            (atop ?i3 ?i1) ;pump is on the patient 
+            (atop ?i2 ?i3) ;AED is on the pump
+            (atop ?i5 ?i2) ;syringe is on the AED
             (loc ?p ?s)
             (selected ?p)
+            (not (istreated ?i1))
             (cangivemedicine ?p)
         )
         :effect (and
