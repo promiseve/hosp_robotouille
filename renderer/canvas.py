@@ -109,6 +109,13 @@ class RobotouilleCanvas:
         print(f"Drawing food image: {food_name} at position: {position}")
         food_image_name = food_name
 
+        # # Check if the item is a patient and on top of a CPR board
+        # is_patient_on_cpr_board = False
+        # for literal in obs:
+        #     if literal.predicate == "atop" and literal.variables[0].name == food_name and "cpr_board" in literal.variables[1].name:
+        #         is_patient_on_cpr_board = True
+        #         break        
+
         # Check if cut or cooked or fried
         for literal in obs:
             if literal.predicate == "iscut" and literal.variables[0] == food_image_name:
@@ -188,11 +195,46 @@ class RobotouilleCanvas:
 
         print(f"Final food image name: {food_image_name}")
 
+        # # Special case for patient
+        # if food_image_name == "patient" or food_image_name == "chestcompressedpatient" or food_image_name == "rescuebreathedpatient" or food_image_name == "treatedpatient" or food_image_name == "shockedpatient":
+        #     self._draw_image(
+        #         surface, f"{food_image_name}.png", position, self.pix_square_size
+        #     )
+        # else:
+        #     self._draw_image(
+        #         surface,
+        #         f"{food_image_name}.png",
+        #         position + self.pix_square_size * 0.125,
+        #         self.pix_square_size * 0.75,
+        #     )
+        # Check if the item is a patient and on top of a CPR board
+        is_patient_on_cpr_board = False
+        for literal in obs:
+            if literal.predicate == "atop" and literal.variables[0].name == food_name and "cpr_board" in literal.variables[1].name:
+                is_patient_on_cpr_board = True
+                break
+
+        # ... (rest of the existing code)
+
         # Special case for patient
-        if food_image_name == "patient" or food_image_name == "chestcompressedpatient" or food_image_name == "rescuebreathedpatient":
-            self._draw_image(
-                surface, f"{food_image_name}.png", position, self.pix_square_size
-            )
+        # if "patient" in food_image_name:
+        if food_image_name == "patient" or food_image_name == "chestcompressedpatient" or food_image_name == "rescuebreathedpatient" or food_image_name == "treatedpatient" or food_image_name == "shockedpatient":    
+            if is_patient_on_cpr_board:
+                # Draw the patient body
+                body_image_name = f"{food_image_name}.png"
+                self._draw_image(
+                    surface, body_image_name, position, self.pix_square_size
+                )
+                # Draw the patient legs (always using patient_legs.png)
+                legs_position = position + np.array([0, self.pix_square_size[1]])
+                self._draw_image(
+                    surface, "patient_legs.png", legs_position, self.pix_square_size
+                )
+            else:
+                # Draw the whole patient image as before
+                self._draw_image(
+                    surface, f"{food_image_name}.png", position, self.pix_square_size
+                )
         else:
             self._draw_image(
                 surface,

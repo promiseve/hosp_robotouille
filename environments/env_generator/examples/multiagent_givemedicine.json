@@ -100,6 +100,42 @@
 "players": [
     {
         "name": "robot",
+        "x": 0,
+        "y": 3,
+        "direction": [1, 0],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
+        "x": 3,
+        "y": 3,
+        "direction": [-1, 0],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
+        "x": 4,
+        "y": 3,
+        "direction": [1, 0],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
         "x": 5,
         "y": 1,
         "direction": [0, 1],
