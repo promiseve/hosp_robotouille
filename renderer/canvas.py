@@ -18,6 +18,8 @@ class RobotouilleCanvas:
 
     # The offset to draw food and stations relative to the center of the grid square
     STATION_FOOD_OFFSET = 0.25
+    # This offset helps make it look like the player is standing more on the center of the tile
+    PLAYER_OFFSET = 0.2
 
     def __init__(self, layout, players, window_size=np.array([512, 512])):
         """
@@ -130,38 +132,53 @@ class RobotouilleCanvas:
                     food_image_name = "fried" + food_image_name
                 elif literal.variables[0] == food_image_name[3:]:
                     food_image_name = "fried" + food_image_name[3:]
-                    
-            if literal.predicate == "ischestcompressed":
-                print(f"Found chestcompressed: {literal.variables[0]}")
-                if literal.variables[0] == food_image_name:
-                    food_image_name = "chestcompressed" + food_image_name
-                elif literal.variables[0] == food_image_name[3:]:
-                    food_image_name = "chestcompressed" + food_image_name[3:]
-            if literal.predicate == "isrescuebreathed":
-                if literal.variables[0] == food_image_name:
-                    print(f"Found rescuebreathed: {literal.variables[0]}")
-                    food_image_name = "rescuebreathed" + food_image_name
-                elif literal.variables[0] == food_image_name[3:]:
-                    food_image_name = "rescuebreathed" + food_image_name[3:]
-            #add similar logic to the "isshocked" predicate
-            if literal.predicate == "isshocked":
-                if literal.variables[0] == food_image_name:
-                    food_image_name = "shocked" + food_image_name
-                elif literal.variables[0] == food_image_name[3:]:
-                    food_image_name = "shocked" + food_image_name[3:]
-            #add similar logic to the "istreated" predicate
-            if literal.predicate == "istreated":
-                if literal.variables[0] == food_image_name:
-                    food_image_name = "treated" + food_image_name
-                elif literal.variables[0] == food_image_name[3:]:
-                    food_image_name = "treated" + food_image_name[3:]
 
+            # if literal.predicate == "ischestcompressed":
+            #     print(f"Found chestcompressed: {literal.variables[0]}")
+            #     if literal.variables[0] == food_image_name:
+            #         food_image_name = "chestcompressed" + food_image_name
+            #     elif literal.variables[0] == food_image_name[3:]:
+            #         food_image_name = "chestcompressed" + food_image_name[3:]
+            # if literal.predicate == "isrescuebreathed":
+            #     if literal.variables[0] == food_image_name:
+            #         print(f"Found rescuebreathed: {literal.variables[0]}")
+            #         food_image_name = "rescuebreathed" + food_image_name
+            #     elif literal.variables[0] == food_image_name[3:]:
+            #         food_image_name = "rescuebreathed" + food_image_name[3:]
+            # #add similar logic to the "isshocked" predicate
+            # if literal.predicate == "isshocked":
+            #     if literal.variables[0] == food_image_name:
+            #         food_image_name = "shocked" + food_image_name
+            #     elif literal.variables[0] == food_image_name[3:]:
+            #         food_image_name = "shocked" + food_image_name[3:]
+            # #add similar logic to the "istreated" predicate
+            # if literal.predicate == "istreated":
+            #     if literal.variables[0] == food_image_name:
+            #         food_image_name = "treated" + food_image_name
+            #     elif literal.variables[0] == food_image_name[3:]:
+            #         food_image_name = "treated" + food_image_name[3:]
                     
         # Remove and store ID
         # NOTE: Remove and store ID used to be done right before calling draw image, 
         # there might be unforeseen side effects of this change still
         food_image_name, food_id = robotouille_utils.trim_item_ID(food_image_name)
 
+        patient_states = ["istreated", "isshocked", "isrescuebreathed", "ischestcompressed"]
+        if "patient" in food_image_name:
+            # get patient state
+            # TODO: fix shock asset
+            for state in patient_states:
+                found_state = False
+                for literal in obs:
+                    if literal.predicate == state:
+                        found_state = True
+                        print(f"Found {state[2:]}: {literal.variables[0]}")
+                        if literal.variables[0] == food_image_name:
+                            food_image_name = f"{state[2:]}" + food_image_name
+                        elif food_image_name in literal.variables[0]:
+                            food_image_name = f"{state[2:]}" + food_image_name
+                if found_state:
+                    break
 
         for literal in obs:
             if "aed" in food_image_name:
@@ -169,11 +186,8 @@ class RobotouilleCanvas:
                 if literal.predicate == "has" and "aed" in literal.variables[1]:
                     # case when aed is held by player
                     food_image_name = "aed_on_hcw"
-                if literal.predicate == "at":
-                    print("at variables: ", literal.variables)
                 if literal.predicate == "at" and "aed" in literal.variables[0] and "patient" in literal.variables[1]:
                     # case when aed is on patient
-                    print("AED ON PATIENT")
                     food_image_name = "aed_white"
             if "pump" in food_image_name:
                 # pump visualization code
@@ -191,50 +205,51 @@ class RobotouilleCanvas:
                 if literal.predicate == "at" and "syringe" in literal.variables[0] and "patient" in literal.variables[1]:
                     # case when syringe is on patient
                     food_image_name = "syringe_on_patient"
-
+            if "cpr_board" in food_image_name:
+                # TODO: put offset here and check if it's on cart (or on patient too)
+                if literal.predicate == "at" and "cpr_board" in literal.variables[0]:
+                    if "cart" in literal.variables[1]:
+                        position += self.pix_square_size * np.array([0, -0.2], dtype=float)
+                    if "patient" in literal.variables[1]:
+                        # TODO
+                        position += self.pix_square_size * np.array([0, 0.4], dtype=float)
 
         print(f"Final food image name: {food_image_name}")
 
-        # # Special case for patient
-        # if food_image_name == "patient" or food_image_name == "chestcompressedpatient" or food_image_name == "rescuebreathedpatient" or food_image_name == "treatedpatient" or food_image_name == "shockedpatient":
-        #     self._draw_image(
-        #         surface, f"{food_image_name}.png", position, self.pix_square_size
-        #     )
-        # else:
-        #     self._draw_image(
-        #         surface,
-        #         f"{food_image_name}.png",
-        #         position + self.pix_square_size * 0.125,
-        #         self.pix_square_size * 0.75,
-        #     )
-        # Check if the item is a patient and on top of a CPR board
-        is_patient_on_cpr_board = False
-        for literal in obs:
-            if literal.predicate == "atop" and literal.variables[0].name == food_name and "cpr_board" in literal.variables[1].name:
-                is_patient_on_cpr_board = True
-                break
-
-        # ... (rest of the existing code)
-
-        # Special case for patient
-        # if "patient" in food_image_name:
-        if food_image_name == "patient" or food_image_name == "chestcompressedpatient" or food_image_name == "rescuebreathedpatient" or food_image_name == "treatedpatient" or food_image_name == "shockedpatient":    
-            if is_patient_on_cpr_board:
-                # Draw the patient body
-                body_image_name = f"{food_image_name}.png"
+        # Case when we don't want to shrink asset
+        if "patient" in food_image_name or "syringe" in food_image_name \
+            or "aed" in food_image_name:
+            patient_names = [f"{state[2:]}" + "patient" for state in patient_states]
+            if food_image_name in patient_names:
+                # temporary fix until assets are fixed - draw patient and then draw component on top for given state
                 self._draw_image(
-                    surface, body_image_name, position, self.pix_square_size
+                    surface, f"patient.png", position, self.pix_square_size
                 )
-                # Draw the patient legs (always using patient_legs.png)
-                legs_position = position + np.array([0, self.pix_square_size[1]])
+                if food_image_name == "treatedpatient":
+                    component_name = "treatedpatient" # we dont really have a special image for this but doesn't matter since it's goal state
+                if food_image_name == "shockedpatient":
+                    component_name = "lightning_bolts_on_aed"
+                if food_image_name == "rescuebreathedpatient":
+                    component_name = "rescuebreathe"
+                if food_image_name == "chestcompressedpatient":
+                    component_name = "apply_pressure"
                 self._draw_image(
-                    surface, "patient_legs.png", legs_position, self.pix_square_size
+                    surface, f"{component_name}.png", position, self.pix_square_size
                 )
             else:
-                # Draw the whole patient image as before
                 self._draw_image(
                     surface, f"{food_image_name}.png", position, self.pix_square_size
                 )
+        # # special case for cpr_board since asset is too low
+        # elif "cpr_board" in food_image_name:
+        #     cpr_offset = self.pix_square_size * np.array([0, -0.2], dtype=float)
+        #     self._draw_image(
+        #         surface,
+        #         f"{food_image_name}.png",
+        #         position + self.pix_square_size * 0.125 + cpr_offset,
+        #         self.pix_square_size * 0.75,
+        #     )
+
         else:
             self._draw_image(
                 surface,
@@ -507,11 +522,12 @@ class RobotouilleCanvas:
                 # Calculate the drawing position in pixels
                 # player_pos[0] * self.pix_square_size[0]: Convert x-coordinate from grid to pixels
                 # (player_pos[1] - 0.2) * self.pix_square_size[1]: Convert y-coordinate from grid to pixels,
-                # subtracting 0.2 (20% of a cell) to move the player up slightly
+                # subtracting PLAYER_OFFSET of 0.2 (20% of a cell) to move the player up slightly
                 # This ensures the player is drawn above the object they're standing on
+                # (so it looks like they're standing on the center of the tile)
                 draw_pos = (
                     player_pos[0] * self.pix_square_size[0],
-                    (player_pos[1] - 0.2) * self.pix_square_size[1],
+                    (player_pos[1] - self.PLAYER_OFFSET) * self.pix_square_size[1],
                 )
 
                 print(f"  Final draw position (pixels): {draw_pos}")
@@ -538,6 +554,14 @@ class RobotouilleCanvas:
             surface (pygame.Surface): Surface to draw on
             obs (List[Literal]): Game state predicates
         """
+        at_patient_set = set()
+        for literal in obs:
+            # keep track of items on patient to prevent them from getting stack offset
+            if literal.predicate == "at" and "patient_bed_station" in literal.variables[1].name:
+                item = literal.variables[0].name
+                at_patient_set.add(item)
+        print("items at patient station: ", at_patient_set)
+
         stack_list = []  # In the form (x, y) such that x is stacked on y
         stack_number = {}  # Stores the food item and current stack number
         for literal in obs:
@@ -547,7 +571,7 @@ class RobotouilleCanvas:
                 food_station = literal.variables[1].name
                 pos = self._get_station_position(food_station)
                 if "patient" not in food and "cart" not in food_station:
-                    pos[1] -= RobotouilleCanvas.STATION_FOOD_OFFSET  # place the food slightly above the station
+                    pos[1] -= RobotouilleCanvas.STATION_FOOD_OFFSET  # place the food slightly above the station if it's not a cart or patient
 
                 print(f"Drawing food: {food} at {pos}")
                 self._draw_food_image(surface, food, obs, pos * self.pix_square_size)
@@ -560,7 +584,10 @@ class RobotouilleCanvas:
                 # player_name = literal.variables[0].name
                 item = literal.variables[1].name
                 player_index = self._get_player_index(literal)
-                pos = self.players_pose[player_index]["position"]
+                player_pos = self.players_pose[player_index]["position"]
+                # make sure to adjust item by same amount that player is offset by
+                non_syringe_offset = 0.0 if "syringe" in item else 0.05
+                pos = np.array([player_pos[0], player_pos[1] - self.PLAYER_OFFSET + non_syringe_offset], dtype=float)
                 self._draw_food_image(surface, item, obs, pos * self.pix_square_size)
 
         # Add stacked items
@@ -581,13 +608,21 @@ class RobotouilleCanvas:
                                 literal.variables[1].name
                             )
                             break
-                    cheese_offset = (
-                        -0.05 if "cheese" in food_above or "onion" in food_above else 0
-                    )
+                    # cheese_offset = (
+                    #     -0.05 if "cheese" in food_above or "onion" in food_above else 0
+                    # )
+                    # on_patient_offset = (
+                    #     -(self.STATION_FOOD_OFFSET + .1) if "paitent" in food_above or "patient" in food_below else 0
+                    # )
+                    # station_pos[1] -= (
+                    #     self.STATION_FOOD_OFFSET
+                    #     + 0.1 * (stack_number[food_above] - 1)
+                    #     + on_patient_offset
+                    # )
                     station_pos[1] -= (
-                        self.STATION_FOOD_OFFSET
-                        + 0.1 * (stack_number[food_above] - 1)
-                        + cheese_offset
+                        # removed the STATION_FOOD_OFFSET here since it was only for robotouiile kitchen table
+                        (0.1 * (stack_number[food_above] - 1))
+                        if food_above not in at_patient_set else 0
                     )
                     print(f"Drawing stacked food: {food_above} at {station_pos}")
                     self._draw_food_image(

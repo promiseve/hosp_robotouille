@@ -16,6 +16,7 @@
         (iscpr_station ?s - station)
         (isventilation_station ?s - station)
         (ispatient_bed_station ?s - station)
+        (ishospital_cart ?s - station)
         (ishospital_cart_left ?s - station)
         (ishospital_cart_right ?s - station)
         (ispatient_legs ?s - station)      
