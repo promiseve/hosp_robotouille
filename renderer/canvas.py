@@ -111,6 +111,13 @@ class RobotouilleCanvas:
         print(f"Drawing food image: {food_name} at position: {position}")
         food_image_name = food_name
 
+        # # Check if the item is a patient and on top of a CPR board
+        # is_patient_on_cpr_board = False
+        # for literal in obs:
+        #     if literal.predicate == "atop" and literal.variables[0].name == food_name and "cpr_board" in literal.variables[1].name:
+        #         is_patient_on_cpr_board = True
+        #         break        
+
         # Check if cut or cooked or fried
         for literal in obs:
             if literal.predicate == "iscut" and literal.variables[0] == food_image_name:
@@ -223,7 +230,7 @@ class RobotouilleCanvas:
                 if food_image_name == "shockedpatient":
                     component_name = "lightning_bolts_on_aed"
                 if food_image_name == "rescuebreathedpatient":
-                    component_name = "rescuebreathe" # TODO: we don't have separate component as an asset yet
+                    component_name = "rescuebreathe"
                 if food_image_name == "chestcompressedpatient":
                     component_name = "apply_pressure"
                 self._draw_image(
@@ -242,6 +249,7 @@ class RobotouilleCanvas:
         #         position + self.pix_square_size * 0.125 + cpr_offset,
         #         self.pix_square_size * 0.75,
         #     )
+
         else:
             self._draw_image(
                 surface,

@@ -251,14 +251,18 @@
 
     ;Make the player give patient rescue breaths
     (:action giverescuebreaths
-        :parameters (?p - player ?i - item ?i2 - item ?s - station)
+        :parameters (?p - player ?i - item ?i2 - item ?i3 - item ?s - station)
         :precondition (and
             (ispatient_bed_station ?s)
             (ispatient ?i) 
             (iscpr_board ?i2) ; Ensure ?i2 is the cpr_board - New line    
+            (ispump ?i3)
+            (ispumpusable ?i3)
+            (at ?i3 ?s)
             (ischestcompressed ?i)  ; Typically, rescue breaths follow chest compressions
             (on ?i2 ?s)
-            (atop ?i ?i2) ; Ensure item ?i2 is atop patient ?i - Modified line        
+            (atop ?i ?i2) ; Ensure item ?i2 cpr_board is atop patient ?i - Modified line 
+            (atop ?i3 ?i)       
             (loc ?p ?s)
             (selected ?p)
             (cangiverescuebreaths ?p)
