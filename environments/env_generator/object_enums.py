@@ -35,6 +35,7 @@ class Station(Enum):
     PATIENT_BED_STATION = "patient_bed_station"
     HOSP_CART_LEFT = "hospital_cart_left"
     HOSP_CART_RIGHT = "hospital_cart_right"
+    HOSP_CART = "hospital_cart"
 
 
 def str_to_typed_enum(s):

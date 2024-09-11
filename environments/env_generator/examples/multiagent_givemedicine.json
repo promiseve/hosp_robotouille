@@ -31,7 +31,7 @@
             "y": 2
         },
         {
-            "name": "table",
+            "name": "hospital_cart",
             "x": 5,
             "y": 2
         },
@@ -72,7 +72,7 @@
         },
         {
             "name": "aed",
-            "x": 1,
+            "x": 2,
             "y": 3,
             "stack-level": 0,
             "predicates": [
@@ -90,7 +90,7 @@
         },
         {
             "name": "syringe",
-            "x": 5, 
+            "x": 1, 
             "y": 3,
             "stack-level": 0,
             "predicates": [

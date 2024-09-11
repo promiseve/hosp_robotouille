@@ -6,7 +6,7 @@
     patient_legs1 - station
     patient_bed_station1 - station
     hospital_cart_right1 - station
-    table2 - station
+    hospital_cart1 - station
     cpr_kit1 - item
     pump1 - item
     patient1 - item
@@ -24,7 +24,7 @@
     (ispatient_legs patient_legs1)
     (ispatient_bed_station patient_bed_station1)
     (ishospital_cart_right hospital_cart_right1)
-    (istable table2)
+    (ishospital_cart hospital_cart1)
     (iscpr_kit cpr_kit1)
     (isusableforcpr cpr_kit1)
     (ispump pump1)
@@ -52,8 +52,8 @@
     (vacant patient_bed_station1)
     (at syringe1 hospital_cart_right1)
     (loc robot3 hospital_cart_right1)
-    (at cpr_board1 table2)
-    (loc robot4 table2)
+    (at cpr_board1 hospital_cart1)
+    (loc robot4 hospital_cart1)
     (has robot1 cpr_kit1)
     (nothing robot2)
     (nothing robot3)
@@ -66,7 +66,7 @@
     (clear aed1)
     (on syringe1 hospital_cart_right1)
     (clear syringe1)
-    (on cpr_board1 table2)
+    (on cpr_board1 hospital_cart1)
     (clear cpr_board1)
     (cancook robot1)    (cancut robot1)    (canmoveitem robot1)    (canmove robot1)    (cancook robot2)    (cancut robot2)    (canmoveitem robot2)    (canmove robot2)    (cancook robot3)    (cancut robot3)    (canmoveitem robot3)    (canmove robot3)    (cancook robot4)    (cancut robot4)    (canmoveitem robot4)    (canmove robot4))
 (:goal
