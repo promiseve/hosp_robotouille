@@ -10,6 +10,7 @@ PREDICATE_STRINGS = [
     # Identity Predicates
     "istable(?:station)",
     "isstove(?:station)",
+    "ispatient(?:station)",
     "isboard(?:station)",
     "isbun(?:item)",
     "islettuce(?:item)",
@@ -18,6 +19,15 @@ PREDICATE_STRINGS = [
     "ispatty(?:item)",
     "iscookable(?:item)",
     "iscooked(?:item)",
+    "iscpr_kit(?:item)",
+    "isusedforcpr(?:item)",
+    "isusableforcpr(?:item)",
+    "iscpr_stool(?:item)",
+    "iscpr_stoolused(?i - item)",
+    "iscpr_stoolusuable(?i - item)",
+    "isaed(?:item)",
+    "isusedforaed(?:item)",
+    "isusableforaed(?:item)",
     # State Predicates
     "loc(?:player,?:station)",
     "at(?:item,?:station)",

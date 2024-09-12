@@ -27,6 +27,7 @@ def create_action_from_control(env, obs, action, renderer):
         return
 
     valid_actions = get_valid_moves(env, obs, renderer)
+    print("obs", obs)
     str_valid_actions = list(map(str, valid_actions))
     action = action[0]
     if action.type == pygame.MOUSEBUTTONDOWN:
@@ -57,6 +58,10 @@ def create_action_from_control(env, obs, action, renderer):
                 or "cut(" in str_valid_actions[index]
                 or "fry(" in str_valid_actions[index]
                 or "fry_cut_item(" in str_valid_actions[index]
+                or "compresschest(" in str_valid_actions[index]
+                or "giverescuebreaths(" in str_valid_actions[index]
+                or "giveshock(" in str_valid_actions[index]
+                or "givemedicine(" in str_valid_actions[index]
             ):
                 # We look for fry( instead which should be guaranteed to only match the fry action, and not the fryer
                 try:
@@ -64,11 +69,13 @@ def create_action_from_control(env, obs, action, renderer):
                 except ValueError:
                     return None
             return str_valid_actions[index]
+
     elif action.type == pygame.KEYDOWN:
+        literal_names = [
+            str_valid_action.split("(")[0] for str_valid_action in str_valid_actions
+        ]
+
         if action.key == pygame.K_e:
-            literal_names = [
-                str_valid_action.split("(")[0] for str_valid_action in str_valid_actions
-            ]
             if "cook" in literal_names:
                 index = literal_names.index("cook")
                 return str_valid_actions[index]
@@ -81,5 +88,27 @@ def create_action_from_control(env, obs, action, renderer):
             elif "fry_cut_item" in literal_names:
                 index = literal_names.index("fry_cut_item")
                 return str_valid_actions[index]
+            elif "compresschest" in literal_names:
+                index = literal_names.index("compresschest")
+                return str_valid_actions[index]
+            elif "giverescuebreaths" in literal_names:
+                index = literal_names.index("giverescuebreaths")
+                return str_valid_actions[index]
+            elif "giveshock" in literal_names:
+                index = literal_names.index("giveshock")
+                return str_valid_actions[index]            
+            elif "givemedicine" in literal_names:
+                index = literal_names.index("givemedicine")
+                return str_valid_actions[index]
+            elif "stackunder" in literal_names:
+                index = literal_names.index("stackunder")
+                return str_valid_actions[index]
+        # elif action.key == pygame.K_g:
+        #     literal_names = [
+        #         str_valid_action.split("(")[0] for str_valid_action in str_valid_actions
+        #     ]
+        #     if "giveshock" in literal_names:
+        #         index = literal_names.index("giveshock")
+        #         return str_valid_actions[index]
         elif action.key == pygame.K_SPACE:
-            return "noop"
+                return "noop"

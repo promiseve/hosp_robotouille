@@ -1,6 +1,5 @@
 from typing import List, Optional, Union
 import gym
-import numpy as np
 import pddlgym
 from rl.marl.marl_env import MARLEnv
 from utils.robotouille_utils import get_valid_moves
@@ -124,8 +123,8 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
             wandb.log({"reward per step": reward})
 
         self.episode_reward += reward
-        if self.pddl_env.timesteps >= self.max_steps:
-            wandb.log({"reward per episode": self.episode_reward})
+        # if self.pddl_env.timesteps >= self.max_steps:
+        #     wandb.log({"reward per episode": self.episode_reward})
 
         return (
             self.env.state,
