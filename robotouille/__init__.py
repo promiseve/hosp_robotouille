@@ -12,7 +12,7 @@ config = {
     "num_medicine_doses": {"patient": 1, "default": 1},
 }
 
-env, json, renderer = create_robotouille_env("multiagent", None, False)
+env, json, renderer = create_robotouille_env("multiagent_givemedicine", None, False)
 obs, info = env.reset()
 
-#ENVIRONMENT = MAHospital_robotouille(env, config, renderer)
+ENVIRONMENT = MAHospital_robotouille(env, config, renderer)

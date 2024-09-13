@@ -1,6 +1,7 @@
 from typing import List, Optional, Union
 import gym
 import pddlgym
+from rl.marl.hosp_marl_env import HospitalMARLEnv
 from rl.marl.marl_env import MARLEnv
 from utils.robotouille_utils import get_valid_moves
 import utils.pddlgym_utils as pddlgym_utils
@@ -68,8 +69,8 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         )
 
         # if the environment is a RobotouilleWrapper, we need to change it to MARLEnv. Otherwise, just step the MARLEnv
-        if not isinstance(self.env, MARLEnv):
-            self.env = MARLEnv(
+        if not isinstance(self.env, HospitalMARLEnv):
+            self.env = HospitalMARLEnv(
                 self.n_agents,
                 expanded_truths,
                 expanded_states,

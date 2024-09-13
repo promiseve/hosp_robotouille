@@ -43,25 +43,7 @@ class HospitalMARLEnv(MARLEnv):
             expanded_truths (list): List of expanded truths of the state after the update.
             valid_actions (list): List of valid actions after the update
         """
-        self.expanded_truths = expanded_truths
-        self.valid_actions = valid_actions
-
-        self.shortened_action_truths, self.shortened_action_names = (
-            self._get_action_space()
-        )
-
-        self.shortened_expanded_truths, self.shortened_expanded_states = (
-            self._get_observation_space()
-        )
-
-        for i in range(self.n_agents):
-            self.state[i] = np.array(
-                self.shortened_expanded_truths + self.shortened_action_truths[i]
-            )
-            self.state_names[i] = (
-                self.shortened_expanded_states + self.shortened_action_names[i]
-            )
-        # self.print_state()
+        super().step(expanded_truths, valid_actions)
 
     def _get_observation_space(self, mode=observation_size.LARGE):
         """
@@ -75,17 +57,19 @@ class HospitalMARLEnv(MARLEnv):
             shortened_expanded_states (list): List of states in the shortened observation space.
         """
 
-        desired_truths = ["iscut", "iscooked"]
-        desired_items = ["lettuce", "patty"]
-
-        if mode != self.observation_size.SMALL:
-            desired_truths = ["iscut", "iscooked", "has", "loc"]
-            desired_items = ["lettuce", "patty", "robot", "robot"]
-            desired_order = ["topbun", "lettuce", "patty", "bottombun"]
+        desired_truths = [
+            "ischestcompressed",
+            "isrescuebreathed",
+            "isshocked",
+            "istreated",
+            "has",
+            "loc",
+        ]
+        desired_items = ["patient", "patient", "patient", "patient", "robot", "robot"]
 
         shortened_expanded_truths = []
         shortened_expanded_states = []
-
+        print("expanded_states", self.expanded_states)
         for truth, state in zip(self.expanded_truths, self.expanded_states):
             predicate = state.predicate.name
             item = state.variables[0].name
@@ -96,13 +80,6 @@ class HospitalMARLEnv(MARLEnv):
                     shortened_expanded_states.append(state)
                     break
 
-            if predicate == "atop" and mode != self.observation_size.SMALL:
-                item2 = state.variables[1].name
-                for i in range(len(desired_order) - 1):
-                    if desired_order[i] in item and desired_order[i + 1] in item2:
-                        shortened_expanded_truths.append(truth)
-                        shortened_expanded_states.append(state)
-                        break
             if predicate == "at" and mode == self.observation_size.LARGE:
                 shortened_expanded_truths.append(truth)
                 shortened_expanded_states.append(state)
@@ -117,33 +94,8 @@ class HospitalMARLEnv(MARLEnv):
             shortened_action_truths (list): List of truth values for each action in the shortened action space.
             shortened_action_names (list): List of action names in the shortened action space.
         """
-        actions_truth = np.isin(
-            np.array(self.all_actions), np.array(self.valid_actions)
-        ).astype(np.float64)
 
-        shortened_action_names = [[]] * self.n_agents
-        shortened_action_truths = [[]] * self.n_agents
-        for action, valid in zip(self.all_actions, actions_truth):
-            action_name = action.predicate.name
-            # Add the action name to the shortened action space. If the action is new, add the truth value to the shortened action truths. If the action is already in the shortened action space, update the truth value if the action is valid.
-            if action_name == "select":
-                continue
-            if action_name == "move":
-                action_name += "_" + action.variables[2].name
-            elif action_name == "place" or action_name == "stack":
-                action_name = "place/stack"
-            elif action_name == "pick-up" or action_name == "unstack":
-                action_name = "pick-up/unstack"
-
-            player_index = int(action.variables[0].name[-1]) - 1
-            if action_name not in shortened_action_names[player_index]:
-                shortened_action_names[player_index].append(action_name)
-                shortened_action_truths[player_index].append(valid)
-            elif action_name in shortened_action_names[player_index] and valid == 1.0:
-                index = shortened_action_names[player_index].index(action_name)
-                shortened_action_truths[player_index][index] = valid
-
-        return shortened_action_truths, shortened_action_names
+        return super()._get_action_space()
 
     def unwrap_move(self, agent_index, action):
         """
@@ -153,29 +105,7 @@ class HospitalMARLEnv(MARLEnv):
             action (int): The index of the action in the shortened action space.
 
         """
-        # print("valid actions", self.valid_actions)
-        # print("index", agent_index)
-
-        if self.shortened_action_truths[agent_index][action] == 0.0:
-            # print("invalid: " + self.shortened_action_names[action])
-            return "invalid"
-        attempted_action = self.shortened_action_names[agent_index][action]
-
-        actions_truth = np.isin(
-            np.array(self.all_actions), np.array(self.valid_actions)
-        ).astype(np.float64)
-
-        # Find the action in the all_actions list that is valid and corresponds to the attempted action
-        for action, truth in zip(self.all_actions, actions_truth):
-            if action.variables[0].name != "robot" + str(agent_index + 1):
-                continue
-            action_name = action.predicate.name
-            if action_name == "move":
-                action_name += "_" + action.variables[2].name
-            if action_name in attempted_action and truth == 1.0:
-                return action
-
-        print("ERROR: Action not found ", attempted_action)
+        return super().unwrap_move(agent_index, action)
 
     def print_state(self):
         """

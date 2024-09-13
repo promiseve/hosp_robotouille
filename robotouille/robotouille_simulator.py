@@ -31,7 +31,7 @@ def simulator(
     environment_name: str,
     seed: int = 42,
     noisy_randomization: bool = False,
-    mode=mode.PLAY,
+    mode=mode.TRAIN,
     type=type.MULTI,
 ):
     # Load or train agent
