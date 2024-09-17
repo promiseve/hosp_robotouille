@@ -275,9 +275,7 @@ class RobotouilleWrapper(gym.Wrapper):
                             f"ischestcompressed({item}:item)"
                         )
                         # print literal
-                        print("literal:", literal)
                         state_updates.append(literal)
-                        print("state_updates:", state_updates)
                 elif status == "giverescuebreaths":
                     item_name, _ = robotouille_utils.trim_item_ID(item)
                     num_breaths = self.config["num_breaths"]
@@ -456,6 +454,8 @@ class RobotouilleWrapper(gym.Wrapper):
         expanded_truths, expanded_states = pddlgym_utils.expand_state(
             obs.literals, obs.objects
         )
+
+        print("expanded_states: ", expanded_states)
 
         if self._current_selected_player(obs) == "robot1":
             self.timesteps += 1

@@ -72,6 +72,9 @@ class HospitalMARLEnv(MARLEnv):
         print("expanded_states", self.expanded_states)
         for truth, state in zip(self.expanded_truths, self.expanded_states):
             predicate = state.predicate.name
+
+            if predicate not in desired_truths:
+                continue
             item = state.variables[0].name
 
             for i in range(len(desired_items)):
