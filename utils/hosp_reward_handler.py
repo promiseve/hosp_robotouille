@@ -16,22 +16,54 @@ class HospRewardHandler(RewardHandler):
         return False
 
     def pump_held(self, obs):
-        pass
+        for literal in obs.literals:
+            if "has" == literal.predicate.name and "pump" in literal.variables[1].name:
+                return True
+        return False
+        
 
     def pump_on_patient(self, obs):
-        pass
+        for literal in obs.literals:
+            if (
+                "atop" == literal.predicate.name
+                and "pump" in literal.variables[0].name
+                and "patient" in literal.variables[1].name
+            ):
+                return True
+        return False
 
     def aed_held(self, obs):
-        pass
+        for literal in obs.literals:
+            if "has" == literal.predicate.name and "aed" in literal.variables[1].name:
+                return True
+        return False
+        
 
-    def aed_on_cpr(self, obs):
-        pass
+    def aed_on_pump(self, obs):
+        for literal in obs.literals:
+            if (
+                "atop" == literal.predicate.name
+                and "aed" in literal.variables[0].name
+                and "pump" in literal.variables[1].name
+            ):
+                return True
+        return False
 
     def medicine_held(self, obs):
-        pass
-
+        for literal in obs.literals:
+            if "has" == literal.predicate.name and "medicine" in literal.variables[1].name:
+                return True
+        return False
+    
     def medicine_on_aed(self, obs):
-        pass
+        for literal in obs.literals:
+            if (
+                "atop" == literal.predicate.name
+                and "medicine" in literal.variables[0].name
+                and "aed" in literal.variables[1].name
+            ):
+                return True
+        return False
 
     def heuristic_reward(self, obs, state):
         """
@@ -52,45 +84,65 @@ class HospRewardHandler(RewardHandler):
         # Example goal: [AND[iscut(lettuce1:item), atop(topbun1:item,lettuce1:item), iscooked(patty1:item), atop(lettuce1:item,patty1:item), atop(patty1:item,bottombun1:item)]]
         self.obs = obs
         self.state = state
-        correct_order = ["cpr_board", "patient", "pump", "aed", "medicine"]
+        correct_order = ["cpr_board", "patient", "pump", "aed", "syringe"]
+        score = 0
         chest_compressed = False
         rescue_breathed = False
         shocked = False
         medicine_given = False
-
-        # See if goals (stacking, cooking, cutting) are met
-        score = 0
+        
+        # Check if goals are met
         for clause in obs.goal.literals:
             for goal in clause.literals:
                 for literal in obs.literals:
                     if goal == literal:
-                        if goal.predicate == "iscooked":
-                            cooked = True
-                        if goal.predicate == "iscut":
-                            cut = True
+                        if goal.predicate.name == "ischestcompressed":
+                            chest_compressed = True
+                        elif goal.predicate.name == "isrescuebreathed":
+                            rescue_breathed = True
+                        elif goal.predicate.name == "isshocked":
+                            shocked = True
+                        elif goal.predicate.name == "istreated":
+                            medicine_given = True
 
-        # Check if the stacking is correct (Correct order + cooked burger + cut lettuce)
-        for i in range(len(correct_stacking)):
-            if not correct_stacking[2 - i]:
+        # Check if the CPR board is under the patient
+        if self._check_CPRboard_patient(obs):
+            score += 30                    
+
+        # Check if equipment is in the correct order
+        correct_stacking = [
+            self._check_CPRboard_patient(obs),
+            self.pump_on_patient(obs),
+            self.aed_on_pump(obs),
+            self.medicine_on_aed(obs)
+        ]
+        for i, stacked in enumerate(correct_stacking):
+            if stacked:
+                score += 15 * (i + 1)
+            else:
                 break
-            if i == 0 and not cooked:
-                break
-            elif i == 1 and (not cut or not cooked):
-                break
-            elif i == 2 and not cut:
-                break
+
+        # Give rewards for each action progress
+        for action in ["compresschest", "giverescuebreaths", "giveshock", "givemedicine"]:
+            item_status = self.state.get("patient1", {})
+            if item_status.get(action) is not None:
+                max_count = {"compresschest": 3, "giverescuebreaths": 2, "giveshock": 1, "givemedicine": 1}[action]
+                count = min(item_status[action], max_count)
+                score += 10 * count
+
+        # Give rewards for completed actions
+        if chest_compressed:
+            score += 20
+        if rescue_breathed:
+            score += 25
+        if shocked:
             score += 30
+        if medicine_given:
+            score += 35
 
-        # Give reward for cut. If not, give reward for uncut lettuce on board and uncut lettuce held
-        if cut:
-            score += 45
-        else:
-            score += 15 if self._check_lettuce_board(obs) else 0
-            score += 5 if self._check_lettuce_held(obs) else 0
-
-        # Give reward for each cut in the lettuce
-        item_status = self.state.get("lettuce1")
-        if item_status is not None and item_status.get("cut") is not None:
-            score += 10 * item_status["cut"] if item_status["cut"] < 3 else 0
-
-        return score
+        # Give rewards for progress towards using equipment
+        score += 5 if self.pump_held(obs) else 0
+        score += 5 if self.aed_held(obs) else 0
+        score += 5 if self.medicine_held(obs) else 0
+        return score    
+        
