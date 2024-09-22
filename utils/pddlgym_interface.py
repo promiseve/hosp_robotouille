@@ -74,6 +74,7 @@ def create_pddl_env(env_name, is_test_env, render_fn, problem_filename):
     pddlgym.register_pddl_env(env_name, is_test_env, kwargs)
     domain_file_path = add_domain_file(env_name)
     problem_dir_path = add_problem_files(env_name)
+    # breakpoint()
     env = pddlgym.make(f"PDDLEnv{env_name.capitalize()}-v0")
     try:
         os.remove(domain_file_path)

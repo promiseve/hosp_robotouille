@@ -1,14 +1,12 @@
 from typing import List, Optional, Union
 import gym
-import numpy as np
 import pddlgym
+from rl.marl.hosp_marl_env import HospitalMARLEnv
 from rl.marl.marl_env import MARLEnv
 from utils.robotouille_utils import get_valid_moves
 import utils.pddlgym_utils as pddlgym_utils
 import utils.robotouille_wrapper as robotouille_wrapper
 import wandb
-
-wandb.login()
 
 
 class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
@@ -18,6 +16,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
 
     def __init__(self, env, config, renderer, n_agents):
         super().__init__(env, config, renderer)
+        wandb.login()
         self.pddl_env = env
         self.n_agents = n_agents
 
@@ -70,8 +69,8 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         )
 
         # if the environment is a RobotouilleWrapper, we need to change it to MARLEnv. Otherwise, just step the MARLEnv
-        if not isinstance(self.env, MARLEnv):
-            self.env = MARLEnv(
+        if not isinstance(self.env, HospitalMARLEnv):
+            self.env = HospitalMARLEnv(
                 self.n_agents,
                 expanded_truths,
                 expanded_states,
@@ -125,8 +124,8 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
             wandb.log({"reward per step": reward})
 
         self.episode_reward += reward
-        if self.pddl_env.timesteps >= self.max_steps:
-            wandb.log({"reward per episode": self.episode_reward})
+        # if self.pddl_env.timesteps >= self.max_steps:
+        #     wandb.log({"reward per episode": self.episode_reward})
 
         return (
             self.env.state,

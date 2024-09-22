@@ -6,7 +6,7 @@ from utils.robotouille_utils import get_valid_moves
 import utils.pddlgym_utils as pddlgym_utils
 import utils.robotouille_wrapper as robotouille_wrapper
 from rl.rl_env import RLEnv
-import wandb
+#import wandb
 
 # wandb.login()
 
@@ -34,7 +34,7 @@ class RLWrapper(robotouille_wrapper.RobotouilleWrapper):
             "entropy_loss": None,  # Entropy loss
         }
         # Initialize WandB with the metrics config
-        wandb.init(project="6756-rl-experiments", config=self.metrics_config)
+        #wandb.init(project="6756-rl-experiments", config=self.metrics_config)
 
     def log_metrics(self, update_dict):
         """
@@ -44,7 +44,7 @@ class RLWrapper(robotouille_wrapper.RobotouilleWrapper):
         # Update the metrics configuration with new values
         self.metrics_config.update(update_dict)
         # Log the updated metrics to WandB
-        wandb.log(self.metrics_config)
+        #wandb.log(self.metrics_config)
 
     def _wrap_env(self):
         """
@@ -100,11 +100,11 @@ class RLWrapper(robotouille_wrapper.RobotouilleWrapper):
 
         reward -= 1
 
-        wandb.log({"reward per step": reward})
+        #wandb.log({"reward per step": reward})
         self._wrap_env()
         self.episode_reward += reward
-        if self.pddl_env.timesteps > self.max_steps:
-            wandb.log({"reward per episode": self.episode_reward})
+        # if self.pddl_env.timesteps > self.max_steps:
+        #  wandb.log({"reward per episode": self.episode_reward})
 
         return (
             self.env.state,

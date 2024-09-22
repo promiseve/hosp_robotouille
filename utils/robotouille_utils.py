@@ -135,7 +135,9 @@ def trim_item_ID(item):
         if char.isdigit():
             index = i
             break
-    assert index is not None  # Item must have an ID
+    if index is None:
+        print("item name: ", item)
+        assert index is not None  # Item must have an ID
     item_name = item[:index]
     item_ID = item[index:]
     return item_name, item_ID

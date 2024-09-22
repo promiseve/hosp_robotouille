@@ -14,7 +14,7 @@ class MAHospital_robotouille(MultiAgentEnv):
         env,
         config,
         renderer,
-        num_agents=3,
+        num_agents=4,
     ):
 
         self.pddl_env = env

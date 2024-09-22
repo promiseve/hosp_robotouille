@@ -2,132 +2,159 @@
     "width": 6,
     "height": 6,
     "config": {
-        "num_cuts": {
-            "lettuce": 3,
+        "num_compressions": {
+            "patient": 3,
             "default": 3
         },
-        "cook_time": {
-            "patty": 3,
-            "default": 3
+        "num_breaths": {
+            "patient": 2,
+            "default": 2
         }
     },
     "stations": [
         {
             "name": "table",
-            "x": 0,
-            "y": 3
-        },
-        {
-            "name": "stove",
-            "x": 1,
-            "y": 1
-        },
-        {
-            "name": "table",
             "x": 1,
             "y": 4
         },
         {
-            "name": "table",
-            "x": 3,
-            "y": 3
+            "name": "patient_legs",
+            "x": 2, 
+            "y": 1  
         },
         {
-            "name": "board",
-            "x": 4,
-            "y": 4
+            "name": "patient_bed_station",
+            "x": 2, 
+            "y": 2
         },
         {
-            "name": "table",
+            "name": "hospital_cart",
             "x": 5,
             "y": 2
+        },
+        {
+            "name": "hospital_cart_left",
+            "x": 1,
+            "y": 3
+        },
+        {
+            "name": "hospital_cart_right",
+            "x": 2,
+            "y": 3
         }
     ],
     "items": [
         {
-            "name": "patty",
+            "name": "patient",
+            "x": 2, 
+            "y": 2,
+            "stack-level": 0,
+            "predicates": [
+                "ispatient"
+            ]
+        },
+        {
+            "name": "cpr_board",
+            "x": 5,
+            "y": 2,
+            "stack-level": 0,
+            "predicates": [
+                "iscpr_boardusuable"
+            ]
+        },
+        {
+            "name": "cpr_kit",
             "x": 0,
             "y": 3,
             "stack-level": 0,
             "predicates": [
-                "iscookable"
+                "isusableforcpr"
             ]
         },
         {
-            "name": "lettuce",
-            "x": 1,
-            "y": 4,
+            "name": "aed",
+            "x": 2,
+            "y": 2,
             "stack-level": 0,
             "predicates": [
-                "iscuttable"
+                "isusableforaed"
             ]
         },
         {
-            "name": "bottombun",
-            "x": 3,
+            "name": "syringe",
+            "x": 2, 
             "y": 3,
-            "stack-level": 0
-        },
-        {
-            "name": "topbun",
-            "x": 5,
-            "y": 2,
-            "stack-level": 0
-        }
-    ],
-    "players": [
-        {
-            "name": "robot",
-            "x": 0,
-            "y": 2,
-            "direction": [
-                0,
-                1
-            ],
-            "actions": [
-                "move",
-                "cut",
-                "cook",
-                "moveitem"
+            "stack-level": 0,
+            "predicates": [
+                "issyringeusable"
             ]
         },
         {
-            "name": "robot",
-            "x": 1,
-            "y": 0,
-            "direction": [
-                0,
-                1
-            ],
-            "actions": [
-                "move",
-                "cut",
-                "cook",
-                "moveitem"
-            ]
-        },
-        {
-            "name": "robot",
-            "x": 5,
+            "name": "pump",
+            "x": 1, 
             "y": 3,
-            "direction": [
-                0,
-                -1
-            ],
-            "actions": [
-                "move",
-                "cut",
-                "cook",
-                "moveitem"
+            "stack-level": 0,
+            "predicates": [
+                "ispumpusable"
             ]
         }
     ],
-    "goal_description": "Make a lettuce burger with lettuce on top of the patty.",
+"players": [
+    {
+        "name": "robot",
+        "x": 0,
+        "y": 3,
+        "direction": [1, 0],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
+        "x": 3,
+        "y": 3,
+        "direction": [-1, 0],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
+        "x": 2,
+        "y": 0,
+        "direction": [0, 1],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    },
+    {
+        "name": "robot",
+        "x": 5,
+        "y": 1,
+        "direction": [0, 1],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem"
+        ]
+    }
+],
+    "goal_description": "Resuscitate the patient by using AED, performing CPR, and providing ventilation.",
     "goal": [
         {
-            "predicate": "iscut",
+            "predicate": "isusedforaed",
             "args": [
-                "lettuce"
+                "aed"
             ],
             "ids": [
                 1
@@ -136,8 +163,8 @@
         {
             "predicate": "atop",
             "args": [
-                "topbun",
-                "lettuce"
+                "cpr_board",
+                "aed"
             ],
             "ids": [
                 2,
@@ -145,9 +172,9 @@
             ]
         },
         {
-            "predicate": "iscooked",
+            "predicate": "isusedforcpr",
             "args": [
-                "patty"
+                "cpr_kit"
             ],
             "ids": [
                 3
@@ -156,23 +183,12 @@
         {
             "predicate": "atop",
             "args": [
-                "lettuce",
-                "patty"
+                "aed",
+                "cpr_kit"
             ],
             "ids": [
                 1,
                 3
-            ]
-        },
-        {
-            "predicate": "atop",
-            "args": [
-                "patty",
-                "bottombun"
-            ],
-            "ids": [
-                3,
-                4
             ]
         }
     ]
