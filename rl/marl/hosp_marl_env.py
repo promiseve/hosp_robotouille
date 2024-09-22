@@ -69,7 +69,7 @@ class HospitalMARLEnv(MARLEnv):
 
         shortened_expanded_truths = []
         shortened_expanded_states = []
-        print("expanded_states", self.expanded_states)
+        # print("expanded_states", self.expanded_states)
         for truth, state in zip(self.expanded_truths, self.expanded_states):
             predicate = state.predicate.name
 
