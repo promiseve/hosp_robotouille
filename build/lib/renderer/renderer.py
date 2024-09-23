@@ -22,6 +22,7 @@ class RobotouilleRenderer:
         """
         # The canvas is responsible for drawing the game state on a pygame surface.
         self.canvas = RobotouilleCanvas(layout, players[0], window_size)
+        
         # The pygame window size.
         self.window_size = window_size
         # The framerate of the renderer. This isn't too important since the renderer

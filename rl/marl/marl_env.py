@@ -37,7 +37,6 @@ class MARLEnv(gym.Env):
         self.all_actions = all_actions
         self.expanded_truths = expanded_truths
         self.expanded_states = expanded_states
-
         # Get shortened action space and shortened observation space
         self.shortened_action_truths, self.shortened_action_names = (
             self._get_action_space()

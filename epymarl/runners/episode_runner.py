@@ -24,6 +24,9 @@ class EpisodeRunner:
 
         self.t_env = 0
 
+        self.best_episode_reward = 0
+        self.best_actions = []
+
         self.train_returns = []
         self.test_returns = []
         self.train_stats = {}
@@ -100,6 +103,7 @@ class EpisodeRunner:
             "avail_actions": [self.env.get_avail_actions()],
             "obs": [self.env.get_obs()],
         }
+        self.episode_return = episode_return
         if test_mode and self.args.render:
             print(f"Episode return: {episode_return}")
         self.batch.update(last_data, ts=self.t)
@@ -150,3 +154,14 @@ class EpisodeRunner:
                     prefix + k + "_mean", v / stats["n_episodes"], self.t_env
                 )
         stats.clear()
+
+    def update_best_actions(self):
+        if self.episode_return > self.best_episode_reward:
+            self.best_episode_reward = self.episode_return
+            self.best_actions = self.env.get_episode_actions()
+
+    def save_best_actions(self, save_path):
+        print("Saving best action with reward ", self.best_episode_reward)
+        with open(os.path.join(save_path, "best_actions.txt"), "w") as f:
+            for action in self.best_actions:
+                f.write(action + "\n")

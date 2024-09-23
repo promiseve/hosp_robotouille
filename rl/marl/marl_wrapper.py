@@ -1,14 +1,12 @@
 from typing import List, Optional, Union
 import gym
-import numpy as np
 import pddlgym
+from rl.marl.hosp_marl_env import HospitalMARLEnv
 from rl.marl.marl_env import MARLEnv
 from utils.robotouille_utils import get_valid_moves
 import utils.pddlgym_utils as pddlgym_utils
 import utils.robotouille_wrapper as robotouille_wrapper
 import wandb
-
-# wandb.login()
 
 
 class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
@@ -18,6 +16,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
 
     def __init__(self, env, config, renderer, n_agents):
         super().__init__(env, config, renderer)
+        wandb.login()
         self.pddl_env = env
         self.n_agents = n_agents
 
@@ -37,7 +36,10 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         self._wrap_env()
 
         # Initialize WandB with the metrics config
-        wandb.init(project="6756-rl-experiments", config=self.metrics_config)
+        wandb.init(
+            project="6756-rl-experiments",
+            config=self.metrics_config,
+        )
 
     def log_metrics(self, update_dict):
         """
@@ -67,8 +69,8 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         )
 
         # if the environment is a RobotouilleWrapper, we need to change it to MARLEnv. Otherwise, just step the MARLEnv
-        if not isinstance(self.env, MARLEnv):
-            self.env = MARLEnv(
+        if not isinstance(self.env, HospitalMARLEnv):
+            self.env = HospitalMARLEnv(
                 self.n_agents,
                 expanded_truths,
                 expanded_states,
@@ -100,27 +102,30 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
             if action == "invalid":
                 obs, reward, done, info = self.pddl_env.prev_step
                 obs, _, _, _ = self.pddl_env._change_selected_player(obs)
+                self.pddl_env.taken_actions.append("noop")
                 reward = 0
                 self.pddl_env.prev_step = (obs, reward, done, info)
+                rewards.append(reward)
                 if self.pddl_env._current_selected_player(obs) == "robot1":
                     self.pddl_env.timesteps += 1
-                reward -= 2
-                rewards.append(reward)
                 info["timesteps"] = self.pddl_env.timesteps
             else:
                 action = str(action)
                 obs, reward, done, info = self.pddl_env.step(action, interactive)
+                # Reward .05 for correct action. .05 * 3 agents * 100 timesteps + max 35 reward = 50
+                # Scale between 0 to 1
+                reward = (reward + 0.05) / 50
+
                 self.pddl_env.prev_step = (obs, reward, done, info)
+
                 rewards.append(reward)
             self._wrap_env()
 
-        # reward -= 1
-
-        wandb.log({"reward per step": reward})
+            wandb.log({"reward per step": reward})
 
         self.episode_reward += reward
-        if self.pddl_env.timesteps >= self.max_steps:
-            wandb.log({"reward per episode": self.episode_reward})
+        # if self.pddl_env.timesteps >= self.max_steps:
+        #     wandb.log({"reward per episode": self.episode_reward})
 
         return (
             self.env.state,

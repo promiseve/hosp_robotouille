@@ -81,6 +81,7 @@ def create_robotouille_env(problem_filename, seed=None, noisy_randomization=Fals
             environment_json, int(seed), noisy_randomization
         )
     layout = _parse_renderer_layout(environment_json)
+    breakpoint()
     renderer = RobotouilleRenderer(layout=layout, players=environment_json["players"])
     render_fn = renderer.render
     problem_string, environment_json = builder.build_problem(

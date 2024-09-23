@@ -14,7 +14,7 @@ class MAHospital_robotouille(MultiAgentEnv):
         env,
         config,
         renderer,
-        num_agents=3,
+        num_agents=4,
     ):
 
         self.pddl_env = env
@@ -100,6 +100,12 @@ class MAHospital_robotouille(MultiAgentEnv):
 
     def render(self):
         self.pddl_env.render(mode="human")
+
+    def save_episode(self, filename):
+        self.pddl_env.save_episode(filename)
+
+    def get_episode_actions(self):
+        return self.pddl_env.get_episode_actions()
 
     def close(self):
         self.env.close()

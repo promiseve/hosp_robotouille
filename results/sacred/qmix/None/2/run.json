@@ -1,0 +1,99 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/home/byl8/hosp_robotouille/epymarl",
+    "dependencies": [
+      "numpy==1.24.2",
+      "PyYAML==6.0.1",
+      "sacred==0.8.5",
+      "torch==2.1.1"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [
+      {
+        "commit": "a297c7b2b16f42931424793d4785ad715a3e8e28",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "a297c7b2b16f42931424793d4785ad715a3e8e28",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "a297c7b2b16f42931424793d4785ad715a3e8e28",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      }
+    ],
+    "sources": [
+      [
+        "main.py",
+        "_sources/main_74c9740e03fd18eb008121f336b3404b.py"
+      ],
+      [
+        "run.py",
+        "_sources/run_278a793ba49b11bdf937a1008fe0fcba.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_7799699b534f806632c1d618a6ef7e02.py"
+      ]
+    ]
+  },
+  "heartbeat": "2024-07-24T14:21:36.592342",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Xeon(R) Platinum 8358 CPU @ 2.60GHz",
+    "hostname": "g2-login-01.coecis.cornell.edu",
+    "os": [
+      "Linux",
+      "Linux-5.4.0-186-generic-x86_64-with-glibc2.10"
+    ],
+    "python_version": "3.8.8"
+  },
+  "meta": {
+    "command": "my_main",
+    "config_updates": {
+      "env_args": {
+        "time_limit": 100
+      }
+    },
+    "named_configs": [],
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--id": null,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "env_args.time_limit=100"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2024-07-23T14:52:53.459538",
+  "status": "COMPLETED",
+  "stop_time": "2024-07-24T14:21:36.507466"
+}

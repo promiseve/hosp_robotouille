@@ -1,5 +1,6 @@
 from enum import Enum
 import subprocess
+import time
 import numpy as np
 import pygame
 from stable_baselines3 import PPO
@@ -30,9 +31,21 @@ def simulator(
     environment_name: str,
     seed: int = 42,
     noisy_randomization: bool = False,
-    mode=mode.PLAY,
+    mode=mode.TRAIN,
     type=type.MULTI,
 ):
+    # Load or train agent
+    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.SINGLE:
+        single_rl_simulator(environment_name, seed, noisy_randomization)
+        return
+
+    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.MULTI:
+        if mode == mode.TRAIN:
+            multi_rl_simulator(environment_name, seed, noisy_randomization)
+        elif mode == mode.LOAD:
+            load_multi_simulator(environment_name, seed, noisy_randomization)
+        return
+
     # Your code for robotouille goes here
     env, json, renderer = create_robotouille_env(
         environment_name, seed, noisy_randomization
@@ -42,14 +55,6 @@ def simulator(
     done = False
     truncated = False
     interactive = False  # Set to True to interact with the environment through terminal REPL (ignores input)
-
-    # Load or train agent
-    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.SINGLE:
-        single_rl_simulator(environment_name, seed, noisy_randomization)
-        return
-    if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.MULTI:
-        multi_rl_simulator(environment_name, seed, noisy_randomization)
-        return
 
     # Simulate the environment
     while not done and not truncated:
@@ -79,6 +84,10 @@ def single_rl_simulator(environment_name: str, seed: int, noisy_randomization: b
     config = {
         "num_cuts": {"lettuce": 3, "default": 3},
         "cook_time": {"patty": 3, "default": 3},
+        "num_compressions": {"patient": 3, "default": 3},
+        "num_breaths": {"patient": 3, "default": 3},
+        "num_shocks": {"patient": 1, "default": 1},
+        "num_medicine_doses": {"patient": 1, "default": 1},
     }
 
     env, json, renderer = create_robotouille_env(
@@ -125,12 +134,12 @@ def multi_rl_simulator(environment_name: str, seed: int, noisy_randomization: bo
     arguments = [
         "python",
         "epymarl/main.py",
-        "--config=qmix",
+        "--config=iql",
         "--env-config=gymma",
         "with",
-        "env_args.time_limit=50",
-        # "checkpoint_path=\"results/models/qmix_seed677336568_None_2024-06-11 01:58:41.601187\"",
-        # "evaluate=True"
+        "env_args.time_limit=100",
+        # 'checkpoint_path="results/models/qmix_seed833013653_None_2024-07-17 01:47:14.939144"',
+        # "evaluate=True",
         # "render=True"
     ]
 
@@ -153,3 +162,29 @@ def multi_rl_simulator(environment_name: str, seed: int, noisy_randomization: bo
     # obs, info = rl_env.reset()
 
     epymarl = subprocess.run(arguments)
+
+
+def load_multi_simulator(environment_name, seed, noisy_randomization):
+    env, json, renderer = create_robotouille_env(
+        environment_name, seed, noisy_randomization
+    )
+    obs, info = env.reset()
+    env.render(mode="human")
+    done = False
+    truncated = False
+    interactive = False
+
+    with open(
+        "results/models/iql_seed328992167_None_2024-08-01 18:36:11.969950/1350627/best_actions.txt",
+        "r",
+    ) as f:
+        for line in f:
+            action = line.strip()
+
+            if not interactive and action is None:
+                # Retry for keyboard input
+                continue
+            obs, reward, done, info = env.step(action=action, interactive=interactive)
+            time.sleep(0.5)
+            env.render(mode="human")
+    env.render(close=True)
