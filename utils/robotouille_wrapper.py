@@ -87,6 +87,8 @@ class RobotouilleWrapper(gym.Wrapper):
             return self.prev_step
         # add a similar logic for action compresschest
         elif action_name == "compresschest":
+            # TODO: energy level implementation (if any here)
+            print(f"\nACTION VARIABLES FOR COMPRESSCHEST: {action.variables}\n")
             item = next(
                 filter(
                     lambda typed_entity: typed_entity.var_type == "item",

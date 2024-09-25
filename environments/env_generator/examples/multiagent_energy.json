@@ -17,6 +17,11 @@
         "num_medicine_doses": {
             "patient": 1,
             "default": 1
+        },
+        "energy_levels": {
+            "compresschest_cost": 5,
+            "recharge_rate": 2,
+            "max": 10
         }
     },
     "stations": [
