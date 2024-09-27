@@ -66,7 +66,7 @@
     (clear pump1)
     (on cpr_board1 hospital_cart1)
     (clear cpr_board1)
-    (cancook robot1)    (cancut robot1)    (canmoveitem robot1)    (canmove robot1)    (cancompresschest robot1)    (cangiverescuebreaths robot1)    (cangiveshock robot1)    (cangivemedicine robot1)    (cancook robot2)    (cancut robot2)    (canmoveitem robot2)    (canmove robot2)    (cancompresschest robot2)    (cangiverescuebreaths robot2)    (cangiveshock robot2)    (cangivemedicine robot2)    (cancook robot3)    (cancut robot3)    (canmoveitem robot3)    (canmove robot3)    (cancompresschest robot3)    (cangiverescuebreaths robot3)    (cangiveshock robot3)    (cangivemedicine robot3)    (canmoveitem robot4)    (canmove robot4)    (cancompresschest robot4)    (cangiverescuebreaths robot4)    (cangiveshock robot4)    (cangivemedicine robot4))
+    (canmoveitem robot1)    (canmove robot1)    (cancompresschest robot1)    (cangiverescuebreaths robot1)    (cangiveshock robot1)    (cangivemedicine robot1)    (canmoveitem robot2)    (canmove robot2)    (cancompresschest robot2)    (cangiverescuebreaths robot2)    (cangiveshock robot2)    (cangivemedicine robot2)    (canmoveitem robot3)    (canmove robot3)    (cancompresschest robot3)    (cangiverescuebreaths robot3)    (cangiveshock robot3)    (cangivemedicine robot3)    (canmoveitem robot4)    (canmove robot4)    (cancompresschest robot4)    (cangiverescuebreaths robot4)    (cangiveshock robot4)    (cangivemedicine robot4))
 (:goal
    (or
        (and
