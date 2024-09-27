@@ -1,0 +1,108 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/home/byl8/hosp_robotouille/epymarl",
+    "dependencies": [
+      "numpy==1.24.2",
+      "PyYAML==6.0.1",
+      "sacred==0.8.5",
+      "torch==2.1.1"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [
+      {
+        "commit": "0bc4e3063ebdc6fa2fed28c282e1dd542c4c1edf",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "0bc4e3063ebdc6fa2fed28c282e1dd542c4c1edf",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "0bc4e3063ebdc6fa2fed28c282e1dd542c4c1edf",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      }
+    ],
+    "sources": [
+      [
+        "main.py",
+        "_sources/main_74c9740e03fd18eb008121f336b3404b.py"
+      ],
+      [
+        "run.py",
+        "_sources/run_8f3617f346441d1e0a07c817956746b8.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_7799699b534f806632c1d618a6ef7e02.py"
+      ]
+    ]
+  },
+  "heartbeat": "2024-09-03T19:33:19.360930",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Xeon(R) Platinum 8174 CPU @ 3.10GHz",
+    "gpus": {
+      "driver_version": "525.147.05",
+      "gpus": [
+        {
+          "model": "Tesla V100-SXM3-32GB-H",
+          "persistence_mode": true,
+          "total_memory": 32768
+        }
+      ]
+    },
+    "hostname": "dgx2-compute-03.coecis.cornell.edu",
+    "os": [
+      "Linux",
+      "Linux-5.4.0-174-generic-x86_64-with-glibc2.10"
+    ],
+    "python_version": "3.8.8"
+  },
+  "meta": {
+    "command": "my_main",
+    "config_updates": {
+      "env_args": {
+        "time_limit": 100
+      }
+    },
+    "named_configs": [],
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--id": null,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "env_args.time_limit=100"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2024-09-03T15:15:09.088681",
+  "status": "RUNNING"
+}

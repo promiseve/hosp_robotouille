@@ -1,6 +1,10 @@
+from enum import Enum
 import subprocess
 from robotouille import simulator, robotouille_simulator
 import argparse
+
+from robotouille.robotouille_simulator import Mode
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -8,26 +12,19 @@ parser.add_argument(
     help="The name of the environment to create.",
     default="multiagent",
 )
-parser.add_argument(
-    "--mode",
-    help="Whether to run in play, train, or load mode",
-    default="train",
-)
 parser.add_argument("--seed", help="The seed to use for the environment.", default=None)
 parser.add_argument(
     "--noisy_randomization",
     action="store_true",
     help="Whether to use 'noisy randomization' for procedural generation",
 )
+parser.add_argument(
+    "--mode",
+    type=lambda x: Mode[x.upper()],
+    choices=list(Mode),
+    default=Mode.PLAY,
+    help="Whether to play, train, or evaluate the model.",
+)
 args = parser.parse_args()
 
-def get_mode(txt):
-    match txt.lower():
-        case "play":
-            return robotouille_simulator.mode.PLAY
-        case "train":
-            return robotouille_simulator.mode.TRAIN
-        case "load":
-            return robotouille_simulator.mode.LOAD
-
-simulator(args.environment_name, args.seed, args.noisy_randomization, mode=get_mode(args.mode))
+simulator(args.environment_name, args.seed, args.noisy_randomization, args.mode)

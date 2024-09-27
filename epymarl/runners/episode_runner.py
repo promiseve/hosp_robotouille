@@ -6,7 +6,7 @@ from components.episode_buffer import EpisodeBatch
 import numpy as np
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
-from robotouille import ENVIRONMENT
+from rl.marl import ENVIRONMENT
 
 
 class EpisodeRunner:

@@ -9,7 +9,7 @@ import numpy as np
 import torch as th
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
-from robotouille import ENVIRONMENT
+from rl.marl import ENVIRONMENT
 
 
 # Based (very) heavily on SubprocVecEnv from OpenAI Baselines
