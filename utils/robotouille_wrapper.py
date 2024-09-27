@@ -1,5 +1,6 @@
 import gym
 import pddlgym
+from utils.hosp_reward_handler import HospRewardHandler
 from utils.robotouille_reward_handler import RobotouilleRewardHandler
 import utils.robotouille_utils as robotouille_utils
 import utils.pddlgym_utils as pddlgym_utils
@@ -41,7 +42,7 @@ class RobotouilleWrapper(gym.Wrapper):
         self.num_players = None
         self.taken_actions = []
         self.renderer = renderer
-        self.reward_handler = RobotouilleRewardHandler()
+        self.reward_handler = HospRewardHandler()
 
     def _interactive_starter_prints(self, expanded_truths):
         """
@@ -474,7 +475,7 @@ class RobotouilleWrapper(gym.Wrapper):
             print("Goal Reached!")
         # print("prev_heuristic: ", prev_heuristic)
         # print("current_heuristic: ", curr_heuristic)
-        # print("reward: ", reward)
+        print("reward: ", reward)
         return obs, reward, done, info
 
     def save_episode(self, filename):
