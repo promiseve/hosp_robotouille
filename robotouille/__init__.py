@@ -10,9 +10,11 @@ config = {
     "num_breaths": {"patient": 3, "default": 3},
     "num_shocks": {"patient": 1, "default": 1},
     "num_medicine_doses": {"patient": 1, "default": 1},
+    "energy_levels": {"compresschest_cost": 5, "recharge_rate": 2, "max": 10},
+    "num_players": 2,
 }
 
 env, json, renderer = create_robotouille_env("multiagent_givemedicine", None, False)
 obs, info = env.reset()
 
-ENVIRONMENT = MAHospital_robotouille(env, config, renderer)
+# ENVIRONMENT = MAHospital_robotouille(env, config, renderer)

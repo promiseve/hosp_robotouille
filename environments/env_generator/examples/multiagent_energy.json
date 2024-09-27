@@ -3,8 +3,8 @@
     "height": 6,
     "config": {
         "num_compressions": {
-            "patient": 3,
-            "default": 3
+            "patient": 10,
+            "default": 10
         },
         "num_breaths": {
             "patient": 2,
@@ -22,7 +22,8 @@
             "compresschest_cost": 5,
             "recharge_rate": 2,
             "max": 10
-        }
+        },
+        "num_players": 2
     },
     "stations": [
         {
@@ -136,42 +137,6 @@
             "move",
             "cut",
             "cook",
-            "moveitem",
-            "compresschest",
-            "giverescuebreaths",
-            "giveshock",
-            "givemedicine"
-        ]
-    },
-    {
-        "name": "robot",
-        "x": 4,
-        "y": 3,
-            "direction": [
-                1,
-                0
-            ],
-        "actions": [
-            "move",
-            "cut",
-            "cook",
-            "moveitem",
-            "compresschest",
-            "giverescuebreaths",
-            "giveshock",
-            "givemedicine"
-        ]
-    },
-    {
-        "name": "robot",
-        "x": 5,
-        "y": 1,
-            "direction": [
-                0,
-                1
-            ],
-        "actions": [
-            "move",
             "moveitem",
             "compresschest",
             "giverescuebreaths",
