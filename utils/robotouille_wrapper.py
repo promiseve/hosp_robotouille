@@ -67,6 +67,11 @@ class RobotouilleWrapper(gym.Wrapper):
         if action == "noop":
             return self.prev_step
         action_name = action.predicate.name
+        current_player = self._current_selected_player(self.prev_step[0])
+        try:
+            value = self.config["player_info"][current_player][action_name]
+        except KeyError:
+            value = 1
         if action_name == "cut":
             item = next(
                 filter(
@@ -76,11 +81,11 @@ class RobotouilleWrapper(gym.Wrapper):
             )
             item_status = self.state.get(item.name)
             if item_status is None:
-                self.state[item.name] = {"cut": 1}
+                self.state[item.name] = {"cut": value}
             elif item_status.get("cut") is None:
-                item_status["cut"] = 1
+                item_status["cut"] = value
             else:
-                item_status["cut"] += 1
+                item_status["cut"] += value
 
                 if item_status["cut"] == 3:
                     item_status["picked-up"] = False
@@ -95,11 +100,11 @@ class RobotouilleWrapper(gym.Wrapper):
             )
             item_status = self.state.get(item.name)
             if item_status is None:
-                self.state[item.name] = {"compresschest": 1}
+                self.state[item.name] = {"compresschest": value}
             elif item_status.get("compresschest") is None:
-                item_status["compresschest"] = 1
+                item_status["compresschest"] = value
             else:
-                item_status["compresschest"] += 1
+                item_status["compresschest"] += value
                 if item_status["compresschest"] == 3:
                     item_status["picked-up"] = False
             return self.prev_step
@@ -113,13 +118,12 @@ class RobotouilleWrapper(gym.Wrapper):
             )
             item_status = self.state.get(item.name)
             if item_status is None:
-                self.state[item.name] = {"giverescuebreaths": 1}
+                self.state[item.name] = {"giverescuebreaths": value}
             elif item_status.get("giverescuebreaths") is None:
-                item_status["giverescuebreaths"] = 1
+                item_status["giverescuebreaths"] = value
             else:
-                item_status["giverescuebreaths"] += 1
-                if item_status["giverescuebreaths"] == 2:
-                    item_status["picked-up"] = False
+                item_status["giverescuebreaths"] += value
+
             return self.prev_step
 
         # add a similar logic for action giveshock
@@ -132,13 +136,12 @@ class RobotouilleWrapper(gym.Wrapper):
             )
             item_status = self.state.get(item.name)
             if item_status is None:
-                self.state[item.name] = {"giveshock": 1}
+                self.state[item.name] = {"giveshock": value}
             elif item_status.get("giveshock") is None:
-                item_status["giveshock"] = 1
+                item_status["giveshock"] = value
             else:
-                item_status["giveshock"] += 1
-                if item_status["giveshock"] == 2:
-                    item_status["picked-up"] = False
+                item_status["giveshock"] += value
+
             return self.prev_step
 
         # add a similar logic for action givemedicine
@@ -151,13 +154,12 @@ class RobotouilleWrapper(gym.Wrapper):
             )
             item_status = self.state.get(item.name)
             if item_status is None:
-                self.state[item.name] = {"givemedicine": 1}
+                self.state[item.name] = {"givemedicine": value}
             elif item_status.get("givemedicine") is None:
-                item_status["givemedicine"] = 1
+                item_status["givemedicine"] = value
             else:
-                item_status["givemedicine"] += 1
-                if item_status["givemedicine"] == 2:
-                    item_status["picked-up"] = False
+                item_status["givemedicine"] += value
+
             return self.prev_step
 
         # add a similar logic for action gatherfood
