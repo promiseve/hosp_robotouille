@@ -3,8 +3,8 @@
     "height": 6,
     "config": {
         "num_compressions": {
-            "patient": 3,
-            "default": 3
+            "patient": 10,
+            "default": 10
         },
         "num_breaths": {
             "patient": 2,
@@ -23,7 +23,7 @@
             "recharge_rate": 2,
             "max": 10
         },
-        "num_players": 4
+        "num_players": 2
     },
     "stations": [
         {
@@ -114,91 +114,37 @@
                 1,
                 0
             ],
-            "actions": [
-                "move",
-                "moveitem",
-                "compresschest",
-                "giverescuebreaths",
-                "giveshock",
-                "givemedicine"
-            ],
-            "skill_info": {
-                "compresschest": 3,
-                "giverescuebreaths": 1,
-                "giveshock": 1,
-                "givemedicine": 1
-            }
-        },
-        {
-            "name": "robot",
-            "x": 3,
-            "y": 3,
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem",
+            "compresschest",
+            "giverescuebreaths",
+            "giveshock",
+            "givemedicine"
+        ]
+    },
+    {
+        "name": "robot",
+        "x": 3,
+        "y": 3,
             "direction": [
                 -1,
                 0
             ],
-            "actions": [
-                "move",
-                "moveitem",
-                "compresschest",
-                "giverescuebreaths",
-                "giveshock",
-                "givemedicine"
-            ],
-            "skill_info": {
-                "compresschest": 1,
-                "giverescuebreaths": 2,
-                "giveshock": 1,
-                "givemedicine": 1
-            }
-        },
-        {
-            "name": "robot",
-            "x": 4,
-            "y": 3,
-            "direction": [
-                1,
-                0
-            ],
-            "actions": [
-                "move",
-                "moveitem",
-                "compresschest",
-                "giverescuebreaths",
-                "giveshock",
-                "givemedicine"
-            ],
-            "skill_info": {
-                "compresschest": 1,
-                "giverescuebreaths": 1,
-                "giveshock": 1,
-                "givemedicine": 1
-            }
-        },
-        {
-            "name": "robot",
-            "x": 5,
-            "y": 1,
-            "direction": [
-                0,
-                1
-            ],
-            "actions": [
-                "move",
-                "moveitem",
-                "compresschest",
-                "giverescuebreaths",
-                "giveshock",
-                "givemedicine"
-            ],
-            "skill_info": {
-                "compresschest": 1,
-                "giverescuebreaths": 1,
-                "giveshock": 1,
-                "givemedicine": 1
-            }
-        }
-    ],
+        "actions": [
+            "move",
+            "cut",
+            "cook",
+            "moveitem",
+            "compresschest",
+            "giverescuebreaths",
+            "giveshock",
+            "givemedicine"
+        ]
+    }
+],
     "goal_description": "Give patient rescue breaths",
     "goal": [
         {

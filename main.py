@@ -1,6 +1,6 @@
 from enum import Enum
 import subprocess
-from robotouille import simulator
+from robotouille import simulator, robotouille_simulator
 import argparse
 
 from robotouille.robotouille_simulator import Mode

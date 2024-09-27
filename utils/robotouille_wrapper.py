@@ -39,6 +39,8 @@ class RobotouilleWrapper(gym.Wrapper):
         # This is used to specify things such as cooking times and cutting amounts
         self.config = config
         self.num_players = config["num_players"]
+        # The amount of individual steps that have been taken (num_players steps per timestep)
+        self.move_counter = 0
         self.taken_actions = []
         self.renderer = renderer
         self.reward_handler = RobotouilleRewardHandler()
@@ -92,21 +94,50 @@ class RobotouilleWrapper(gym.Wrapper):
             return self.prev_step
         # add a similar logic for action compresschest
         elif action_name == "compresschest":
-            item = next(
+#             print(f"\nACTION VARIABLES FOR COMPRESSCHEST: {action.variables}\n")
+            player = next(
                 filter(
-                    lambda typed_entity: typed_entity.var_type == "item",
+                    lambda typed_entity: typed_entity.var_type == "player",
                     action.variables,
                 )
             )
-            item_status = self.state.get(item.name)
-            if item_status is None:
-                self.state[item.name] = {"compresschest": value}
-            elif item_status.get("compresschest") is None:
-                item_status["compresschest"] = value
-            else:
-                item_status["compresschest"] += value
-                if item_status["compresschest"] == 3:
-                    item_status["picked-up"] = False
+            player_status = self.state.get(player.name)
+            # TODO: figure out self.state structure for players
+            energy_config = self.config["energy_levels"]
+            if player_status is None:
+                # print("here1")
+                self.state[player.name] = {"energy": energy_config["max"]}
+                player_status = self.state[player.name]
+            elif player_status.get("energy") is None:
+                # print("here2")
+                player_status["energy"] = energy_config["max"]
+
+            # print(energy_config["compresschest_cost"])
+            # print(player_status["energy"])
+
+            # check to see if player has enough energy to compress patient chest
+            if energy_config["compresschest_cost"] <= player_status["energy"]:
+                item = next(
+                    filter(
+                        lambda typed_entity: typed_entity.var_type == "item",
+                        action.variables,
+                    )
+                )
+                item_status = self.state.get(item.name)
+                if item_status is None:
+                    self.state[item.name] = {"compresschest": value}
+                elif item_status.get("compresschest") is None:
+                    item_status["compresschest"] = value
+                else:
+                    item_status["compresschest"] += value
+                    if item_status["compresschest"] == 3:
+                        item_status["picked-up"] = False
+
+                player_status["energy"] -= (
+                    # need to subtract recharge rate to offset recharging elsewhere
+                    energy_config["compresschest_cost"]
+                    + energy_config["recharge_rate"]
+                )
             return self.prev_step
         # add a similar logic for action giverescuebreaths
         elif action_name == "giverescuebreaths":
@@ -221,6 +252,10 @@ class RobotouilleWrapper(gym.Wrapper):
                 item_status["picked-up"] = True
         # TODO: Probably stop cooking if something is stacked on top of meat
         return self.env.step(action)
+    
+    def _is_end_of_timestep(self):
+        """This function returns true if it is the last players' timestep"""
+        return self.move_counter % self.num_players == self.num_players - 1
 
     def _state_update(self):
         """
@@ -235,6 +270,7 @@ class RobotouilleWrapper(gym.Wrapper):
             new_env_state (PDDLGym State): The new state of the environment.
         """
         state_updates = []
+        state_removals = []
         for item, status_dict in self.state.items():
             for status, state in status_dict.items():
                 if status == "cut":
@@ -312,8 +348,32 @@ class RobotouilleWrapper(gym.Wrapper):
                         )
                         state_updates.append(literal)
 
+                # for now, players are also in the state dict, so the item here is actually a player
+                elif status == "energy":
+                    if self._is_end_of_timestep():
+                        # recharge players' energy at end of timestep
+                        # print(f"energy level for player {item} before recharge: {state}")
+                        status_dict["energy"] = min(
+                            state + self.config["energy_levels"]["recharge_rate"],
+                            self.config["energy_levels"]["max"],
+                        )
+                        # update pddl literal to be tired or not tired for player
+                        literal = pddlgym_utils.str_to_literal(
+                                f"istired({item}:player)"
+                            )
+                        if status_dict["energy"] < self.config["energy_levels"]["compresschest_cost"]:
+                            # print(f"Making player {item} with energy {status_dict['energy']} tired")
+                            state_updates.append(literal)
+                        else:
+                            # remove istired state from pddl env
+                            # print(f"Making player {item} with energy {status_dict['energy']} no longer tired")
+                            state_removals.append(literal)
+
+
         env_state = self.env.get_state()
-        new_literals = env_state.literals.union(state_updates)
+        new_literals = env_state.literals.difference(set(state_removals))
+        new_literals = new_literals.union(state_updates)
+        # print("new literals: ", new_literals)
         new_env_state = pddlgym.structs.State(
             new_literals, env_state.objects, env_state.goal
         )
@@ -447,6 +507,9 @@ class RobotouilleWrapper(gym.Wrapper):
         obs, reward, done, info = self._handle_action(action)
         obs, reward, _, info = self._change_selected_player(obs)
         obs, done = self._state_update()
+        # print(
+        #     f"ENERGY LEVELS: {[(player, pdict['energy']) for player, pdict in self.state.items() if 'energy' in pdict]}"
+        # )
         toggle_array = pddlgym_utils.create_toggle_array(
             expanded_truths, expanded_states, obs.literals
         )
@@ -459,6 +522,9 @@ class RobotouilleWrapper(gym.Wrapper):
 
         if self._current_selected_player(obs) == "robot1":
             self.timesteps += 1
+            
+        self.move_counter += 1
+        # print(f"NEXT MOVE NUMBER: {self.move_counter}")
 
         info = {
             "timesteps": self.timesteps,
