@@ -13,7 +13,7 @@ from robotouille.robotouille_env import create_robotouille_env
 from stable_baselines3.common.env_util import make_vec_env
 
 
-class mode(Enum):
+class Mode(Enum):
     PLAY = 1
     TRAIN = 2
     LOAD = 3
@@ -31,12 +31,12 @@ def simulator(
     environment_name: str,
     seed: int = 42,
     noisy_randomization: bool = False,
-    mode=mode.TRAIN,
+    mode=Mode.PLAY,
     type=type.MULTI,
 ):
     # Load or train agent
     if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.SINGLE:
-        single_rl_simulator(environment_name, seed, noisy_randomization)
+        single_rl_simulator(environment_name, seed, noisy_randomization, mode)
         return
 
     if (mode == mode.TRAIN or mode == mode.LOAD) and type == type.MULTI:
@@ -80,7 +80,9 @@ def simulator(
     env.render(close=True)
 
 
-def single_rl_simulator(environment_name: str, seed: int, noisy_randomization: bool):
+def single_rl_simulator(
+    environment_name: str, seed: int, noisy_randomization: bool, mode
+):
     config = {
         "num_cuts": {"lettuce": 3, "default": 3},
         "cook_time": {"patty": 3, "default": 3},

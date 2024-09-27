@@ -38,7 +38,7 @@ class RobotouilleWrapper(gym.Wrapper):
         # The configuration for this environment.
         # This is used to specify things such as cooking times and cutting amounts
         self.config = config
-        self.num_players = None
+        self.num_players = config["num_players"]
         self.taken_actions = []
         self.renderer = renderer
         self.reward_handler = RobotouilleRewardHandler()

@@ -12,17 +12,13 @@ class MAHospital_robotouille(MultiAgentEnv):
     def __init__(
         self,
         env,
-        config,
         renderer,
-        num_agents=4,
     ):
 
         self.pddl_env = env
-        self.config = config
         self.renderer = renderer
-        self.env = MARLWrapper(self.pddl_env, self.config, self.renderer, num_agents)
-
-        self.n_agents = num_agents
+        self.n_agents = env.num_players
+        self.env = MARLWrapper(self.pddl_env, self.renderer, self.n_agents)
 
         self.action_space = [
             gym.spaces.Discrete(self.env.env.action_space.n)

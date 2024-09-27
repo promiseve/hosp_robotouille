@@ -97,7 +97,9 @@ class RobotouilleCanvas:
         image = self.asset_directory[image_name]
         image = pygame.transform.smoothscale(image, scale)
         if flip:
-            image = pygame.transform.flip(image, True, False) # flip if player facing left with aed/syringe
+            image = pygame.transform.flip(
+                image, True, False
+            )  # flip if player facing left with aed/syringe
         surface.blit(image, position)
 
     def _draw_food_image(self, surface, food_name, obs, position):
@@ -186,7 +188,7 @@ class RobotouilleCanvas:
                             food_image_name = f"{state[2:]}" + food_image_name
                 if found_state:
                     break
-        
+
         flip_img = False
 
         for literal in obs:
@@ -197,7 +199,11 @@ class RobotouilleCanvas:
                     food_image_name = "aed_on_hcw"
                     # check to see if aed will need to be flipped if player is facing left
                     flip_img = self._get_player_direction(literal) == (-1, 0)
-                if literal.predicate == "at" and "aed" in literal.variables[0] and "patient" in literal.variables[1]:
+                if (
+                    literal.predicate == "at"
+                    and "aed" in literal.variables[0]
+                    and "patient" in literal.variables[1]
+                ):
                     # case when aed is on patient
                     food_image_name = "aed_white"
             if "pump" in food_image_name:
@@ -219,7 +225,11 @@ class RobotouilleCanvas:
                     food_image_name = "syringe_on_hcw"
                     # check to see if syringe will need to be flipped if player is facing left
                     flip_img = self._get_player_direction(literal) == (-1, 0)
-                if literal.predicate == "at" and "syringe" in literal.variables[0] and "patient" in literal.variables[1]:
+                if (
+                    literal.predicate == "at"
+                    and "syringe" in literal.variables[0]
+                    and "patient" in literal.variables[1]
+                ):
                     # case when syringe is on patient
                     food_image_name = "syringe_on_patient"
             if "cpr_board" in food_image_name:
@@ -262,7 +272,11 @@ class RobotouilleCanvas:
                 )
             else:
                 self._draw_image(
-                    surface, f"{food_image_name}.png", position, self.pix_square_size, flip=flip_img
+                    surface,
+                    f"{food_image_name}.png",
+                    position,
+                    self.pix_square_size,
+                    flip=flip_img,
                 )
         # # special case for cpr_board since asset is too low
         # elif "cpr_board" in food_image_name:
@@ -280,7 +294,7 @@ class RobotouilleCanvas:
                 f"{food_image_name}.png",
                 position + self.pix_square_size * 0.125,
                 self.pix_square_size * 0.75,
-                flip=flip_img
+                flip=flip_img,
             )
 
     def _draw_floor(self, surface):
@@ -336,7 +350,7 @@ class RobotouilleCanvas:
 
     def _get_player_name_and_index(self, literal):
         return robotouille_utils.trim_item_ID(literal.variables[0].name)
-    
+
     def _get_player_direction(self, literal):
         player_index = self._get_player_index(literal)
         return self.players_pose[player_index]["direction"]
@@ -668,7 +682,7 @@ class RobotouilleCanvas:
                         if food_above not in at_patient_set
                         else 0
                     )
-                    print(f"Drawing stacked food: {food_above} at {station_pos}")
+                    # print(f"Drawing stacked food: {food_above} at {station_pos}")
                     self._draw_food_image(
                         surface, food_above, obs, station_pos * self.pix_square_size
                     )

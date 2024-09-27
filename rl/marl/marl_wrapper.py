@@ -14,9 +14,9 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
     This class is a wrapper around the Robotouille environment to make it compatible with stable-baselines3. It simplifies the environment for the RL agent by converting the state and action space to a format that is easier for the RL agent to learn.
     """
 
-    def __init__(self, env, config, renderer, n_agents):
-        super().__init__(env, config, renderer)
+    def __init__(self, env, renderer, n_agents):
         wandb.login()
+        self.env = env
         self.pddl_env = env
         self.n_agents = n_agents
 

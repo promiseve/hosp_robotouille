@@ -110,14 +110,18 @@
             ],
             "actions": [
                 "move",
-                "cut",
-                "cook",
                 "moveitem",
                 "compresschest",
                 "giverescuebreaths",
                 "giveshock",
                 "givemedicine"
-            ]
+            ],
+            "skill_info": {
+                "compresschest": 1,
+                "giverescuebreaths": 1,
+                "giveshock": 1,
+                "givemedicine": 1
+            }
         },
         {
             "name": "robot",
@@ -129,14 +133,18 @@
             ],
             "actions": [
                 "move",
-                "cut",
-                "cook",
                 "moveitem",
                 "compresschest",
                 "giverescuebreaths",
                 "giveshock",
                 "givemedicine"
-            ]
+            ],
+            "skill_info": {
+                "compresschest": 1,
+                "giverescuebreaths": 1,
+                "giveshock": 1,
+                "givemedicine": 1
+            }
         },
         {
             "name": "robot",
@@ -148,14 +156,18 @@
             ],
             "actions": [
                 "move",
-                "cut",
-                "cook",
                 "moveitem",
                 "compresschest",
                 "giverescuebreaths",
                 "giveshock",
                 "givemedicine"
-            ]
+            ],
+            "skill_info": {
+                "compresschest": 1,
+                "giverescuebreaths": 1,
+                "giveshock": 1,
+                "givemedicine": 1
+            }
         },
         {
             "name": "robot",
@@ -172,7 +184,13 @@
                 "giverescuebreaths",
                 "giveshock",
                 "givemedicine"
-            ]
+            ],
+            "skill_info": {
+                "compresschest": 1,
+                "giverescuebreaths": 1,
+                "giveshock": 1,
+                "givemedicine": 1
+            }
         }
     ],
     "goal_description": "Give patient rescue breaths",
