@@ -145,24 +145,6 @@ def multi_rl_simulator(environment_name: str, seed: int, noisy_randomization: bo
         # "render=True"
     ]
 
-    config = {
-        "num_cuts": {"lettuce": 3, "default": 3},
-        "cook_time": {"patty": 3, "default": 3},
-    }
-
-    env, json, renderer = create_robotouille_env(
-        environment_name, seed, noisy_randomization
-    )
-    obs, info = env.reset()
-    # env.render(mode="human")
-    done = False
-    truncated = False
-    interactive = False
-
-    # rl_env = MARLWrapper(env, config, renderer)
-    # rl_env.render(mode="human")
-    # obs, info = rl_env.reset()
-
     epymarl = subprocess.run(arguments)
 
 
