@@ -1,148 +1,168 @@
 from utils.reward_handler import RewardHandler
 
-
 class HospRewardHandler(RewardHandler):
-    def __init__(self):
+    def __init__(self, config):
         super().__init__()
+        self.config = config  # Keep config for reference if needed
+        # self.pickup_order = ["cpr_board","pump","aed","syringe"]
+        # self.picked_items = []
 
-    def _check_CPRboard_patient(self, obs):
+
+    def _check_item_on_station(self, obs, item, station):
+        """Check if an item is on a specific station."""
         for literal in obs.literals:
             if (
                 "on" == literal.predicate.name
-                and "cpr_board" in literal.variables[0].name
-                and "patient_bed_station" in literal.variables[1].name
+                and item in literal.variables[0].name
+                and station in literal.variables[1].name
             ):
                 return True
         return False
 
-    def pump_held(self, obs):
+    def _check_item_on_item(self, obs, top_item, bottom_item):
+        """Check if one item is on top of another."""
         for literal in obs.literals:
-            if "has" == literal.predicate.name and "pump" in literal.variables[1].name:
+            if (
+                "on" == literal.predicate.name
+                and top_item in literal.variables[0].name
+                and bottom_item in literal.variables[1].name
+            ):
                 return True
         return False
+
+    def _check_item_held(self, obs, item):
+        """Check if an item is being held."""
+        for literal in obs.literals:
+            if "has" == literal.predicate.name and item in literal.variables[1].name:
+                return True
+        return False
+
+    def _check_predicate(self, obs, predicate, item):
+        """Check if a specific predicate is true for an item."""
+        for literal in obs.literals:
+            if predicate == literal.predicate.name and item in literal.variables[0].name:
+                return True
+        return False
+
+    # def _update_pickup_order(self, item):
+    #     """Update the list of picked up items."""
+    #     if item in self.pickup_order and item not in self.picked_items:
+    #         self.picked_items.append(item)
+
+    # def _check_pickup_order(self,):
+    #     """Check if the picked up items are in the correct order."""
+    #     return self.picked_items == self.pickup_order[:len(self.picked_items)]
         
 
-    def pump_on_patient(self, obs):
-        for literal in obs.literals:
-            if (
-                "atop" == literal.predicate.name
-                and "pump" in literal.variables[0].name
-                and "patient" in literal.variables[1].name
-            ):
-                return True
-        return False
-
-    def aed_held(self, obs):
-        for literal in obs.literals:
-            if "has" == literal.predicate.name and "aed" in literal.variables[1].name:
-                return True
-        return False
+    def _check_action_progress(self, state, action, item="patient1"):
+        """
+        Check the progress of a specific action for a given item.
         
+        Args:
+        state (dict): The current state of the environment
+        action (str): The action we're checking progress for
+        item (str): The item the action is being performed on (default is "patient1")
+        
+        Returns:
+        int: The current progress of the action, or 0 if no progress
+        """
+        item_status = state.get(item, {})
+        return item_status.get(action, 0)
 
-    def aed_on_pump(self, obs):
-        for literal in obs.literals:
-            if (
-                "atop" == literal.predicate.name
-                and "aed" in literal.variables[0].name
-                and "pump" in literal.variables[1].name
-            ):
-                return True
-        return False
-
-    def medicine_held(self, obs):
-        for literal in obs.literals:
-            if "has" == literal.predicate.name and "medicine" in literal.variables[1].name:
-                return True
-        return False
-    
-    def medicine_on_aed(self, obs):
-        for literal in obs.literals:
-            if (
-                "atop" == literal.predicate.name
-                and "medicine" in literal.variables[0].name
-                and "aed" in literal.variables[1].name
-            ):
-                return True
-        return False
+    def _calculate_action_reward(self, progress, max_progress):
+        """
+        Calculate reward based on action progress.
+        
+        Args:
+        progress (int): Current progress of the action
+        max_progress (int): Maximum progress for the action
+        
+        Returns:
+        int: Calculated reward
+        """
+        if progress == 0:
+            return 0
+        elif progress == max_progress:
+            return 20  # Maximum reward for completing the action
+        else:
+            # Graduated reward: more reward for later actions
+            return 5 * progress
 
     def heuristic_reward(self, obs, state):
         """
-        This function is a heuristic function that is used to generate a plan.
-
+        Calculate the heuristic reward based on the current observation and state.
+        
         Args:
-            obs (PDDLGym State): The current state of the environment.
-
-        Returns: The measure of "goodness" of the state.
-
-        Goodness of state of determined by:
-            1. Patient is properly being treated (ischestcompressed, isrescuebreathed, isshocked, istreated)
-            2. CPR board being underneath the patient
-            3. The equipment being in the correct order
-            4. The progress the player is making towards using equipment properly (going to correct stations, picking up equipment, placing it down correctly)
+        obs: The current observation
+        state: The current state of the environment
+        
+        Returns:
+        float: The calculated reward
         """
-
-        # Example goal: [AND[iscut(lettuce1:item), atop(topbun1:item,lettuce1:item), iscooked(patty1:item), atop(lettuce1:item,patty1:item), atop(patty1:item,bottombun1:item)]]
         self.obs = obs
         self.state = state
-        correct_order = ["cpr_board", "patient", "pump", "aed", "syringe"]
         score = 0
-        chest_compressed = False
-        rescue_breathed = False
-        shocked = False
-        medicine_given = False
-        
-        # Check if goals are met
-        for clause in obs.goal.literals:
-            for goal in clause.literals:
-                for literal in obs.literals:
-                    if goal == literal:
-                        if goal.predicate.name == "ischestcompressed":
-                            chest_compressed = True
-                        elif goal.predicate.name == "isrescuebreathed":
-                            rescue_breathed = True
-                        elif goal.predicate.name == "isshocked":
-                            shocked = True
-                        elif goal.predicate.name == "istreated":
-                            medicine_given = True
 
-        # Check if the CPR board is under the patient
-        if self._check_CPRboard_patient(obs):
-            score += 30                    
+        # Check if the goal is met (patient is treated)
+        if self._check_predicate(obs, "istreated", "patient1"):
+            return 170  # Maximum score for completing the goal
+                # Update picked items based on current state
 
-        # Check if equipment is in the correct order
-        correct_stacking = [
-            self._check_CPRboard_patient(obs),
-            self.pump_on_patient(obs),
-            self.aed_on_pump(obs),
-            self.medicine_on_aed(obs)
-        ]
-        for i, stacked in enumerate(correct_stacking):
-            if stacked:
-                score += 15 * (i + 1)
-            else:
-                break
+        # for item in self.pickup_order:
+        #     if self._check_item_held(obs, item):
+        #         self._update_pickup_order(item)
 
-        # Give rewards for each action progress
-        for action in ["compresschest", "giverescuebreaths", "giveshock", "givemedicine"]:
-            item_status = self.state.get("patient1", {})
-            if item_status.get(action) is not None:
-                max_count = {"compresschest": 3, "giverescuebreaths": 2, "giveshock": 1, "givemedicine": 1}[action]
-                count = min(item_status[action], max_count)
-                score += 10 * count
+        # if not self._check_pickup_order():
+        #     print(f"Incorrect pickup order: {self.picked_items} vs expected {self.pickup_order}")
+        #     score -= 10  # Penalty for incorrect order
+            #         print("literal.variables[0].name" : literal.variables[0].name)
+            # print("literal.variables[].name" : literal.variables[1].name)
 
-        # Give rewards for completed actions
-        if chest_compressed:
-            score += 20
-        if rescue_breathed:
-            score += 25
-        if shocked:
-            score += 30
-        if medicine_given:
-            score += 35
+        # 1. CPR board placement
+        if self._check_item_on_station(obs, "cpr_board", "patient_bed_station"):
+            score += 10  # Reward for correct placement
+        if self._check_item_held(obs, "cpr_board"):
+            score += 5   # Smaller reward for holding the CPR board
 
-        # Give rewards for progress towards using equipment
-        score += 5 if self.pump_held(obs) else 0
-        score += 5 if self.aed_held(obs) else 0
-        score += 5 if self.medicine_held(obs) else 0
-        return score    
-        
+        # 2. Chest compressions
+        chest_compression_progress = self._check_action_progress(state, "compresschest")
+        score += self._calculate_action_reward(chest_compression_progress, 3)
+        if self._check_predicate(obs, "ischestcompressed", "patient1"):
+            score += 15  # Additional reward for completing compressions
+
+        # 3. Pump placement and rescue breaths
+        if self._check_item_on_item(obs, "pump1", "patient1"):
+            score += 10  # Reward for correct pump placement
+        elif self._check_item_held(obs, "pump1"):
+            score += 5   # Smaller reward for holding the pump
+
+        rescue_breath_progress = self._check_action_progress(state, "giverescuebreaths")
+        score += self._calculate_action_reward(rescue_breath_progress, 2)
+        if self._check_predicate(obs, "isrescuebreathed", "patient1"):
+            score += 15  # Additional reward for completing rescue breaths
+
+        # 4. AED placement and shock
+        if self._check_item_on_item(obs, "aed1", "pump1"):
+            score += 10  # Reward for correct AED placement
+        elif self._check_item_held(obs, "aed1"):
+            score += 5   # Smaller reward for holding the AED
+
+        shock_progress = self._check_action_progress(state, "giveshock")
+        score += self._calculate_action_reward(shock_progress, 1)
+        if self._check_predicate(obs, "isshocked", "patient1"):
+            score += 15  # Additional reward for completing shock
+
+        # 5. Medicine administration
+        if self._check_item_on_item(obs, "syringe1", "aed1"):
+            score += 10  # Reward for correct syringe placement
+        elif self._check_item_held(obs, "syringe1"):
+            score += 5   # Smaller reward for holding the syringe
+
+        medicine_progress = self._check_action_progress(state, "givemedicine")
+        score += self._calculate_action_reward(medicine_progress, 1)
+
+        return score
+
+# Note: This updated reward structure uses self.state to track action progress
+# and provides graduated rewards for repeated actions, with higher rewards
+# for completing actions up to their maximum allowed repetitions.
