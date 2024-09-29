@@ -69,6 +69,7 @@ class RobotouilleWrapper(gym.Wrapper):
         if action == "noop":
             return self.prev_step
         action_name = action.predicate.name
+        items = [var.name for var in action.variables if var.var_type == "item"] #newly added
         if action_name == "cut":
             item = next(
                 filter(
@@ -193,6 +194,12 @@ class RobotouilleWrapper(gym.Wrapper):
             else:
                 item_status["fry"]["frying"] = True
             return self.prev_step
+        elif action_name in ["stack", "stackunder"]:
+            for item in items:
+                item_status = self.state.get(item, {})
+                item_status["stacked"] = True
+                self.state[item] = item_status
+
         elif action_name == "pick-up":
             item = next(
                 filter(
