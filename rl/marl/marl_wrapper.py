@@ -121,11 +121,12 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 rewards.append(reward)
             self._wrap_env()
 
-            wandb.log({"reward per step": reward})
+        wandb.log({"reward per step": sum(rewards)})
 
-        self.episode_reward += reward
-        # if self.pddl_env.timesteps >= self.max_steps:
-        #     wandb.log({"reward per episode": self.episode_reward})
+        self.episode_reward += sum(rewards)
+        if self.pddl_env.timesteps >= self.max_steps or done:
+            wandb.log({"reward per episode": self.episode_reward})
+            wandb.log({"timesteps": self.pddl_env.timesteps})
 
         return (
             self.env.state,
