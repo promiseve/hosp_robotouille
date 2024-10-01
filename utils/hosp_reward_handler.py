@@ -5,6 +5,7 @@ class HospRewardHandler(RewardHandler):
         super().__init__()
         self.config = config
         self.correct_order = ["cpr_board", "patient", "pump", "aed", "syringe"]
+        self.max_possible_reward = 300
 
     def _find_stacking_index(self, item1, item2):
         for i in range(len(self.correct_order) - 1):
