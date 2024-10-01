@@ -68,6 +68,7 @@
         (ispumpusable ?i - item)
         (ispumpused ?i - item)
         (isshocked ?i - item)
+        (istired ?i - player)
 
         ; State Predicates
         (loc ?p - player ?s - station)
@@ -241,6 +242,7 @@
             (clear ?i)
             (selected ?p)
             (cancompresschest ?p)
+            (not (istired ?p))
             (not (ischestcompressed ?i))
             (cprboard-properly-placed ?i2 ?s)
         )
