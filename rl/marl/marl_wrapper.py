@@ -112,11 +112,11 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 action = str(action)
                 obs, reward, done, info = self.pddl_env.step(action, interactive)
                 # Reward .05 for correct action. .05 * 3 agents * 100 timesteps + max 35 reward = 50- cooking setup
-                # Reward .01 for correct action. .01 * 4 agents * 100 timesteps + max 4.3 after normalizing by dividing with timesteps in robotouille wrapper
+                # Reward .01 for correct action. .01 * 4 agents * 100 timesteps + max 50 after normalizing by dividing with timesteps in robotouille wrapper
                 #  reward = 50 - For hospital setup
                 # - cooking setup
                 # Scale between 0 to 1
-                reward = (reward + 0.01)/8.3
+                reward = (reward + 0.01) / 54
 
                 self.pddl_env.prev_step = (obs, reward, done, info)
 
