@@ -1,3 +1,5 @@
+y
+y.pub
 
 /venv/
 .venv/*
@@ -9,6 +11,8 @@ robotouille.egg-info
 cluster_requirements.txt
 generate_slurm_scripts.py
 test_robotouille_input.py
+shorter_long.sub
+start_experiments.sh
 .DS_Store
 /slurm_scripts/
 /slurm_log/
