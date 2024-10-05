@@ -1,5 +1,6 @@
 import gym
 import pddlgym
+from utils.hosp_reward_handler import HospRewardHandler
 from utils.robotouille_reward_handler import RobotouilleRewardHandler
 import utils.robotouille_utils as robotouille_utils
 import utils.pddlgym_utils as pddlgym_utils
@@ -43,7 +44,8 @@ class RobotouilleWrapper(gym.Wrapper):
         self.move_counter = 0
         self.taken_actions = []
         self.renderer = renderer
-        self.reward_handler = RobotouilleRewardHandler()
+        print("self.state", self.state)
+        self.reward_handler = HospRewardHandler(self.state)
 
     def _interactive_starter_prints(self, expanded_truths):
         """
@@ -69,6 +71,7 @@ class RobotouilleWrapper(gym.Wrapper):
         if action == "noop":
             return self.prev_step
         action_name = action.predicate.name
+        items = [var.name for var in action.variables if var.var_type == "item"] #newly added
         current_player = self._current_selected_player(self.prev_step[0])
         try:
             value = self.config["player_info"][current_player][action_name]
@@ -224,6 +227,12 @@ class RobotouilleWrapper(gym.Wrapper):
             else:
                 item_status["fry"]["frying"] = True
             return self.prev_step
+        elif action_name in ["stack", "stackunder"]:
+            for item in items:
+                item_status = self.state.get(item, {})
+                item_status["stacked"] = True
+                self.state[item] = item_status
+
         elif action_name == "pick-up":
             item = next(
                 filter(
@@ -503,8 +512,10 @@ class RobotouilleWrapper(gym.Wrapper):
         prev_heuristic = self.reward_handler.heuristic_reward(
             self.prev_step[0], self.state
         )
-
+        print("prev_heuristic:", prev_heuristic)
+        print("action:", action)
         obs, reward, done, info = self._handle_action(action)
+        print("self.state in handleaction:", self.state) 
         obs, reward, _, info = self._change_selected_player(obs)
         obs, done = self._state_update()
         # print(
@@ -534,15 +545,18 @@ class RobotouilleWrapper(gym.Wrapper):
             "state": self.state,
         }
         curr_heuristic = self.reward_handler.heuristic_reward(obs, self.state)
+        # print("curr_heuristic:", curr_heuristic)
         reward = curr_heuristic - prev_heuristic
+        # print("reward before normalising", reward)
         reward /= self.timesteps + 1
+        # print("reward after normalising", reward)
         self.prev_step = (obs, reward, done, info)
 
         if done:
             print("Goal Reached!")
         # print("prev_heuristic: ", prev_heuristic)
         # print("current_heuristic: ", curr_heuristic)
-        # print("reward: ", reward)
+        print("reward: ", reward)
         return obs, reward, done, info
 
     def save_episode(self, filename):
