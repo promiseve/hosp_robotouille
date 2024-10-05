@@ -5,7 +5,9 @@
 *-env
 robotouille.egg-info
 /wandb
-
+..gitignore.swp
+cluster_requirements.txt
+generate_slurm_scripts.py
 .DS_Store
 /slurm_scripts/
 /slurm_log/
@@ -15,6 +17,7 @@ robotouille.egg-info
 
 # But don't ignore the models directory
 !/results/models/
+!/results/sacred/
 
 # Don't ignore specific subdirectories in models
 !/results/models/ippo_seed793276739_None_2024-06-12 11:01:09.453591/
@@ -34,6 +37,52 @@ robotouille.egg-info
 !/results/models/vdn_seed702510526_None_2024-09-03 11:09:52.451628/
 !/results/models/vdn_seed743491255_None_2024-06-11 01:58:34.846117/
 
+# Ignore everything under sacred directory except the iqi/None, ippo/None, mappo/None, qmix/None, and vdn/None structures
+/results/sacred/*
+!/results/sacred/iqi/
+!/results/sacred/iqi/None/
+!/results/sacred/ippo/
+!/results/sacred/ippo/None/
+!/results/sacred/mappo/
+!/results/sacred/mappo/None/
+!/results/sacred/qmix/
+!/results/sacred/qmix/None/
+!/results/sacred/vdn/
+!/results/sacred/vdn/None/
+
+# Include the specific numbered directories under results/sacred/iqi/None/
+!/results/sacred/iqi/None/1/
+!/results/sacred/iqi/None/2/
+!/results/sacred/iqi/None/3/
+!/results/sacred/iqi/None/5/
+
+# Include the specific directories under results/sacred/ippo/None/
+!/results/sacred/ippo/None/1/
+!/results/sacred/ippo/None/_sources/
+
+# Include the specific directories under results/sacred/mappo/None/
+!/results/sacred/mappo/None/1/
+!/results/sacred/mappo/None/2/
+!/results/sacred/mappo/None/_sources/
+
+# Include the specific directories under results/sacred/qmix/None/
+!/results/sacred/qmix/None/1/
+!/results/sacred/qmix/None/2/
+!/results/sacred/qmix/None/3/
+!/results/sacred/qmix/None/28/
+!/results/sacred/qmix/None/29/
+!/results/sacred/qmix/None/30/
+!/results/sacred/qmix/None/_sources/
+
+# Include the specific directories under results/sacred/vdn/None/
+!/results/sacred/vdn/None/1/
+!/results/sacred/vdn/None/2/
+!/results/sacred/vdn/None/3/
+!/results/sacred/vdn/None/4/
+!/results/sacred/vdn/None/6/
+!/results/sacred/vdn/None/_sources/
+
 
 # Don't ignore the sacred directory and its contents
 /results/models/*
+/results/sacred/*

@@ -35,7 +35,6 @@ def my_main(_run, _config, _log):
     th.manual_seed(config["seed"])
     config["env_args"]["seed"] = config["seed"]
     # run the framework
-    print("run file from main.py")
     run(_run, config, _log)
 
 
