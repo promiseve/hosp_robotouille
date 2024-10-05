@@ -8,6 +8,7 @@ robotouille.egg-info
 ..gitignore.swp
 cluster_requirements.txt
 generate_slurm_scripts.py
+test_robotouille_input.py
 .DS_Store
 /slurm_scripts/
 /slurm_log/
