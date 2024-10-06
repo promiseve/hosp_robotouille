@@ -1,5 +1,6 @@
 from utils.reward_handler import RewardHandler
 
+
 class HospRewardHandler(RewardHandler):
     def __init__(self, config):
         super().__init__()
@@ -9,23 +10,27 @@ class HospRewardHandler(RewardHandler):
 
     def _find_stacking_index(self, item1, item2):
         for i in range(len(self.correct_order) - 1):
-            if (self.correct_order[i] in item1 and self.correct_order[i+1] in item2):
+            if self.correct_order[i] in item1 and self.correct_order[i + 1] in item2:
                 return i
         return -1
 
     def _check_item_on_station(self, obs, item, station):
         for literal in obs.literals:
-            if ("on" == literal.predicate.name
+            if (
+                "on" == literal.predicate.name
                 and item in literal.variables[0].name
-                and station in literal.variables[1].name):
+                and station in literal.variables[1].name
+            ):
                 return True
         return False
 
     def _check_item_on_item(self, obs, top_item, bottom_item):
         for literal in obs.literals:
-            if ("atop" == literal.predicate.name
+            if (
+                "atop" == literal.predicate.name
                 and top_item in literal.variables[0].name
-                and bottom_item in literal.variables[1].name):
+                and bottom_item in literal.variables[1].name
+            ):
                 return True
         return False
 
@@ -37,7 +42,10 @@ class HospRewardHandler(RewardHandler):
 
     def _check_predicate(self, obs, predicate, item):
         for literal in obs.literals:
-            if predicate == literal.predicate.name and item in literal.variables[0].name:
+            if (
+                predicate == literal.predicate.name
+                and item in literal.variables[0].name
+            ):
                 return True
         return False
 
@@ -46,12 +54,7 @@ class HospRewardHandler(RewardHandler):
         return item_status.get(action, 0)
 
     def _calculate_action_reward(self, progress, max_progress):
-        if progress == 0:
-            return 0
-        elif progress == max_progress:
-            return 20
-        else:
-            return 5 * progress
+        return min(20, 20 * progress / max_progress)
 
     def heuristic_reward(self, obs, state):
         self.obs = obs
@@ -62,11 +65,13 @@ class HospRewardHandler(RewardHandler):
             return 300
 
         correct_stacking = [False] * (len(self.correct_order) - 1)
-        
+
         # Check correct stacking order
         for literal in obs.literals:
             if literal.predicate.name == "atop":
-                index = self._find_stacking_index(literal.variables[1].name, literal.variables[0].name)
+                index = self._find_stacking_index(
+                    literal.variables[1].name, literal.variables[0].name
+                )
                 if index != -1:
                     correct_stacking[index] = True
 
