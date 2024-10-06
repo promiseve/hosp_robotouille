@@ -154,29 +154,6 @@
         },
         {
             "name": "robot",
-            "x": 4,
-            "y": 3,
-            "direction": [
-                1,
-                0
-            ],
-            "actions": [
-                "move",
-                "moveitem",
-                "compresschest",
-                "giverescuebreaths",
-                "giveshock",
-                "givemedicine"
-            ],
-            "skill_info": {
-                "compresschest": 1,
-                "giverescuebreaths": 1,
-                "giveshock": 1,
-                "givemedicine": 1
-            }
-        },
-        {
-            "name": "robot",
             "x": 5,
             "y": 1,
             "direction": [

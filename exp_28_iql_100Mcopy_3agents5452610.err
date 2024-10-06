@@ -1,0 +1,539 @@
+wandb: Currently logged in as: promiseekpo. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.18.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.3
+wandb: Run data is saved locally in /home/poe6/hosp_robotouille/wandb/run-20241005_155744-o47yz4aj
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run crimson-dew-198
+wandb: ⭐️ View project at https://wandb.ai/promiseekpo/6756-rl-experiments
+wandb: 🚀 View run at https://wandb.ai/promiseekpo/6756-rl-experiments/runs/o47yz4aj
+[DEBUG 15:57:45] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:57:45] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:57:45] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/poe6/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 15:57:45] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:57:45] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:57:45] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/poe6/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 15:57:45] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:57:45] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:57:45] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/poe6/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+epymarl/main.py:68: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.9 it will stop working
+  if isinstance(v, collections.Mapping):
+[INFO 15:57:45] root Saving to FileStorageObserver in results/sacred.
+[DEBUG 15:57:45] pymarl Using capture mode "fd"
+[INFO 15:57:45] pymarl Running command 'my_main'
+[INFO 15:57:45] pymarl Started run with ID "30"
+[DEBUG 15:57:45] pymarl Starting Heartbeat
+[DEBUG 15:57:45] my_main Started
+[WARNING 15:57:45] my_main CUDA flag use_cuda was switched OFF automatically because no CUDA devices are available!
+[INFO 15:57:45] my_main Experiment Parameters:
+[INFO 15:57:45] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'add_value_last_step': True,
+    'agent': 'rnn',
+    'agent_output_type': 'q',
+    'batch_size': 5,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'double_q': True,
+    'env': 'gymma',
+    'env_args': {   'key': None,
+                    'pretrained_wrapper': None,
+                    'seed': 669628427,
+                    'time_limit': 50},
+    'epochs': 2,
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'evaluation_epsilon': 0.0,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'label': 'default_label',
+    'learner': 'q_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 100000,
+    'lr': 0.001,
+    'mac': 'basic_mac',
+    'mixer': None,
+    'name': 'iql',
+    'obs_agent_id': True,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'render': False,
+    'repeat_id': 1,
+    'runner': 'episode',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 500,
+    'save_replay': False,
+    'seed': 669628427,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 1000000000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 5,
+    'use_cuda': False,
+    'use_rnn': False,
+    'use_tensorboard': False}
+
+[INFO 15:57:45] my_main Beginning training for 1000000000 timesteps
+[INFO 15:57:51] my_main t_env: 100 / 1000000000
+[INFO 15:57:51] my_main Estimated time left: 1 days, 7 hours, 48 minutes, 26 seconds. Time passed: 5 seconds
+[INFO 15:58:11] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/100
+[INFO 15:58:39] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/600
+[INFO 15:59:08] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/1100
+[INFO 15:59:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/1600
+[INFO 16:00:05] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/2100
+[INFO 16:00:34] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/2600
+[INFO 16:01:03] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/3100
+[INFO 16:01:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/3600
+[INFO 16:02:01] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/4100
+[INFO 16:02:31] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/4600
+[INFO 16:02:59] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/5100
+[INFO 16:03:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/5600
+[INFO 16:03:58] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/6100
+[INFO 16:04:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/6600
+[INFO 16:04:59] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/7100
+[INFO 16:05:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/7600
+[INFO 16:06:00] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/8100
+[INFO 16:06:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/8600
+[INFO 16:07:01] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/9100
+[INFO 16:07:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/9600
+[INFO 16:08:02] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/10100
+[INFO 16:08:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/10600
+[INFO 16:09:03] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/11100
+[INFO 16:09:33] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/11600
+[INFO 16:10:04] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/12100
+[INFO 16:10:35] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/12600
+[INFO 16:11:06] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/13100
+[INFO 16:11:35] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/13600
+[INFO 16:12:06] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/14100
+[INFO 16:12:37] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/14600
+[INFO 16:13:07] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/15100
+[INFO 16:13:39] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/15600
+[INFO 16:14:09] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/16100
+[INFO 16:14:40] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/16600
+[INFO 16:15:10] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/17100
+[INFO 16:15:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/17600
+[INFO 16:16:12] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/18100
+[INFO 16:16:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/18600
+[INFO 16:17:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/19100
+[INFO 16:17:47] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/19600
+[INFO 16:18:19] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/20100
+[INFO 16:18:51] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/20600
+[INFO 16:19:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/21100
+[INFO 16:19:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/21600
+[INFO 16:20:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/22100
+[INFO 16:20:59] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/22600
+[INFO 16:21:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/23100
+[INFO 16:22:04] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/23600
+[INFO 16:22:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/24100
+[INFO 16:23:07] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/24600
+[INFO 16:23:39] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/25100
+[INFO 16:24:12] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/25600
+[INFO 16:24:45] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/26100
+[INFO 16:25:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/26600
+[INFO 16:25:48] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/27100
+[INFO 16:26:21] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/27600
+[INFO 16:26:55] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/28100
+[INFO 16:27:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/28600
+[INFO 16:28:00] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/29100
+[INFO 16:28:34] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/29600
+[INFO 16:29:07] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/30100
+[INFO 16:29:40] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/30600
+[INFO 16:30:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/31100
+[INFO 16:30:51] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/31600
+[INFO 16:31:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/32100
+[INFO 16:31:59] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/32600
+[INFO 16:32:33] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/33100
+[INFO 16:33:07] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/33600
+[INFO 16:33:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/34100
+[INFO 16:34:19] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/34600
+[INFO 16:34:47] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/35100
+[INFO 16:35:19] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/35600
+[INFO 16:35:50] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/36100
+[INFO 16:36:25] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/36600
+[INFO 16:37:01] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/37100
+[INFO 16:37:33] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/37600
+[INFO 16:38:02] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/38100
+[INFO 16:38:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/38600
+[INFO 16:39:02] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/39100
+[INFO 16:39:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/39600
+[INFO 16:40:13] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/40100
+[INFO 16:40:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/40600
+[INFO 16:41:14] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/41100
+[INFO 16:41:45] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/41600
+[INFO 16:42:19] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/42100
+[INFO 16:42:54] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/42600
+[INFO 16:43:22] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/43100
+[INFO 16:43:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/43600
+[INFO 16:44:25] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/44100
+[INFO 16:45:01] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/44600
+[INFO 16:45:29] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/45100
+[INFO 16:45:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/45600
+[INFO 16:46:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/46100
+[INFO 16:46:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/46600
+[INFO 16:47:23] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/47100
+[INFO 16:47:55] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/47600
+[INFO 16:48:23] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/48100
+[INFO 16:48:54] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/48600
+[INFO 16:49:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/49100
+[INFO 16:49:50] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/49600
+[INFO 16:50:16] my_main t_env: 50100 / 1000000000
+[INFO 16:50:16] my_main Estimated time left: 100 days, 0 seconds. Time passed: 52 minutes, 30 seconds
+[INFO 16:50:40] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/50100
+[INFO 16:51:07] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/50600
+[INFO 16:51:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/51100
+[INFO 16:52:11] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/51600
+[INFO 16:52:39] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/52100
+[INFO 16:53:13] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/52600
+[INFO 16:53:42] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/53100
+[INFO 16:54:14] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/53600
+[INFO 16:54:42] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/54100
+[INFO 16:55:13] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/54600
+[INFO 16:55:40] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/55100
+[INFO 16:56:14] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/55600
+[INFO 16:56:51] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/56100
+[INFO 16:57:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/56600
+[INFO 16:57:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/57100
+[INFO 16:58:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/57600
+[INFO 16:59:00] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/58100
+[INFO 16:59:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/58600
+[INFO 16:59:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/59100
+[INFO 17:00:23] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/59600
+[INFO 17:00:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/60100
+[INFO 17:01:29] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/60600
+[INFO 17:02:01] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/61100
+[INFO 17:02:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/61600
+[INFO 17:03:01] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/62100
+[INFO 17:03:37] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/62600
+[INFO 17:04:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/63100
+[INFO 17:04:54] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/63600
+[INFO 17:05:31] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/64100
+[INFO 17:06:05] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/64600
+[INFO 17:06:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/65100
+[INFO 17:07:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/65600
+[INFO 17:08:05] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/66100
+[INFO 17:08:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/66600
+[INFO 17:09:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/67100
+[INFO 17:09:46] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/67600
+[INFO 17:10:14] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/68100
+[INFO 17:10:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/68600
+[INFO 17:11:20] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/69100
+[INFO 17:12:00] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/69600
+[INFO 17:12:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/70100
+[INFO 17:13:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/70600
+[INFO 17:14:02] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/71100
+[INFO 17:14:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/71600
+[INFO 17:15:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/72100
+[INFO 17:16:08] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/72600
+[INFO 17:16:49] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/73100
+[INFO 17:17:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/73600
+[INFO 17:18:20] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/74100
+[INFO 17:18:51] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/74600
+[INFO 17:19:23] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/75100
+[INFO 17:20:02] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/75600
+[INFO 17:20:40] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/76100
+[INFO 17:21:16] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/76600
+[INFO 17:21:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/77100
+[INFO 17:22:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/77600
+[INFO 17:23:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/78100
+[INFO 17:23:58] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/78600
+[INFO 17:24:39] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/79100
+[INFO 17:25:14] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/79600
+[INFO 17:25:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/80100
+[INFO 17:26:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/80600
+[INFO 17:27:25] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/81100
+[INFO 17:28:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/81600
+[INFO 17:28:58] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/82100
+[INFO 17:29:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/82600
+[INFO 17:30:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/83100
+[INFO 17:31:08] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/83600
+[INFO 17:31:44] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/84100
+[INFO 17:32:29] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/84600
+[INFO 17:33:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/85100
+[INFO 17:33:55] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/85600
+[INFO 17:34:38] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/86100
+[INFO 17:35:25] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/86600
+[INFO 17:36:06] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/87100
+[INFO 17:36:52] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/87600
+[INFO 17:37:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/88100
+[INFO 17:38:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/88600
+[INFO 17:39:01] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/89100
+[INFO 17:39:45] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/89600
+[INFO 17:40:19] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/90100
+[INFO 17:41:02] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/90600
+[INFO 17:41:45] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/91100
+[INFO 17:42:29] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/91600
+[INFO 17:43:16] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/92100
+[INFO 17:43:53] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/92600
+[INFO 17:44:37] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/93100
+[INFO 17:45:21] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/93600
+[INFO 17:46:05] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/94100
+[INFO 17:46:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/94600
+[INFO 17:47:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/95100
+[INFO 17:48:19] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/95600
+[INFO 17:48:55] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/96100
+[INFO 17:49:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/96600
+[INFO 17:50:12] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/97100
+[INFO 17:50:53] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/97600
+[INFO 17:51:33] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/98100
+[INFO 17:52:14] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/98600
+[INFO 17:52:46] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/99100
+[INFO 17:53:17] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/99600
+[INFO 17:53:46] my_main Recent Stats | t_env:     100000 | Episode:     1000
+ep_length_mean:          100.0000	epsilon:                   0.0500	grad_norm:                 4.5440	loss:                      1.7820
+q_taken_mean:              0.1094	return_mean:               0.1759	return_std:                0.0371	target_mean:               0.1568
+td_error_abs:              0.5075	test_ep_length_mean:     100.0000	test_return_mean:          0.1160	test_return_std:           0.0000
+
+[INFO 17:53:52] my_main t_env: 100100 / 1000000000
+[INFO 17:53:52] my_main Estimated time left: 100 days, 0 seconds. Time passed: 1 hours, 56 minutes, 6 seconds
+[INFO 17:54:52] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/100100
+[INFO 17:55:31] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/100600
+[INFO 17:56:06] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/101100
+[INFO 17:56:55] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/101600
+[INFO 17:57:38] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/102100
+[INFO 17:58:12] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/102600
+[INFO 17:58:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/103100
+[INFO 17:59:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/103600
+[INFO 17:59:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/104100
+[INFO 18:00:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/104600
+[INFO 18:01:08] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/105100
+[INFO 18:01:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/105600
+[INFO 18:02:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/106100
+[INFO 18:02:51] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/106600
+[INFO 18:03:23] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/107100
+[INFO 18:03:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/107600
+[INFO 18:04:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/108100
+[INFO 18:05:11] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/108600
+[INFO 18:05:44] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/109100
+[INFO 18:06:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/109600
+[INFO 18:06:47] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/110100
+[INFO 18:07:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/110600
+[INFO 18:08:09] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/111100
+[INFO 18:08:55] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/111600
+[INFO 18:09:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/112100
+[INFO 18:10:02] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/112600
+[INFO 18:10:42] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/113100
+[INFO 18:11:19] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/113600
+[INFO 18:11:52] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/114100
+[INFO 18:12:23] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/114600
+[INFO 18:12:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/115100
+[INFO 18:13:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/115600
+[INFO 18:14:25] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/116100
+[INFO 18:14:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/116600
+[INFO 18:15:29] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/117100
+[INFO 18:16:03] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/117600
+[INFO 18:16:47] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/118100
+[INFO 18:17:25] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/118600
+[INFO 18:17:58] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/119100
+[INFO 18:18:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/119600
+[INFO 18:19:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/120100
+[INFO 18:19:52] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/120600
+[INFO 18:20:34] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/121100
+[INFO 18:21:20] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/121600
+[INFO 18:22:00] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/122100
+[INFO 18:22:45] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/122600
+[INFO 18:23:33] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/123100
+[INFO 18:24:21] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/123600
+[INFO 18:25:01] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/124100
+[INFO 18:25:50] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/124600
+[INFO 18:26:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/125100
+[INFO 18:27:21] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/125600
+[INFO 18:28:09] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/126100
+[INFO 18:28:48] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/126600
+[INFO 18:29:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/127100
+[INFO 18:30:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/127600
+[INFO 18:30:53] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/128100
+[INFO 18:31:29] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/128600
+[INFO 18:32:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/129100
+[INFO 18:32:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/129600
+[INFO 18:33:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/130100
+[INFO 18:34:26] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/130600
+[INFO 18:35:08] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/131100
+[INFO 18:35:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/131600
+[INFO 18:36:45] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/132100
+[INFO 18:37:21] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/132600
+[INFO 18:38:09] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/133100
+[INFO 18:38:59] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/133600
+[INFO 18:39:48] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/134100
+[INFO 18:40:39] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/134600
+[INFO 18:41:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/135100
+[INFO 18:42:16] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/135600
+[INFO 18:42:53] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/136100
+[INFO 18:43:31] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/136600
+[INFO 18:44:16] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/137100
+[INFO 18:44:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/137600
+[INFO 18:45:42] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/138100
+[INFO 18:46:20] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/138600
+[INFO 18:46:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/139100
+[INFO 18:47:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/139600
+[INFO 18:48:20] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/140100
+[INFO 18:49:06] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/140600
+[INFO 18:49:48] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/141100
+[INFO 18:50:35] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/141600
+[INFO 18:51:23] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/142100
+[INFO 18:52:03] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/142600
+[INFO 18:52:51] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/143100
+[INFO 18:53:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/143600
+[INFO 18:54:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/144100
+[INFO 18:54:54] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/144600
+[INFO 18:55:29] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/145100
+[INFO 18:56:04] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/145600
+[INFO 18:56:51] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/146100
+[INFO 18:57:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/146600
+[INFO 18:58:21] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/147100
+[INFO 18:59:09] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/147600
+[INFO 18:59:49] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/148100
+[INFO 19:00:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/148600
+[INFO 19:01:00] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/149100
+[INFO 19:01:50] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/149600
+[INFO 19:02:39] my_main t_env: 150100 / 1000000000
+[INFO 19:02:39] my_main Estimated time left: 100 days, 0 seconds. Time passed: 3 hours, 4 minutes, 53 seconds
+[INFO 19:03:48] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/150100
+[INFO 19:04:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/150600
+[INFO 19:05:14] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/151100
+[INFO 19:06:06] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/151600
+[INFO 19:06:48] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/152100
+[INFO 19:07:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/152600
+[INFO 19:08:16] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/153100
+[INFO 19:09:06] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/153600
+[INFO 19:09:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/154100
+[INFO 19:10:46] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/154600
+[INFO 19:11:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/155100
+[INFO 19:12:04] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/155600
+[INFO 19:12:40] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/156100
+[INFO 19:13:31] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/156600
+[INFO 19:14:23] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/157100
+[INFO 19:15:14] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/157600
+[INFO 19:16:05] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/158100
+[INFO 19:16:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/158600
+[INFO 19:17:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/159100
+[INFO 19:18:16] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/159600
+[INFO 19:19:07] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/160100
+[INFO 19:19:58] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/160600
+[INFO 19:20:38] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/161100
+[INFO 19:21:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/161600
+[INFO 19:22:20] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/162100
+[INFO 19:23:17] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/162600
+[INFO 19:24:12] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/163100
+[INFO 19:25:05] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/163600
+[INFO 19:25:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/164100
+[INFO 19:26:42] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/164600
+[INFO 19:27:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/165100
+[INFO 19:28:28] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/165600
+[INFO 19:29:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/166100
+[INFO 19:30:13] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/166600
+[INFO 19:30:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/167100
+[INFO 19:31:51] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/167600
+[INFO 19:32:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/168100
+[INFO 19:33:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/168600
+[INFO 19:34:34] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/169100
+[INFO 19:35:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/169600
+[INFO 19:36:12] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/170100
+[INFO 19:37:07] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/170600
+[INFO 19:38:03] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/171100
+[INFO 19:38:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/171600
+[INFO 19:39:54] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/172100
+[INFO 19:40:53] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/172600
+[INFO 19:41:49] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/173100
+[INFO 19:42:58] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/173600
+[INFO 19:43:58] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/174100
+[INFO 19:44:39] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/174600
+[INFO 19:45:35] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/175100
+[INFO 19:46:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/175600
+[INFO 19:47:30] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/176100
+[INFO 19:48:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/176600
+[INFO 19:49:45] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/177100
+[INFO 19:50:46] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/177600
+[INFO 19:51:59] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/178100
+[INFO 19:53:04] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/178600
+[INFO 19:54:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/179100
+[INFO 19:55:18] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/179600
+[INFO 19:56:21] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/180100
+[INFO 19:57:35] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/180600
+[INFO 19:58:39] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/181100
+[INFO 19:59:53] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/181600
+[INFO 20:00:58] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/182100
+[INFO 20:02:03] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/182600
+[INFO 20:03:16] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/183100
+[INFO 20:04:21] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/183600
+[INFO 20:05:27] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/184100
+[INFO 20:06:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/184600
+[INFO 20:07:46] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/185100
+[INFO 20:09:01] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/185600
+[INFO 20:10:08] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/186100
+[INFO 20:11:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/186600
+[INFO 20:12:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/187100
+[INFO 20:13:47] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/187600
+[INFO 20:14:54] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/188100
+[INFO 20:16:10] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/188600
+[INFO 20:17:26] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/189100
+[INFO 20:18:32] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/189600
+[INFO 20:19:49] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/190100
+[INFO 20:20:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/190600
+[INFO 20:22:12] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/191100
+[INFO 20:23:19] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/191600
+[INFO 20:24:26] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/192100
+[INFO 20:25:42] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/192600
+[INFO 20:26:48] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/193100
+[INFO 20:27:54] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/193600
+[INFO 20:29:13] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/194100
+[INFO 20:30:20] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/194600
+[INFO 20:31:38] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/195100
+[INFO 20:32:47] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/195600
+[INFO 20:33:51] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/196100
+[INFO 20:34:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/196600
+[INFO 20:36:15] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/197100
+[INFO 20:37:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/197600
+[INFO 20:38:41] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/198100
+[INFO 20:39:48] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/198600
+[INFO 20:40:57] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/199100
+[INFO 20:42:00] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/199600
+[INFO 20:42:40] my_main Recent Stats | t_env:     200000 | Episode:     2000
+ep_length_mean:          100.0000	epsilon:                   0.0500	grad_norm:                 1.4006	loss:                      1.5864
+q_taken_mean:              0.3778	return_mean:               0.1697	return_std:                0.0463	target_mean:               0.3787
+td_error_abs:              0.4176	test_ep_length_mean:     100.0000	test_return_mean:          0.1635	test_return_std:           0.0000
+
+[INFO 20:42:44] my_main t_env: 200100 / 1000000000
+[INFO 20:42:44] my_main Estimated time left: 100 days, 0 seconds. Time passed: 4 hours, 44 minutes, 58 seconds
+[INFO 20:43:25] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/200100
+[INFO 20:44:13] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/200600
+[INFO 20:45:31] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/201100
+[INFO 20:46:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/201600
+[INFO 20:47:24] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/202100
+[INFO 20:48:08] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/202600
+[INFO 20:49:08] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/203100
+[INFO 20:50:14] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/203600
+[INFO 20:51:17] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/204100
+[INFO 20:51:59] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/204600
+[INFO 20:53:09] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/205100
+[INFO 20:54:13] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/205600
+[INFO 20:54:56] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/206100
+[INFO 20:55:40] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/206600
+[INFO 20:56:23] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/207100
+[INFO 20:57:26] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/207600
+[INFO 20:58:38] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/208100
+[INFO 21:00:00] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/208600
+[INFO 21:01:09] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/209100
+[INFO 21:01:53] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/209600
+[INFO 21:02:36] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/210100
+[INFO 21:03:43] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/210600
+[INFO 21:04:45] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/211100
+[INFO 21:05:29] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/211600
+[INFO 21:06:12] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/212100
+[INFO 21:07:16] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/212600
+[INFO 21:08:39] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/213100
+[INFO 21:09:48] my_main Saving models to results/models/iql_seed669628427_None_2024-10-05 15:57:45.506141/213600
+slurmstepd: error: *** JOB 5452610 ON lisbeth CANCELLED AT 2024-10-05T21:10:38 ***

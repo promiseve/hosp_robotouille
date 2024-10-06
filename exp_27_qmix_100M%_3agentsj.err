@@ -1,0 +1,577 @@
+wandb: Currently logged in as: promiseekpo. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.18.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.3
+wandb: Run data is saved locally in /home/poe6/hosp_robotouille/wandb/run-20241005_155507-lqtvn345
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run major-morning-197
+wandb: ⭐️ View project at https://wandb.ai/promiseekpo/6756-rl-experiments
+wandb: 🚀 View run at https://wandb.ai/promiseekpo/6756-rl-experiments/runs/lqtvn345
+[DEBUG 15:55:08] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:55:08] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:55:08] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/poe6/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 15:55:08] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:55:08] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:55:08] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/poe6/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 15:55:08] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:55:08] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:55:08] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/poe6/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+epymarl/main.py:68: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.9 it will stop working
+  if isinstance(v, collections.Mapping):
+[INFO 15:55:08] root Saving to FileStorageObserver in results/sacred.
+[DEBUG 15:55:08] pymarl Using capture mode "fd"
+[INFO 15:55:08] pymarl Running command 'my_main'
+[INFO 15:55:08] pymarl Started run with ID "54"
+[DEBUG 15:55:08] pymarl Starting Heartbeat
+[DEBUG 15:55:08] my_main Started
+[WARNING 15:55:08] my_main CUDA flag use_cuda was switched OFF automatically because no CUDA devices are available!
+[INFO 15:55:08] my_main Experiment Parameters:
+[INFO 15:55:08] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'add_value_last_step': True,
+    'agent': 'rnn',
+    'agent_output_type': 'q',
+    'batch_size': 5,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'double_q': True,
+    'env': 'gymma',
+    'env_args': {   'key': None,
+                    'pretrained_wrapper': None,
+                    'seed': 452690715,
+                    'time_limit': 50},
+    'epochs': 2,
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'evaluation_epsilon': 0.0,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'hypernet_embed': 64,
+    'hypernet_layers': 2,
+    'label': 'default_label',
+    'learner': 'q_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 100000,
+    'lr': 0.001,
+    'mac': 'basic_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'qmix',
+    'obs_agent_id': True,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'render': False,
+    'repeat_id': 1,
+    'runner': 'episode',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 500,
+    'save_replay': False,
+    'seed': 452690715,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 1000000000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 5,
+    'use_cuda': False,
+    'use_rnn': False,
+    'use_tensorboard': False}
+
+[INFO 15:55:09] my_main Beginning training for 1000000000 timesteps
+[INFO 15:55:15] my_main t_env: 100 / 1000000000
+[INFO 15:55:15] my_main Estimated time left: 1 days, 7 hours, 42 minutes, 8 seconds. Time passed: 5 seconds
+[INFO 15:55:34] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/100
+[INFO 15:56:02] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/600
+[INFO 15:56:30] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/1100
+[INFO 15:56:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/1600
+[INFO 15:57:25] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/2100
+[INFO 15:57:53] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/2600
+[INFO 15:58:21] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/3100
+[INFO 15:58:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/3600
+[INFO 15:59:18] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/4100
+[INFO 15:59:46] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/4600
+[INFO 16:00:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/5100
+[INFO 16:00:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/5600
+[INFO 16:01:11] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/6100
+[INFO 16:01:40] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/6600
+[INFO 16:02:09] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/7100
+[INFO 16:02:37] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/7600
+[INFO 16:03:06] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/8100
+[INFO 16:03:34] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/8600
+[INFO 16:04:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/9100
+[INFO 16:04:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/9600
+[INFO 16:05:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/10100
+[INFO 16:05:31] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/10600
+[INFO 16:06:00] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/11100
+[INFO 16:06:30] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/11600
+[INFO 16:06:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/12100
+[INFO 16:07:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/12600
+[INFO 16:07:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/13100
+[INFO 16:08:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/13600
+[INFO 16:08:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/14100
+[INFO 16:09:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/14600
+[INFO 16:09:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/15100
+[INFO 16:10:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/15600
+[INFO 16:10:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/16100
+[INFO 16:11:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/16600
+[INFO 16:11:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/17100
+[INFO 16:12:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/17600
+[INFO 16:12:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/18100
+[INFO 16:13:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/18600
+[INFO 16:13:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/19100
+[INFO 16:14:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/19600
+[INFO 16:14:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/20100
+[INFO 16:15:29] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/20600
+[INFO 16:15:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/21100
+[INFO 16:16:30] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/21600
+[INFO 16:17:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/22100
+[INFO 16:17:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/22600
+[INFO 16:18:00] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/23100
+[INFO 16:18:30] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/23600
+[INFO 16:18:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/24100
+[INFO 16:19:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/24600
+[INFO 16:19:55] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/25100
+[INFO 16:20:25] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/25600
+[INFO 16:20:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/26100
+[INFO 16:21:21] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/26600
+[INFO 16:21:48] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/27100
+[INFO 16:22:17] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/27600
+[INFO 16:22:44] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/28100
+[INFO 16:23:11] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/28600
+[INFO 16:23:40] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/29100
+[INFO 16:24:08] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/29600
+[INFO 16:24:37] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/30100
+[INFO 16:25:05] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/30600
+[INFO 16:25:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/31100
+[INFO 16:26:03] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/31600
+[INFO 16:26:33] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/32100
+[INFO 16:27:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/32600
+[INFO 16:27:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/33100
+[INFO 16:28:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/33600
+[INFO 16:28:33] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/34100
+[INFO 16:29:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/34600
+[INFO 16:29:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/35100
+[INFO 16:30:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/35600
+[INFO 16:30:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/36100
+[INFO 16:31:00] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/36600
+[INFO 16:31:31] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/37100
+[INFO 16:32:00] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/37600
+[INFO 16:32:31] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/38100
+[INFO 16:32:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/38600
+[INFO 16:33:29] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/39100
+[INFO 16:33:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/39600
+[INFO 16:34:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/40100
+[INFO 16:34:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/40600
+[INFO 16:35:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/41100
+[INFO 16:35:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/41600
+[INFO 16:36:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/42100
+[INFO 16:36:56] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/42600
+[INFO 16:37:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/43100
+[INFO 16:37:49] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/43600
+[INFO 16:38:17] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/44100
+[INFO 16:38:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/44600
+[INFO 16:39:08] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/45100
+[INFO 16:39:34] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/45600
+[INFO 16:39:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/46100
+[INFO 16:40:25] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/46600
+[INFO 16:40:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/47100
+[INFO 16:41:14] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/47600
+[INFO 16:41:39] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/48100
+[INFO 16:42:03] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/48600
+[INFO 16:42:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/49100
+[INFO 16:42:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/49600
+[INFO 16:43:16] my_main t_env: 50100 / 1000000000
+[INFO 16:43:16] my_main Estimated time left: 100 days, 0 seconds. Time passed: 48 minutes, 7 seconds
+[INFO 16:43:39] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/50100
+[INFO 16:44:03] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/50600
+[INFO 16:44:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/51100
+[INFO 16:44:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/51600
+[INFO 16:45:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/52100
+[INFO 16:45:38] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/52600
+[INFO 16:46:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/53100
+[INFO 16:46:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/53600
+[INFO 16:46:55] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/54100
+[INFO 16:47:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/54600
+[INFO 16:47:51] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/55100
+[INFO 16:48:18] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/55600
+[INFO 16:48:49] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/56100
+[INFO 16:49:17] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/56600
+[INFO 16:49:44] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/57100
+[INFO 16:50:11] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/57600
+[INFO 16:50:39] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/58100
+[INFO 16:51:09] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/58600
+[INFO 16:51:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/59100
+[INFO 16:52:12] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/59600
+[INFO 16:52:39] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/60100
+[INFO 16:53:10] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/60600
+[INFO 16:53:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/61100
+[INFO 16:54:02] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/61600
+[INFO 16:54:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/62100
+[INFO 16:55:13] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/62600
+[INFO 16:55:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/63100
+[INFO 16:56:16] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/63600
+[INFO 16:56:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/64100
+[INFO 16:57:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/64600
+[INFO 16:58:03] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/65100
+[INFO 16:58:40] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/65600
+[INFO 16:59:21] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/66100
+[INFO 16:59:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/66600
+[INFO 17:00:38] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/67100
+[INFO 17:01:13] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/67600
+[INFO 17:01:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/68100
+[INFO 17:02:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/68600
+[INFO 17:02:41] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/69100
+[INFO 17:03:07] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/69600
+[INFO 17:03:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/70100
+[INFO 17:04:03] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/70600
+[INFO 17:04:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/71100
+[INFO 17:05:17] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/71600
+[INFO 17:05:49] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/72100
+[INFO 17:06:22] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/72600
+[INFO 17:06:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/73100
+[INFO 17:07:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/73600
+[INFO 17:07:54] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/74100
+[INFO 17:08:19] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/74600
+[INFO 17:08:45] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/75100
+[INFO 17:09:10] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/75600
+[INFO 17:09:36] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/76100
+[INFO 17:10:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/76600
+[INFO 17:10:33] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/77100
+[INFO 17:11:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/77600
+[INFO 17:11:31] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/78100
+[INFO 17:11:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/78600
+[INFO 17:12:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/79100
+[INFO 17:12:54] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/79600
+[INFO 17:13:22] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/80100
+[INFO 17:13:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/80600
+[INFO 17:14:18] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/81100
+[INFO 17:14:53] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/81600
+[INFO 17:15:25] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/82100
+[INFO 17:15:55] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/82600
+[INFO 17:16:25] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/83100
+[INFO 17:16:55] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/83600
+[INFO 17:17:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/84100
+[INFO 17:17:54] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/84600
+[INFO 17:18:22] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/85100
+[INFO 17:18:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/85600
+[INFO 17:19:24] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/86100
+[INFO 17:19:56] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/86600
+[INFO 17:20:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/87100
+[INFO 17:21:00] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/87600
+[INFO 17:21:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/88100
+[INFO 17:21:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/88600
+[INFO 17:22:31] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/89100
+[INFO 17:22:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/89600
+[INFO 17:23:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/90100
+[INFO 17:23:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/90600
+[INFO 17:24:33] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/91100
+[INFO 17:25:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/91600
+[INFO 17:25:37] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/92100
+[INFO 17:26:08] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/92600
+[INFO 17:26:38] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/93100
+[INFO 17:27:12] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/93600
+[INFO 17:27:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/94100
+[INFO 17:28:19] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/94600
+[INFO 17:28:49] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/95100
+[INFO 17:29:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/95600
+[INFO 17:29:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/96100
+[INFO 17:30:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/96600
+[INFO 17:31:08] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/97100
+[INFO 17:31:44] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/97600
+[INFO 17:32:18] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/98100
+[INFO 17:32:55] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/98600
+[INFO 17:33:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/99100
+[INFO 17:34:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/99600
+[INFO 17:34:29] my_main Recent Stats | t_env:     100000 | Episode:     1000
+ep_length_mean:          100.0000	epsilon:                   0.0500	grad_norm:                13.3482	loss:                      2.6710
+q_taken_mean:              0.3498	return_mean:               0.1639	return_std:                0.0528	target_mean:               0.5255
+td_error_abs:              0.8370	test_ep_length_mean:     100.0000	test_return_mean:          0.1160	test_return_std:           0.0000
+
+[INFO 17:34:34] my_main t_env: 100100 / 1000000000
+[INFO 17:34:34] my_main Estimated time left: 100 days, 0 seconds. Time passed: 1 hours, 39 minutes, 24 seconds
+[INFO 17:35:00] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/100100
+[INFO 17:35:30] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/100600
+[INFO 17:36:07] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/101100
+[INFO 17:36:38] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/101600
+[INFO 17:37:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/102100
+[INFO 17:37:48] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/102600
+[INFO 17:38:29] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/103100
+[INFO 17:38:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/103600
+[INFO 17:39:33] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/104100
+[INFO 17:40:16] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/104600
+[INFO 17:40:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/105100
+[INFO 17:41:39] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/105600
+[INFO 17:42:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/106100
+[INFO 17:42:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/106600
+[INFO 17:43:40] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/107100
+[INFO 17:44:29] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/107600
+[INFO 17:45:13] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/108100
+[INFO 17:45:47] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/108600
+[INFO 17:46:25] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/109100
+[INFO 17:47:09] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/109600
+[INFO 17:47:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/110100
+[INFO 17:48:39] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/110600
+[INFO 17:49:08] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/111100
+[INFO 17:49:37] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/111600
+[INFO 17:50:17] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/112100
+[INFO 17:50:51] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/112600
+[INFO 17:51:21] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/113100
+[INFO 17:51:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/113600
+[INFO 17:52:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/114100
+[INFO 17:53:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/114600
+[INFO 17:53:40] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/115100
+[INFO 17:54:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/115600
+[INFO 17:54:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/116100
+[INFO 17:55:22] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/116600
+[INFO 17:55:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/117100
+[INFO 17:56:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/117600
+[INFO 17:56:55] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/118100
+[INFO 17:57:24] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/118600
+[INFO 17:57:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/119100
+[INFO 17:58:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/119600
+[INFO 17:59:06] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/120100
+[INFO 17:59:47] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/120600
+[INFO 18:00:34] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/121100
+[INFO 18:01:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/121600
+[INFO 18:02:17] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/122100
+[INFO 18:03:10] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/122600
+[INFO 18:03:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/123100
+[INFO 18:04:46] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/123600
+[INFO 18:05:33] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/124100
+[INFO 18:06:16] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/124600
+[INFO 18:06:49] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/125100
+[INFO 18:07:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/125600
+[INFO 18:07:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/126100
+[INFO 18:08:48] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/126600
+[INFO 18:09:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/127100
+[INFO 18:10:31] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/127600
+[INFO 18:11:17] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/128100
+[INFO 18:12:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/128600
+[INFO 18:12:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/129100
+[INFO 18:13:37] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/129600
+[INFO 18:14:09] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/130100
+[INFO 18:14:56] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/130600
+[INFO 18:15:42] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/131100
+[INFO 18:16:29] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/131600
+[INFO 18:17:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/132100
+[INFO 18:17:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/132600
+[INFO 18:18:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/133100
+[INFO 18:19:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/133600
+[INFO 18:20:03] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/134100
+[INFO 18:20:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/134600
+[INFO 18:21:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/135100
+[INFO 18:21:53] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/135600
+[INFO 18:22:33] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/136100
+[INFO 18:23:20] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/136600
+[INFO 18:24:08] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/137100
+[INFO 18:24:56] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/137600
+[INFO 18:25:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/138100
+[INFO 18:26:30] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/138600
+[INFO 18:27:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/139100
+[INFO 18:27:46] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/139600
+[INFO 18:28:31] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/140100
+[INFO 18:29:19] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/140600
+[INFO 18:29:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/141100
+[INFO 18:30:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/141600
+[INFO 18:31:03] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/142100
+[INFO 18:31:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/142600
+[INFO 18:32:06] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/143100
+[INFO 18:32:38] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/143600
+[INFO 18:33:09] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/144100
+[INFO 18:33:40] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/144600
+[INFO 18:34:11] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/145100
+[INFO 18:34:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/145600
+[INFO 18:35:14] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/146100
+[INFO 18:35:45] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/146600
+[INFO 18:36:17] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/147100
+[INFO 18:36:48] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/147600
+[INFO 18:37:20] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/148100
+[INFO 18:37:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/148600
+[INFO 18:38:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/149100
+[INFO 18:39:10] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/149600
+[INFO 18:39:48] my_main t_env: 150100 / 1000000000
+[INFO 18:39:48] my_main Estimated time left: 100 days, 0 seconds. Time passed: 2 hours, 44 minutes, 39 seconds
+[INFO 18:40:30] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/150100
+[INFO 18:41:08] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/150600
+[INFO 18:41:44] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/151100
+[INFO 18:42:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/151600
+[INFO 18:43:06] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/152100
+[INFO 18:43:49] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/152600
+[INFO 18:44:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/153100
+[INFO 18:45:10] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/153600
+[INFO 18:45:49] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/154100
+[INFO 18:46:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/154600
+[INFO 18:47:10] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/155100
+[INFO 18:47:54] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/155600
+[INFO 18:48:33] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/156100
+[INFO 18:49:13] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/156600
+[INFO 18:49:48] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/157100
+[INFO 18:50:20] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/157600
+[INFO 18:50:53] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/158100
+[INFO 18:51:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/158600
+[INFO 18:51:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/159100
+[INFO 18:52:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/159600
+[INFO 18:53:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/160100
+[INFO 18:53:37] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/160600
+[INFO 18:54:09] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/161100
+[INFO 18:54:42] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/161600
+[INFO 18:55:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/162100
+[INFO 18:56:08] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/162600
+[INFO 18:57:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/163100
+[INFO 18:58:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/163600
+[INFO 18:58:56] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/164100
+[INFO 18:59:51] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/164600
+[INFO 19:00:51] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/165100
+[INFO 19:01:45] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/165600
+[INFO 19:02:38] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/166100
+[INFO 19:03:38] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/166600
+[INFO 19:04:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/167100
+[INFO 19:05:28] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/167600
+[INFO 19:06:19] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/168100
+[INFO 19:07:10] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/168600
+[INFO 19:08:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/169100
+[INFO 19:08:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/169600
+[INFO 19:09:41] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/170100
+[INFO 19:10:24] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/170600
+[INFO 19:11:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/171100
+[INFO 19:12:05] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/171600
+[INFO 19:12:54] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/172100
+[INFO 19:13:44] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/172600
+[INFO 19:14:29] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/173100
+[INFO 19:15:22] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/173600
+[INFO 19:16:13] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/174100
+[INFO 19:17:06] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/174600
+[INFO 19:17:57] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/175100
+[INFO 19:18:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/175600
+[INFO 19:19:47] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/176100
+[INFO 19:20:51] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/176600
+[INFO 19:21:48] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/177100
+[INFO 19:22:46] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/177600
+[INFO 19:23:41] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/178100
+[INFO 19:24:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/178600
+[INFO 19:25:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/179100
+[INFO 19:26:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/179600
+[INFO 19:27:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/180100
+[INFO 19:28:25] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/180600
+[INFO 19:29:24] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/181100
+[INFO 19:30:21] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/181600
+[INFO 19:31:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/182100
+[INFO 19:32:24] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/182600
+[INFO 19:33:21] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/183100
+[INFO 19:34:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/183600
+[INFO 19:35:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/184100
+[INFO 19:36:25] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/184600
+[INFO 19:37:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/185100
+[INFO 19:38:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/185600
+[INFO 19:39:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/186100
+[INFO 19:40:33] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/186600
+[INFO 19:41:32] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/187100
+[INFO 19:42:41] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/187600
+[INFO 19:43:42] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/188100
+[INFO 19:44:42] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/188600
+[INFO 19:45:51] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/189100
+[INFO 19:46:53] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/189600
+[INFO 19:47:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/190100
+[INFO 19:48:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/190600
+[INFO 19:49:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/191100
+[INFO 19:51:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/191600
+[INFO 19:52:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/192100
+[INFO 19:53:05] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/192600
+[INFO 19:54:06] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/193100
+[INFO 19:55:16] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/193600
+[INFO 19:56:19] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/194100
+[INFO 19:57:22] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/194600
+[INFO 19:58:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/195100
+[INFO 19:59:36] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/195600
+[INFO 20:00:36] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/196100
+[INFO 20:01:49] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/196600
+[INFO 20:02:52] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/197100
+[INFO 20:03:55] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/197600
+[INFO 20:05:05] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/198100
+[INFO 20:06:07] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/198600
+[INFO 20:07:11] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/199100
+[INFO 20:08:24] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/199600
+[INFO 20:09:09] my_main Recent Stats | t_env:     200000 | Episode:     2000
+ep_length_mean:          100.0000	epsilon:                   0.0500	grad_norm:                 6.3917	loss:                      1.9017
+q_taken_mean:              2.3850	return_mean:               0.1685	return_std:                0.0276	target_mean:               2.4468
+td_error_abs:              0.6604	test_ep_length_mean:     100.0000	test_return_mean:          0.1637	test_return_std:           0.0000
+
+[INFO 20:09:25] my_main t_env: 200100 / 1000000000
+[INFO 20:09:25] my_main Estimated time left: 100 days, 0 seconds. Time passed: 4 hours, 14 minutes, 16 seconds
+[INFO 20:10:42] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/200100
+[INFO 20:11:45] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/200600
+[INFO 20:12:49] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/201100
+[INFO 20:14:02] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/201600
+[INFO 20:15:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/202100
+[INFO 20:16:06] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/202600
+[INFO 20:17:10] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/203100
+[INFO 20:18:24] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/203600
+[INFO 20:19:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/204100
+[INFO 20:20:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/204600
+[INFO 20:21:13] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/205100
+[INFO 20:22:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/205600
+[INFO 20:23:30] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/206100
+[INFO 20:24:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/206600
+[INFO 20:25:35] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/207100
+[INFO 20:26:34] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/207600
+[INFO 20:27:24] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/208100
+[INFO 20:28:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/208600
+[INFO 20:29:20] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/209100
+[INFO 20:30:06] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/209600
+[INFO 20:31:03] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/210100
+[INFO 20:31:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/210600
+[INFO 20:32:47] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/211100
+[INFO 20:33:36] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/211600
+[INFO 20:34:43] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/212100
+[INFO 20:35:50] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/212600
+[INFO 20:36:51] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/213100
+[INFO 20:37:53] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/213600
+[INFO 20:38:56] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/214100
+[INFO 20:39:48] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/214600
+[INFO 20:40:51] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/215100
+[INFO 20:41:54] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/215600
+[INFO 20:42:58] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/216100
+[INFO 20:44:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/216600
+[INFO 20:45:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/217100
+[INFO 20:46:07] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/217600
+[INFO 20:47:09] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/218100
+[INFO 20:48:11] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/218600
+[INFO 20:49:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/219100
+[INFO 20:50:17] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/219600
+[INFO 20:51:20] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/220100
+[INFO 20:52:23] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/220600
+[INFO 20:53:26] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/221100
+[INFO 20:54:34] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/221600
+[INFO 20:55:51] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/222100
+[INFO 20:56:59] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/222600
+[INFO 20:58:04] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/223100
+[INFO 20:59:13] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/223600
+[INFO 21:00:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/224100
+[INFO 21:01:15] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/224600
+[INFO 21:02:01] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/225100
+[INFO 21:02:45] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/225600
+[INFO 21:03:27] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/226100
+[INFO 21:04:10] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/226600
+[INFO 21:04:54] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/227100
+[INFO 21:05:36] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/227600
+[INFO 21:06:19] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/228100
+[INFO 21:07:03] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/228600
+[INFO 21:07:47] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/229100
+[INFO 21:08:30] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/229600
+[INFO 21:09:12] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/230100
+[INFO 21:09:56] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/230600
+[INFO 21:10:39] my_main Saving models to results/models/qmix_seed452690715_None_2024-10-05 15:55:08.807384/231100
+slurmstepd: error: *** JOB 5452607 ON lisbeth CANCELLED AT 2024-10-05T21:10:49 ***

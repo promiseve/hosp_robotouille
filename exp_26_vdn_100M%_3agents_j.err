@@ -1,0 +1,548 @@
+wandb: Currently logged in as: promiseekpo. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.18.3 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.3
+wandb: Run data is saved locally in /home/poe6/hosp_robotouille/wandb/run-20241005_155054-na3r8p8m
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run honest-darkness-196
+wandb: ⭐️ View project at https://wandb.ai/promiseekpo/6756-rl-experiments
+wandb: 🚀 View run at https://wandb.ai/promiseekpo/6756-rl-experiments/runs/na3r8p8m
+[DEBUG 15:50:56] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:50:56] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:50:56] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/poe6/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 15:50:56] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:50:56] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:50:56] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/poe6/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+[DEBUG 15:50:56] git.cmd Popen(['git', 'diff', '--cached', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:50:56] git.cmd Popen(['git', 'diff', '--abbrev=40', '--full-index', '--raw'], cwd=/home/poe6/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 15:50:56] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/poe6/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+epymarl/main.py:68: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.9 it will stop working
+  if isinstance(v, collections.Mapping):
+[INFO 15:50:56] root Saving to FileStorageObserver in results/sacred.
+[DEBUG 15:50:56] pymarl Using capture mode "fd"
+[INFO 15:50:56] pymarl Running command 'my_main'
+[INFO 15:50:56] pymarl Started run with ID "41"
+[DEBUG 15:50:56] pymarl Starting Heartbeat
+[DEBUG 15:50:56] my_main Started
+[WARNING 15:50:56] my_main CUDA flag use_cuda was switched OFF automatically because no CUDA devices are available!
+[INFO 15:50:56] my_main Experiment Parameters:
+[INFO 15:50:56] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'add_value_last_step': True,
+    'agent': 'rnn',
+    'agent_output_type': 'q',
+    'batch_size': 5,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'double_q': True,
+    'env': 'gymma',
+    'env_args': {   'key': None,
+                    'pretrained_wrapper': None,
+                    'seed': 22834968,
+                    'time_limit': 50},
+    'epochs': 2,
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'evaluation_epsilon': 0.0,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'label': 'default_label',
+    'learner': 'q_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 100000,
+    'lr': 0.001,
+    'mac': 'basic_mac',
+    'mixer': 'vdn',
+    'name': 'vdn',
+    'obs_agent_id': True,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'render': False,
+    'repeat_id': 1,
+    'runner': 'episode',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 500,
+    'save_replay': False,
+    'seed': 22834968,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 1000000000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 5,
+    'use_cuda': False,
+    'use_rnn': False,
+    'use_tensorboard': False}
+
+[INFO 15:50:57] my_main Beginning training for 1000000000 timesteps
+[INFO 15:51:04] my_main t_env: 100 / 1000000000
+[INFO 15:51:04] my_main Estimated time left: 1 days, 12 hours, 9 minutes, 44 seconds. Time passed: 6 seconds
+[INFO 15:51:25] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/100
+[INFO 15:51:56] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/600
+[INFO 15:52:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/1100
+[INFO 15:52:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/1600
+[INFO 15:53:28] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/2100
+[INFO 15:53:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/2600
+[INFO 15:54:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/3100
+[INFO 15:55:01] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/3600
+[INFO 15:55:32] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/4100
+[INFO 15:56:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/4600
+[INFO 15:56:33] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/5100
+[INFO 15:57:04] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/5600
+[INFO 15:57:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/6100
+[INFO 15:58:07] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/6600
+[INFO 15:58:39] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/7100
+[INFO 15:59:11] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/7600
+[INFO 15:59:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/8100
+[INFO 16:00:15] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/8600
+[INFO 16:00:47] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/9100
+[INFO 16:01:19] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/9600
+[INFO 16:01:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/10100
+[INFO 16:02:24] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/10600
+[INFO 16:02:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/11100
+[INFO 16:03:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/11600
+[INFO 16:04:04] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/12100
+[INFO 16:04:38] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/12600
+[INFO 16:05:11] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/13100
+[INFO 16:05:45] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/13600
+[INFO 16:06:19] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/14100
+[INFO 16:06:53] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/14600
+[INFO 16:07:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/15100
+[INFO 16:08:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/15600
+[INFO 16:08:34] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/16100
+[INFO 16:09:07] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/16600
+[INFO 16:09:43] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/17100
+[INFO 16:10:18] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/17600
+[INFO 16:10:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/18100
+[INFO 16:11:26] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/18600
+[INFO 16:12:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/19100
+[INFO 16:12:34] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/19600
+[INFO 16:13:08] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/20100
+[INFO 16:13:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/20600
+[INFO 16:14:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/21100
+[INFO 16:14:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/21600
+[INFO 16:15:26] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/22100
+[INFO 16:16:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/22600
+[INFO 16:16:33] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/23100
+[INFO 16:17:07] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/23600
+[INFO 16:17:41] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/24100
+[INFO 16:18:15] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/24600
+[INFO 16:18:47] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/25100
+[INFO 16:19:22] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/25600
+[INFO 16:19:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/26100
+[INFO 16:20:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/26600
+[INFO 16:21:08] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/27100
+[INFO 16:21:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/27600
+[INFO 16:22:16] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/28100
+[INFO 16:22:51] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/28600
+[INFO 16:23:25] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/29100
+[INFO 16:23:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/29600
+[INFO 16:24:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/30100
+[INFO 16:25:04] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/30600
+[INFO 16:25:37] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/31100
+[INFO 16:26:11] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/31600
+[INFO 16:26:43] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/32100
+[INFO 16:27:13] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/32600
+[INFO 16:27:46] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/33100
+[INFO 16:28:19] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/33600
+[INFO 16:28:50] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/34100
+[INFO 16:29:22] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/34600
+[INFO 16:29:55] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/35100
+[INFO 16:30:25] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/35600
+[INFO 16:30:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/36100
+[INFO 16:31:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/36600
+[INFO 16:31:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/37100
+[INFO 16:32:32] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/37600
+[INFO 16:33:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/38100
+[INFO 16:33:36] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/38600
+[INFO 16:34:08] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/39100
+[INFO 16:34:38] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/39600
+[INFO 16:35:10] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/40100
+[INFO 16:35:40] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/40600
+[INFO 16:36:14] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/41100
+[INFO 16:36:47] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/41600
+[INFO 16:37:19] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/42100
+[INFO 16:37:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/42600
+[INFO 16:38:25] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/43100
+[INFO 16:38:56] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/43600
+[INFO 16:39:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/44100
+[INFO 16:40:01] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/44600
+[INFO 16:40:33] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/45100
+[INFO 16:41:04] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/45600
+[INFO 16:41:37] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/46100
+[INFO 16:42:10] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/46600
+[INFO 16:42:41] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/47100
+[INFO 16:43:13] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/47600
+[INFO 16:43:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/48100
+[INFO 16:44:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/48600
+[INFO 16:44:53] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/49100
+[INFO 16:45:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/49600
+[INFO 16:46:00] my_main t_env: 50100 / 1000000000
+[INFO 16:46:00] my_main Estimated time left: 100 days, 0 seconds. Time passed: 55 minutes, 2 seconds
+[INFO 16:46:26] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/50100
+[INFO 16:46:54] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/50600
+[INFO 16:47:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/51100
+[INFO 16:48:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/51600
+[INFO 16:48:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/52100
+[INFO 16:49:05] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/52600
+[INFO 16:49:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/53100
+[INFO 16:50:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/53600
+[INFO 16:50:34] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/54100
+[INFO 16:51:02] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/54600
+[INFO 16:51:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/55100
+[INFO 16:52:01] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/55600
+[INFO 16:52:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/56100
+[INFO 16:53:04] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/56600
+[INFO 16:53:32] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/57100
+[INFO 16:54:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/57600
+[INFO 16:54:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/58100
+[INFO 16:54:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/58600
+[INFO 16:55:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/59100
+[INFO 16:55:54] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/59600
+[INFO 16:56:25] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/60100
+[INFO 16:56:53] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/60600
+[INFO 16:57:21] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/61100
+[INFO 16:57:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/61600
+[INFO 16:58:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/62100
+[INFO 16:59:12] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/62600
+[INFO 16:59:48] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/63100
+[INFO 17:00:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/63600
+[INFO 17:01:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/64100
+[INFO 17:01:45] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/64600
+[INFO 17:02:29] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/65100
+[INFO 17:03:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/65600
+[INFO 17:04:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/66100
+[INFO 17:04:37] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/66600
+[INFO 17:05:24] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/67100
+[INFO 17:06:14] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/67600
+[INFO 17:06:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/68100
+[INFO 17:07:40] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/68600
+[INFO 17:08:28] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/69100
+[INFO 17:09:12] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/69600
+[INFO 17:09:51] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/70100
+[INFO 17:10:34] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/70600
+[INFO 17:11:20] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/71100
+[INFO 17:12:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/71600
+[INFO 17:12:45] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/72100
+[INFO 17:13:29] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/72600
+[INFO 17:14:15] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/73100
+[INFO 17:14:46] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/73600
+[INFO 17:15:15] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/74100
+[INFO 17:15:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/74600
+[INFO 17:16:22] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/75100
+[INFO 17:16:51] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/75600
+[INFO 17:17:26] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/76100
+[INFO 17:18:10] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/76600
+[INFO 17:18:55] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/77100
+[INFO 17:19:41] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/77600
+[INFO 17:20:26] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/78100
+[INFO 17:21:10] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/78600
+[INFO 17:21:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/79100
+[INFO 17:22:44] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/79600
+[INFO 17:23:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/80100
+[INFO 17:24:23] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/80600
+[INFO 17:25:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/81100
+[INFO 17:25:44] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/81600
+[INFO 17:26:15] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/82100
+[INFO 17:26:45] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/82600
+[INFO 17:27:21] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/83100
+[INFO 17:27:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/83600
+[INFO 17:28:36] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/84100
+[INFO 17:29:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/84600
+[INFO 17:29:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/85100
+[INFO 17:30:23] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/85600
+[INFO 17:30:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/86100
+[INFO 17:31:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/86600
+[INFO 17:32:05] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/87100
+[INFO 17:32:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/87600
+[INFO 17:33:05] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/88100
+[INFO 17:33:40] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/88600
+[INFO 17:34:13] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/89100
+[INFO 17:34:43] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/89600
+[INFO 17:35:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/90100
+[INFO 17:35:47] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/90600
+[INFO 17:36:16] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/91100
+[INFO 17:36:46] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/91600
+[INFO 17:37:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/92100
+[INFO 17:37:54] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/92600
+[INFO 17:38:25] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/93100
+[INFO 17:38:55] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/93600
+[INFO 17:39:34] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/94100
+[INFO 17:40:08] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/94600
+[INFO 17:40:48] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/95100
+[INFO 17:41:18] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/95600
+[INFO 17:41:56] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/96100
+[INFO 17:42:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/96600
+[INFO 17:43:01] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/97100
+[INFO 17:43:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/97600
+[INFO 17:44:05] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/98100
+[INFO 17:44:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/98600
+[INFO 17:45:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/99100
+[INFO 17:45:36] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/99600
+[INFO 17:46:01] my_main Recent Stats | t_env:     100000 | Episode:     1000
+ep_length_mean:          100.0000	epsilon:                   0.0500	grad_norm:                 8.2462	loss:                      2.4541
+q_taken_mean:              0.4728	return_mean:               0.0899	return_std:                0.0432	target_mean:               0.6315
+td_error_abs:              0.9998	test_ep_length_mean:     100.0000	test_return_mean:          0.0000	test_return_std:           0.0000
+
+[INFO 17:46:10] my_main t_env: 100100 / 1000000000
+[INFO 17:46:10] my_main Estimated time left: 100 days, 0 seconds. Time passed: 1 hours, 55 minutes, 12 seconds
+[INFO 17:46:39] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/100100
+[INFO 17:47:09] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/100600
+[INFO 17:47:39] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/101100
+[INFO 17:48:09] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/101600
+[INFO 17:48:39] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/102100
+[INFO 17:49:10] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/102600
+[INFO 17:49:43] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/103100
+[INFO 17:50:14] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/103600
+[INFO 17:50:48] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/104100
+[INFO 17:51:38] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/104600
+[INFO 17:52:24] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/105100
+[INFO 17:53:19] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/105600
+[INFO 17:54:08] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/106100
+[INFO 17:55:02] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/106600
+[INFO 17:55:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/107100
+[INFO 17:56:49] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/107600
+[INFO 17:57:45] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/108100
+[INFO 17:58:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/108600
+[INFO 17:59:39] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/109100
+[INFO 18:00:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/109600
+[INFO 18:00:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/110100
+[INFO 18:01:37] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/110600
+[INFO 18:02:13] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/111100
+[INFO 18:03:09] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/111600
+[INFO 18:04:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/112100
+[INFO 18:04:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/112600
+[INFO 18:05:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/113100
+[INFO 18:06:53] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/113600
+[INFO 18:07:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/114100
+[INFO 18:08:39] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/114600
+[INFO 18:09:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/115100
+[INFO 18:10:29] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/115600
+[INFO 18:11:21] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/116100
+[INFO 18:12:20] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/116600
+[INFO 18:13:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/117100
+[INFO 18:14:09] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/117600
+[INFO 18:15:08] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/118100
+[INFO 18:16:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/118600
+[INFO 18:17:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/119100
+[INFO 18:18:02] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/119600
+[INFO 18:18:54] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/120100
+[INFO 18:19:54] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/120600
+[INFO 18:20:47] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/121100
+[INFO 18:21:20] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/121600
+[INFO 18:21:53] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/122100
+[INFO 18:22:26] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/122600
+[INFO 18:23:05] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/123100
+[INFO 18:23:39] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/123600
+[INFO 18:24:12] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/124100
+[INFO 18:24:46] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/124600
+[INFO 18:25:23] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/125100
+[INFO 18:26:11] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/125600
+[INFO 18:26:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/126100
+[INFO 18:27:26] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/126600
+[INFO 18:28:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/127100
+[INFO 18:28:43] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/127600
+[INFO 18:29:21] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/128100
+[INFO 18:30:19] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/128600
+[INFO 18:31:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/129100
+[INFO 18:31:45] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/129600
+[INFO 18:32:33] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/130100
+[INFO 18:33:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/130600
+[INFO 18:33:51] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/131100
+[INFO 18:34:25] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/131600
+[INFO 18:35:02] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/132100
+[INFO 18:35:45] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/132600
+[INFO 18:36:24] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/133100
+[INFO 18:37:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/133600
+[INFO 18:37:40] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/134100
+[INFO 18:38:24] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/134600
+[INFO 18:38:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/135100
+[INFO 18:39:36] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/135600
+[INFO 18:40:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/136100
+[INFO 18:41:18] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/136600
+[INFO 18:42:07] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/137100
+[INFO 18:42:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/137600
+[INFO 18:43:38] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/138100
+[INFO 18:44:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/138600
+[INFO 18:45:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/139100
+[INFO 18:45:50] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/139600
+[INFO 18:46:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/140100
+[INFO 18:47:16] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/140600
+[INFO 18:48:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/141100
+[INFO 18:48:55] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/141600
+[INFO 18:49:41] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/142100
+[INFO 18:50:18] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/142600
+[INFO 18:51:09] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/143100
+[INFO 18:51:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/143600
+[INFO 18:52:44] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/144100
+[INFO 18:53:39] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/144600
+[INFO 18:54:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/145100
+[INFO 18:55:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/145600
+[INFO 18:56:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/146100
+[INFO 18:57:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/146600
+[INFO 18:58:26] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/147100
+[INFO 18:59:23] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/147600
+[INFO 19:00:26] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/148100
+[INFO 19:01:20] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/148600
+[INFO 19:02:15] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/149100
+[INFO 19:03:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/149600
+[INFO 19:03:58] my_main t_env: 150100 / 1000000000
+[INFO 19:03:58] my_main Estimated time left: 100 days, 0 seconds. Time passed: 3 hours, 13 minutes, 1 seconds
+[INFO 19:05:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/150100
+[INFO 19:05:44] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/150600
+[INFO 19:06:49] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/151100
+[INFO 19:07:54] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/151600
+[INFO 19:08:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/152100
+[INFO 19:09:47] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/152600
+[INFO 19:10:50] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/153100
+[INFO 19:11:45] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/153600
+[INFO 19:12:36] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/154100
+[INFO 19:13:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/154600
+[INFO 19:14:24] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/155100
+[INFO 19:15:19] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/155600
+[INFO 19:16:12] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/156100
+[INFO 19:16:55] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/156600
+[INFO 19:17:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/157100
+[INFO 19:18:56] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/157600
+[INFO 19:20:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/158100
+[INFO 19:21:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/158600
+[INFO 19:21:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/159100
+[INFO 19:22:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/159600
+[INFO 19:24:02] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/160100
+[INFO 19:25:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/160600
+[INFO 19:26:09] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/161100
+[INFO 19:27:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/161600
+[INFO 19:27:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/162100
+[INFO 19:28:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/162600
+[INFO 19:29:33] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/163100
+[INFO 19:30:25] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/163600
+[INFO 19:31:19] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/164100
+[INFO 19:32:18] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/164600
+[INFO 19:33:16] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/165100
+[INFO 19:34:15] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/165600
+[INFO 19:35:20] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/166100
+[INFO 19:36:19] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/166600
+[INFO 19:37:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/167100
+[INFO 19:38:16] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/167600
+[INFO 19:39:09] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/168100
+[INFO 19:39:48] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/168600
+[INFO 19:40:29] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/169100
+[INFO 19:41:24] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/169600
+[INFO 19:42:16] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/170100
+[INFO 19:42:55] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/170600
+[INFO 19:43:34] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/171100
+[INFO 19:44:15] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/171600
+[INFO 19:45:11] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/172100
+[INFO 19:46:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/172600
+[INFO 19:47:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/173100
+[INFO 19:47:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/173600
+[INFO 19:48:43] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/174100
+[INFO 19:49:38] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/174600
+[INFO 19:50:37] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/175100
+[INFO 19:51:45] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/175600
+[INFO 19:52:46] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/176100
+[INFO 19:53:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/176600
+[INFO 19:55:00] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/177100
+[INFO 19:55:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/177600
+[INFO 19:56:55] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/178100
+[INFO 19:57:53] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/178600
+[INFO 19:58:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/179100
+[INFO 19:59:49] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/179600
+[INFO 20:00:47] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/180100
+[INFO 20:01:55] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/180600
+[INFO 20:02:56] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/181100
+[INFO 20:03:56] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/181600
+[INFO 20:04:56] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/182100
+[INFO 20:05:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/182600
+[INFO 20:06:41] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/183100
+[INFO 20:07:24] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/183600
+[INFO 20:08:15] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/184100
+[INFO 20:08:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/184600
+[INFO 20:09:38] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/185100
+[INFO 20:10:18] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/185600
+[INFO 20:11:11] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/186100
+[INFO 20:12:12] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/186600
+[INFO 20:13:09] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/187100
+[INFO 20:13:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/187600
+[INFO 20:14:43] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/188100
+[INFO 20:15:29] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/188600
+[INFO 20:16:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/189100
+[INFO 20:17:40] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/189600
+[INFO 20:18:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/190100
+[INFO 20:19:23] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/190600
+[INFO 20:20:05] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/191100
+[INFO 20:20:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/191600
+[INFO 20:21:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/192100
+[INFO 20:22:32] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/192600
+[INFO 20:23:17] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/193100
+[INFO 20:24:12] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/193600
+[INFO 20:25:10] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/194100
+[INFO 20:25:57] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/194600
+[INFO 20:26:52] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/195100
+[INFO 20:27:46] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/195600
+[INFO 20:28:29] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/196100
+[INFO 20:29:12] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/196600
+[INFO 20:29:53] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/197100
+[INFO 20:30:44] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/197600
+[INFO 20:31:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/198100
+[INFO 20:32:32] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/198600
+[INFO 20:33:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/199100
+[INFO 20:34:21] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/199600
+[INFO 20:34:49] my_main Recent Stats | t_env:     200000 | Episode:     2000
+ep_length_mean:          100.0000	epsilon:                   0.0500	grad_norm:                 1.6963	loss:                      1.5866
+q_taken_mean:              1.5762	return_mean:               0.1641	return_std:                0.0352	target_mean:               1.5849
+td_error_abs:              0.5228	test_ep_length_mean:     100.0000	test_return_mean:          0.0512	test_return_std:           0.0000
+
+[INFO 20:35:03] my_main t_env: 200100 / 1000000000
+[INFO 20:35:03] my_main Estimated time left: 100 days, 0 seconds. Time passed: 4 hours, 44 minutes, 5 seconds
+[INFO 20:35:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/200100
+[INFO 20:36:24] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/200600
+[INFO 20:37:22] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/201100
+[INFO 20:38:21] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/201600
+[INFO 20:39:05] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/202100
+[INFO 20:39:59] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/202600
+[INFO 20:40:40] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/203100
+[INFO 20:41:38] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/203600
+[INFO 20:42:40] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/204100
+[INFO 20:43:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/204600
+[INFO 20:44:23] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/205100
+[INFO 20:45:10] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/205600
+[INFO 20:46:07] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/206100
+[INFO 20:47:03] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/206600
+[INFO 20:47:50] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/207100
+[INFO 20:48:42] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/207600
+[INFO 20:49:29] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/208100
+[INFO 20:50:27] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/208600
+[INFO 20:51:30] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/209100
+[INFO 20:52:34] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/209600
+[INFO 20:53:32] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/210100
+[INFO 20:54:32] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/210600
+[INFO 20:55:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/211100
+[INFO 20:56:29] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/211600
+[INFO 20:57:31] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/212100
+[INFO 20:58:34] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/212600
+[INFO 20:59:22] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/213100
+[INFO 21:00:35] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/213600
+[INFO 21:01:38] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/214100
+[INFO 21:02:46] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/214600
+[INFO 21:03:47] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/215100
+[INFO 21:04:51] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/215600
+[INFO 21:06:06] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/216100
+[INFO 21:07:13] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/216600
+[INFO 21:08:09] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/217100
+[INFO 21:08:53] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/217600
+[INFO 21:09:58] my_main Saving models to results/models/vdn_seed22834968_None_2024-10-05 15:50:56.558891/218100
+slurmstepd: error: *** JOB 5452605 ON sds-cpu-01 CANCELLED AT 2024-10-05T21:10:26 ***

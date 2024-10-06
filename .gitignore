@@ -13,6 +13,7 @@ generate_slurm_scripts.py
 test_robotouille_input.py
 shorter_long.sub
 start_experiments.sh
+venv_packages.txt
 .DS_Store
 /slurm_scripts/
 /slurm_log/
