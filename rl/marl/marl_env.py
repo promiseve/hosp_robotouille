@@ -154,6 +154,13 @@ class MARLEnv(gym.Env):
             np.array(self.all_actions), np.array(self.valid_actions)
         ).astype(np.float64)
 
+        move_item_actions = ["place", "stack", "pick-up", "unstack"]
+        treatment_actions = [
+            "compresschest",
+            "giverescuebreaths",
+            "giveshock",
+            "givemedicine",
+        ]
         shortened_action_names = [[]] * self.n_agents
         shortened_action_truths = [[]] * self.n_agents
         for action, valid in zip(self.all_actions, actions_truth):
@@ -163,10 +170,10 @@ class MARLEnv(gym.Env):
                 continue
             if action_name == "move":
                 action_name += "_" + action.variables[2].name
-            elif action_name == "place" or action_name == "stack":
-                action_name = "place/stack"
-            elif action_name == "pick-up" or action_name == "unstack":
-                action_name = "pick-up/unstack"
+            elif action_name in move_item_actions:
+                action_name = "move_item"
+            elif action_name in treatment_actions:
+                action_name = "treatment"
 
             player_index = int(action.variables[0].name[-1]) - 1
             if action_name not in shortened_action_names[player_index]:
@@ -175,7 +182,6 @@ class MARLEnv(gym.Env):
             elif action_name in shortened_action_names[player_index] and valid == 1.0:
                 index = shortened_action_names[player_index].index(action_name)
                 shortened_action_truths[player_index][index] = valid
-
         return shortened_action_truths, shortened_action_names
 
     def unwrap_move(self, agent_index, action):
@@ -197,7 +203,13 @@ class MARLEnv(gym.Env):
         actions_truth = np.isin(
             np.array(self.all_actions), np.array(self.valid_actions)
         ).astype(np.float64)
-
+        move_item_actions = ["place", "stack", "pick-up", "unstack"]
+        treatment_actions = [
+            "compresschest",
+            "giverescuebreaths",
+            "giveshock",
+            "givemedicine",
+        ]
         # Find the action in the all_actions list that is valid and corresponds to the attempted action
         for action, truth in zip(self.all_actions, actions_truth):
             if action.variables[0].name != "robot" + str(agent_index + 1):
@@ -205,6 +217,10 @@ class MARLEnv(gym.Env):
             action_name = action.predicate.name
             if action_name == "move":
                 action_name += "_" + action.variables[2].name
+            elif action_name in move_item_actions:
+                action_name = "move_item"
+            elif action_name in treatment_actions:
+                action_name = "treatment"
             if action_name in attempted_action and truth == 1.0:
                 return action
 

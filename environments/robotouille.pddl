@@ -95,64 +95,6 @@
     )
 
     ; ACTIONS
-    ; Deliver shock
-    (:action giveshock
-        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?s - station)
-        :precondition (and
-            (ispatient_bed_station ?s)
-            (ispatient ?i1)
-            (isaed ?i2)
-            (ispump ?i3)
-            (iscpr_board ?i4)
-            (isrescuebreathed ?i1)
-            (isusableforaed ?i2)
-            (ispumpusable ?i3)
-            (on ?i4 ?s)
-            (at ?i4 ?s)
-            (at ?i3 ?s)
-            (atop ?i3 ?i1)
-            (atop ?i2 ?i3)            
-            (loc ?p ?s)
-            (selected ?p)
-            (not (isshocked ?i1))
-            (cangiveshock ?p)
-        )
-        :effect (and
-            (isshocked ?i1)    
-        )
-    )
-
-    ; Insert Syringe into the patient,; Make the nurse player place a medicine item on top the patient station
-    (:action givemedicine
-        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?i5 - item ?s - station)
-        :precondition (and
-            (ispatient_bed_station ?s)
-            (ispatient ?i1)
-            (isaed ?i2)
-            (ispump ?i3)
-            (iscpr_board ?i4)
-            (issyringe ?i5)
-            (isshocked ?i1)
-            (isusableforaed ?i2)
-            (ispumpusable ?i3)
-            (issyringeusable ?i5)
-            (on ?i4 ?s)
-            (at ?i4 ?s)
-            (at ?i3 ?s)
-            (at ?i5 ?s)
-            (atop ?i3 ?i1) ;pump is on the patient 
-            (atop ?i2 ?i3) ;AED is on the pump
-            (atop ?i5 ?i2) ;syringe is on the AED
-            (loc ?p ?s)
-            (selected ?p)
-            (not (istreated ?i1))
-            (cangivemedicine ?p)
-        )
-        :effect (and
-            (istreated ?i1)
-        )
-    )
-
     ; Move the player from station 1 to station 2
     (:action move
         :parameters (?p - player ?s1 - station ?s2 - station)
@@ -209,7 +151,51 @@
             (not (empty ?s))
         )
     )
+    
+    ; Make the player stack an item on top of another item at a station
+    (:action stack
+        :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
+        :precondition (and
+            (has ?p ?i1)
+            (clear ?i2)
+            (loc ?p ?s)
+            (at ?i2 ?s)
+            (selected ?p)
+            (canmoveitem ?p)
+        )
+        :effect (and
+            (nothing ?p)
+            (at ?i1 ?s)
+            (atop ?i1 ?i2)
+            (clear ?i1)
+            (not (clear ?i2))
+            (not (has ?p ?i1))
+        )
+    )
 
+    ; Make the player unstack an item from another item at a station
+    (:action unstack
+        :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
+        :precondition (and
+            (nothing ?p)
+            (clear ?i1)
+            (atop ?i1 ?i2)
+            (loc ?p ?s)
+            (at ?i1 ?s)
+            (at ?i2 ?s)
+            (selected ?p)
+            (canmoveitem ?p)
+            (not (cprboard-properly-placed ?i2 ?s))  ; Prevent unstacking properly placed items
+        )
+        :effect (and
+            (has ?p ?i1)
+            (clear ?i2)
+            (not (nothing ?p))
+            (not (clear ?i1))
+            (not (atop ?i1 ?i2))
+            (not (at ?i1 ?s))
+        )
+    )
 
     ; Make the player cook a cookable item on a stove
     (:action cook
@@ -225,6 +211,82 @@
         )
         :effect (and
             (iscooked ?i)
+        )
+    )
+
+    ; Make the player fry a fryable item in a fryer
+    (:action fry
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (isfryer ?s)
+            (isfryable ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (canfry ?p)
+        )
+        :effect (and
+            (isfried ?i)
+        )
+    )
+
+    ; Make the player fry an item that is only fryable if cut, in a fryer
+    (:action fry_cut_item
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (isfryer ?s)
+            (isfryableifcut ?i)
+            (iscut ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (canfrycut ?p)
+        )
+        :effect (and
+            (isfried ?i)
+        )
+    )
+    
+    ; Make the player cut a cuttable item on a cutting board
+    (:action cut
+        :parameters (?p - player ?i - item ?s - station)
+        :precondition (and
+            (isboard ?s)
+            (iscuttable ?i)
+            (on ?i ?s)
+            (loc ?p ?s)
+            (clear ?i)
+            (selected ?p)
+            (cancut ?p)
+        )
+        :effect (and
+            (iscut ?i)
+        )
+    )
+
+    ; Make the player stack an item under another item at a station
+    (:action stackunder
+        :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
+        :precondition (and
+            (has ?p ?i1)
+            (loc ?p ?s)
+            (on ?i2 ?s)
+            (selected ?p)
+            (canmoveitem ?p)
+            (iscpr_board ?i1)  ; Ensure i1 is a CPR board
+            (ispatient ?i2)    ; Ensure i2 is a patient
+        )
+        :effect (and
+            (nothing ?p)
+            (at ?i1 ?s)
+            (on ?i1 ?s)
+            (atop ?i2 ?i1)
+            (not (on ?i2 ?s))
+            (not (has ?p ?i1))
+            (cprboard-properly-placed ?i1 ?s)
+            )
         )
     )
 
@@ -267,6 +329,7 @@
             (atop ?i3 ?i)       
             (loc ?p ?s)
             (selected ?p)
+            (clear ?i3) ; pump is at the top
             (cangiverescuebreaths ?p)
             (not (isrescuebreathed ?i))
             (cprboard-properly-placed ?i2 ?s)
@@ -276,123 +339,61 @@
         )
     )
 
-    ; Make the player fry a fryable item in a fryer
-    (:action fry
-        :parameters (?p - player ?i - item ?s - station)
+    ; Deliver shock
+    (:action giveshock
+        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?s - station)
         :precondition (and
-            (isfryer ?s)
-            (isfryable ?i)
-            (on ?i ?s)
+            (ispatient_bed_station ?s)
+            (ispatient ?i1)
+            (isaed ?i2)
+            (ispump ?i3)
+            (iscpr_board ?i4)
+            (isrescuebreathed ?i1)
+            (isusableforaed ?i2)
+            (ispumpusable ?i3)
+            (on ?i4 ?s)
+            (at ?i4 ?s)
+            (at ?i3 ?s)
+            (atop ?i3 ?i1)
+            (atop ?i2 ?i3)
             (loc ?p ?s)
-            (clear ?i)
             (selected ?p)
-            (canfry ?p)
+            (not (isshocked ?i1))
+            (cangiveshock ?p)
         )
         :effect (and
-            (isfried ?i)
+            (isshocked ?i1)    
         )
     )
 
-    ; Make the player fry an item that is only fryable if cut, in a fryer
-    (:action fry_cut_item
-        :parameters (?p - player ?i - item ?s - station)
+    ; Insert Syringe into the patient,; Make the nurse player place a medicine item on top the patient station
+    (:action givemedicine
+        :parameters (?p - player ?i1 - item ?i2 - item ?i3 - item ?i4 - item ?i5 - item ?s - station)
         :precondition (and
-            (isfryer ?s)
-            (isfryableifcut ?i)
-            (iscut ?i)
-            (on ?i ?s)
+            (ispatient_bed_station ?s)
+            (ispatient ?i1)
+            (isaed ?i2)
+            (ispump ?i3)
+            (iscpr_board ?i4)
+            (issyringe ?i5)
+            (isshocked ?i1)
+            (isusableforaed ?i2)
+            (ispumpusable ?i3)
+            (issyringeusable ?i5)
+            (on ?i4 ?s)
+            (at ?i4 ?s)
+            (at ?i3 ?s)
+            (at ?i5 ?s)
+            (atop ?i3 ?i1) ;pump is on the patient 
+            (atop ?i2 ?i3) ;AED is on the pump
+            (atop ?i5 ?i2) ;syringe is on the AED
             (loc ?p ?s)
-            (clear ?i)
             (selected ?p)
-            (canfrycut ?p)
+            (not (istreated ?i1))
+            (cangivemedicine ?p)
         )
         :effect (and
-            (isfried ?i)
-        )
-    )
-
-    ; Make the player stack an item on top of another item at a station
-    (:action stack
-        :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
-        :precondition (and
-            (has ?p ?i1)
-            (clear ?i2)
-            (loc ?p ?s)
-            (at ?i2 ?s)
-            (selected ?p)
-            (canmoveitem ?p)
-        )
-        :effect (and
-            (nothing ?p)
-            (at ?i1 ?s)
-            (atop ?i1 ?i2)
-            (clear ?i1)
-            (not (clear ?i2))
-            (not (has ?p ?i1))
-        )
-    )
-    ; Make the player stack an item under another item at a station
-    (:action stackunder
-        :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
-        :precondition (and
-            (has ?p ?i1)
-            (loc ?p ?s)
-            (on ?i2 ?s)
-            (selected ?p)
-            (canmoveitem ?p)
-            (iscpr_board ?i1)  ; Ensure i1 is a CPR board
-            (ispatient ?i2)    ; Ensure i2 is a patient
-        )
-        :effect (and
-            (nothing ?p)
-            (at ?i1 ?s)
-            (on ?i1 ?s)
-            (atop ?i2 ?i1)
-            (not (on ?i2 ?s))
-            (not (has ?p ?i1))
-            (cprboard-properly-placed ?i1 ?s)
-            )
-        )
-    )
-    
-    ; Make the player cut a cuttable item on a cutting board
-    (:action cut
-        :parameters (?p - player ?i - item ?s - station)
-        :precondition (and
-            (isboard ?s)
-            (iscuttable ?i)
-            (on ?i ?s)
-            (loc ?p ?s)
-            (clear ?i)
-            (selected ?p)
-            (cancut ?p)
-        )
-        :effect (and
-            (iscut ?i)
-        )
-    )
-
-    ; Make the player unstack an item from another item at a station
-    (:action unstack
-        :parameters (?p - player ?i1 - item ?i2 - item ?s - station)
-        :precondition (and
-            (nothing ?p)
-            (clear ?i1)
-            (atop ?i1 ?i2)
-            (loc ?p ?s)
-            (at ?i1 ?s)
-            (at ?i2 ?s)
-            (selected ?p)
-            (canmoveitem ?p)
-            (not (cprboard-properly-placed ?i2 ?s))  ; Prevent unstacking properly placed items
-        )
-        :effect (and
-            (has ?p ?i1)
-            (clear ?i2)
-            (not (nothing ?p))
-            (not (clear ?i1))
-            (not (atop ?i1 ?i2))
-            (not (at ?i1 ?s))
+            (istreated ?i1)
         )
     )
 

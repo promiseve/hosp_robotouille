@@ -44,7 +44,6 @@ class RobotouilleWrapper(gym.Wrapper):
         self.move_counter = 0
         self.taken_actions = []
         self.renderer = renderer
-        print("self.state", self.state)
         self.reward_handler = HospRewardHandler(self.state)
 
     def _interactive_starter_prints(self, expanded_truths):
@@ -71,7 +70,9 @@ class RobotouilleWrapper(gym.Wrapper):
         if action == "noop":
             return self.prev_step
         action_name = action.predicate.name
-        items = [var.name for var in action.variables if var.var_type == "item"] #newly added
+        items = [
+            var.name for var in action.variables if var.var_type == "item"
+        ]  # newly added
         current_player = self._current_selected_player(self.prev_step[0])
         try:
             value = self.config["player_info"][current_player][action_name]
@@ -97,7 +98,6 @@ class RobotouilleWrapper(gym.Wrapper):
             return self.prev_step
         # add a similar logic for action compresschest
         elif action_name == "compresschest":
-#             print(f"\nACTION VARIABLES FOR COMPRESSCHEST: {action.variables}\n")
             player = next(
                 filter(
                     lambda typed_entity: typed_entity.var_type == "player",
@@ -108,15 +108,10 @@ class RobotouilleWrapper(gym.Wrapper):
             # TODO: figure out self.state structure for players
             energy_config = self.config["energy_levels"]
             if player_status is None:
-                # print("here1")
                 self.state[player.name] = {"energy": energy_config["max"]}
                 player_status = self.state[player.name]
             elif player_status.get("energy") is None:
-                # print("here2")
                 player_status["energy"] = energy_config["max"]
-
-            # print(energy_config["compresschest_cost"])
-            # print(player_status["energy"])
 
             # check to see if player has enough energy to compress patient chest
             if energy_config["compresschest_cost"] <= player_status["energy"]:
@@ -261,7 +256,7 @@ class RobotouilleWrapper(gym.Wrapper):
                 item_status["picked-up"] = True
         # TODO: Probably stop cooking if something is stacked on top of meat
         return self.env.step(action)
-    
+
     def _is_end_of_timestep(self):
         """This function returns true if it is the last players' timestep"""
         return self.move_counter % self.num_players == self.num_players - 1
@@ -368,9 +363,12 @@ class RobotouilleWrapper(gym.Wrapper):
                         )
                         # update pddl literal to be tired or not tired for player
                         literal = pddlgym_utils.str_to_literal(
-                                f"istired({item}:player)"
-                            )
-                        if status_dict["energy"] < self.config["energy_levels"]["compresschest_cost"]:
+                            f"istired({item}:player)"
+                        )
+                        if (
+                            status_dict["energy"]
+                            < self.config["energy_levels"]["compresschest_cost"]
+                        ):
                             # print(f"Making player {item} with energy {status_dict['energy']} tired")
                             state_updates.append(literal)
                         else:
@@ -378,11 +376,9 @@ class RobotouilleWrapper(gym.Wrapper):
                             # print(f"Making player {item} with energy {status_dict['energy']} no longer tired")
                             state_removals.append(literal)
 
-
         env_state = self.env.get_state()
         new_literals = env_state.literals.difference(set(state_removals))
         new_literals = new_literals.union(state_updates)
-        # print("new literals: ", new_literals)
         new_env_state = pddlgym.structs.State(
             new_literals, env_state.objects, env_state.goal
         )
@@ -512,10 +508,7 @@ class RobotouilleWrapper(gym.Wrapper):
         prev_heuristic = self.reward_handler.heuristic_reward(
             self.prev_step[0], self.state
         )
-        print("prev_heuristic:", prev_heuristic)
-        print("action:", action)
         obs, reward, done, info = self._handle_action(action)
-        print("self.state in handleaction:", self.state) 
         obs, reward, _, info = self._change_selected_player(obs)
         obs, done = self._state_update()
         # print(
@@ -533,7 +526,7 @@ class RobotouilleWrapper(gym.Wrapper):
 
         if self._current_selected_player(obs) == "robot1":
             self.timesteps += 1
-            
+
         self.move_counter += 1
         # print(f"NEXT MOVE NUMBER: {self.move_counter}")
 
@@ -545,18 +538,13 @@ class RobotouilleWrapper(gym.Wrapper):
             "state": self.state,
         }
         curr_heuristic = self.reward_handler.heuristic_reward(obs, self.state)
-        # print("curr_heuristic:", curr_heuristic)
         reward = curr_heuristic - prev_heuristic
-        # print("reward before normalising", reward)
         reward /= self.timesteps + 1
-        # print("reward after normalising", reward)
         self.prev_step = (obs, reward, done, info)
 
         if done:
             print("Goal Reached!")
-        # print("prev_heuristic: ", prev_heuristic)
-        # print("current_heuristic: ", curr_heuristic)
-        print("reward: ", reward)
+        # print("reward: ", reward)
         return obs, reward, done, info
 
     def save_episode(self, filename):
