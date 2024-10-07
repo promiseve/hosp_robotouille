@@ -14,7 +14,7 @@ learner_log_interval: 50000
 buffer_size: 5
 batch_size: 5
 lr: 0.001
-t_max: 1000000
+t_max: 2050000
 epochs: 2
 target_update_interval_or_tau: 500
 # test_greedy: True

@@ -123,7 +123,7 @@
                 "givemedicine"
             ],
             "skill_info": {
-                "compresschest": 3,
+                "compresschest": 1,
                 "giverescuebreaths": 1,
                 "giveshock": 1,
                 "givemedicine": 1
@@ -147,7 +147,7 @@
             ],
             "skill_info": {
                 "compresschest": 1,
-                "giverescuebreaths": 2,
+                "giverescuebreaths": 1,
                 "giveshock": 1,
                 "givemedicine": 1
             }
@@ -159,29 +159,6 @@
             "direction": [
                 1,
                 0
-            ],
-            "actions": [
-                "move",
-                "moveitem",
-                "compresschest",
-                "giverescuebreaths",
-                "giveshock",
-                "givemedicine"
-            ],
-            "skill_info": {
-                "compresschest": 1,
-                "giverescuebreaths": 1,
-                "giveshock": 1,
-                "givemedicine": 1
-            }
-        },
-        {
-            "name": "robot",
-            "x": 5,
-            "y": 1,
-            "direction": [
-                0,
-                1
             ],
             "actions": [
                 "move",
