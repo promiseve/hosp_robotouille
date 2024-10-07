@@ -13,6 +13,8 @@ generate_slurm_scripts.py
 test_robotouille_input.py
 shorter_long.sub
 start_experiments.sh
+exp_30_ippo__3agents5458770.err
+exp_30_ippo__3agents5458770.out
 .DS_Store
 /slurm_scripts/
 /slurm_log/
