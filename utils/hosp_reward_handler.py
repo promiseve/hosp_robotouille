@@ -46,12 +46,8 @@ class HospRewardHandler(RewardHandler):
         return item_status.get(action, 0)
 
     def _calculate_action_reward(self, progress, max_progress):
-        if progress == 0:
-            return 0
-        elif progress == max_progress:
-            return 20
-        else:
-            return 5 * progress
+        # Return based on the progress of the task. The minimum reward is 0 and the maximum reward is 20 if the task is completed.
+        return min(20 * progress/max_progress, 20)
 
     def heuristic_reward(self, obs, state):
         self.obs = obs
@@ -85,7 +81,7 @@ class HospRewardHandler(RewardHandler):
 
         # Chest compressions
         chest_compression_progress = self._check_action_progress(state, "compresschest")
-        score += self._calculate_action_reward(chest_compression_progress, 3)
+        score += self._calculate_action_reward(chest_compression_progress, self.config["num_compressions"])
         if self._check_predicate(obs, "ischestcompressed", "patient1"):
             score += 15
 
@@ -96,7 +92,7 @@ class HospRewardHandler(RewardHandler):
             score += 5
 
         rescue_breath_progress = self._check_action_progress(state, "giverescuebreaths")
-        score += self._calculate_action_reward(rescue_breath_progress, 2)
+        score += self._calculate_action_reward(rescue_breath_progress, self.config["num_breaths"])
         if self._check_predicate(obs, "isrescuebreathed", "patient1"):
             score += 15
 
@@ -107,7 +103,7 @@ class HospRewardHandler(RewardHandler):
             score += 5
 
         shock_progress = self._check_action_progress(state, "giveshock")
-        score += self._calculate_action_reward(shock_progress, 1)
+        score += self._calculate_action_reward(shock_progress, self.config["num_shocks"])
         if self._check_predicate(obs, "isshocked", "patient1"):
             score += 15
 
@@ -118,6 +114,6 @@ class HospRewardHandler(RewardHandler):
             score += 5
 
         medicine_progress = self._check_action_progress(state, "givemedicine")
-        score += self._calculate_action_reward(medicine_progress, 1)
+        score += self._calculate_action_reward(medicine_progress, self.config["num_medicine_doses"])
 
         return score

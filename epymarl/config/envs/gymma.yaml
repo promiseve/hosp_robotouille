@@ -7,10 +7,10 @@ env_args:
 
 test_greedy: True
 test_nepisode: 5
-#test_interval: 50000
-test_interval: 100
-log_interval: 100
-runner_log_interval: 100
-learner_log_interval: 100
-t_max: 1000
-#t_max: 2050000
+test_interval: 50000
+# test_interval: 100
+log_interval: 50000
+runner_log_interval: 50000
+learner_log_interval: 50000
+# t_max: 1000
+t_max: 2050000

@@ -9,7 +9,7 @@
         "num_breaths": {
             "patient": 2,
             "default": 2
-        }, 
+        },
         "num_shocks": {
             "patient": 1,
             "default": 1
@@ -97,7 +97,7 @@
         },
         {
             "name": "syringe",
-            "x": 1, 
+            "x": 1,
             "y": 3,
             "stack-level": 0,
             "predicates": [
@@ -105,11 +105,11 @@
             ]
         }
     ],
-"players": [
-    {
-        "name": "robot",
-        "x": 0,
-        "y": 3,
+    "players": [
+        {
+            "name": "robot",
+            "x": 0,
+            "y": 3,
             "direction": [
                 1,
                 0
