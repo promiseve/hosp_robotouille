@@ -45,6 +45,7 @@ class RobotouilleWrapper(gym.Wrapper):
         self.taken_actions = []
         self.renderer = renderer
         self.reward_handler = HospRewardHandler(self.state)
+        self.episode_reward = 0
 
     def _interactive_starter_prints(self, expanded_truths):
         """
@@ -539,11 +540,13 @@ class RobotouilleWrapper(gym.Wrapper):
         }
         curr_heuristic = self.reward_handler.heuristic_reward(obs, self.state)
         reward = curr_heuristic - prev_heuristic
-        reward /= self.timesteps + 1
+        reward *= 0.95**self.timesteps
+        # reward /= self.timesteps + 1
         self.prev_step = (obs, reward, done, info)
-
+        self.episode_reward += reward
         if done:
             print("Goal Reached!")
+            # print("episode_reward", self.episode_reward)
         # print("reward: ", reward)
         return obs, reward, done, info
 
@@ -579,4 +582,5 @@ class RobotouilleWrapper(gym.Wrapper):
         self.state = {}
         self.taken_actions = []
         self.num_players = self._count_players(obs)
+        self.episode_reward = 0
         return obs, info

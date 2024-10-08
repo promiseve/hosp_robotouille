@@ -34,7 +34,7 @@ class MAHospital_robotouille(MultiAgentEnv):
 
         self.n_actions = self.action_space[0].n
         self.obs = None
-        self.episode_limit = 100
+        self.episode_limit = 50
 
     def step(self, _actions):
         """Returns reward, terminated, info."""

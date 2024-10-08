@@ -19,7 +19,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         self.env = env
         self.pddl_env = env
         self.n_agents = n_agents
-        self.max_steps = 100
+        self.max_steps = 50
         self.episode_reward = 0
         self.renderer = renderer
         # Configuration dictionary for tracking metrics
@@ -38,6 +38,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         wandb.init(
             project="6756-rl-experiments",
             config=self.metrics_config,
+            notes="equal-beginner-hard-qmix"
         )
 
     def log_metrics(self, update_dict):
