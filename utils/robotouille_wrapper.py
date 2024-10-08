@@ -540,13 +540,13 @@ class RobotouilleWrapper(gym.Wrapper):
         }
         curr_heuristic = self.reward_handler.heuristic_reward(obs, self.state)
         reward = curr_heuristic - prev_heuristic
-        reward *= .95 ** self.timesteps
+        reward *= 0.95**self.timesteps
         # reward /= self.timesteps + 1
         self.prev_step = (obs, reward, done, info)
         self.episode_reward += reward
         if done:
             print("Goal Reached!")
-            print("episode_reward", self.episode_reward)
+            # print("episode_reward", self.episode_reward)
         # print("reward: ", reward)
         return obs, reward, done, info
 
