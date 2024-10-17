@@ -38,7 +38,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         wandb.init(
             project="6756-rl-experiments",
             config=self.metrics_config,
-            notes="equal-beginner-hard-qmix"
+            notes="equal-skilled-givemedicine-ippo"
         )
 
     def log_metrics(self, update_dict):
