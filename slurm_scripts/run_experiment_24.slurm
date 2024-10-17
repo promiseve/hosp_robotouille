@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J experiment_24copyparameters                        # Job name
+#SBATCH -J experiment_24ippo                    # Job name
 #SBATCH -o exp_20_%j.out                 # Output file (%j expands to jobID)
 #SBATCH -e exp_20_%j.err                 # Error log file (%j expands to jobID)
 #SBATCH --mail-type=END,FAIL                  # Mail events (BEGIN, END, FAIL, ALL)
