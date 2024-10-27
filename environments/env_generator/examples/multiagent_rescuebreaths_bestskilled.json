@@ -94,8 +94,8 @@
             "giverescuebreaths"
         ],
         "skill_info": {
-            "compresschest": 1,
-            "giverescuebreaths": 1
+            "compresschest": 3,
+            "giverescuebreaths": 2
         }
     },
     {
@@ -113,8 +113,8 @@
             "giverescuebreaths"
         ],
         "skill_info": {
-            "compresschest": 1,
-            "giverescuebreaths": 1
+            "compresschest": 3,
+            "giverescuebreaths": 2
         }
     },
     {
@@ -132,8 +132,8 @@
             "giverescuebreaths"
         ],
         "skill_info": {
-            "compresschest": 1,
-            "giverescuebreaths": 1
+            "compresschest": 3,
+            "giverescuebreaths": 2
         }
     }
 ],
