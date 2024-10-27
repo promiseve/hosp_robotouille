@@ -1,0 +1,154 @@
+[INFO 00:25:17] pymarl Running command 'my_main'
+[INFO 00:25:17] pymarl Started run with ID "25"
+[DEBUG 00:25:17] pymarl Starting Heartbeat
+[DEBUG 00:25:17] my_main Started
+[WARNING 00:25:17] my_main CUDA flag use_cuda was switched OFF automatically because no CUDA devices are available!
+[INFO 00:25:17] my_main Experiment Parameters:
+[INFO 00:25:17] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'add_value_last_step': True,
+    'agent': 'rnn',
+    'agent_output_type': 'q',
+    'batch_size': 5,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'double_q': True,
+    'env': 'gymma',
+    'env_args': {   'key': None,
+                    'pretrained_wrapper': None,
+                    'seed': 492966791,
+                    'time_limit': 50},
+    'epochs': 2,
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'evaluation_epsilon': 0.0,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'hypernet_embed': 64,
+    'hypernet_layers': 2,
+    'label': 'default_label',
+    'learner': 'q_learner',
+    'learner_log_interval': 200000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 200000,
+    'lr': 0.001,
+    'mac': 'basic_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'qmix',
+    'obs_agent_id': True,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'render': False,
+    'repeat_id': 1,
+    'runner': 'episode',
+    'runner_log_interval': 200000,
+    'save_model': True,
+    'save_model_interval': 50000,
+    'save_replay': False,
+    'seed': 492966791,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 1000000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 5,
+    'use_cuda': False,
+    'use_rnn': False,
+    'use_tensorboard': False}
+
+[INFO 00:25:18] my_main Beginning training for 1000000 timesteps
+[INFO 00:25:21] my_main t_env: 50 / 1000000
+[INFO 00:25:21] my_main Estimated time left: 53 seconds. Time passed: 2 seconds
+[INFO 00:25:30] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/50
+[INFO 01:07:51] my_main t_env: 50066 / 1000000
+[INFO 01:07:51] my_main Estimated time left: 13 hours, 27 minutes, 18 seconds. Time passed: 42 minutes, 33 seconds
+[INFO 01:08:05] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/50066
+[INFO 01:47:10] my_main t_env: 100085 / 1000000
+[INFO 01:47:10] my_main Estimated time left: 11 hours, 47 minutes, 14 seconds. Time passed: 1 hours, 21 minutes, 51 seconds
+[INFO 01:47:19] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/100085
+[INFO 02:30:23] my_main t_env: 150121 / 1000000
+[INFO 02:30:23] my_main Estimated time left: 12 hours, 14 minutes, 0 seconds. Time passed: 2 hours, 5 minutes, 4 seconds
+[INFO 02:30:36] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/150121
+[INFO 03:11:14] my_main Recent Stats | t_env:     200045 | Episode:     4495
+ep_length_mean:           50.0000	epsilon:                   1.0000	grad_norm:                 1.1757	loss:                      1.1149
+q_taken_mean:              0.1490	return_mean:               0.0260	return_std:                0.0000	target_mean:               0.1888
+td_error_abs:              0.4111	test_ep_length_mean:      50.0000	test_return_mean:          0.2629	test_return_std:           0.0006
+
+[INFO 03:11:19] my_main t_env: 200145 / 1000000
+[INFO 03:11:19] my_main Estimated time left: 10 hours, 54 minutes, 33 seconds. Time passed: 2 hours, 46 minutes, 0 seconds
+[INFO 03:11:31] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/200145
+[INFO 03:53:20] my_main t_env: 250153 / 1000000
+[INFO 03:53:20] my_main Estimated time left: 10 hours, 29 minutes, 58 seconds. Time passed: 3 hours, 28 minutes, 1 seconds
+[INFO 03:53:33] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/250153
+[INFO 04:36:28] my_main t_env: 300182 / 1000000
+[INFO 04:36:28] my_main Estimated time left: 10 hours, 3 minutes, 32 seconds. Time passed: 4 hours, 11 minutes, 10 seconds
+[INFO 04:36:38] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/300182
+[INFO 05:18:24] my_main t_env: 350228 / 1000000
+[INFO 05:18:24] my_main Estimated time left: 9 hours, 4 minutes, 14 seconds. Time passed: 4 hours, 53 minutes, 5 seconds
+[INFO 05:18:37] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/350228
+[INFO 06:03:42] my_main Recent Stats | t_env:     400055 | Episode:     8568
+ep_length_mean:           47.2519	epsilon:                   0.0500	grad_norm:                 6.0642	loss:                      6.0167
+q_taken_mean:              3.2056	return_mean:               0.1492	return_std:                0.0850	target_mean:               3.2232
+td_error_abs:              0.8763	test_ep_length_mean:      50.0000	test_return_mean:          0.1802	test_return_std:           0.0000
+
+[INFO 06:03:53] my_main t_env: 400255 / 1000000
+[INFO 06:03:53] my_main Estimated time left: 9 hours, 5 minutes, 25 seconds. Time passed: 5 hours, 38 minutes, 35 seconds
+[INFO 06:04:07] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/400255
+[INFO 06:49:38] my_main t_env: 450302 / 1000000
+[INFO 06:49:38] my_main Estimated time left: 8 hours, 22 minutes, 22 seconds. Time passed: 6 hours, 24 minutes, 19 seconds
+[INFO 06:49:51] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/450302
+[INFO 07:34:52] my_main t_env: 500319 / 1000000
+[INFO 07:34:52] my_main Estimated time left: 7 hours, 31 minutes, 57 seconds. Time passed: 7 hours, 9 minutes, 33 seconds
+[INFO 07:35:06] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/500319
+[INFO 08:18:01] my_main t_env: 550342 / 1000000
+[INFO 08:18:01] my_main Estimated time left: 6 hours, 27 minutes, 50 seconds. Time passed: 7 hours, 52 minutes, 42 seconds
+[INFO 08:18:12] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/550342
+[INFO 09:00:14] my_main Recent Stats | t_env:     600097 | Episode:    12642
+ep_length_mean:           47.8701	epsilon:                   0.0500	grad_norm:                 5.2453	loss:                      7.4984
+q_taken_mean:              4.2682	return_mean:               0.2032	return_std:                0.1076	target_mean:               4.2741
+td_error_abs:              0.9721	test_ep_length_mean:      50.0000	test_return_mean:          0.3427	test_return_std:           0.0000
+
+[INFO 09:00:27] my_main t_env: 600347 / 1000000
+[INFO 09:00:27] my_main Estimated time left: 5 hours, 39 minutes, 12 seconds. Time passed: 8 hours, 35 minutes, 9 seconds
+[INFO 09:00:41] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/600347
+[INFO 09:43:59] my_main t_env: 650383 / 1000000
+[INFO 09:43:59] my_main Estimated time left: 5 hours, 4 minutes, 8 seconds. Time passed: 9 hours, 18 minutes, 40 seconds
+[INFO 09:44:11] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/650383
+[INFO 10:27:33] my_main t_env: 700431 / 1000000
+[INFO 10:27:33] my_main Estimated time left: 4 hours, 20 minutes, 44 seconds. Time passed: 10 hours, 2 minutes, 14 seconds
+[INFO 10:27:42] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/700431
+[INFO 11:09:36] my_main t_env: 750480 / 1000000
+[INFO 11:09:36] my_main Estimated time left: 3 hours, 29 minutes, 38 seconds. Time passed: 10 hours, 44 minutes, 17 seconds
+[INFO 11:09:50] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/750480
+[INFO 11:53:45] my_main Recent Stats | t_env:     800142 | Episode:    16662
+ep_length_mean:           48.1781	epsilon:                   0.0500	grad_norm:                 5.4368	loss:                      7.3933
+q_taken_mean:              4.5667	return_mean:               0.2360	return_std:                0.1221	target_mean:               4.5631
+td_error_abs:              1.0033	test_ep_length_mean:      50.0000	test_return_mean:          0.0900	test_return_std:           0.0000
+
+[INFO 11:54:03] my_main t_env: 800492 / 1000000
+[INFO 11:54:03] my_main Estimated time left: 2 hours, 57 minutes, 22 seconds. Time passed: 11 hours, 28 minutes, 45 seconds
+[INFO 11:54:16] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/800492
+[INFO 12:35:00] my_main t_env: 850535 / 1000000
+[INFO 12:35:00] my_main Estimated time left: 2 hours, 2 minutes, 16 seconds. Time passed: 12 hours, 9 minutes, 41 seconds
+[INFO 12:35:11] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/850535
+[INFO 13:16:48] my_main t_env: 900575 / 1000000
+[INFO 13:16:48] my_main Estimated time left: 1 hours, 23 minutes, 2 seconds. Time passed: 12 hours, 51 minutes, 29 seconds
+[INFO 13:17:02] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/900575
+[INFO 14:00:57] my_main t_env: 950578 / 1000000
+[INFO 14:00:57] my_main Estimated time left: 43 minutes, 38 seconds. Time passed: 13 hours, 35 minutes, 39 seconds
+[INFO 14:01:11] my_main Saving models to results/models/qmix_seed492966791_None_2024-10-09 00:25:17.971109/950578
+[INFO 14:45:04] my_main Finished Training
+[DEBUG 14:45:09] my_main Finished after 14:19:51.
+[INFO 14:45:09] pymarl Completed after 14:19:51
