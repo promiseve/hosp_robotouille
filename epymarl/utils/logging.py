@@ -1,6 +1,7 @@
 from collections import defaultdict
 import logging
 import numpy as np
+import wandb
 
 class Logger:
     def __init__(self, console_logger):
@@ -11,6 +12,11 @@ class Logger:
         self.use_hdf = False
 
         self.stats = defaultdict(lambda: [])
+
+        wandb.init(
+            project="6756-rl-experiments",
+            notes="equal-beginner-hard-qmix"
+        )
 
     def setup_tb(self, directory_name):
         # Import here so it doesn't have to be installed if you don't use it
@@ -25,6 +31,7 @@ class Logger:
         self.use_sacred = True
 
     def log_stat(self, key, value, t, to_sacred=True):
+        wandb.log({key: value})
         self.stats[key].append((t, value))
 
         if self.use_tb:
