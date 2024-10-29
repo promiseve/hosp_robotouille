@@ -1,0 +1,99 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/home/poe6/hosp_robotouille/epymarl",
+    "dependencies": [
+      "numpy==1.24.2",
+      "PyYAML==6.0.1",
+      "sacred==0.8.5",
+      "torch==2.1.1"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [
+      {
+        "commit": "6f022d827029abeea9d23b9d0eb7565ebd1038e7",
+        "dirty": true,
+        "url": "git@github.com:promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "6f022d827029abeea9d23b9d0eb7565ebd1038e7",
+        "dirty": true,
+        "url": "git@github.com:promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "6f022d827029abeea9d23b9d0eb7565ebd1038e7",
+        "dirty": true,
+        "url": "git@github.com:promiseve/hosp_robotouille.git"
+      }
+    ],
+    "sources": [
+      [
+        "main.py",
+        "_sources/main_74c9740e03fd18eb008121f336b3404b.py"
+      ],
+      [
+        "run.py",
+        "_sources/run_8f3617f346441d1e0a07c817956746b8.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_7799699b534f806632c1d618a6ef7e02.py"
+      ]
+    ]
+  },
+  "heartbeat": "2024-10-10T00:11:48.854314",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Xeon(R) CPU E7-4850 v4 @ 2.10GHz",
+    "hostname": "garg-cpu-02.orie.cornell.edu",
+    "os": [
+      "Linux",
+      "Linux-5.4.0-174-generic-x86_64-with-glibc2.10"
+    ],
+    "python_version": "3.8.8"
+  },
+  "meta": {
+    "command": "my_main",
+    "config_updates": {
+      "env_args": {
+        "time_limit": 50
+      }
+    },
+    "named_configs": [],
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--id": null,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "env_args.time_limit=50"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2024-10-09T04:22:08.030156",
+  "status": "COMPLETED",
+  "stop_time": "2024-10-10T00:11:48.843973"
+}

@@ -38,7 +38,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         wandb.init(
             project="6756-rl-experiments",
             config=self.metrics_config,
-            notes="equal-skilled-givemedicine-ippo"
+            notes= "specskilled_givemedicine_mappo"
         )
 
     def log_metrics(self, update_dict):
@@ -116,8 +116,11 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 # Reward .01 for correct action. .01 * 4 agents * 100 timesteps + max 50 after normalizing by dividing with timesteps in robotouille wrapper
                 #  reward = 50 - For hospital setup
                 # - cooking setup
-                # Scale between 0 to 1
-                reward = (reward + 0.01) / 54
+                # Scale between 0 to 1, 
+                #/194 for givemedicineequal, /217 for givemedicinespec #already add 4 from the top 
+                #/91 for giverescuebreaths, /99 for givemedicinespec #already add 4 from the top
+
+                reward = (reward + 0.01) / 217
 
                 self.pddl_env.prev_step = (obs, reward, done, info)
 
