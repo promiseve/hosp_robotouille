@@ -490,7 +490,8 @@ class RobotouilleWrapper(gym.Wrapper):
             done (bool): Whether or not the episode is done.
             info (dict): A dictionary of metadata about the step.
         """
-        # print("action: ", action)
+        print("Original action: ", action)
+        print("STEP NUMBER:", self.move_counter)
         expanded_truths = self.prev_step[3]["expanded_truths"]
         expanded_states = self.prev_step[3]["expanded_states"]
 
@@ -504,6 +505,7 @@ class RobotouilleWrapper(gym.Wrapper):
             action = robotouille_utils.create_action(
                 self.env, self.prev_step[0], action, self.renderer
             )
+        print("New action: ", action)
 
         prev_heuristic = self.reward_handler.heuristic_reward(
             self.prev_step[0], self.state

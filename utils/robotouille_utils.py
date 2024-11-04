@@ -1,6 +1,7 @@
 import gym
 import utils.robotouille_exceptions as robotouille_exceptions
 import utils.pddlgym_interface as pddlgym_interface
+import copy
 
 
 def print_states(obs):
@@ -157,6 +158,43 @@ def _get_reverse_move(action):
     reverse_action = pddlgym_interface.str_to_literal(reverse_action)
     return reverse_action
 
+# def get_valid_moves(env, obs, renderer):
+#     """
+#     Returns the valid moves for the robot. This is a helper function to filter out moves that are valid in the pddl environment, but not on the renderer (as the robot can not pass through other robots or stations)
+
+#     Args:
+#         env (PDDLGym Environment): The environment.
+
+#     Returns:
+#         valid_moves (list): A list of valid moves for the robot.
+#     """
+#     valid_actions = list(env.action_space.all_ground_literals(obs))
+#     print(f"Valid actions: {valid_actions}")
+#     for action in valid_actions:
+#         if "move" == action.predicate.name:
+#             reverse_action = _get_reverse_move(action)
+#             env_copy = copy.deepcopy(env)
+
+#             if type(env_copy) != gym.wrappers.order_enforcing.OrderEnforcing:
+#                 try:
+#                     obs, _, _, _ = env_copy.test_step(action)
+#                     # print(f"new test set obs: {obs}")
+#                     renderer.canvas.test_new_positions(obs)
+
+#                 except AssertionError:
+#                     print("removing invalid action: ", action)
+#                     valid_actions.remove(action)
+
+#             else:
+#                 print("Not order enforcing")
+#                 try:
+#                     obs, _, _, _ = env_copy.step(action) # why not test_step here?
+#                     renderer.canvas.test_new_positions(obs)
+#                 except AssertionError:
+#                     print("removing invalid action: ", action)
+#                     valid_actions.remove(action)
+
+#     return valid_actions
 
 def get_valid_moves(env, obs, renderer):
     """
@@ -169,28 +207,37 @@ def get_valid_moves(env, obs, renderer):
         valid_moves (list): A list of valid moves for the robot.
     """
     valid_actions = list(env.action_space.all_ground_literals(obs))
+    print(f"Valid actions: {valid_actions}")
     for action in valid_actions:
         if "move" == action.predicate.name:
             reverse_action = _get_reverse_move(action)
             if type(env) != gym.wrappers.order_enforcing.OrderEnforcing:
                 try:
                     obs, _, _, _ = env.test_step(action)
+                    # print(f"new test set obs: {obs}")
                     renderer.canvas.test_new_positions(obs)
 
-                except AssertionError:
+                except AssertionError as e:
+                    print("assertion error caught: ", e)
+                    print("removing invalid action: ", action)
                     valid_actions.remove(action)
                 try:
                     env.test_step(reverse_action)
-                except AssertionError:
+                except AssertionError as e:
+                    print("assertion error caught: ", e)
+                    print("Error in performing test step: ", action)
                     pass
 
             else:
+                print("Not order enforcing")
                 try:
-                    obs, _, _, _ = env.step(action)
+                    obs, _, _, _ = env.step(action) # why not test_step here?
                     renderer.canvas.test_new_positions(obs)
-                except AssertionError:
+                except AssertionError as e:
+                    print("assertion error caught: ", e)
+                    print("removing invalid action: ", action)
                     valid_actions.remove(action)
                 finally:
-                    env.step(reverse_action)
+                    env.step(reverse_action) # why not test_step here?
 
     return valid_actions

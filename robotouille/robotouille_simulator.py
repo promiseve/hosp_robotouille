@@ -159,7 +159,7 @@ def load_multi_simulator(environment_name, seed, noisy_randomization):
     interactive = False
 
     with open(
-        "results/models/iql_seed328992167_None_2024-08-01 18:36:11.969950/1350627/best_actions.txt",
+        "results/qmix_seed348564842_None_2024-10-08 22-43-14.056718_950343/best_actions.txt",
         "r",
     ) as f:
         for line in f:
