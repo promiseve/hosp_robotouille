@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH -J exp_30_ippo__3agentspecgivemed                         # Job name
-#SBATCH -o exp_30_ippo__3agentspecgivemed%j.out                 # Output file (%j expands to jobID)
-#SBATCH -e exp_30_ippo__3agentsspecgivemed%j.err                 # Error log file (%j expands to jobID)
+#SBATCH -J exp_30_ippo__3agentequalgivemed                         # Job name
+#SBATCH -o exp_30_ippo__3agentsequalgivemed%j.out                 # Output file (%j expands to jobID)
+#SBATCH -e exp_30_ippo__3agentsequalgivemed%j.err                 # Error log file (%j expands to jobID)
 #SBATCH --mail-type=END,FAIL                  # Mail events (BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=poe6@cornell.edu          # Where to send mail
 #SBATCH -N 1                                  # Run on a single node

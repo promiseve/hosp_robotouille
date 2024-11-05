@@ -49,6 +49,17 @@ class RobotouilleRenderer:
             pygame.display.set_caption("Robotouille Simulator")
         if self.clock is None and render_mode == "human":
             self.clock = pygame.time.Clock()
+            
+    def __deepcopy__(self, memo):
+        """
+        This function is called by the deepcopy function in the copy module.
+
+        This function carries over references to objects that are not deepcopyable (PyGame surfaces)
+        """
+        new_renderer = self
+        new_renderer.window = None
+        memo[id(self)] = new_renderer
+        return new_renderer
 
     def _render_frame(self, obs, render_mode):
         """

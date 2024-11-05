@@ -2,6 +2,7 @@ import os
 import pygame
 import numpy as np
 import utils.robotouille_utils as robotouille_utils
+from copy import deepcopy
 
 
 class RobotouilleCanvas:
@@ -58,6 +59,20 @@ class RobotouilleCanvas:
         # A dictionary which maps image names to loaded images
         self.asset_directory = {}
         # print(f"asset_directory: {self.asset_directory}")
+
+    def __deepcopy__(self, memo):
+        """
+        This function is called by the deepcopy function in the copy module.
+
+        This function carries over references to objects that are not deepcopyable (PyGame surfaces)
+        """
+        #import pdb; pdb.set_trace(), should stop to show that this function is being indexed
+        new_canvas = RobotouilleCanvas(self.layout, [], np.array([1,1]))
+        new_canvas.players_pose = deepcopy(self.players_pose, memo)
+        new_canvas.pix_square_size = self.pix_square_size # Constant
+        new_canvas.asset_directory = self.asset_directory # References to PyGame surfaces
+        memo[id(self)] = new_canvas
+        return new_canvas
 
     def _get_station_position(self, station_name):
         """

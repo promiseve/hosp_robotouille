@@ -38,7 +38,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         wandb.init(
             project="6756-rl-experiments",
             config=self.metrics_config,
-            notes= "specskilled_givemedicine_mappo"
+            notes= "equalskilled_givemedicine_mappo"
         )
 
     def log_metrics(self, update_dict):
@@ -118,9 +118,9 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 # - cooking setup
                 # Scale between 0 to 1, 
                 #/194 for givemedicineequal, /217 for givemedicinespec #already add 4 from the top 
-                #/91 for giverescuebreaths, /99 for givemedicinespec #already add 4 from the top
+                #/91 for giverescuebreaths, /99 for giverescuebreathsspec#already add 4 from the top
 
-                reward = (reward + 0.01) / 217
+                reward = (reward + 0.01) / 194
 
                 self.pddl_env.prev_step = (obs, reward, done, info)
 
