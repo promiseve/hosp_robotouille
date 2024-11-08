@@ -169,16 +169,12 @@ def get_valid_moves(env, obs, renderer):
         valid_moves (list): A list of valid moves for the robot.
     """
     valid_actions = list(env.action_space.all_ground_literals(obs))
-    print ("valid actions before filtering", valid_actions)
     for action in valid_actions:
         if "move" == action.predicate.name:
             reverse_action = _get_reverse_move(action)
-            print("reversing action:", reverse_action)
             if type(env) != gym.wrappers.order_enforcing.OrderEnforcing:
-                print("OrderEnforcing")
                 try:
                     obs, _, _, _ = env.test_step(action)
-                    print ("obs after test step", obs)
                     renderer.canvas.test_new_positions(obs)
 
                 except AssertionError:
@@ -189,7 +185,6 @@ def get_valid_moves(env, obs, renderer):
                     pass
 
             else:
-                print("Not implementing OrderEnforcing")
                 try:
                     obs, _, _, _ = env.step(action)
                     renderer.canvas.test_new_positions(obs)
@@ -200,7 +195,8 @@ def get_valid_moves(env, obs, renderer):
 
     return valid_actions
 
-    #new get_valid_moves
+    # new get_valid_moves
+
 
 # def get_valid_moves(env, obs, renderer):
 #     """
@@ -233,4 +229,3 @@ def get_valid_moves(env, obs, renderer):
 #                 continue
 
 #     return valid_moves
-
