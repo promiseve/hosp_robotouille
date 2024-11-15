@@ -495,6 +495,8 @@ class RobotouilleWrapper(gym.Wrapper):
         expanded_truths = self.prev_step[3]["expanded_truths"]
         expanded_states = self.prev_step[3]["expanded_states"]
 
+        
+
         self.taken_actions.append(action)
         if interactive:
             self._interactive_starter_prints(expanded_truths)

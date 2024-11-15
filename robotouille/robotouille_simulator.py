@@ -136,7 +136,7 @@ def multi_rl_simulator(environment_name: str, seed: int, noisy_randomization: bo
     arguments = [
         "python",
         "epymarl/main.py",
-        "--config=mappo",
+        "--config=qmix",
         "--env-config=gymma",
         "with",
         "env_args.time_limit=50",
@@ -159,7 +159,7 @@ def load_multi_simulator(environment_name, seed, noisy_randomization):
     interactive = False
 
     with open(
-        "results/models/iql_seed328992167_None_2024-08-01 18:36:11.969950/1350627/best_actions.txt",
+        "results/models/iql_seed484900820_None_2024-10-08 22:46:10.345741/950343/best_actions.txt",
         "r",
     ) as f:
         for line in f:
@@ -168,6 +168,7 @@ def load_multi_simulator(environment_name, seed, noisy_randomization):
             if not interactive and action is None:
                 # Retry for keyboard input
                 continue
+            # print("taking action: ", action)
             obs, reward, done, info = env.step(action=action, interactive=interactive)
             time.sleep(0.5)
             env.render(mode="human")

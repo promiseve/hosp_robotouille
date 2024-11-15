@@ -162,6 +162,8 @@ def run_sequential(args, logger):
         learner.load_models(model_path)
         runner.t_env = timestep_to_load
 
+        args.t_max += timestep_to_load
+
         if args.evaluate or args.save_replay:
             runner.log_train_stats_t = runner.t_env
             evaluate_sequential(args, runner)

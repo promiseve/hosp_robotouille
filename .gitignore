@@ -11,3 +11,4 @@ robotouille.egg-info
 /slurm_scripts/
 /slurm_log/
 /wandb/
+.vscode/
