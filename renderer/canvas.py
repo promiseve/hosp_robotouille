@@ -41,7 +41,7 @@ class RobotouilleCanvas:
         ]
         # print(f"players_pos: {players_pos}")
 
-        self.players_pose = [
+        self.players_pose = [ # NOTE: This maintains the canvas state but is also relied on for the RL state
             {
                 "name": players[i]["name"],
                 "position": players_pos[i],
@@ -535,10 +535,46 @@ class RobotouilleCanvas:
                 # print(
                 #     f"Tested new position for player {player_index}: {player_pos}, direction: {player_direction}"
                 # )
+    
+    def test_move_action(self, action):
+        assert "move" == action.predicate.name
+        target_station = action.variables[2].name
+        station_pos = self._get_station_position(target_station)
+        player_index = self._get_player_index(action)
+        player_pos = self.players_pose[player_index]["position"]
+        player_pos, player_direction = self._move_player_to_station(
+            player_index, player_pos, tuple(station_pos), self.layout, test=True
+        )
 
-    def _draw_player(self, surface, obs):
+    def _update_player_pos(self, player_index, initial_pos, station_position):
+        """"includes both moving and state update"""
+        player_pos, player_direction = self._move_player_to_station(
+                    player_index, initial_pos, station_position, self.layout
+                )
+        # print(f"  After move_player_to_station: {player_pos}")
+        self.players_pose[player_index]["position"] = player_pos # NOTE: This updates the canvas state but is also relied on for the RL state
+        self.players_pose[player_index]["direction"] = player_direction # NOTE: This updates the canvas state but is also relied on for the RL state
+
+        return player_pos, player_direction
+
+    def update_all_player_pos(self, obs):
+        """Workaround meant for training only. Updates the player positions in the class state to match the obs.
+        We need to do this because when we filter for vaild moves during each step, we need to have player grid locations maintained here
         """
-        Draws the player on the canvas with detailed debugging.
+        for literal in obs:
+            if literal.predicate.name == "loc":
+                player_station = literal.variables[1].name
+                station_pos = self._get_station_position(player_station)
+                player_index = self._get_player_index(literal)
+                initial_pos = self.players_pose[player_index]["position"]
+
+                player_pos, player_direction = self._update_player_pos(
+                    player_index, initial_pos, tuple(station_pos)
+                )
+
+    def _draw_player(self, surface, obs, train=False):
+        """
+        Draws the player on the canvas with detailed debugging, and updates the player's saved position in the class state.
         """
         # print("\n--- Start of _draw_player ---")
         for literal in obs:
@@ -553,31 +589,20 @@ class RobotouilleCanvas:
                 # print(f"  Station: {player_station}")
                 # print(f"  Station position: {station_pos}")
 
-                player_pos, player_direction = self._move_player_to_station(
-                    player_index, initial_pos, tuple(station_pos), self.layout
+                player_pos, player_direction = self._update_player_pos(
+                    player_index, initial_pos, tuple(station_pos)
                 )
 
                 # print(f"  After move_player_to_station: {player_pos}")
 
                 # Check if the player is on a CPR stool
-                if player_station == "cpr_stool":
-                    # The value 0.2 represents 20% of a grid cell's height
-                    # This moves the player up by 20% of a cell, making them appear on top of the obje
-                    # Adjust the vertical position upwards
-                    player_pos = (
-                        player_pos[0],
-                        player_pos[1] - 0.2,
-                    )  # Increased offset
-                    # print(f"  On CPR stool, adjusted position: {player_pos}")
+                cpr_stool_offset = 0.2 if player_station == "cpr_stool" else 0.0
 
-                self.players_pose[player_index]["position"] = player_pos
-                self.players_pose[player_index]["direction"] = player_direction
                 selected = self._check_selected(obs, player_index)
                 player_name, player_id = self._get_player_name_and_index(literal)
                 player_image_name = self._get_player_image_name(
                     player_name, player_id, player_direction, selected
                 )
-
                 # Calculate the drawing position in pixels
                 # player_pos[0] * self.pix_square_size[0]: Convert x-coordinate from grid to pixels
                 # (player_pos[1] - 0.2) * self.pix_square_size[1]: Convert y-coordinate from grid to pixels,
@@ -586,12 +611,11 @@ class RobotouilleCanvas:
                 # (so it looks like they're standing on the center of the tile)
                 draw_pos = (
                     player_pos[0] * self.pix_square_size[0],
-                    (player_pos[1] - self.PLAYER_OFFSET) * self.pix_square_size[1],
+                    (player_pos[1] - self.PLAYER_OFFSET - cpr_stool_offset) * self.pix_square_size[1],
                 )
 
                 # print(f"  Final draw position (pixels): {draw_pos}")
                 # print(f"  Image: {player_image_name}")
-
                 self._draw_image(
                     surface,
                     player_image_name,

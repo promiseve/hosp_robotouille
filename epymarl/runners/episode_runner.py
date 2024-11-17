@@ -85,7 +85,7 @@ class EpisodeRunner:
 
             reward, terminated, env_info = self.env.step(actions[0])
             if test_mode and self.args.render:
-                self.env.render()
+                self.env.render() # NOTE: maybe not good to call if canvas.update_all_player_pos() is called earlier in training loop, not sure yet
             episode_return += reward
 
             post_transition_data = {

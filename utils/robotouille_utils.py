@@ -2,7 +2,6 @@ import gym
 import utils.robotouille_exceptions as robotouille_exceptions
 import utils.pddlgym_interface as pddlgym_interface
 
-
 def print_states(obs):
     """
     This function prints the current state of the environment in a list format.
@@ -169,68 +168,17 @@ def get_valid_moves(env, obs, renderer):
         valid_moves (list): A list of valid moves for the robot.
     """
     valid_actions = list(env.action_space.all_ground_literals(obs))
-    print ("valid actions before filtering", valid_actions)
     for action in valid_actions:
         if "move" == action.predicate.name:
-            reverse_action = _get_reverse_move(action)
-            print("reversing action:", reverse_action)
-            if type(env) != gym.wrappers.order_enforcing.OrderEnforcing:
-                print("OrderEnforcing")
-                try:
-                    obs, _, _, _ = env.test_step(action)
-                    print ("obs after test step", obs)
-                    renderer.canvas.test_new_positions(obs)
-
-                except AssertionError:
-                    valid_actions.remove(action)
-                try:
-                    env.test_step(reverse_action)
-                except AssertionError:
-                    pass
-
-            else:
-                print("Not implementing OrderEnforcing")
-                try:
-                    obs, _, _, _ = env.step(action)
-                    renderer.canvas.test_new_positions(obs)
-                except AssertionError:
-                    valid_actions.remove(action)
-                finally:
-                    env.step(reverse_action)
+            # get arguments for 
+            # print(type(obs))
+            try:
+                renderer.canvas.test_move_action(action)
+            except AssertionError:
+                # print("removing invalid action", action)
+                valid_actions.remove(action)
 
     return valid_actions
 
-    #new get_valid_moves
 
-# def get_valid_moves(env, obs, renderer):
-#     """
-#     Returns the valid moves for the robot without modifying the main environment state.
-
-#     Args:
-#         env (PDDLGym Environment): The environment.
-#         obs (PDDLGym Observation): The current state of the environment.
-
-#     Returns:
-#         valid_moves (list): A list of valid moves for the robot.
-#     """
-#     valid_actions = list(env.action_space.all_ground_literals(obs))
-#     print ("valid_actions:", valid_actions )
-#     valid_moves = []
-
-#     for action in valid_actions:
-#         if action.predicate.name == "move":
-#             # Clone the environment to test the action.
-#             cloned_env = copy.deepcopy(env)
-
-#             try:
-#                 # Test action on cloned environment.
-#                 new_obs, _, _, _ = cloned_env.step(action)
-#                 renderer.canvas.test_new_positions(new_obs)
-#                 valid_moves.append(action)  # Action is valid.
-
-#             except AssertionError:
-#                 # Invalid action; ignore it.
-#                 continue
-
-#     return valid_moves
 
