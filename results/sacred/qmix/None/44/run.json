@@ -1,0 +1,99 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/home/byl8/hosp_robotouille/epymarl",
+    "dependencies": [
+      "numpy==1.24.2",
+      "PyYAML==6.0.1",
+      "sacred==0.8.5",
+      "torch==2.1.1"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [
+      {
+        "commit": "15d5aa9f3295f7630924ad2b4226d604e8e2f27c",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "15d5aa9f3295f7630924ad2b4226d604e8e2f27c",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      },
+      {
+        "commit": "15d5aa9f3295f7630924ad2b4226d604e8e2f27c",
+        "dirty": true,
+        "url": "https://github.com/promiseve/hosp_robotouille.git"
+      }
+    ],
+    "sources": [
+      [
+        "main.py",
+        "_sources/main_74c9740e03fd18eb008121f336b3404b.py"
+      ],
+      [
+        "run.py",
+        "_sources/run_8f3617f346441d1e0a07c817956746b8.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_10a4fc000362fc5977b19b5edcfe82a0.py"
+      ]
+    ]
+  },
+  "heartbeat": "2024-11-15T07:21:57.886991",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Xeon(R) Gold 6348 CPU @ 2.60GHz",
+    "hostname": "g2-login-01.coecis.cornell.edu",
+    "os": [
+      "Linux",
+      "Linux-5.4.0-198-generic-x86_64-with-glibc2.10"
+    ],
+    "python_version": "3.8.8"
+  },
+  "meta": {
+    "command": "my_main",
+    "config_updates": {
+      "env_args": {
+        "time_limit": 50
+      }
+    },
+    "named_configs": [],
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--id": null,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "env_args.time_limit=50"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2024-11-15T07:21:54.387864",
+  "status": "INTERRUPTED",
+  "stop_time": "2024-11-15T07:21:57.889727"
+}
