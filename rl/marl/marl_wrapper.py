@@ -6,7 +6,6 @@ from rl.marl.marl_env import MARLEnv
 from utils.robotouille_utils import get_valid_moves
 import utils.pddlgym_utils as pddlgym_utils
 import utils.robotouille_wrapper as robotouille_wrapper
-import wandb
 
 
 class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
@@ -15,7 +14,6 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
     """
 
     def __init__(self, env, renderer, n_agents):
-        wandb.login()
         self.env = env
         self.pddl_env = env
         self.n_agents = n_agents
@@ -33,23 +31,6 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         }
 
         self._wrap_env()
-
-        # Initialize WandB with the metrics config
-        wandb.init(
-            project="6756-rl-experiments",
-            config=self.metrics_config,
-            notes= "equalskilled_givemedicine_mappo"
-        )
-
-    def log_metrics(self, update_dict):
-        """
-        Log metrics to the metrics_config and to WandB.
-        :param update_dict: A dictionary containing updates to the metrics.
-        """
-        # Update the metrics configuration with new values
-        self.metrics_config.update(update_dict)
-        # Log the updated metrics to WandB
-        wandb.log(self.metrics_config)
 
     def _wrap_env(self):
         """
@@ -116,9 +97,9 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 # Reward .01 for correct action. .01 * 4 agents * 100 timesteps + max 50 after normalizing by dividing with timesteps in robotouille wrapper
                 #  reward = 50 - For hospital setup
                 # - cooking setup
-                # Scale between 0 to 1, 
-                #/194 for givemedicineequal, /217 for givemedicinespec #already add 4 from the top 
-                #/91 for giverescuebreaths, /99 for giverescuebreathsspec#already add 4 from the top
+                # Scale between 0 to 1,
+                # /194 for givemedicineequal, /217 for givemedicinespec #already add 4 from the top
+                # /91 for giverescuebreaths, /99 for giverescuebreathsspec#already add 4 from the top
 
                 reward = (reward + 0.01) / 194
 
@@ -127,12 +108,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 rewards.append(reward)
             self._wrap_env()
 
-        wandb.log({"reward per step": sum(rewards)})
-
         self.episode_reward += sum(rewards)
-        if self.pddl_env.timesteps >= self.max_steps or done:
-            wandb.log({"reward per episode": self.episode_reward})
-            wandb.log({"timesteps": self.pddl_env.timesteps})
 
         return (
             self.env.state,
@@ -156,4 +132,4 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         return self.env.state, info
 
     def render(self, *args, **kwargs):
-        self.pddl_env.render()
+        self.pddl_env.render(mode="rgb_array")

@@ -6,6 +6,7 @@ import wandb
 
 class Logger:
     def __init__(self, console_logger):
+        wandb.login()
         self.console_logger = console_logger
 
         self.use_tb = False
@@ -14,7 +15,11 @@ class Logger:
 
         self.stats = defaultdict(lambda: [])
 
-        wandb.init(project="6756-rl-experiments", reinit=False)
+        wandb.init(
+            project="6756-rl-experiments",
+            config=self.metrics_config,
+            notes="forced_coop_givemedicine_mappo",
+        )
 
     def setup_tb(self, directory_name):
         # Import here so it doesn't have to be installed if you don't use it
@@ -30,7 +35,7 @@ class Logger:
         self.use_sacred = True
 
     def log_stat(self, key, value, t, to_sacred=True):
-        wandb.log({key: value})
+        wandb.log({key: value}, step=t)
         self.stats[key].append((t, value))
 
         if self.use_tb:
