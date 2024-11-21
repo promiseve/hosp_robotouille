@@ -18,6 +18,7 @@ class Logger:
         wandb.init(
             project="6756-rl-experiments",
             notes="forced_coop_givemedicine_mappo",
+            tags=["force_coop", "givemedicine", "mappo"]
         )
 
     def setup_tb(self, directory_name):

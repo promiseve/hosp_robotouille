@@ -254,6 +254,8 @@ class ParallelRunner:
     def _log(self, returns, stats, prefix):
         self.logger.log_stat(prefix + "return_mean", np.mean(returns), self.t_env)
         self.logger.log_stat(prefix + "return_std", np.std(returns), self.t_env)
+        self.logger.log_stat(prefix + "best_episode_reward", self.best_episode_reward, self.t_env)
+
         returns.clear()
 
         for k, v in stats.items():

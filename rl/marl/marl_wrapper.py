@@ -20,16 +20,6 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         self.max_steps = 50
         self.episode_reward = 0
         self.renderer = renderer
-        # Configuration dictionary for tracking metrics
-        self.metrics_config = {
-            "ep_rew_mean": None,  # Mean episode reward
-            "total_timesteps": 0,  # Total number of timesteps
-            "iterations": 0,  # Number of iterations
-            "ep_len_mean": None,  # Mean episode length
-            "loss": None,  # Loss,
-            "entropy_loss": None,  # Entropy loss
-        }
-
         self._wrap_env()
 
     def _wrap_env(self):
