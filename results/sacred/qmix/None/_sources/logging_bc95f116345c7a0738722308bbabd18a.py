@@ -17,6 +17,7 @@ class Logger:
 
         wandb.init(
             project="6756-rl-experiments",
+            config=self.metrics_config,
             notes="forced_coop_givemedicine_mappo",
         )
 
