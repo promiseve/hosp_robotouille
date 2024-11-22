@@ -5,10 +5,10 @@
 **/__pycache__/
 *-env
 robotouille.egg-info
-/wandb
 ..gitignore.swp
 .DS_Store
 /slurm_scripts/
 /slurm_log/
-/wandb/
+wandb/*
+!wandb/wandb_group.py
 .vscode/

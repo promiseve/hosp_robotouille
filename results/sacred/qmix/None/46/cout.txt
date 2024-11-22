@@ -1,0 +1,1622 @@
+[INFO 05:37:06] pymarl Running command 'my_main'
+[INFO 05:37:06] pymarl Started run with ID "46"
+[DEBUG 05:37:06] pymarl Starting Heartbeat
+[DEBUG 05:37:06] my_main Started
+[WARNING 05:37:06] my_main CUDA flag use_cuda was switched OFF automatically because no CUDA devices are available!
+[DEBUG 05:37:06] git.cmd Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/home/byl8/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:37:06] git.cmd Popen(['git', 'rev-parse', '--show-toplevel'], cwd=/home/byl8/hosp_robotouille, stdin=None, shell=False, universal_newlines=False)
+[DEBUG 05:37:07] urllib3.connectionpool Starting new HTTPS connection (1): api.wandb.ai:443
+[DEBUG 05:37:07] urllib3.connectionpool https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+[DEBUG 05:37:07] urllib3.connectionpool https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+wandb: Currently logged in as: byl8 (airlabmarl). Use `wandb login --relogin` to force relogin
+[DEBUG 05:37:07] git.cmd Popen(['git', 'cat-file', '--batch-check'], cwd=/home/byl8/hosp_robotouille, stdin=<valid stream>, shell=False, universal_newlines=False)
+wandb: wandb version 0.18.7 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.16.3
+wandb: Run data is saved locally in /home/byl8/hosp_robotouille/wandb/run-20241119_053707-8nhgwhiw
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run upbeat-water-564
+wandb: ⭐️ View project at https://wandb.ai/airlabmarl/6756-rl-experiments
+wandb: 🚀 View run at https://wandb.ai/airlabmarl/6756-rl-experiments/runs/8nhgwhiw
+[INFO 05:37:08] my_main Experiment Parameters:
+[INFO 05:37:08] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'add_value_last_step': True,
+    'agent': 'rnn',
+    'agent_output_type': 'q',
+    'batch_size': 5,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'double_q': True,
+    'env': 'gymma',
+    'env_args': {   'key': None,
+                    'pretrained_wrapper': None,
+                    'seed': 369677453,
+                    'time_limit': 50},
+    'epochs': 2,
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'evaluation_epsilon': 0.0,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'hypernet_embed': 64,
+    'hypernet_layers': 2,
+    'label': 'default_label',
+    'learner': 'q_learner',
+    'learner_log_interval': 50000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 50000,
+    'lr': 0.001,
+    'mac': 'basic_mac',
+    'mixer': 'qmix',
+    'mixing_embed_dim': 32,
+    'name': 'qmix',
+    'obs_agent_id': True,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'render': False,
+    'repeat_id': 1,
+    'runner': 'episode',
+    'runner_log_interval': 1000,
+    'save_model': True,
+    'save_model_interval': 50000,
+    'save_replay': False,
+    'seed': 369677453,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 2050000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 5,
+    'use_cuda': False,
+    'use_rnn': False,
+    'use_tensorboard': False}
+
+[INFO 05:37:08] my_main Beginning training for 2050000 timesteps
+[INFO 05:37:12] my_main t_env: 50 / 2050000
+[INFO 05:37:12] my_main Estimated time left: 2 minutes, 35 seconds. Time passed: 3 seconds
+[INFO 05:37:24] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/50
+Saving best action with reward  0
+[INFO 06:37:56] my_main Recent Stats | t_env:      50000 | Episode:     1000
+ep_length_mean:           50.0000	epsilon:                   0.0690	grad_norm:                 1.3797	loss:                      1.0380
+q_taken_mean:              0.0696	return_mean:               0.0212	return_std:                0.0120	target_mean:               0.1191
+td_error_abs:              0.4579	test_ep_length_mean:      50.0000	test_return_mean:          0.0000	test_return_std:           0.0000
+
+[INFO 06:37:58] my_main t_env: 50050 / 2050000
+[INFO 06:37:58] my_main Estimated time left: 1 days, 16 hours, 30 minutes, 48 seconds. Time passed: 1 hours, 50 seconds
+[INFO 06:38:14] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/50050
+Saving best action with reward  0.14363624704487554
+[INFO 07:33:25] my_main Recent Stats | t_env:     100000 | Episode:     2000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 4.7275	loss:                      1.4156
+q_taken_mean:              0.4373	return_mean:               0.1142	return_std:                0.0445	target_mean:               0.5694
+td_error_abs:              0.7065	test_ep_length_mean:      50.0000	test_return_mean:          0.0074	test_return_std:           0.0000
+
+[INFO 07:33:29] my_main t_env: 100050 / 2050000
+[INFO 07:33:29] my_main Estimated time left: 1 days, 12 hours, 4 minutes, 49 seconds. Time passed: 1 hours, 56 minutes, 20 seconds
+[INFO 07:33:44] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/100050
+Saving best action with reward  0.391639763208762
+[INFO 08:31:22] my_main Recent Stats | t_env:     150000 | Episode:     3000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 7.2040	loss:                      1.9283
+q_taken_mean:              0.7997	return_mean:               0.0513	return_std:                0.0082	target_mean:               0.9638
+td_error_abs:              0.8952	test_ep_length_mean:      50.0000	test_return_mean:          0.0214	test_return_std:           0.0000
+
+[INFO 08:31:25] my_main t_env: 150050 / 2050000
+[INFO 08:31:25] my_main Estimated time left: 1 days, 12 hours, 41 minutes, 15 seconds. Time passed: 2 hours, 54 minutes, 16 seconds
+[INFO 08:31:37] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/150050
+Saving best action with reward  0.391639763208762
+[INFO 09:22:07] my_main Recent Stats | t_env:     200000 | Episode:     4000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                16.7945	loss:                      3.5454
+q_taken_mean:              1.3274	return_mean:               0.1819	return_std:                0.0578	target_mean:               1.5959
+td_error_abs:              1.2384	test_ep_length_mean:      50.0000	test_return_mean:          0.0286	test_return_std:           0.0000
+
+[INFO 09:22:11] my_main t_env: 200050 / 2050000
+[INFO 09:22:11] my_main Estimated time left: 1 days, 7 hours, 18 minutes, 28 seconds. Time passed: 3 hours, 45 minutes, 2 seconds
+[INFO 09:22:31] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/200050
+Saving best action with reward  0.391639763208762
+[INFO 10:24:18] my_main Recent Stats | t_env:     250000 | Episode:     5000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                15.7197	loss:                      4.3457
+q_taken_mean:              2.1972	return_mean:               0.2116	return_std:                0.0459	target_mean:               2.4267
+td_error_abs:              1.2367	test_ep_length_mean:      50.0000	test_return_mean:          0.0714	test_return_std:           0.0000
+
+[INFO 10:24:21] my_main t_env: 250050 / 2050000
+[INFO 10:24:21] my_main Estimated time left: 1 days, 13 hours, 18 minutes, 13 seconds. Time passed: 4 hours, 47 minutes, 13 seconds
+[INFO 10:24:39] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/250050
+Saving best action with reward  0.391639763208762
+[INFO 11:27:23] my_main Recent Stats | t_env:     300000 | Episode:     6000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                24.6247	loss:                      6.9377
+q_taken_mean:              3.4870	return_mean:               0.0508	return_std:                0.0132	target_mean:               3.7764
+td_error_abs:              1.5981	test_ep_length_mean:      50.0000	test_return_mean:          0.1185	test_return_std:           0.0000
+
+[INFO 11:27:27] my_main t_env: 300050 / 2050000
+[INFO 11:27:27] my_main Estimated time left: 1 days, 12 hours, 48 minutes, 5 seconds. Time passed: 5 hours, 50 minutes, 18 seconds
+[INFO 11:27:45] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/300050
+Saving best action with reward  0.391639763208762
+[INFO 12:26:38] my_main Recent Stats | t_env:     350000 | Episode:     7000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                26.0235	loss:                      8.5862
+q_taken_mean:              4.6630	return_mean:               0.0764	return_std:                0.0200	target_mean:               4.9352
+td_error_abs:              1.6685	test_ep_length_mean:      50.0000	test_return_mean:          0.1254	test_return_std:           0.0000
+
+[INFO 12:26:42] my_main t_env: 350050 / 2050000
+[INFO 12:26:42] my_main Estimated time left: 1 days, 9 hours, 34 minutes, 26 seconds. Time passed: 6 hours, 49 minutes, 33 seconds
+[INFO 12:27:01] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/350050
+Saving best action with reward  0.391639763208762
+[INFO 13:27:47] my_main Recent Stats | t_env:     400000 | Episode:     8000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                25.7382	loss:                     10.3098
+q_taken_mean:              5.9298	return_mean:               0.1442	return_std:                0.0670	target_mean:               6.1580
+td_error_abs:              1.6619	test_ep_length_mean:      50.0000	test_return_mean:          0.1306	test_return_std:           0.0000
+
+[INFO 13:27:51] my_main t_env: 400050 / 2050000
+[INFO 13:27:51] my_main Estimated time left: 1 days, 9 hours, 37 minutes, 57 seconds. Time passed: 7 hours, 50 minutes, 42 seconds
+[INFO 13:28:10] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/400050
+Saving best action with reward  0.391639763208762
+[INFO 14:30:14] my_main Recent Stats | t_env:     450000 | Episode:     9000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                17.2999	loss:                     10.3839
+q_taken_mean:              6.6456	return_mean:               0.1950	return_std:                0.0778	target_mean:               6.7560
+td_error_abs:              1.4159	test_ep_length_mean:      50.0000	test_return_mean:          0.1462	test_return_std:           0.0000
+
+[INFO 14:30:17] my_main t_env: 450050 / 2050000
+[INFO 14:30:17] my_main Estimated time left: 1 days, 9 hours, 17 minutes, 47 seconds. Time passed: 8 hours, 53 minutes, 8 seconds
+[INFO 14:30:29] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/450050
+Saving best action with reward  0.391639763208762
+[INFO 15:26:35] my_main Recent Stats | t_env:     500000 | Episode:    10000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                16.0523	loss:                     10.6957
+q_taken_mean:              6.8011	return_mean:               0.1354	return_std:                0.0756	target_mean:               6.9036
+td_error_abs:              1.4366	test_ep_length_mean:      50.0000	test_return_mean:          0.1081	test_return_std:           0.0000
+
+[INFO 15:26:38] my_main t_env: 500050 / 2050000
+[INFO 15:26:38] my_main Estimated time left: 1 days, 5 hours, 6 minutes, 53 seconds. Time passed: 9 hours, 49 minutes, 29 seconds
+[INFO 15:26:51] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/500050
+Saving best action with reward  0.391639763208762
+[INFO 16:27:53] my_main Recent Stats | t_env:     550000 | Episode:    11000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                10.0045	loss:                      9.8539
+q_taken_mean:              6.8948	return_mean:               0.2349	return_std:                0.0762	target_mean:               6.9070
+td_error_abs:              1.2024	test_ep_length_mean:      50.0000	test_return_mean:          0.0750	test_return_std:           0.0000
+
+[INFO 16:27:57] my_main t_env: 550050 / 2050000
+[INFO 16:27:57] my_main Estimated time left: 1 days, 6 hours, 39 minutes, 21 seconds. Time passed: 10 hours, 50 minutes, 48 seconds
+[INFO 16:28:17] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/550050
+Saving best action with reward  0.45569900549443143
+[INFO 17:29:06] my_main Recent Stats | t_env:     600000 | Episode:    12000
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 8.2055	loss:                      9.5611
+q_taken_mean:              6.8071	return_mean:               0.4523	return_std:                0.1018	target_mean:               6.7841
+td_error_abs:              1.1995	test_ep_length_mean:      50.0000	test_return_mean:          0.0937	test_return_std:           0.0000
+
+[INFO 17:29:09] my_main t_env: 600050 / 2050000
+[INFO 17:29:09] my_main Estimated time left: 1 days, 5 hours, 34 minutes, 32 seconds. Time passed: 11 hours, 52 minutes, 0 seconds
+[INFO 17:29:22] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/600050
+Saving best action with reward  0.6576081833690355
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 18:31:05] my_main Recent Stats | t_env:     650021 | Episode:    13002
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                10.2580	loss:                      9.4010
+q_taken_mean:              6.6204	return_mean:               0.2606	return_std:                0.0310	target_mean:               6.6273
+td_error_abs:              1.2608	test_ep_length_mean:      50.0000	test_return_mean:          0.1307	test_return_std:           0.0000
+
+[INFO 18:31:09] my_main t_env: 650071 / 2050000
+[INFO 18:31:09] my_main Estimated time left: 1 days, 4 hours, 55 minutes, 28 seconds. Time passed: 12 hours, 54 minutes, 0 seconds
+[INFO 18:31:30] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/650071
+Saving best action with reward  0.8402669060537629
+[INFO 19:33:41] my_main Recent Stats | t_env:     700021 | Episode:    14002
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                16.1523	loss:                     10.5733
+q_taken_mean:              7.0414	return_mean:               0.4493	return_std:                0.1655	target_mean:               7.0924
+td_error_abs:              1.4246	test_ep_length_mean:      50.0000	test_return_mean:          0.1579	test_return_std:           0.0000
+
+[INFO 19:33:45] my_main t_env: 700071 / 2050000
+[INFO 19:33:45] my_main Estimated time left: 1 days, 4 hours, 10 minutes, 2 seconds. Time passed: 13 hours, 56 minutes, 36 seconds
+[INFO 19:34:05] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/700071
+Saving best action with reward  0.8402669060537629
+[INFO 20:40:58] my_main Recent Stats | t_env:     750021 | Episode:    15002
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                18.8272	loss:                     11.3522
+q_taken_mean:              7.4709	return_mean:               0.3994	return_std:                0.1433	target_mean:               7.5387
+td_error_abs:              1.4547	test_ep_length_mean:      50.0000	test_return_mean:          0.2289	test_return_std:           0.0000
+
+[INFO 20:41:02] my_main t_env: 750071 / 2050000
+[INFO 20:41:02] my_main Estimated time left: 1 days, 5 hours, 9 minutes, 8 seconds. Time passed: 15 hours, 3 minutes, 53 seconds
+[INFO 20:41:19] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/750071
+Saving best action with reward  0.8402669060537629
+[INFO 21:47:37] my_main Recent Stats | t_env:     800021 | Episode:    16002
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                17.0590	loss:                     13.1232
+q_taken_mean:              7.8349	return_mean:               0.3114	return_std:                0.0988	target_mean:               7.9262
+td_error_abs:              1.6174	test_ep_length_mean:      50.0000	test_return_mean:          0.2673	test_return_std:           0.0000
+
+[INFO 21:47:41] my_main t_env: 800071 / 2050000
+[INFO 21:47:41] my_main Estimated time left: 1 days, 3 hours, 46 minutes, 14 seconds. Time passed: 16 hours, 10 minutes, 32 seconds
+[INFO 21:48:01] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/800071
+Saving best action with reward  0.8402669060537629
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 22:50:39] my_main Recent Stats | t_env:     850039 | Episode:    17015
+ep_length_mean:           49.9905	epsilon:                   0.0500	grad_norm:                18.9491	loss:                     14.7035
+q_taken_mean:              8.2960	return_mean:               0.2547	return_std:                0.1027	target_mean:               8.4137
+td_error_abs:              1.6982	test_ep_length_mean:      50.0000	test_return_mean:          0.2936	test_return_std:           0.0000
+
+[INFO 22:50:42] my_main t_env: 850089 / 2050000
+[INFO 22:50:42] my_main Estimated time left: 1 days, 1 hours, 11 minutes, 51 seconds. Time passed: 17 hours, 13 minutes, 34 seconds
+[INFO 22:50:56] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/850089
+Saving best action with reward  0.8521739030570488
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 23:56:38] my_main Recent Stats | t_env:     900077 | Episode:    18083
+ep_length_mean:           47.6984	epsilon:                   0.0500	grad_norm:                16.2656	loss:                     15.7595
+q_taken_mean:              8.6189	return_mean:               0.4315	return_std:                0.1721	target_mean:               8.7142
+td_error_abs:              1.7373	test_ep_length_mean:      50.0000	test_return_mean:          0.2718	test_return_std:           0.0001
+
+Goal Reached!
+[INFO 23:56:41] my_main t_env: 900116 / 2050000
+[INFO 23:56:41] my_main Estimated time left: 1 days, 1 hours, 16 minutes, 34 seconds. Time passed: 18 hours, 19 minutes, 32 seconds
+[INFO 23:56:57] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/900116
+Saving best action with reward  0.8710917982451925
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 01:00:28] my_main t_env: 950121 / 2050000
+[INFO 01:00:28] my_main Estimated time left: 23 hours, 22 minutes, 50 seconds. Time passed: 19 hours, 23 minutes, 19 seconds
+[INFO 01:00:46] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/950121
+Saving best action with reward  0.8710917982451925
+[INFO 01:00:46] my_main Recent Stats | t_env:     950121 | Episode:    19201
+ep_length_mean:           48.9359	epsilon:                   0.0500	grad_norm:                10.8221	loss:                     15.7980
+q_taken_mean:              8.6030	return_mean:               0.5027	return_std:                0.1450	target_mean:               8.6573
+td_error_abs:              1.6787	test_ep_length_mean:      50.0000	test_return_mean:          0.2730	test_return_std:           0.0001
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 02:03:33] my_main t_env: 1000131 / 2050000
+[INFO 02:03:33] my_main Estimated time left: 22 hours, 4 minutes, 17 seconds. Time passed: 20 hours, 26 minutes, 24 seconds
+[INFO 02:03:52] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1000131
+Saving best action with reward  0.8710917982451925
+[INFO 02:03:52] my_main Recent Stats | t_env:    1000131 | Episode:    20206
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                10.8205	loss:                     16.4245
+q_taken_mean:              8.5544	return_mean:               0.4660	return_std:                0.1518	target_mean:               8.6104
+td_error_abs:              1.7593	test_ep_length_mean:      50.0000	test_return_mean:          0.3508	test_return_std:           0.0001
+
+[INFO 03:05:14] my_main t_env: 1050131 / 2050000
+[INFO 03:05:14] my_main Estimated time left: 20 hours, 33 minutes, 36 seconds. Time passed: 21 hours, 28 minutes, 5 seconds
+[INFO 03:05:33] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1050131
+Saving best action with reward  0.8710917982451925
+[INFO 03:05:33] my_main Recent Stats | t_env:    1050131 | Episode:    21206
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                14.9178	loss:                     17.0464
+q_taken_mean:              8.5539	return_mean:               0.1318	return_std:                0.0484	target_mean:               8.6254
+td_error_abs:              1.8335	test_ep_length_mean:      50.0000	test_return_mean:          0.3202	test_return_std:           0.0001
+
+[INFO 04:05:01] my_main t_env: 1100131 / 2050000
+[INFO 04:05:01] my_main Estimated time left: 18 hours, 55 minutes, 42 seconds. Time passed: 22 hours, 27 minutes, 52 seconds
+[INFO 04:05:21] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1100131
+Saving best action with reward  0.8710917982451925
+[INFO 04:05:21] my_main Recent Stats | t_env:    1100131 | Episode:    22206
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                15.6291	loss:                     16.8620
+q_taken_mean:              8.6106	return_mean:               0.2297	return_std:                0.1064	target_mean:               8.6860
+td_error_abs:              1.8847	test_ep_length_mean:      50.0000	test_return_mean:          0.3136	test_return_std:           0.0000
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 05:05:36] my_main t_env: 1150180 / 2050000
+[INFO 05:05:36] my_main Estimated time left: 18 hours, 9 minutes, 6 seconds. Time passed: 23 hours, 28 minutes, 27 seconds
+[INFO 05:05:48] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1150180
+Saving best action with reward  0.8710917982451925
+[INFO 05:05:48] my_main Recent Stats | t_env:    1150180 | Episode:    23208
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                16.7953	loss:                     17.1762
+q_taken_mean:              8.7742	return_mean:               0.1875	return_std:                0.1558	target_mean:               8.8331
+td_error_abs:              1.8996	test_ep_length_mean:      50.0000	test_return_mean:          0.3110	test_return_std:           0.0000
+
+[INFO 06:07:39] my_main t_env: 1200180 / 2050000
+[INFO 06:07:39] my_main Estimated time left: 17 hours, 34 minutes, 42 seconds. Time passed: 1 days, 30 minutes, 30 seconds
+[INFO 06:07:58] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1200180
+Saving best action with reward  0.8710917982451925
+[INFO 06:07:58] my_main Recent Stats | t_env:    1200180 | Episode:    24208
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                17.6743	loss:                     17.4889
+q_taken_mean:              8.8201	return_mean:               0.3897	return_std:                0.1174	target_mean:               8.8840
+td_error_abs:              1.9161	test_ep_length_mean:      50.0000	test_return_mean:          0.2665	test_return_std:           0.0011
+
+[INFO 07:05:58] my_main t_env: 1250180 / 2050000
+[INFO 07:05:58] my_main Estimated time left: 15 hours, 32 minutes, 45 seconds. Time passed: 1 days, 1 hours, 28 minutes, 49 seconds
+[INFO 07:06:11] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1250180
+Saving best action with reward  0.8710917982451925
+[INFO 07:06:11] my_main Recent Stats | t_env:    1250180 | Episode:    25208
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                16.1761	loss:                     17.7427
+q_taken_mean:              8.8614	return_mean:               0.2657	return_std:                0.1373	target_mean:               8.9087
+td_error_abs:              1.9087	test_ep_length_mean:      50.0000	test_return_mean:          0.1667	test_return_std:           0.0011
+
+Goal Reached!
+[INFO 08:06:50] my_main t_env: 1300227 / 2050000
+[INFO 08:06:50] my_main Estimated time left: 15 hours, 11 minutes, 56 seconds. Time passed: 1 days, 2 hours, 29 minutes, 41 seconds
+[INFO 08:07:10] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1300227
+Saving best action with reward  0.8710917982451925
+[INFO 08:07:10] my_main Recent Stats | t_env:    1300227 | Episode:    26209
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                14.1502	loss:                     16.6590
+q_taken_mean:              8.8879	return_mean:               0.5143	return_std:                0.0898	target_mean:               8.9032
+td_error_abs:              1.7512	test_ep_length_mean:      50.0000	test_return_mean:          0.2666	test_return_std:           0.0019
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 09:05:14] my_main t_env: 1350265 / 2050000
+[INFO 09:05:14] my_main Estimated time left: 13 hours, 36 minutes, 38 seconds. Time passed: 1 days, 3 hours, 28 minutes, 5 seconds
+[INFO 09:05:31] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1350265
+Saving best action with reward  0.8710917982451925
+[INFO 09:05:31] my_main Recent Stats | t_env:    1350265 | Episode:    27211
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                12.2333	loss:                     16.3031
+q_taken_mean:              8.7737	return_mean:               0.1172	return_std:                0.1126	target_mean:               8.7587
+td_error_abs:              1.6691	test_ep_length_mean:      50.0000	test_return_mean:          0.3615	test_return_std:           0.0054
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 10:09:37] my_main t_env: 1400273 / 2050000
+[INFO 10:09:37] my_main Estimated time left: 13 hours, 56 minutes, 26 seconds. Time passed: 1 days, 4 hours, 32 minutes, 28 seconds
+[INFO 10:09:57] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1400273
+Saving best action with reward  0.8710917982451925
+[INFO 10:09:57] my_main Recent Stats | t_env:    1400273 | Episode:    28215
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                11.0631	loss:                     15.3258
+q_taken_mean:              8.4804	return_mean:               0.3270	return_std:                0.1201	target_mean:               8.4792
+td_error_abs:              1.6177	test_ep_length_mean:      50.0000	test_return_mean:          0.4292	test_return_std:           0.0064
+
+[INFO 11:14:06] my_main t_env: 1450273 / 2050000
+[INFO 11:14:06] my_main Estimated time left: 12 hours, 53 minutes, 36 seconds. Time passed: 1 days, 5 hours, 36 minutes, 58 seconds
+[INFO 11:14:28] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1450273
+Saving best action with reward  0.8710917982451925
+[INFO 11:14:28] my_main Recent Stats | t_env:    1450273 | Episode:    29215
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                11.1772	loss:                     14.7633
+q_taken_mean:              8.3837	return_mean:               0.2828	return_std:                0.1544	target_mean:               8.3676
+td_error_abs:              1.5897	test_ep_length_mean:      50.0000	test_return_mean:          0.4016	test_return_std:           0.0054
+
+wandb: ERROR Error while calling W&B API: context deadline exceeded (<Response [500]>)
+wandb: ERROR Error while calling W&B API: context deadline exceeded (<Response [500]>)
+wandb: ERROR Error while calling W&B API: context deadline exceeded (<Response [500]>)
+wandb: ERROR Error while calling W&B API: context deadline exceeded (<Response [500]>)
+[INFO 12:21:19] my_main t_env: 1500273 / 2050000
+[INFO 12:21:19] my_main Estimated time left: 12 hours, 18 minutes, 59 seconds. Time passed: 1 days, 6 hours, 44 minutes, 10 seconds
+[INFO 12:21:39] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1500273
+Saving best action with reward  0.8710917982451925
+[INFO 12:21:39] my_main Recent Stats | t_env:    1500273 | Episode:    30215
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                10.3084	loss:                     13.9743
+q_taken_mean:              8.2691	return_mean:               0.3703	return_std:                0.0869	target_mean:               8.2458
+td_error_abs:              1.4899	test_ep_length_mean:      50.0000	test_return_mean:          0.4525	test_return_std:           0.0055
+
+[INFO 13:27:24] my_main t_env: 1550273 / 2050000
+[INFO 13:27:24] my_main Estimated time left: 11 hours, 23 seconds. Time passed: 1 days, 7 hours, 50 minutes, 15 seconds
+[INFO 13:27:43] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1550273
+Saving best action with reward  0.8710917982451925
+[INFO 13:27:43] my_main Recent Stats | t_env:    1550273 | Episode:    31215
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 9.1074	loss:                     12.8485
+q_taken_mean:              7.8881	return_mean:               0.5125	return_std:                0.1304	target_mean:               7.8659
+td_error_abs:              1.4798	test_ep_length_mean:      50.0000	test_return_mean:          0.4534	test_return_std:           0.0048
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 14:32:08] my_main t_env: 1600298 / 2050000
+[INFO 14:32:08] my_main Estimated time left: 9 hours, 41 minutes, 59 seconds. Time passed: 1 days, 8 hours, 54 minutes, 59 seconds
+[INFO 14:32:29] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1600298
+Saving best action with reward  0.8710917982451925
+[INFO 14:32:29] my_main Recent Stats | t_env:    1600298 | Episode:    32216
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 7.8764	loss:                     12.2498
+q_taken_mean:              7.5916	return_mean:               0.4707	return_std:                0.0885	target_mean:               7.5776
+td_error_abs:              1.4513	test_ep_length_mean:      50.0000	test_return_mean:          0.4152	test_return_std:           0.0012
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 15:35:33] my_main t_env: 1650311 / 2050000
+[INFO 15:35:33] my_main Estimated time left: 8 hours, 26 minutes, 47 seconds. Time passed: 1 days, 9 hours, 58 minutes, 24 seconds
+[INFO 15:35:54] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1650311
+Saving best action with reward  0.8710917982451925
+[INFO 15:35:54] my_main Recent Stats | t_env:    1650311 | Episode:    33218
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 7.8629	loss:                     11.7339
+q_taken_mean:              7.3161	return_mean:               0.3068	return_std:                0.1617	target_mean:               7.2914
+td_error_abs:              1.4154	test_ep_length_mean:      50.0000	test_return_mean:          0.4049	test_return_std:           0.0233
+
+Goal Reached!
+[INFO 16:42:53] my_main t_env: 1700341 / 2050000
+[INFO 16:42:53] my_main Estimated time left: 7 hours, 50 minutes, 34 seconds. Time passed: 1 days, 11 hours, 5 minutes, 44 seconds
+[INFO 16:43:08] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1700341
+Saving best action with reward  0.8710917982451925
+[INFO 16:43:09] my_main Recent Stats | t_env:    1700341 | Episode:    34219
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 6.6082	loss:                     10.7595
+q_taken_mean:              6.9067	return_mean:               0.4862	return_std:                0.1414	target_mean:               6.8928
+td_error_abs:              1.3927	test_ep_length_mean:      50.0000	test_return_mean:          0.4655	test_return_std:           0.0233
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 17:51:32] my_main t_env: 1750341 / 2050000
+[INFO 17:51:32] my_main Estimated time left: 6 hours, 51 minutes, 23 seconds. Time passed: 1 days, 12 hours, 14 minutes, 23 seconds
+[INFO 17:51:52] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1750341
+Saving best action with reward  0.8710917982451925
+[INFO 17:51:52] my_main Recent Stats | t_env:    1750341 | Episode:    35222
+ep_length_mean:           49.7238	epsilon:                   0.0500	grad_norm:                 5.9451	loss:                      9.7203
+q_taken_mean:              6.5087	return_mean:               0.4776	return_std:                0.1120	target_mean:               6.4934
+td_error_abs:              1.3922	test_ep_length_mean:      50.0000	test_return_mean:          0.4640	test_return_std:           0.0233
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 19:05:05] my_main t_env: 1800347 / 2050000
+[INFO 19:05:05] my_main Estimated time left: 6 hours, 7 minutes, 15 seconds. Time passed: 1 days, 13 hours, 27 minutes, 57 seconds
+[INFO 19:05:28] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1800347
+Saving best action with reward  0.8710917982451925
+[INFO 19:05:28] my_main Recent Stats | t_env:    1800347 | Episode:    36223
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 5.0003	loss:                      9.3448
+q_taken_mean:              6.2867	return_mean:               0.2747	return_std:                0.1117	target_mean:               6.2797
+td_error_abs:              1.3918	test_ep_length_mean:      50.0000	test_return_mean:          0.4493	test_return_std:           0.0233
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 20:14:28] my_main t_env: 1850366 / 2050000
+[INFO 20:14:28] my_main Estimated time left: 4 hours, 36 minutes, 54 seconds. Time passed: 1 days, 14 hours, 37 minutes, 19 seconds
+[INFO 20:14:49] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1850366
+Saving best action with reward  0.8710917982451925
+[INFO 20:14:49] my_main Recent Stats | t_env:    1850366 | Episode:    37225
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 5.6136	loss:                      9.0880
+q_taken_mean:              6.2201	return_mean:               0.4859	return_std:                0.1205	target_mean:               6.2228
+td_error_abs:              1.3828	test_ep_length_mean:      50.0000	test_return_mean:          0.4947	test_return_std:           0.0233
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 21:26:48] my_main t_env: 1900398 / 2050000
+[INFO 21:26:48] my_main Estimated time left: 3 hours, 36 minutes, 15 seconds. Time passed: 1 days, 15 hours, 49 minutes, 39 seconds
+[INFO 21:27:07] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1900398
+Saving best action with reward  0.8710917982451925
+[INFO 21:27:07] my_main Recent Stats | t_env:    1900398 | Episode:    38227
+ep_length_mean:           49.4221	epsilon:                   0.0500	grad_norm:                 6.2966	loss:                      8.6139
+q_taken_mean:              6.0989	return_mean:               0.5240	return_std:                0.1291	target_mean:               6.1212
+td_error_abs:              1.3751	test_ep_length_mean:      50.0000	test_return_mean:          0.5557	test_return_std:           0.0002
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 22:36:02] my_main t_env: 1950423 / 2050000
+[INFO 22:36:02] my_main Estimated time left: 2 hours, 17 minutes, 50 seconds. Time passed: 1 days, 16 hours, 58 minutes, 54 seconds
+[INFO 22:36:25] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/1950423
+Saving best action with reward  0.8844518639880149
+[INFO 22:36:25] my_main Recent Stats | t_env:    1950423 | Episode:    39239
+ep_length_mean:           48.9710	epsilon:                   0.0500	grad_norm:                 6.2737	loss:                      8.4021
+q_taken_mean:              6.0226	return_mean:               0.5475	return_std:                0.1438	target_mean:               6.0365
+td_error_abs:              1.3346	test_ep_length_mean:      50.0000	test_return_mean:          0.5489	test_return_std:           0.0002
+
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+Goal Reached!
+[INFO 23:49:54] my_main t_env: 2000465 / 2050000
+[INFO 23:49:54] my_main Estimated time left: 1 hours, 13 minutes, 6 seconds. Time passed: 1 days, 18 hours, 12 minutes, 45 seconds
+[INFO 23:50:15] my_main Saving models to results/models/qmix_seed369677453_None_2024-11-19 05:37:08.274764/2000465
+Saving best action with reward  0.8844518639880149
+[INFO 23:50:15] my_main Recent Stats | t_env:    2000465 | Episode:    40240
+ep_length_mean:           50.0000	epsilon:                   0.0500	grad_norm:                 6.7386	loss:                      8.1623
+q_taken_mean:              5.9092	return_mean:               0.5168	return_std:                0.1135	target_mean:               5.9293
+td_error_abs:              1.3230	test_ep_length_mean:      50.0000	test_return_mean:          0.5512	test_return_std:           0.0012
+
+[INFO 01:00:00] my_main Finished Training
+Exiting Main
+Stopping all threads
+Thread Thread-1 is alive! Is daemon: False
+Thread joined
+Thread MsgRouterThr is alive! Is daemon: True
+Thread joined
+Thread ChkStopThr is alive! Is daemon: True
+Thread joined
+Thread NetStatThr is alive! Is daemon: True
+Thread joined
+Thread IntMsgThr is alive! Is daemon: True
+Thread joined
+Exiting script
+[DEBUG 01:00:05] my_main Finished after 1 day, 19:22:59.
+[INFO 01:00:05] pymarl Completed after 1 day, 19:22:59
