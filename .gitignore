@@ -11,3 +11,4 @@ robotouille.egg-info
 /slurm_log/
 wandb/*
 !wandb/wandb_group.py
+.vscode/

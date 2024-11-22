@@ -14,8 +14,8 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
     """
 
     def __init__(self, env, renderer, n_agents):
-        self.env = env
-        self.pddl_env = env
+        self.env = env # gym environment
+        self.pddl_env = env # robotouille wrapper environment, not pddl environment just yet
         self.n_agents = n_agents
         self.max_steps = 50
         self.episode_reward = 0
@@ -96,6 +96,11 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 self.pddl_env.prev_step = (obs, reward, done, info)
 
                 rewards.append(reward)
+
+            # NOTE: We need to do this because when we filter for vaild moves during each step, 
+            # we need to have player grid locations maintained in the renderer
+            self.pddl_env.renderer.canvas.update_all_player_pos(obs.literals)
+            
             self._wrap_env()
 
         self.episode_reward += sum(rewards)
