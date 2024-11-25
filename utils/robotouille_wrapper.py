@@ -32,7 +32,7 @@ class RobotouilleWrapper(gym.Wrapper):
         # The previous step of the environment.
         # This is useful for the interactive mode and for cases where nothing changes (e.g. noop)
         self.prev_step = None
-        # The number of timesteps that have passed.
+        # The number of timesteps that have passed. For one timestep, all players have taken an action.
         self.timesteps = 0
         # The state of the environment (for non-PDDL states like cut and cook)
         self.state = {}
