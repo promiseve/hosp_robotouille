@@ -51,6 +51,8 @@ class RobotouilleCanvas:
         ]
         # print(f"players_pose: {self.players_pose}")
 
+        self._init_players_pose = deepcopy(self.players_pose) # need to maintain this for when environment is reset
+
         grid_dimensions = np.array([len(layout[0]), len(layout)])
         # print(f"grid_dimensions: {grid_dimensions}")
         # The scaling factor for a grid square
@@ -59,6 +61,8 @@ class RobotouilleCanvas:
         # A dictionary which maps image names to loaded images
         self.asset_directory = {}
         # print(f"asset_directory: {self.asset_directory}")
+        # print(f"Station positions: {self._get_station_locations(layout)}")
+
 
     def __deepcopy__(self, memo):
         """
@@ -73,6 +77,10 @@ class RobotouilleCanvas:
         new_canvas.asset_directory = self.asset_directory # References to PyGame surfaces
         memo[id(self)] = new_canvas
         return new_canvas
+    
+    def reset_player_positions(self):
+        """Resets the player positions to their initial positions, used when resetting the environment"""
+        self.players_pose = deepcopy(self._init_players_pose)
 
     def _get_station_position(self, station_name):
         """
@@ -389,6 +397,7 @@ class RobotouilleCanvas:
         return station_locations
 
     def _get_player_positions(self, player_index):
+        """Returns positions of all players except the player at player_index"""
         player_positions = []
         for i in range(len(self.players_pose)):
             if i != player_index:
@@ -397,7 +406,7 @@ class RobotouilleCanvas:
         return player_positions
 
     def _move_player_to_station(
-        self, player_index, player_position, station_position, layout, test=False
+        self, player_index, player_position, station_position, layout, test=False, verbose=False
     ):
         """
         Moves the player from their current position to a position adjacent to a station using BFS.
@@ -469,6 +478,12 @@ class RobotouilleCanvas:
                 if next_position != prev_position:
                     queue.append((next_position, curr_position))
 
+        if verbose:
+            print(f"Player poses: {self.players_pose}")
+            print(f"Tried to move player {player_index} from {player_position} to {station_position}")
+            # print all station positions
+            print(f"Station positions: {self._get_station_locations(layout)}")
+
         assert False, "Player could not be moved to station"
 
     def _check_selected(self, obs, player_index):
@@ -530,7 +545,7 @@ class RobotouilleCanvas:
                 player_index = self._get_player_index(literal)
                 player_pos = self.players_pose[player_index]["position"]
                 player_pos, player_direction = self._move_player_to_station(
-                    player_index, player_pos, tuple(station_pos), self.layout, test=True
+                    player_index, player_pos, tuple(station_pos), self.layout, test=True, verbose=False
                 )
                 # print(
                 #     f"Tested new position for player {player_index}: {player_pos}, direction: {player_direction}"
@@ -549,9 +564,8 @@ class RobotouilleCanvas:
     def _update_player_pos(self, player_index, initial_pos, station_position):
         """"includes both moving and state update"""
         player_pos, player_direction = self._move_player_to_station(
-                    player_index, initial_pos, station_position, self.layout
+                    player_index, initial_pos, station_position, self.layout, verbose=True
                 )
-        # print(f"  After move_player_to_station: {player_pos}")
         self.players_pose[player_index]["position"] = player_pos # NOTE: This updates the canvas state but is also relied on for the RL state
         self.players_pose[player_index]["direction"] = player_direction # NOTE: This updates the canvas state but is also relied on for the RL state
 
@@ -593,7 +607,7 @@ class RobotouilleCanvas:
                     player_index, initial_pos, tuple(station_pos)
                 )
 
-                # print(f"  After move_player_to_station: {player_pos}")
+                # print(f"  After moving player {player_index} : {player_pos}")
 
                 # Check if the player is on a CPR stool
                 cpr_stool_offset = 0.2 if player_station == "cpr_stool" else 0.0

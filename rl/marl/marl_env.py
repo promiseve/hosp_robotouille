@@ -192,13 +192,18 @@ class MARLEnv(gym.Env):
             action (int): The index of the action in the shortened action space.
 
         """
+        # TODO: Debug: either the valid actions are not maintained correctly or they're being processed wrong here
+        # - It's possible that the canvas environment is not reset after each episode with correct positions
         # print("valid actions", self.valid_actions)
         # print("index", agent_index)
+        # print("action", action)
 
         if self.shortened_action_truths[agent_index][action] == 0.0:
-            # print("invalid: " + self.shortened_action_names[action])
+            # print(f"invalid: {str(action)} for agent {agent_index}")
             return "invalid"
         attempted_action = self.shortened_action_names[agent_index][action]
+
+        # print("attempted action", attempted_action)
 
         actions_truth = np.isin(
             np.array(self.all_actions), np.array(self.valid_actions)

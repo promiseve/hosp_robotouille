@@ -110,6 +110,7 @@ def create_action(env, obs, action, renderer):
             f"Your action [{action}] is malformatted."
         )
     except AssertionError:
+        print("INVALID MOVE ACTION DETECTED: ", action)
         raise robotouille_exceptions.RobotouilleInvalidActionException(
             f"Your action [{action}] is invalid."
         )
