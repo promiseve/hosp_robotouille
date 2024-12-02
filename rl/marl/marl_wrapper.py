@@ -14,14 +14,16 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
     """
 
     def __init__(self, env, renderer, n_agents):
-        self.env = env # gym environment
-        self.pddl_env = env # robotouille wrapper environment, not pddl environment just yet
+        self.env = env  # gym environment
+        self.pddl_env = (
+            env  # robotouille wrapper environment, not pddl environment just yet
+        )
         self.n_agents = n_agents
         self.max_steps = 50
         self.episode_reward = 0
         self.renderer = renderer
         self._wrap_env()
-        
+
     def _wrap_env(self):
         """
         Wrap the environment to make it compatible with epymarl.
@@ -29,8 +31,9 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         expanded_truths, expanded_states = pddlgym_utils.expand_state(
             self.pddl_env.prev_step[0].literals, self.pddl_env.prev_step[0].objects
         )
+        print("expanded_states", expanded_states)
 
-        valid_actions = get_valid_moves( # Potential bug: the valid actions for the a state are the valid actions at the end of previous step - error prone
+        valid_actions = get_valid_moves(  # Potential bug: the valid actions for the a state are the valid actions at the end of previous step - error prone
             self.pddl_env, self.pddl_env.prev_step[0], self.renderer
         )
         all_actions = list(
@@ -40,7 +43,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         )
 
         # if the environment is a RobotouilleWrapper, we need to change it to MARLEnv. Otherwise, just step the MARLEnv
-        # TODO: How to incorporate other information about the state from robotouille wrapper? 
+        # TODO: How to incorporate other information about the state from robotouille wrapper?
         # What is the required format for HospitalMARLEnv?
         if not isinstance(self.env, HospitalMARLEnv):
             self.env = HospitalMARLEnv(
@@ -86,7 +89,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 #     self.pddl_env.timesteps += 1
                 # info["timesteps"] = self.pddl_env.timesteps
                 obs, _, done, info = self.pddl_env.step("noop", interactive)
-                reward = -0.1 # TODO: lets not make this hardcoded
+                reward = -0.1  # TODO: lets not make this hardcoded
             else:
                 action = str(action)
                 obs, reward, done, info = self.pddl_env.step(action, interactive)
@@ -98,23 +101,23 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 # /194 for givemedicineequal, /217 for givemedicinespec #already add 4 from the top
                 # /91 for giverescuebreaths, /99 for giverescuebreathsspec#already add 4 from the top
 
-                reward = (reward + 0.01) / 217 # TODO: lets not make this hardcoded
+                reward = (reward + 0.01) / 217  # TODO: lets not make this hardcoded
 
                 self.pddl_env.prev_step = (obs, reward, done, info)
 
                 rewards.append(reward)
 
-            # NOTE: We need to do this because when we filter for vaild moves during each step, 
+            # NOTE: We need to do this because when we filter for vaild moves during each step,
             # we need to have player grid locations maintained in the renderer
             # TODO: Maybe have this inside robotouille_wrapper.py?
             self.pddl_env.renderer.canvas.update_all_player_pos(obs.literals)
-            
+
             self._wrap_env()
 
         self.episode_reward += sum(rewards)
 
         return (
-            self.env.state, # HospitalMARLEnv state
+            self.env.state,  # HospitalMARLEnv state
             rewards,
             done,
             info,
