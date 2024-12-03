@@ -18,7 +18,13 @@ class MARLEnv(gym.Env):
         LARGE = 3
 
     def __init__(
-        self, n_agents, expanded_truths, expanded_states, valid_actions, all_actions
+        self,
+        n_agents,
+        expanded_truths,
+        expanded_states,
+        valid_actions,
+        all_actions,
+        json,
     ):
         """
         Initializes the converter based on expanded_truths, expanded_states, valid_actions, and all_actions.
@@ -37,6 +43,7 @@ class MARLEnv(gym.Env):
         self.all_actions = all_actions
         self.expanded_truths = expanded_truths
         self.expanded_states = expanded_states
+        self.json = json
         # Get shortened action space and shortened observation space
         self.shortened_action_truths, self.shortened_action_names = (
             self._get_action_space()

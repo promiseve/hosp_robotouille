@@ -19,7 +19,13 @@ class HospitalMARLEnv(MARLEnv):
         LARGE = 3
 
     def __init__(
-        self, n_agents, expanded_truths, expanded_states, valid_actions, all_actions
+        self,
+        n_agents,
+        expanded_truths,
+        expanded_states,
+        valid_actions,
+        all_actions,
+        json,
     ):
         """
         Initializes the converter based on expanded_truths, expanded_states, valid_actions, and all_actions.
@@ -32,7 +38,7 @@ class HospitalMARLEnv(MARLEnv):
         """
 
         super().__init__(
-            n_agents, expanded_truths, expanded_states, valid_actions, all_actions
+            n_agents, expanded_truths, expanded_states, valid_actions, all_actions, json
         )
 
     def step(self, expanded_truths, valid_actions):
@@ -69,7 +75,6 @@ class HospitalMARLEnv(MARLEnv):
 
         shortened_expanded_truths = []
         shortened_expanded_states = []
-        # print("expanded_states", self.expanded_states)
         for truth, state in zip(self.expanded_truths, self.expanded_states):
             predicate = state.predicate.name
 
@@ -87,6 +92,19 @@ class HospitalMARLEnv(MARLEnv):
                 shortened_expanded_truths.append(truth)
                 shortened_expanded_states.append(state)
 
+        # Go through the keys in the player_info dictionary and add the skill level to the shortened_expanded_truths. If the value is 1, then we treat them as a beginner. If it is more than 1, we treat them as an expert.
+        player_info = self.json["config"]["player_info"]
+        for key in player_info:
+            for skill in player_info[key]:
+                if player_info[key][skill] == 1:
+                    shortened_expanded_truths.append(1.0)
+                    shortened_expanded_truths.append(0.0)
+                else:
+                    shortened_expanded_truths.append(0.0)
+                    shortened_expanded_truths.append(1.0)
+                shortened_expanded_states.append(f"{key}_{skill}_beginner")
+                shortened_expanded_states.append(f"{key}_{skill}_expert")
+        print(shortened_expanded_states)
         return shortened_expanded_truths, shortened_expanded_states
 
     def _get_action_space(self):

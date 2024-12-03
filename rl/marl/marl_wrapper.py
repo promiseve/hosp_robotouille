@@ -13,11 +13,12 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
     This class is a wrapper around the Robotouille environment to make it compatible with stable-baselines3. It simplifies the environment for the RL agent by converting the state and action space to a format that is easier for the RL agent to learn.
     """
 
-    def __init__(self, env, renderer, n_agents):
+    def __init__(self, env, json, renderer, n_agents):
         self.env = env  # gym environment
         self.pddl_env = (
             env  # robotouille wrapper environment, not pddl environment just yet
         )
+        self.json = json
         self.n_agents = n_agents
         self.max_steps = 50
         self.episode_reward = 0
@@ -52,6 +53,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
                 expanded_states,
                 valid_actions,
                 all_actions,
+                self.json,
             )
         else:
             self.env.step(expanded_truths, valid_actions)
