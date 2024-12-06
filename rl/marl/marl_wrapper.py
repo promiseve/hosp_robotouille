@@ -32,7 +32,6 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         expanded_truths, expanded_states = pddlgym_utils.expand_state(
             self.pddl_env.prev_step[0].literals, self.pddl_env.prev_step[0].objects
         )
-        print("expanded_states", expanded_states)
 
         valid_actions = get_valid_moves(  # Potential bug: the valid actions for the a state are the valid actions at the end of previous step - error prone
             self.pddl_env, self.pddl_env.prev_step[0], self.renderer
