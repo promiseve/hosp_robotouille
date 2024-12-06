@@ -96,15 +96,22 @@ class HospitalMARLEnv(MARLEnv):
         player_info = self.json["config"]["player_info"]
         for key in player_info:
             for skill in player_info[key]:
+                if player_info[key][skill] == 0:
+                    shortened_expanded_truths.append(1.0)
+                    shortened_expanded_truths.append(0.0)
+                    shortened_expanded_truths.append(0.0)
                 if player_info[key][skill] == 1:
+                    shortened_expanded_truths.append(0.0)
                     shortened_expanded_truths.append(1.0)
                     shortened_expanded_truths.append(0.0)
                 else:
                     shortened_expanded_truths.append(0.0)
+                    shortened_expanded_truths.append(0.0)
                     shortened_expanded_truths.append(1.0)
+
+                shortened_expanded_states.append(f"{key}_{skill}_unskilled")
                 shortened_expanded_states.append(f"{key}_{skill}_beginner")
                 shortened_expanded_states.append(f"{key}_{skill}_expert")
-        print(shortened_expanded_states)
         return shortened_expanded_truths, shortened_expanded_states
 
     def _get_action_space(self):

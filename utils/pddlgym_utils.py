@@ -9,16 +9,8 @@ import numpy as np
 PREDICATE_STRINGS = [
     # Identity Predicates
     "istable(?:station)",
-    "isstove(?:station)",
     "ispatient(?:station)",
     "isboard(?:station)",
-    "isbun(?:item)",
-    "islettuce(?:item)",
-    "iscuttable(?:item)",
-    "iscut(?:item)",
-    "ispatty(?:item)",
-    "iscookable(?:item)",
-    "iscooked(?:item)",
     "iscpr_kit(?:item)",
     "isusedforcpr(?:item)",
     "isusableforcpr(?:item)",
