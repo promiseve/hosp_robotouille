@@ -18,6 +18,7 @@ class MAHospital_robotouille(MultiAgentEnv):
         self.pddl_env = env
         self.renderer = renderer
         self.n_agents = env.num_players
+        #self.env = MARLWrapper(self.pddl_env, self.renderer, self.n_agents, config=config)
         self.env = MARLWrapper(self.pddl_env, self.renderer, self.n_agents)
 
         self.action_space = [

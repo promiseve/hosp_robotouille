@@ -1,3 +1,4 @@
+from argparse import Namespace
 from typing import List, Optional, Union
 import gym
 import pddlgym
@@ -7,6 +8,9 @@ from utils.robotouille_utils import get_valid_moves
 import utils.pddlgym_utils as pddlgym_utils
 import utils.robotouille_wrapper as robotouille_wrapper
 import wandb
+from communication.gnn import GCNComm
+import numpy as np
+import torch
 
 
 class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
@@ -16,29 +20,44 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
 
     def __init__(self, env, renderer, n_agents):
         wandb.login()
-        self.env = env
-        self.pddl_env = env
+        # Default configuration
+        self.config2 = {
+            "msg_hidden_dim": 64,
+            "num_layers": 3,
+            "msg_out_size": 32,
+            "comm_dist": 2,  # Default communication distance
+        }
+
+        self.env = env  # gym environment
+        self.pddl_env = env  # robotouille wrapper environment
         self.n_agents = n_agents
+        self.renderer = renderer
         self.max_steps = 50
         self.episode_reward = 0
-        self.renderer = renderer
-        # Configuration dictionary for tracking metrics
+
+        # Initialize GNN with the merged configuration
+        self.gnn = GCNComm(
+            input_shape=2, 
+            args=Namespace(**self.config2)  # Convert dict to Namespace
+        )
+
+        # Metrics configuration for tracking performance
         self.metrics_config = {
             "ep_rew_mean": None,  # Mean episode reward
             "total_timesteps": 0,  # Total number of timesteps
             "iterations": 0,  # Number of iterations
             "ep_len_mean": None,  # Mean episode length
-            "loss": None,  # Loss,
+            "loss": None,  # Loss
             "entropy_loss": None,  # Entropy loss
         }
 
         self._wrap_env()
 
-        # Initialize WandB with the metrics config
+        # Initialize WandB with metrics configuration
         wandb.init(
             project="6756-rl-experiments",
             config=self.metrics_config,
-            notes= "equalskilled_givemedicine_mappo"
+            notes="equalskilled_givemedicine_mappo",
         )
 
     def log_metrics(self, update_dict):
@@ -64,7 +83,7 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
         )
         all_actions = list(
             self.pddl_env.action_space.all_ground_literals(
-                self.pddl_env.prev_step[0], valid_only=False
+                self.pddl_env.prev_step[0], valid_only=True
             )
         )
 
@@ -82,64 +101,97 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
 
         self.observation_space = self.env.observation_space
 
+
     def step(self, actions=None, interactive=False, debug=False):
         """
         Take a step in the environment.
-
-        Returns:
-            state (list): The state of the environment after the step.
-            reward (float): The reward obtained from the step.
-            done (bool): Whether the episode is done.
-            truncated (bool): Whether the episode was truncated.
-            info (dict): A dictionary containing information about the environment.
         """
-
         rewards = []
-        for i in range(len(actions)):
-            action = self.env.unwrap_move(i, actions[i])
+        all_adj_matrices = []
+        done_flags = []
+        info_list = []
+        
+        for i, action in enumerate(actions):
+            # Unwrap and execute action
+            action_str = self.env.unwrap_move(i, action)
             if debug:
-                print(action)
-            if action == "invalid":
-                obs, reward, done, info = self.pddl_env.prev_step
-                obs, _, _, _ = self.pddl_env._change_selected_player(obs)
-                self.pddl_env.taken_actions.append("noop")
-                reward = 0
-                self.pddl_env.prev_step = (obs, reward, done, info)
-                rewards.append(reward)
-                if self.pddl_env._current_selected_player(obs) == "robot1":
-                    self.pddl_env.timesteps += 1
-                info["timesteps"] = self.pddl_env.timesteps
-            else:
-                action = str(action)
-                obs, reward, done, info = self.pddl_env.step(action, interactive)
-                # Reward .05 for correct action. .05 * 3 agents * 100 timesteps + max 35 reward = 50- cooking setup
-                # Reward .01 for correct action. .01 * 4 agents * 100 timesteps + max 50 after normalizing by dividing with timesteps in robotouille wrapper
-                #  reward = 50 - For hospital setup
-                # - cooking setup
-                # Scale between 0 to 1, 
-                #/194 for givemedicineequal, /217 for givemedicinespec #already add 4 from the top 
-                #/91 for giverescuebreaths, /99 for giverescuebreathsspec#already add 4 from the top
+                print(f"Agent {i} Action: {action_str}")
 
+            if action_str == "invalid":
+                result = self.pddl_env.prev_step
+                if len(result) == 4:
+                    obs, reward, done, info = result
+                elif len(result) > 4:
+                    obs, reward, done, info, *_ = result
+                else:
+                    raise ValueError(f"Unexpected step result: {result}")
+
+                reward = 0  # Assign zero reward for invalid actions
+            else:
+                result = self.pddl_env.step(action_str, interactive)
+                if len(result) == 4:
+                    obs, reward, done, info = result
+                elif len(result) > 4:
+                    obs, reward, done, info, *_ = result
+                else:
+                    raise ValueError(f"Unexpected step result: {result}")
+
+                # Normalize reward
                 reward = (reward + 0.01) / 194
 
-                self.pddl_env.prev_step = (obs, reward, done, info)
+            # Append results
+            rewards.append(reward)
+            done_flags.append(done)
+            info_list.append(info)
 
-                rewards.append(reward)
-            self._wrap_env()
+            # Update previous step for this agent
+            self.pddl_env.prev_step = (obs, reward, done, info)
 
-        wandb.log({"reward per step": sum(rewards)})
+            # Fetch dynamic positions of players and patient
+            self.pddl_env.renderer.canvas.update_all_player_pos(obs.literals)
+            player_positions = [
+                player["position"] for player in self.pddl_env.renderer.canvas.players_pose
+            ]
+            print(player_positions)
+            patient_position = self.pddl_env.renderer.canvas._get_station_position("patient_bed_station1")
+            print(f"Patient position: {patient_position}")
+            # Compute adjacency matrix
+            adj_matrix = self.compute_adjacency_matrix(player_positions, patient_position, self.config2)
+            all_adj_matrices.append(adj_matrix)
+
+            # Convert adjacency matrix to tensor
+            # Pass adjacency matrix and features to the GNN
+            adj_tensor = torch.tensor(adj_matrix, dtype=torch.float32)
+
+            #features_tensor = torch.tensor(self.get_agent_features(self.config), dtype=torch.float32)
+            #gnn_output = self.gnn(features_tensor, adj_tensor)
+
+            # Log GNN outputs
+            #wandb.log({
+            #    "gnn_output_mean": gnn_output.mean().item(),
+            #    f"adj_matrix_agent_{i}": wandb.Image(adj_matrix),
+            #})
+
+        # Combine done flags to decide overall episode termination
+        overall_done = any(done_flags)  # Adjust based on environment semantics
+
+        # Log cumulative rewards and adjacency matrices
+        wandb.log({
+            "reward_per_step": sum(rewards),
+            "adjacency_matrices": all_adj_matrices,
+        })
 
         self.episode_reward += sum(rewards)
-        if self.pddl_env.timesteps >= self.max_steps or done:
-            wandb.log({"reward per episode": self.episode_reward})
-            wandb.log({"timesteps": self.pddl_env.timesteps})
+        if self.pddl_env.timesteps >= self.max_steps or overall_done:
+            wandb.log({
+                "reward_per_episode": self.episode_reward,
+                "timesteps": self.pddl_env.timesteps,
+            })
 
-        return (
-            self.env.state,
-            rewards,
-            done,
-            info,
-        )
+        return self.env.state, rewards, overall_done, {"info_per_agent": info_list}
+
+
+
 
     def reset(self, seed=42, options=None):
         """
@@ -157,3 +209,4 @@ class MARLWrapper(robotouille_wrapper.RobotouilleWrapper):
 
     def render(self, *args, **kwargs):
         self.pddl_env.render()
+

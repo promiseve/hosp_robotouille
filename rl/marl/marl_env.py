@@ -96,6 +96,15 @@ class MARLEnv(gym.Env):
             self.state_names[i] = (
                 self.shortened_expanded_states + self.shortened_action_names[i]
             )
+
+        # Define dummy values for now
+        obs = self.state
+        reward = 0  # Example reward; replace with actual logic
+        done = False  # Example completion flag
+        info = {}  # Additional metadata
+
+        return obs, reward, done, info
+        
         # self.print_state()
 
     def _get_observation_space(self, mode=observation_size.LARGE):

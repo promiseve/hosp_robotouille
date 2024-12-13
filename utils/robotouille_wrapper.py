@@ -1,11 +1,20 @@
+from argparse import Namespace
 import gym
-import pddlgym
+import pddlgym 
+
+import utils.pddlgym_utils as pddlgym_utils
+
 from utils.hosp_reward_handler import HospRewardHandler
 from utils.robotouille_reward_handler import RobotouilleRewardHandler
 import utils.robotouille_utils as robotouille_utils
 import utils.pddlgym_utils as pddlgym_utils
 from environments.env_generator.object_enums import Item
-
+import numpy as np
+import torch
+from communication.gnn import GCNComm
+from argparse import Namespace
+from typing import List, Optional, Union
+import renderer
 
 class RobotouilleWrapper(gym.Wrapper):
     """
@@ -27,7 +36,10 @@ class RobotouilleWrapper(gym.Wrapper):
             config (dict): A configuration JSON with custom values
         """
         super(RobotouilleWrapper, self).__init__(env)
+        super().__init__(env)
+
         # The PDDLGym environment.
+        print("env in robotouille_wrapper init:" + str(env))
         self.env = env
         # The previous step of the environment.
         # This is useful for the interactive mode and for cases where nothing changes (e.g. noop)
@@ -61,6 +73,71 @@ class RobotouilleWrapper(gym.Wrapper):
         print("\n")
         robotouille_utils.print_actions(self.env, self.prev_step[0], self.renderer)
         print(f"True Predicates: {expanded_truths.sum()}")
+    
+    def get_config(self):
+        """
+        Returns the configuration dictionary.
+        """
+        return self.config
+    
+    def get_agent_features(self):
+        """
+        Generate agent features for all players.
+
+        Args:
+            config (dict): Configuration dictionary.
+
+        Returns:
+            np.ndarray: Array of agent features for all players.
+        """
+        agent_features = []
+        for player in self.renderer.canvas.players_pose:
+            position = player["position"]
+            direction = player["direction"]
+            energy = self.state.get(player["name"], {}).get("energy", self.config["energy_levels"]["max"])
+            compress_skill = self.config.get("player_info", {}).get(player["name"], {}).get("compresschest", 0)
+            breath_skill = self.config.get("player_info", {}).get(player["name"], {}).get("giverescuebreaths", 0)
+
+            features = [
+                position[0], position[1],  # x, y
+                direction[0], direction[1],  # direction
+                energy,  # current energy level
+                compress_skill,  # compress chest skill
+                breath_skill,  # give rescue breaths skill
+            ]
+            agent_features.append(features)
+
+        return np.array(agent_features)
+
+
+
+    def compute_adjacency_matrix(self, player_positions, patient_position, config2):
+        """
+        Compute the adjacency matrix based on player positions and the patient position.
+        """
+        # Combine all positions for adjacency matrix
+        all_positions = player_positions + [patient_position]
+        num_nodes = len(all_positions)
+
+        # Initialize adjacency matrix
+        adj_matrix = np.zeros((num_nodes, num_nodes), dtype=float)
+
+        # Compute pairwise distances and populate adjacency matrix
+        for i in range(num_nodes):
+            for j in range(i + 1, num_nodes):  # Upper triangle only
+                if all_positions[i] is None or all_positions[j] is None:
+                    continue  # Skip invalid positions
+                distance = np.linalg.norm(
+                    np.array(all_positions[i]) - np.array(all_positions[j])
+                )
+                # Use `self.config` correctly
+                if distance <= config2.get("comm_dist", 2):
+                    adj_matrix[i][j] = adj_matrix[j][i] = 1
+
+        print(f"Adjacency matrix shape: {adj_matrix.shape}")
+        print(f"Adjacency matrix: {adj_matrix}")
+        return adj_matrix
+
 
     def _handle_action(self, action):
         """
@@ -68,6 +145,9 @@ class RobotouilleWrapper(gym.Wrapper):
 
         Args: action (str): The action to take.
         """
+        print("_handle_action action type: " + str(type(action)))
+        print("_handle_action action: " + str(action))
+        print("_handle_action action name: " + action.predicate.name)
         if action == "noop":
             return self.prev_step
         action_name = action.predicate.name
@@ -256,7 +336,12 @@ class RobotouilleWrapper(gym.Wrapper):
             if cooked:
                 item_status["picked-up"] = True
         # TODO: Probably stop cooking if something is stacked on top of meat
-        return self.env.step(action)
+
+        result = self.env.step(action)
+        if not isinstance(result, tuple) or len(result) != 4:
+            print(f"Unexpected return from self.env.step: {result}")
+            print("result of _handle_action: " + str(result))
+        return result
 
     def _is_end_of_timestep(self):
         """This function returns true if it is the last players' timestep"""
@@ -385,6 +470,10 @@ class RobotouilleWrapper(gym.Wrapper):
         )
         self.env.set_state(new_env_state)
         goal_reached = pddlgym.inference.check_goal(new_env_state, env_state.goal)
+        # Compute adjacency matrix
+        #self.state["adj_matrix"] = self.compute_adjacency_matrix()
+        #self.state["agent_features"] = self.get_agent_features()
+
         return new_env_state, goal_reached
 
     def _count_players(self, obs):
@@ -415,13 +504,6 @@ class RobotouilleWrapper(gym.Wrapper):
                 return literal.variables[0].name
 
     def _change_selected_player(self, obs):
-        """
-        This function changes the player in the environment.
-
-        Returns:
-            new_env_state (PDDLGym State): The new state of the environment.
-        """
-
         current_player = self._current_selected_player(obs)
         current_player_index = int(current_player[5:])
         next_player = current_player_index % self.num_players + 1
@@ -434,7 +516,9 @@ class RobotouilleWrapper(gym.Wrapper):
         except Exception:
             print("Error in changing player")
             return self.prev_step
-        return self.env.step(action)
+        result = self.env.step(action)
+        print(f"_change_selected_player result: {result}")
+        return result
 
     def _check_cooked(self, obs):
         for literal in obs.literals:
@@ -452,7 +536,7 @@ class RobotouilleWrapper(gym.Wrapper):
         return self.prev_step[3] if self.prev_step else None
 
     def test_step(self, action):
-        obs, reward, done, info = self._handle_action(action)
+        obs, reward, done, truncated, info = self._handle_action(action)
         _, reward, done, info = self.prev_step
         self.prev_step = (obs, reward, done, info)
         return obs, reward, done, info
@@ -495,6 +579,8 @@ class RobotouilleWrapper(gym.Wrapper):
         expanded_truths = self.prev_step[3]["expanded_truths"]
         expanded_states = self.prev_step[3]["expanded_states"]
 
+        
+
         self.taken_actions.append(action)
         if interactive:
             self._interactive_starter_prints(expanded_truths)
@@ -509,8 +595,12 @@ class RobotouilleWrapper(gym.Wrapper):
         prev_heuristic = self.reward_handler.heuristic_reward(
             self.prev_step[0], self.state
         )
-        obs, reward, done, info = self._handle_action(action)
-        obs, reward, _, info = self._change_selected_player(obs)
+        obs, reward, done, truncated, info = self._handle_action(action)
+        #obs, reward, _, info = self._change_selected_player(obs)
+        result = self._change_selected_player(obs)
+        if not isinstance(result, tuple) or len(result) != 4:
+            print(f"Unexpected return from _change_selected_player: {result}")
+        obs, reward, _, _, info = result
         obs, done = self._state_update()
         # print(
         #     f"ENERGY LEVELS: {[(player, pdict['energy']) for player, pdict in self.state.items() if 'energy' in pdict]}"
@@ -548,6 +638,28 @@ class RobotouilleWrapper(gym.Wrapper):
             print("Goal Reached!")
             # print("episode_reward", self.episode_reward)
         # print("reward: ", reward)
+        # Fetch dynamic positions of players and patient
+        self.pddl_env.renderer.canvas.update_all_player_pos(obs.literals)
+        player_positions = [
+            player["position"] for player in self.pddl_env.renderer.canvas.players_pose
+        ]
+        print(player_positions)
+        patient_position = self.pddl_env.renderer.canvas._get_station_position("patient_bed_station1")
+        print(f"Patient position: {patient_position}")
+        # Compute adjacency matrix
+        self.state["adj_matrix"] = self.compute_adjacency_matrix(player_positions, patient_position, self.config2)
+        #all_adj_matrices.append(adj_matrix)
+        # Update adjacency matrix and agent features
+        #self.state["adj_matrix"] = self.compute_adjacency_matrix()
+        #self.state["agent_features"] = self.get_agent_features()
+        features_tensor = torch.tensor(self.get_agent_features(), dtype=torch.float32)
+
+        # Log GNN-related outputs
+        #adj_tensor = torch.tensor(self.state["adj_matrix"], dtype=torch.float32)
+        #features_tensor = torch.tensor(self.state["agent_features"], dtype=torch.float32)
+        gnn_output = self.gnn(features_tensor, adj_tensor)
+        #wandb.log({"gnn_output_mean": gnn_output.mean().item()})
+
         return obs, reward, done, info
 
     def save_episode(self, filename):

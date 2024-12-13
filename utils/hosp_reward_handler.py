@@ -62,7 +62,7 @@ class HospRewardHandler(RewardHandler):
         score = 0
 
         if self._check_predicate(obs, "istreated", "patient1"):
-            return 300
+            return self.max_possible_reward
 
         correct_stacking = [False] * (len(self.correct_order) - 1)
 
